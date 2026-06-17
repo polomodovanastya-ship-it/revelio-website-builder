@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRight } from 'lucide-react'
+import { asset } from '@/lib/asset'
 
 export function Hero({ onEstimate }: { onEstimate: () => void }) {
   return (
@@ -34,7 +35,7 @@ export function Hero({ onEstimate }: { onEstimate: () => void }) {
           Внедряем <span className="text-accent">новую экспертизу</span>
           <span className="whitespace-nowrap">
             <img
-              src="/dna.webp"
+              src={asset('/dna.webp')}
               alt=""
               aria-hidden
               className="mx-[0.2em] inline-block h-[1.2em] w-auto align-[-0.22em]"

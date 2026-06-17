@@ -1,6 +1,7 @@
 'use client'
 
 import { useReveal } from '@/hooks/use-reveal'
+import { asset } from '@/lib/asset'
 
 type Member = {
   name: string
@@ -94,7 +95,7 @@ export function Team() {
             >
               {m.photo ? (
                 <img
-                  src={`/team/${m.photo}.webp`}
+                  src={asset(`/team/${m.photo}.webp`)}
                   alt={m.name}
                   className="aspect-[4/3] w-full object-cover object-center"
                 />

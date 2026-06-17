@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRight, Send } from 'lucide-react'
+import { asset } from '@/lib/asset'
 
 export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
   return (
@@ -27,7 +28,7 @@ export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <img src="/logo-dark.svg" alt="Ревелио" className="h-7 w-auto" />
+            <img src={asset('/logo-dark.svg')} alt="Ревелио" className="h-7 w-auto" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Внедряем новую экспертизу в бизнес: консалтинг, разработка и
               трансформация процессов для крупного B2B.

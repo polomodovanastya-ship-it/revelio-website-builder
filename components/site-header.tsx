@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { asset } from '@/lib/asset'
 
 const NAV = [
   { label: 'Услуги', href: '#services' },
@@ -30,7 +31,7 @@ export function SiteHeader({ onEstimate }: { onEstimate: () => void }) {
         }`}
       >
         <a href="#top" className="flex items-center" aria-label="Ревелио — на главную">
-          <img src="/logo.svg" alt="Ревелио" className="h-6 w-auto sm:h-7" />
+          <img src={asset('/logo.svg')} alt="Ревелио" className="h-6 w-auto sm:h-7" />
         </a>
 
         <nav className="hidden items-center gap-1 md:flex">
