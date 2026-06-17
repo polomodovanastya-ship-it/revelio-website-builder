@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { X, Sparkles, ArrowRight, Loader2, RotateCcw, Check } from 'lucide-react'
+import { X, ArrowRight, Loader2, RotateCcw, Check } from 'lucide-react'
 
 type Estimate = {
   projectType: string
@@ -130,24 +130,19 @@ export function EstimatorDialog({
 
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-background/80 px-4 py-6 backdrop-blur-md sm:py-12">
-      <div className="animate-scale-in relative w-full max-w-2xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
-        {/* glow accent */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/30 blur-[80px]"
-        />
+      <div className="animate-scale-in relative w-full max-w-2xl overflow-hidden rounded-sm border border-border bg-card shadow-2xl">
         {/* header */}
-        <div className="relative flex items-center justify-between border-b border-border px-6 py-4">
+        <div className="relative flex items-center justify-between border-b border-border bg-primary px-6 py-4">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-primary" aria-hidden />
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="text-base leading-none" aria-hidden>🤖</span>
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground/80">
               AI-оценка проекта
             </span>
           </div>
           <button
             aria-label="Закрыть"
             onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            className="flex h-8 w-8 items-center justify-center rounded-sm text-primary-foreground/70 transition-colors hover:bg-primary-foreground/10 hover:text-primary-foreground"
           >
             <X className="h-4 w-4" />
           </button>
@@ -156,7 +151,7 @@ export function EstimatorDialog({
         <div className="px-6 py-6">
           {!result && (
             <>
-              <h3 className="font-heading text-2xl font-medium text-foreground">
+              <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-primary">
                 Опишите задачу — оценим за минуту
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -169,7 +164,7 @@ export function EstimatorDialog({
                 onChange={(e) => setDescription(e.target.value)}
                 rows={5}
                 placeholder="Например: нужно автоматизировать найм — личный кабинет кандидата в интеграции с ATS, дедупликация данных…"
-                className="mt-5 w-full resize-none rounded-lg border border-border bg-background px-4 py-3 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary"
+                className="mt-5 w-full resize-none rounded-sm border border-border bg-background px-4 py-3 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent"
               />
 
               <div className="mt-3 flex flex-wrap gap-2">
@@ -177,7 +172,7 @@ export function EstimatorDialog({
                   <button
                     key={ex}
                     onClick={() => setDescription(ex)}
-                    className="rounded-full border border-border px-3 py-1.5 text-left text-xs text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+                    className="rounded-sm border border-border px-3 py-1.5 text-left text-xs text-muted-foreground transition-colors hover:border-accent hover:text-accent"
                   >
                     {ex}
                   </button>
@@ -189,18 +184,18 @@ export function EstimatorDialog({
               )}
 
               {loading ? (
-                <div className="mt-6 space-y-2.5 rounded-xl border border-border bg-background/60 p-5">
+                <div className="mt-6 space-y-2.5 rounded-sm border border-border bg-background/60 p-5">
                   {STEPS.map((s, i) => {
                     const done = step > i
                     const active = step === i
                     return (
                       <div key={s} className="flex items-center gap-3 text-sm">
                         <span
-                          className={`flex h-5 w-5 items-center justify-center rounded-full border transition-colors ${
+                          className={`flex h-5 w-5 items-center justify-center rounded-sm border transition-colors ${
                             done
-                              ? 'border-primary bg-primary text-primary-foreground'
+                              ? 'border-accent bg-accent text-accent-foreground'
                               : active
-                                ? 'border-primary text-primary'
+                                ? 'border-accent text-accent'
                                 : 'border-border text-muted-foreground'
                           }`}
                         >
@@ -228,7 +223,7 @@ export function EstimatorDialog({
               ) : (
                 <button
                   onClick={submit}
-                  className="shimmer relative mt-6 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-primary-foreground transition-transform hover:scale-[1.01]"
+                  className="relative mt-6 flex w-full items-center justify-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
                 >
                   Рассчитать оценку
                   <ArrowRight className="h-4 w-4" />
@@ -243,7 +238,7 @@ export function EstimatorDialog({
           {result && (
             <div className="reveal in-view">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-primary/15 px-3 py-1 font-mono text-xs uppercase tracking-[0.16em] text-primary">
+                <span className="rounded-sm bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.16em] text-accent ring-1 ring-accent/30">
                   {result.recommendedTrack}
                 </span>
                 <span className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
@@ -256,19 +251,19 @@ export function EstimatorDialog({
               </p>
 
               <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div className="rounded-lg border border-border bg-background p-4">
+                <div className="rounded-sm border border-border bg-background p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                     Бюджет (ориентир)
                   </div>
-                  <div className="mt-1 font-heading text-lg text-foreground">
+                  <div className="mt-1 font-heading text-base font-bold text-primary">
                     {formatRub(result.budgetMin)} – {formatRub(result.budgetMax)}
                   </div>
                 </div>
-                <div className="rounded-lg border border-border bg-background p-4">
+                <div className="rounded-sm border border-border bg-background p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                     Сроки
                   </div>
-                  <div className="mt-1 font-heading text-lg text-foreground">
+                  <div className="mt-1 font-heading text-base font-bold text-primary">
                     {result.timelineWeeks}
                   </div>
                 </div>
@@ -282,7 +277,7 @@ export function EstimatorDialog({
                   {result.team.map((role) => (
                     <span
                       key={role}
-                      className="rounded-full border border-border px-3 py-1 text-xs text-foreground"
+                      className="rounded-sm border border-border px-3 py-1 text-xs text-foreground"
                     >
                       {role}
                     </span>
@@ -297,7 +292,7 @@ export function EstimatorDialog({
                 <ol className="mt-2 space-y-2">
                   {result.phases.map((p, i) => (
                     <li key={p.name} className="flex gap-3 text-sm">
-                      <span className="font-mono text-primary">
+                      <span className="font-mono font-medium text-accent">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span>
@@ -319,7 +314,7 @@ export function EstimatorDialog({
                       key={r}
                       className="flex gap-2 text-sm text-muted-foreground"
                     >
-                      <span className="text-primary">—</span>
+                      <span className="text-accent">—</span>
                       {r}
                     </li>
                   ))}
@@ -330,14 +325,14 @@ export function EstimatorDialog({
                 <a
                   href="#contact"
                   onClick={onClose}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-primary-foreground transition-transform hover:scale-[1.01]"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
                 >
                   Обсудить с консультантом
                   <ArrowRight className="h-4 w-4" />
                 </a>
                 <button
                   onClick={reset}
-                  className="flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+                  className="flex items-center justify-center gap-2 rounded-sm border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:border-accent hover:text-accent"
                 >
                   <RotateCcw className="h-3.5 w-3.5" />
                   Новая оценка

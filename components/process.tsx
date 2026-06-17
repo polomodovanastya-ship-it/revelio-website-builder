@@ -45,19 +45,19 @@ export function Process() {
   return (
     <section id="process" className="border-b border-border py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <span className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
-          Процесс работы
+        <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
+          [ Процесс работы ]
         </span>
-        <h2 className="mt-3 max-w-2xl text-balance font-heading text-3xl font-medium leading-tight text-foreground sm:text-5xl">
+        <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-bold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
           Как оцениваем и выполняем проекты
         </h2>
 
         <div ref={ref} className="reveal mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* estimate */}
           <div>
-            <div className="flex items-baseline justify-between border-b border-border pb-4">
-              <h3 className="font-heading text-xl text-foreground">
-                Как оцениваем
+            <div className="flex items-baseline justify-between border-b border-primary/20 pb-4">
+              <h3 className="font-heading text-base font-bold uppercase tracking-tight text-primary">
+                📐 Как оцениваем
               </h3>
               <span className="font-mono text-xs text-muted-foreground">
                 3–14 рабочих дней
@@ -69,7 +69,7 @@ export function Process() {
                   key={s.n}
                   className="flex items-start gap-5 border-b border-border py-5"
                 >
-                  <span className="font-mono text-sm text-primary">{s.n}</span>
+                  <span className="font-mono text-sm font-medium text-accent">{s.n}</span>
                   <span className="text-base leading-relaxed text-foreground">
                     {s.title}
                   </span>
@@ -80,9 +80,9 @@ export function Process() {
 
           {/* execute */}
           <div>
-            <div className="flex items-baseline justify-between border-b border-border pb-4">
-              <h3 className="font-heading text-xl text-foreground">
-                Как выполняем
+            <div className="flex items-baseline justify-between border-b border-primary/20 pb-4">
+              <h3 className="font-heading text-base font-bold uppercase tracking-tight text-primary">
+                🚀 Как выполняем
               </h3>
               <span className="font-mono text-xs text-muted-foreground">
                 от запуска до передачи
@@ -92,11 +92,11 @@ export function Process() {
               {EXEC_STEPS.map((s) => (
                 <li key={s.n} className="border-b border-border py-5">
                   <div className="flex items-baseline gap-5">
-                    <span className="font-mono text-sm text-primary">
+                    <span className="font-mono text-sm font-medium text-accent">
                       {s.n}
                     </span>
                     <div className="flex flex-1 flex-wrap items-baseline justify-between gap-2">
-                      <span className="font-heading text-lg text-foreground">
+                      <span className="font-heading text-sm font-semibold uppercase tracking-tight text-primary">
                         {s.title}
                       </span>
                       <span className="font-mono text-xs text-muted-foreground">

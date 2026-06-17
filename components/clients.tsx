@@ -23,9 +23,9 @@ export function Clients() {
           </span>
           <a
             href="#contact"
-            className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+            className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-accent"
           >
-            Запросить референс
+            Запросить референс →
           </a>
         </div>
       </div>
@@ -35,7 +35,7 @@ export function Clients() {
           {row.map((name, i) => (
             <span
               key={`${name}-${i}`}
-              className="whitespace-nowrap font-heading text-2xl text-muted-foreground/60 transition-colors duration-300 hover:text-primary sm:text-3xl"
+              className="whitespace-nowrap font-heading text-xl font-semibold uppercase tracking-tight text-primary/35 transition-colors duration-300 hover:text-accent sm:text-2xl"
             >
               {name}
             </span>

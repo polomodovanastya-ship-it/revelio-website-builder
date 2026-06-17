@@ -1,10 +1,11 @@
 'use client'
 
-import { Check, Sparkles, ArrowRight } from 'lucide-react'
+import { Check, ArrowRight } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
 
 const SERVICES = [
   {
+    emoji: '🔥',
     name: 'Консалтинг',
     price: 'от 345 000 ₽',
     unit: '/ 1 неделя',
@@ -18,6 +19,7 @@ const SERVICES = [
     cta: 'Отправить заявку',
   },
   {
+    emoji: '🔍',
     name: 'Проверка гипотезы',
     price: 'до 650 000 ₽',
     unit: '/ за работающий прототип',
@@ -31,6 +33,7 @@ const SERVICES = [
     cta: 'Отправить заявку',
   },
   {
+    emoji: '📦',
     name: 'Разработка продукта',
     price: 'от 850 000 ₽',
     unit: '/ за команду в месяц',
@@ -54,10 +57,10 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <span className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              Услуги
+            <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
+              [ Услуги ]
             </span>
-            <h2 className="mt-3 max-w-2xl text-balance font-heading text-3xl font-medium leading-tight text-foreground sm:text-5xl">
+            <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-bold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
               Три формата работы
             </h2>
           </div>
@@ -71,61 +74,91 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
           {SERVICES.map((s) => (
             <div
               key={s.name}
-              className={`group relative flex flex-col overflow-hidden rounded-xl border p-7 transition-all duration-300 hover:-translate-y-1 ${
+              className={`group relative flex flex-col overflow-hidden rounded-sm border p-7 transition-all duration-300 hover:-translate-y-1 ${
                 s.featured
-                  ? 'border-primary/50 bg-primary/[0.07] shadow-[0_20px_60px_-30px_oklch(0.64_0.193_293_/_0.8)]'
-                  : 'border-border bg-card hover:border-primary/40'
+                  ? 'border-primary bg-primary text-primary-foreground'
+                  : 'border-border bg-card hover:border-accent'
               }`}
             >
-              {s.featured && (
-                <div
-                  aria-hidden
-                  className="animate-glow pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-primary/30 blur-3xl"
-                />
-              )}
-              <div className="relative flex items-baseline justify-between">
-                <h3 className="font-heading text-2xl text-foreground">
-                  {s.name}
-                </h3>
+              <div className="relative flex items-start justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl leading-none">{s.emoji}</span>
+                  <h3
+                    className={`font-heading text-lg font-bold uppercase tracking-tight ${
+                      s.featured ? 'text-primary-foreground' : 'text-primary'
+                    }`}
+                  >
+                    {s.name}
+                  </h3>
+                </div>
                 {s.featured && (
-                  <span className="rounded-full bg-primary px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-primary-foreground">
+                  <span className="rounded-sm bg-accent px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-accent-foreground">
                     Хит
                   </span>
                 )}
               </div>
 
-              <div className="relative mt-4 flex items-baseline gap-2">
-                <span className="font-heading text-3xl text-foreground">
+              <div className="relative mt-5 flex flex-col gap-1">
+                <span
+                  className={`whitespace-nowrap font-heading text-2xl font-bold leading-none tracking-tight ${
+                    s.featured ? 'text-primary-foreground' : 'text-primary'
+                  }`}
+                >
                   {s.price}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">
+                <span
+                  className={`whitespace-nowrap font-mono text-xs ${
+                    s.featured ? 'text-primary-foreground/70' : 'text-muted-foreground'
+                  }`}
+                >
                   {s.unit}
                 </span>
               </div>
 
-              <p className="relative mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p
+                className={`relative mt-4 text-sm leading-relaxed ${
+                  s.featured ? 'text-primary-foreground/85' : 'text-muted-foreground'
+                }`}
+              >
                 {s.pitch}
               </p>
 
-              <ul className="relative mt-6 space-y-3 border-t border-border pt-6">
+              <ul
+                className={`relative mt-6 space-y-3 border-t pt-6 ${
+                  s.featured ? 'border-primary-foreground/20' : 'border-border'
+                }`}
+              >
                 {s.points.map((p) => (
-                  <li key={p} className="flex gap-3 text-sm text-foreground">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <li
+                    key={p}
+                    className={`flex gap-3 text-sm ${
+                      s.featured ? 'text-primary-foreground' : 'text-foreground'
+                    }`}
+                  >
+                    <Check
+                      className={`mt-0.5 h-4 w-4 shrink-0 ${
+                        s.featured ? 'text-accent-foreground' : 'text-accent'
+                      }`}
+                    />
                     {p}
                   </li>
                 ))}
               </ul>
 
-              <p className="relative mt-6 font-mono text-[11px] leading-relaxed tracking-wide text-muted-foreground">
+              <p
+                className={`relative mt-6 font-mono text-[11px] leading-relaxed tracking-wide ${
+                  s.featured ? 'text-primary-foreground/60' : 'text-muted-foreground'
+                }`}
+              >
                 {s.meta}
               </p>
 
               <a
                 href="#contact"
-                className={`shimmer relative mt-7 flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] transition-transform hover:scale-[1.02] ${
+                className={`relative mt-7 flex items-center justify-center gap-2 rounded-sm px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
                   s.featured
-                    ? 'bg-primary text-primary-foreground'
-                    : 'border border-border text-foreground'
+                    ? 'bg-accent text-accent-foreground hover:bg-card hover:text-primary'
+                    : 'border border-primary/30 text-primary hover:border-accent hover:text-accent'
                 }`}
               >
                 {s.cta}
@@ -136,20 +169,16 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
         </div>
 
         {/* AI estimate as a service banner */}
-        <div className="relative mt-5 flex flex-col items-start justify-between gap-6 overflow-hidden rounded-xl border border-primary/30 bg-card p-7 sm:flex-row sm:items-center">
-          <div
-            aria-hidden
-            className="aurora pointer-events-none absolute -left-10 top-1/2 h-40 w-72 -translate-y-1/2 rounded-full bg-primary/20 blur-3xl"
-          />
+        <div className="relative mt-5 flex flex-col items-start justify-between gap-6 overflow-hidden rounded-sm border border-accent/40 bg-card p-7 sm:flex-row sm:items-center">
           <div className="relative flex items-start gap-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/15 ring-1 ring-primary/30">
-              <Sparkles className="h-5 w-5 text-primary" />
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-accent/10 text-xl ring-1 ring-accent/30">
+              🤖
             </div>
             <div>
-              <h3 className="font-heading text-xl text-foreground">
+              <h3 className="font-heading text-base font-bold uppercase tracking-tight text-primary">
                 AI-оценка как сервис
               </h3>
-              <p className="mt-1 max-w-md text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-1.5 max-w-md text-sm leading-relaxed text-muted-foreground">
                 Методология 15 лет ИТ-проектов в AI-агенте для быстрой оценки
                 инициатив разработки.
               </p>
@@ -157,7 +186,7 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
           </div>
           <button
             onClick={onEstimate}
-            className="shimmer relative flex shrink-0 items-center gap-2 overflow-hidden rounded-full bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-primary-foreground transition-transform hover:scale-[1.04]"
+            className="relative flex shrink-0 items-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
           >
             Тестировать в 1 клик
             <ArrowRight className="h-4 w-4" />
