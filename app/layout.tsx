@@ -1,15 +1,15 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
-import { Unbounded, Golos_Text, JetBrains_Mono } from 'next/font/google'
+import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const unbounded = Unbounded({
+const interTight = Inter_Tight({
   variable: '--font-display',
   subsets: ['latin', 'cyrillic'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['600', '700', '800', '900'],
 })
 
-const golos = Golos_Text({
+const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700'],
@@ -57,16 +57,8 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
-      className={`${unbounded.variable} ${golos.variable} ${jetbrainsMono.variable} bg-background`}
-      suppressHydrationWarning
+      className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();`,
-          }}
-        />
-      </head>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && !basePath && <Analytics />}

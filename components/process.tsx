@@ -48,7 +48,7 @@ export function Process() {
         <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ Процесс работы ]
         </span>
-        <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-bold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
+        <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
           Как оцениваем и выполняем проекты
         </h2>
 
@@ -67,9 +67,11 @@ export function Process() {
               {ESTIMATE_STEPS.map((s) => (
                 <li
                   key={s.n}
-                  className="flex items-start gap-5 border-b border-border py-5"
+                  className="flex items-baseline gap-4 border-b border-border py-5"
                 >
-                  <span className="font-mono text-sm font-medium text-accent">{s.n}</span>
+                  <span className="w-6 shrink-0 font-mono text-sm font-medium tabular-nums text-accent">
+                    {s.n}
+                  </span>
                   <span className="text-base leading-relaxed text-foreground">
                     {s.title}
                   </span>
@@ -91,8 +93,8 @@ export function Process() {
             <ol className="mt-2">
               {EXEC_STEPS.map((s) => (
                 <li key={s.n} className="border-b border-border py-5">
-                  <div className="flex items-baseline gap-5">
-                    <span className="font-mono text-sm font-medium text-accent">
+                  <div className="flex items-baseline gap-4">
+                    <span className="w-6 shrink-0 font-mono text-sm font-medium tabular-nums text-accent">
                       {s.n}
                     </span>
                     <div className="flex flex-1 flex-wrap items-baseline justify-between gap-2">
@@ -104,7 +106,7 @@ export function Process() {
                       </span>
                     </div>
                   </div>
-                  <p className="mt-2 pl-9 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 pl-10 text-sm leading-relaxed text-muted-foreground">
                     {s.detail}
                   </p>
                 </li>

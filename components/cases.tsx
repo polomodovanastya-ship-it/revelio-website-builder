@@ -1,6 +1,5 @@
 'use client'
 
-import { ArrowUpRight } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
 
 const CASES = [
@@ -71,38 +70,36 @@ export function Cases() {
             <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
               [ Кейсы ]
             </span>
-            <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-bold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
-              Решения, доведённые до прода
+            <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
+              Успешные внедрения
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Банки, ритейл, финтех, телеком и промышленность — от стратегии до
-            работающего результата.
+            От декомпозиции за 2–7 дней до решающего боли пользователей
+            продукта за 3–5 месяцев.
           </p>
         </div>
 
         <div
           ref={ref}
-          className="reveal mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-border bg-border md:grid-cols-2 lg:grid-cols-3"
+          className="reveal mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
         >
           {CASES.map((c) => (
             <article
               key={c.title}
-              className="group relative flex flex-col overflow-hidden bg-card p-6 transition-colors duration-300 hover:bg-secondary"
+              className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
             >
-              {/* top accent bar */}
-              <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-              <div className="relative flex items-center justify-between">
+              <div className="flex items-center justify-between">
                 <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                   <span className="text-base leading-none">{c.emoji}</span>
                   {c.tag}
                 </span>
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                {/* стрелка убрана временно — вернуть, когда у кейсов появятся посадочные */}
               </div>
-              <h3 className="relative mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
+              <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
                 {c.title}
               </h3>
-              <p className="relative mt-3 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {c.desc}
               </p>
             </article>

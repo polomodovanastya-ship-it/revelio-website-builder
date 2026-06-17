@@ -6,6 +6,7 @@ import { Hero } from '@/components/hero'
 import { Cases } from '@/components/cases'
 import { Clients } from '@/components/clients'
 import { Services } from '@/components/services'
+import { Team } from '@/components/team'
 import { Process } from '@/components/process'
 import { Contact } from '@/components/contact'
 import { SiteFooter } from '@/components/site-footer'
@@ -20,9 +21,10 @@ export default function Page() {
       <SiteHeader onEstimate={openEstimator} />
       <main>
         <Hero onEstimate={openEstimator} />
-        <Clients />
         <Cases />
+        <Clients />
         <Services onEstimate={openEstimator} />
+        <Team />
         <Process />
         <Contact />
       </main>

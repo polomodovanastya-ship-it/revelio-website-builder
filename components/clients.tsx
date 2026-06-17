@@ -18,8 +18,8 @@ export function Clients() {
     <section className="border-b border-border py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
-            Опыт команды
+          <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
+            [ Опыт команды ]
           </span>
           <a
             href="#contact"

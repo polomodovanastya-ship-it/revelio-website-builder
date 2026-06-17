@@ -60,7 +60,7 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
             <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
               [ Услуги ]
             </span>
-            <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-bold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
+            <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
               Три формата работы
             </h2>
           </div>
@@ -74,28 +74,21 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
           {SERVICES.map((s) => (
             <div
               key={s.name}
-              className={`group relative flex flex-col overflow-hidden rounded-sm border p-7 transition-all duration-300 hover:-translate-y-1 ${
+              className={`group relative flex flex-col overflow-hidden rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-1 ${
                 s.featured
-                  ? 'border-primary bg-primary text-primary-foreground'
-                  : 'border-border bg-card hover:border-accent'
+                  ? 'border-transparent bg-primary text-primary-foreground shadow-[0_18px_44px_-20px_rgba(20,37,80,0.45)]'
+                  : 'border-border bg-card hover:border-primary/25 hover:shadow-[0_18px_44px_-22px_rgba(20,37,80,0.30)]'
               }`}
             >
-              <div className="relative flex items-start justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl leading-none">{s.emoji}</span>
-                  <h3
-                    className={`font-heading text-lg font-bold uppercase tracking-tight ${
-                      s.featured ? 'text-primary-foreground' : 'text-primary'
-                    }`}
-                  >
-                    {s.name}
-                  </h3>
-                </div>
-                {s.featured && (
-                  <span className="rounded-sm bg-accent px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-accent-foreground">
-                    Хит
-                  </span>
-                )}
+              <div className="relative flex items-center gap-3">
+                <span className="text-2xl leading-none">{s.emoji}</span>
+                <h3
+                  className={`whitespace-nowrap font-heading text-base font-bold uppercase tracking-tight ${
+                    s.featured ? 'text-primary-foreground' : 'text-primary'
+                  }`}
+                >
+                  {s.name}
+                </h3>
               </div>
 
               <div className="relative mt-5 flex flex-col gap-1">
@@ -123,11 +116,7 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
                 {s.pitch}
               </p>
 
-              <ul
-                className={`relative mt-6 space-y-3 border-t pt-6 ${
-                  s.featured ? 'border-primary-foreground/20' : 'border-border'
-                }`}
-              >
+              <ul className="relative mt-6 space-y-3">
                 {s.points.map((p) => (
                   <li
                     key={p}
@@ -146,7 +135,7 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
               </ul>
 
               <p
-                className={`relative mt-6 font-mono text-[11px] leading-relaxed tracking-wide ${
+                className={`relative mt-6 mb-7 font-mono text-[11px] leading-relaxed tracking-wide ${
                   s.featured ? 'text-primary-foreground/60' : 'text-muted-foreground'
                 }`}
               >
@@ -155,10 +144,10 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
 
               <a
                 href="#contact"
-                className={`relative mt-7 flex items-center justify-center gap-2 rounded-sm px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
+                className={`relative mt-auto flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
                   s.featured
-                    ? 'bg-accent text-accent-foreground hover:bg-card hover:text-primary'
-                    : 'border border-primary/30 text-primary hover:border-accent hover:text-accent'
+                    ? 'bg-accent text-accent-foreground hover:brightness-110'
+                    : 'border border-border bg-secondary text-primary hover:border-primary/30 hover:bg-muted hover:text-accent'
                 }`}
               >
                 {s.cta}
@@ -169,9 +158,9 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
         </div>
 
         {/* AI estimate as a service banner */}
-        <div className="relative mt-5 flex flex-col items-start justify-between gap-6 overflow-hidden rounded-sm border border-accent/40 bg-card p-7 sm:flex-row sm:items-center">
+        <div className="relative mt-5 flex flex-col items-start justify-between gap-6 overflow-hidden rounded-2xl border border-border bg-card p-7 sm:flex-row sm:items-center">
           <div className="relative flex items-start gap-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-accent/10 text-xl ring-1 ring-accent/30">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-xl">
               🤖
             </div>
             <div>
@@ -186,7 +175,7 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
           </div>
           <button
             onClick={onEstimate}
-            className="relative flex shrink-0 items-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
+            className="relative flex shrink-0 items-center gap-2 rounded-lg bg-accent px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
           >
             Тестировать в 1 клик
             <ArrowRight className="h-4 w-4" />
