@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { AppProviders } from '@/components/app-providers'
+import { MetrikaRouteTracker } from '@/components/metrika-route-tracker'
 import { YANDEX_METRIKA_ID } from '@/lib/metrika'
 import './globals.css'
 
@@ -72,6 +74,9 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased">
         <AppProviders>{children}</AppProviders>
+        <Suspense fallback={null}>
+          <MetrikaRouteTracker />
+        </Suspense>
         {enableMetrika && (
           <>
             <Script id="yandex-metrika" strategy="afterInteractive">
