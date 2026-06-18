@@ -1,0 +1,59 @@
+import type { ComponentType } from 'react'
+
+export type ReportAccess = 'open' | 'gated'
+
+export type ReportMeta = {
+  slug: string
+  title: string
+  cardTitle: string
+  summary: string
+  access: ReportAccess
+  badge: string
+  Body: ComponentType
+}
+
+// Temporary placeholder until Task 3 creates the real body components
+const Placeholder: ComponentType = () => null
+
+export const REPORTS: Record<string, ReportMeta> = {
+  'loyalty-azs-2026': {
+    slug: 'loyalty-azs-2026',
+    title: 'Конкурентный mystery-audit АЗС-сетей',
+    cardTitle: 'Обзор программ\nлояльности АЗС-рынка\nв 2026',
+    summary:
+      'Сравнительный анализ программ лояльности крупнейших АЗС-сетей: механики, барьеры входа, экономика баллов и тренды цифровизации сервисов на заправках.',
+    access: 'open',
+    badge: 'Открытое исследование · 2026',
+    Body: Placeholder, // TODO(Task 3): replace with LoyaltyAzs2026Body
+  },
+  'ux-b2b-travel-2026': {
+    slug: 'ux-b2b-travel-2026',
+    title: 'UX B2B Travel, 2026',
+    cardTitle: 'UX-аналитика B2B Travel:\nот Anywayanyday\nдо Smartway в 2026',
+    summary:
+      'Сравнение пользовательского опыта ведущих B2B travel-сервисов: поиск и бронирование, согласование командировок, интеграции с бухгалтерией и travel-политиками.',
+    access: 'gated',
+    badge: 'Закрытое исследование · по запросу',
+    Body: Placeholder, // TODO(Task 3): replace with UxB2bTravel2026Body
+  },
+  'cdp-comparison-2026': {
+    slug: 'cdp-comparison-2026',
+    title: 'Как выбрать CDP / Loyalty / Comms платформу в 2026?',
+    cardTitle: 'Сравнение CDP-систем\n(Loyalty, Campaign, CVM,\nRTDM) в 2025',
+    summary:
+      'Функциональное и архитектурное сравнение CDP-систем: модели данных, сегментация в реальном времени, интеграции с каналами, аналитика и стоимость владения.',
+    access: 'gated',
+    badge: 'Закрытое исследование · по запросу',
+    Body: Placeholder, // TODO(Task 3): replace with CdpComparison2026Body
+  },
+}
+
+export const REPORTS_ORDER = [
+  'loyalty-azs-2026',
+  'ux-b2b-travel-2026',
+  'cdp-comparison-2026',
+] as const
+
+export const REPORT_SLUGS = REPORTS_ORDER as readonly string[]
+
+export const getReport = (slug: string): ReportMeta | undefined => REPORTS[slug]
