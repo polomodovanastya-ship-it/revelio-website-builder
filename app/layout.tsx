@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
+import { AppProviders } from '@/components/app-providers'
+import { YANDEX_METRIKA_ID } from '@/lib/metrika'
 import './globals.css'
 
 const interTight = Inter_Tight({
@@ -56,7 +58,6 @@ export const metadata: Metadata = {
 // Yandex.Metrika is mirrored from prod (revelio.tech). Hits are sent only from a
 // real production build (not dev / static preview) so local work and the
 // /test-variant preview don't pollute counter stats.
-const YANDEX_METRIKA_ID = 108732849
 const enableMetrika = process.env.NODE_ENV === 'production' && !basePath
 
 export default function RootLayout({
@@ -70,7 +71,7 @@ export default function RootLayout({
       className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background`}
     >
       <body className="font-sans antialiased">
-        {children}
+        <AppProviders>{children}</AppProviders>
         {enableMetrika && (
           <>
             <Script id="yandex-metrika" strategy="afterInteractive">
