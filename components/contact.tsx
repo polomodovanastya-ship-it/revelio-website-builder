@@ -8,6 +8,13 @@ export function Contact() {
   const ref = useReveal<HTMLDivElement>()
   const [sent, setSent] = useState(false)
   const [agree, setAgree] = useState(false)
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: '',
+  })
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -47,30 +54,59 @@ export function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="flex flex-col gap-4">
+              <form onSubmit={onSubmit} noValidate className="flex flex-col gap-4">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <Field label="Имя" name="name" placeholder="Как к вам обращаться" />
                   <Field
-                    label="Телефон или почта"
-                    name="contact"
-                    placeholder="+7 ··· / you@company.ru"
+                    label="Имя"
+                    name="name"
+                    placeholder="Как к вам обращаться"
+                    value={form.name}
+                    onChange={(v) => setForm({ ...form, name: v })}
+                    maxLength={100}
+                  />
+                  <Field
+                    label="Email"
+                    name="email"
+                    type="email"
+                    placeholder="you@company.ru"
+                    value={form.email}
+                    onChange={(v) => setForm({ ...form, email: v })}
+                    maxLength={255}
                   />
                 </div>
-                <Field
-                  label="Компания"
-                  name="company"
-                  placeholder="Название организации"
-                  required={false}
-                />
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <Field
+                    label="Телефон"
+                    name="phone"
+                    type="tel"
+                    placeholder="+7 ··· (необязательно)"
+                    value={form.phone}
+                    onChange={(v) => setForm({ ...form, phone: v })}
+                    maxLength={30}
+                    required={false}
+                  />
+                  <Field
+                    label="Компания"
+                    name="company"
+                    placeholder="Название организации"
+                    value={form.company}
+                    onChange={(v) => setForm({ ...form, company: v })}
+                    maxLength={200}
+                    required={false}
+                  />
+                </div>
                 <div>
                   <label className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
                     Задача
                   </label>
                   <textarea
-                    name="task"
+                    name="message"
                     rows={4}
                     required
                     placeholder="Коротко о задаче или цели"
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    maxLength={1000}
                     className="mt-2 w-full resize-none rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </div>
@@ -127,11 +163,19 @@ function Field({
   label,
   name,
   placeholder,
+  value,
+  onChange,
+  type = 'text',
+  maxLength,
   required = true,
 }: {
   label: string
   name: string
   placeholder: string
+  value: string
+  onChange: (value: string) => void
+  type?: string
+  maxLength?: number
   required?: boolean
 }) {
   return (
@@ -141,8 +185,12 @@ function Field({
       </label>
       <input
         name={name}
+        type={type}
         required={required}
         placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        maxLength={maxLength}
         className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent focus:ring-2 focus:ring-accent/20"
       />
     </div>
