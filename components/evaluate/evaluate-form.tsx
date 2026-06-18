@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Upload } from 'lucide-react'
+import { Upload, FileText, X } from 'lucide-react'
 import { Field, ChipSelect, projectTypes, industries, goalOptions, contactMethods, countryCodes, STEPS, MAX_GOALS } from './fields'
 import { validateFile, FILE_ACCEPT } from '@/lib/evaluate-helpers'
 import { useEvaluateDraft } from '@/hooks/useEvaluateDraft'
@@ -24,6 +24,7 @@ export function EvaluateForm({ dispatch }: Props) {
   const [otherType, setOtherType] = useState('')
   const [auditText, setAuditText] = useState('')
   const [files, setFiles] = useState<File[]>([])
+  const [dragActive, setDragActive] = useState(false)
   const [goals, setGoals] = useState<string[]>([])
   const [otherGoal, setOtherGoal] = useState('')
   const [industry, setIndustry] = useState('')
@@ -119,17 +120,25 @@ export function EvaluateForm({ dispatch }: Props) {
     }
   }
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+  const acceptFile = (file?: File | null) => {
     if (!file) return
     const result = validateFile(file)
     if (!result.valid) {
       toast.error(result.error)
-      e.target.value = ''
       return
     }
     setFiles([file])
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    acceptFile(e.target.files?.[0])
     e.target.value = ''
+  }
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault()
+    setDragActive(false)
+    acceptFile(e.dataTransfer.files?.[0])
   }
 
   const goBack = () => {
@@ -228,12 +237,43 @@ export function EvaluateForm({ dispatch }: Props) {
 
             <Field title="Загрузить документы" subtitle="PDF, DOCX, ODT, MD или TXT до 25 МБ" error={attempted && errors.files} errorMessage={projectType === 'existing' ? 'Для доработки готового решения нужен файл' : undefined}>
               <div className="space-y-2">
-                <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-border bg-secondary/50 px-4 py-3 transition-colors hover:border-primary/40">
-                  <Upload className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">Выбрать файл</span>
+                <label
+                  onDragEnter={(e) => { e.preventDefault(); setDragActive(true) }}
+                  onDragOver={(e) => { e.preventDefault(); setDragActive(true) }}
+                  onDragLeave={(e) => { e.preventDefault(); setDragActive(false) }}
+                  onDrop={handleDrop}
+                  className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-4 py-8 text-center transition-colors ${
+                    dragActive
+                      ? 'border-accent bg-accent/5'
+                      : 'border-border bg-secondary/50 hover:border-primary/40'
+                  }`}
+                >
+                  <Upload className={`h-6 w-6 ${dragActive ? 'text-accent' : 'text-muted-foreground'}`} />
+                  <span className="text-sm font-medium text-primary">
+                    Перетащите файл сюда или нажмите
+                  </span>
+                  <span className="text-xs text-muted-foreground">до 25 МБ</span>
                   <input type="file" accept={FILE_ACCEPT} onChange={handleFileChange} className="hidden" />
                 </label>
-                {files[0] && <div className="text-sm text-muted-foreground">{files[0].name}</div>}
+                {files[0] && (
+                  <div className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-3 py-2">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <FileText className="h-4 w-4 shrink-0 text-accent" />
+                      <span className="truncate text-sm text-foreground">{files[0].name}</span>
+                      <span className="shrink-0 text-xs text-muted-foreground">
+                        {(files[0].size / 1024 / 1024).toFixed(1)} МБ
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setFiles([])}
+                      aria-label="Удалить файл"
+                      className="shrink-0 text-muted-foreground transition-colors hover:text-destructive"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
               </div>
             </Field>
           </>
