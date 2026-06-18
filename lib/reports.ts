@@ -1,5 +1,9 @@
 import type { ComponentType } from 'react'
 
+import { LoyaltyAzs2026Body } from '@/components/research/reports/loyalty-azs-2026'
+import { CdpComparison2026Body } from '@/components/research/reports/cdp-comparison-2026'
+import { UxB2bTravel2026Body } from '@/components/research/reports/ux-b2b-travel-2026'
+
 export type ReportAccess = 'open' | 'gated'
 
 export type ReportMeta = {
@@ -12,9 +16,6 @@ export type ReportMeta = {
   Body: ComponentType
 }
 
-// Temporary placeholder until Task 3 creates the real body components
-const Placeholder: ComponentType = () => null
-
 export const REPORTS: Record<string, ReportMeta> = {
   'loyalty-azs-2026': {
     slug: 'loyalty-azs-2026',
@@ -24,7 +25,7 @@ export const REPORTS: Record<string, ReportMeta> = {
       'Сравнительный анализ программ лояльности крупнейших АЗС-сетей: механики, барьеры входа, экономика баллов и тренды цифровизации сервисов на заправках.',
     access: 'open',
     badge: 'Открытое исследование · 2026',
-    Body: Placeholder, // TODO(Task 3): replace with LoyaltyAzs2026Body
+    Body: LoyaltyAzs2026Body,
   },
   'ux-b2b-travel-2026': {
     slug: 'ux-b2b-travel-2026',
@@ -34,7 +35,7 @@ export const REPORTS: Record<string, ReportMeta> = {
       'Сравнение пользовательского опыта ведущих B2B travel-сервисов: поиск и бронирование, согласование командировок, интеграции с бухгалтерией и travel-политиками.',
     access: 'gated',
     badge: 'Закрытое исследование · по запросу',
-    Body: Placeholder, // TODO(Task 3): replace with UxB2bTravel2026Body
+    Body: UxB2bTravel2026Body,
   },
   'cdp-comparison-2026': {
     slug: 'cdp-comparison-2026',
@@ -44,7 +45,7 @@ export const REPORTS: Record<string, ReportMeta> = {
       'Функциональное и архитектурное сравнение CDP-систем: модели данных, сегментация в реальном времени, интеграции с каналами, аналитика и стоимость владения.',
     access: 'gated',
     badge: 'Закрытое исследование · по запросу',
-    Body: Placeholder, // TODO(Task 3): replace with CdpComparison2026Body
+    Body: CdpComparison2026Body,
   },
 }
 
