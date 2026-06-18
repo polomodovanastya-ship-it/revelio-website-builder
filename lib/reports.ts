@@ -10,6 +10,7 @@ export type ReportMeta = {
   slug: string
   title: string
   cardTitle: string
+  metaTitle: string
   summary: string
   access: ReportAccess
   badge: string
@@ -21,6 +22,7 @@ export const REPORTS: Record<string, ReportMeta> = {
     slug: 'loyalty-azs-2026',
     title: 'Конкурентный mystery-audit АЗС-сетей',
     cardTitle: 'Обзор программ\nлояльности АЗС-рынка\nв 2026',
+    metaTitle: 'Программы лояльности АЗС, 2026',
     summary:
       'Сравнительный анализ программ лояльности крупнейших АЗС-сетей: механики, барьеры входа, экономика баллов и тренды цифровизации сервисов на заправках.',
     access: 'open',
@@ -31,6 +33,7 @@ export const REPORTS: Record<string, ReportMeta> = {
     slug: 'ux-b2b-travel-2026',
     title: 'UX B2B Travel, 2026',
     cardTitle: 'UX-аналитика B2B Travel:\nот Anywayanyday\nдо Smartway в 2026',
+    metaTitle: 'UX B2B Travel, 2026',
     summary:
       'Сравнение пользовательского опыта ведущих B2B travel-сервисов: поиск и бронирование, согласование командировок, интеграции с бухгалтерией и travel-политиками.',
     access: 'gated',
@@ -41,6 +44,7 @@ export const REPORTS: Record<string, ReportMeta> = {
     slug: 'cdp-comparison-2026',
     title: 'Как выбрать CDP / Loyalty / Comms платформу в 2026?',
     cardTitle: 'Сравнение CDP-систем\n(Loyalty, Campaign, CVM,\nRTDM) в 2025',
+    metaTitle: 'Сравнение CDP-систем, 2025',
     summary:
       'Функциональное и архитектурное сравнение CDP-систем: модели данных, сегментация в реальном времени, интеграции с каналами, аналитика и стоимость владения.',
     access: 'gated',

@@ -4,7 +4,7 @@ export function ReportJsonLd({ report }: { report: ReportMeta }) {
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: report.title,
+    headline: report.metaTitle,
     description: report.summary,
     inLanguage: 'ru',
     url: `https://revelio.tech/research/${report.slug}`,

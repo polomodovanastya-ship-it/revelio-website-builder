@@ -13,10 +13,10 @@ function buildReportMetadata(r: ReportMeta): Metadata {
   const url = `https://revelio.tech/research/${r.slug}`
   const description = r.summary.slice(0, 160)
   return {
-    title: { absolute: `${r.title} — Ревелио` },
+    title: { absolute: `${r.metaTitle} — исследование Ревелио` },
     description,
     alternates: { canonical: url },
-    openGraph: { title: r.title, description, url, type: 'article' },
+    openGraph: { title: r.metaTitle, description, url, type: 'article' },
   }
 }
 
