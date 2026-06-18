@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { asset } from '@/lib/asset'
 import { NAV } from '@/lib/nav'
 import { PHONE, TELEGRAM_URL, TELEGRAM_HANDLE, EMAIL, HOURS } from '@/lib/contacts'
+import { useEstimator } from '@/components/estimator-provider'
 
-export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
+export function SiteFooter() {
+  const { open } = useEstimator()
   return (
     <footer className="bg-background">
       {/* AI estimate strip */}
@@ -19,7 +21,7 @@ export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
             </span>
           </div>
           <button
-            onClick={onEstimate}
+            onClick={open}
             className="flex items-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
           >
             Тестировать в 1 клик
