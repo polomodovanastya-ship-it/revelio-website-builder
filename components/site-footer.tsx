@@ -31,7 +31,7 @@ export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
             <img src={asset('/logo-dark.svg')} alt="Ревелио" className="h-7 w-auto" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Внедряем новую экспертизу в бизнес: консалтинг, разработка и
-              трансформация процессов для крупного B2B.
+              трансформация процессов для среднего и крупного бизнеса.
             </p>
           </div>
 

@@ -28,7 +28,7 @@ export function Contact() {
             </h2>
             <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
               Оценим за 3–5 дней, бесплатно по методологии. Свяжемся в течение
-              1 часа — ответит не продавец, а консультант с 10+ лет опыта.
+              10 минут — ответит не продавец, а консультант с 10+ лет опыта.
             </p>
           </div>
 
@@ -42,7 +42,7 @@ export function Contact() {
                   Заявка отправлена
                 </h3>
                 <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
-                  Консультант свяжется с вами в течение часа. Спасибо за доверие.
+                  Консультант свяжется с вами в течение 10 минут. Спасибо за доверие.
                 </p>
               </div>
             ) : (
@@ -81,8 +81,28 @@ export function Contact() {
                     onChange={(e) => setAgree(e.target.checked)}
                     className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--accent)]"
                   />
-                  Я даю своё согласие в соответствии с Политикой обработки
-                  персональных данных
+                  <span>
+                    Я даю своё{' '}
+                    <a
+                      href="https://revelio.tech/legal/consent_pd.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-foreground underline underline-offset-2 transition-colors hover:text-accent"
+                    >
+                      согласие
+                    </a>{' '}
+                    в соответствии с{' '}
+                    <a
+                      href="https://revelio.tech/legal/revelio_tech_policy_pd.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-foreground underline underline-offset-2 transition-colors hover:text-accent"
+                    >
+                      Политикой обработки персональных данных
+                    </a>
+                  </span>
                 </label>
 
                 <button

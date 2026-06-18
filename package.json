@@ -11,7 +11,6 @@
   "dependencies": {
     "@ai-sdk/react": "^3.0.201",
     "@base-ui/react": "^1.5.0",
-    "@vercel/analytics": "1.6.1",
     "ai": "^6.0.199",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

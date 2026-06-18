@@ -17,28 +17,28 @@ const TEAM: Member[] = [
     role: 'CEO',
     bio: 'Руководила ИТ-командами в Ameria Bank, «Джет». Запускала проекты с Ингосстрах, TuTu, Дикси.',
     photo: 'anastasia',
-    tags: ['Банки', 'Retail', 'BART', 'AI for IT', 'RPA', 'ITIL', 'Group Dynamics', 'Psychology'],
+    tags: ['Банки', 'Retail', 'AI for IT', 'RPA', 'ITIL', 'Group Dynamics'],
   },
   {
     name: 'Александр',
     role: 'Партнёр',
-    bio: 'Руководил CX-практикой и продуктовым развитием в проектах для KIA, Лукойл, Unitel, Ренессанс, СИБУР.',
+    bio: 'Руководил CX-практикой и командами в проектах для KIA, Лукойл, Unitel, Ренессанс, СИБУР.',
     photo: 'alexander-v',
-    tags: ['eCom', 'АЗС', 'Retail', 'Telco', 'CX', 'ITSM', 'Loyalty', 'Pricing', 'CDP', 'Data', 'Монетизация', 'Геймификация', 'WFM'],
+    tags: ['eCom', 'Retail', 'Telco', 'CX', 'Loyalty', 'Pricing', 'CDP', 'Data'],
   },
   {
     name: 'Илья',
     role: 'Консультант · Технологии',
     bio: 'Проектировал B2B, loyalty и cloud-native k8s-платформы, AI/Dify-пайплайны, интеграции и high-load.',
     photo: 'ilya',
-    tags: ['AI', 'Dify', 'LLM Pipelines', 'CI/CD', 'B2B', 'Golang', 'Cloud Platform', 'GitOps', 'Kubernetes', 'Kafka', 'Integrations', 'Observability'],
+    tags: ['AI', 'LLM Pipelines', 'Kubernetes', 'Cloud Platform', 'CI/CD', 'Integrations'],
   },
   {
     name: 'Александр',
     role: 'Консультант · Технологии',
     bio: 'Развивал tech привлечения и маркетинга, управление ИТ и gen AI в банках РФ ТОП-10.',
     photo: 'alexander-p',
-    tags: ['Бигтех', 'GenAI', 'AI4SDLC', 'System Design', 'Platform', 'Архитектура систем', 'Leadership'],
+    tags: ['Бигтех', 'GenAI', 'AI4SDLC', 'System Design', 'Platform', 'Leadership'],
   },
   {
     name: 'Павел',
@@ -51,15 +51,29 @@ const TEAM: Member[] = [
     name: 'Артём',
     role: 'Консультант · Инфра',
     bio: 'Развивал IaaS-сервисы и private cloud для enterprise, внедрял SecOps в крупных ИТ-службах.',
-    photo: null,
-    tags: ['Cloud', 'SecOps', 'ЦОД'],
+    photo: 'artem',
+    tags: ['Cloud', 'SecOps', 'ЦОД', 'IaaS', 'Private Cloud', 'Enterprise'],
   },
   {
     name: 'Мария',
     role: 'Консультант · Data',
     bio: 'Руководила проектами внедрения сквозной аналитики для крупных девелоперов.',
     photo: 'maria',
-    tags: ['Жилая недвижимость', 'Автодилеры', 'Сквозная аналитика', 'ROMI', 'CAC', 'Data', 'Marketing'],
+    tags: ['Недвижимость', 'Сквозная аналитика', 'ROMI', 'CAC', 'Data', 'Marketing'],
+  },
+  {
+    name: 'Евгений',
+    role: 'Консультант · eLearning',
+    bio: 'Разрабатывал ИОТ-платформу, внедрял микросервисы, оптимизировал highload-системы.',
+    photo: 'eugene',
+    tags: ['SaaS', 'LMS', 'ИОТ', 'Integrations', 'Микросервисы', 'Highload'],
+  },
+  {
+    name: 'Максим',
+    role: 'Консультант · AI',
+    bio: 'Директор по продуктам, экс-МКБ и «Инфосистемы Джет».',
+    photo: 'maksim',
+    tags: ['Финтех', 'Скоринг', 'LLM On-Prem', 'AI Ops', 'ITSM', 'Ассистенты'],
   },
 ]
 
@@ -79,8 +93,8 @@ export function Team() {
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Практики, которые внедряли это сами — банки, ритейл, телеком, eCom и
-            ИТ. Не продавцы, а эксперты.
+            ИТ и бизнес-экспертиза в индустриях: банки, ритейл, телеком, eCom,
+            недвижимость, авто.
           </p>
         </div>
 

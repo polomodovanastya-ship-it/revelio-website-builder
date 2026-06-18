@@ -134,13 +134,20 @@ export function Services({ onEstimate }: { onEstimate: () => void }) {
                 ))}
               </ul>
 
-              <p
-                className={`relative mt-6 mb-7 font-mono text-[11px] leading-relaxed tracking-wide ${
-                  s.featured ? 'text-primary-foreground/60' : 'text-muted-foreground'
-                }`}
-              >
-                {s.meta}
-              </p>
+              <div className="relative mt-6 mb-7 flex flex-wrap gap-1.5">
+                {s.meta.split('·').map((tag) => (
+                  <span
+                    key={tag}
+                    className={`rounded-md px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em] ${
+                      s.featured
+                        ? 'bg-white/10 text-primary-foreground/80'
+                        : 'bg-secondary text-muted-foreground'
+                    }`}
+                  >
+                    {tag.trim()}
+                  </span>
+                ))}
+              </div>
 
               <a
                 href="#contact"
