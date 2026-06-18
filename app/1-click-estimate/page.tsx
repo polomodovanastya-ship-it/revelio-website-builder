@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Target, Crosshair, BarChart } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Оценка в 1 клик — Ревелио',
+  title: 'Оценка в 1 клик',
   description: 'Как стартовать ИТ-проект на ХХ млн, если нет уверенности?',
   alternates: { canonical: 'https://revelio.tech/1-click-estimate' },
   openGraph: {

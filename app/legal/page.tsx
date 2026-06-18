@@ -5,7 +5,7 @@ import { DefinitionList, DefinitionRow } from '@/components/definition-list'
 import { PHONE, EMAIL } from '@/lib/contacts'
 
 export const metadata: Metadata = {
-  title: 'Реквизиты ООО «Ревелио» — ИНН, ОГРН, адрес',
+  title: { absolute: 'Реквизиты ООО «Ревелио» — ИНН, ОГРН, адрес' },
   description: 'Юридические реквизиты ООО «Ревелио»: ИНН 9714091225, ОГРН 1267700146548, адрес в Москве, контактные данные.',
   alternates: { canonical: '/legal' },
   openGraph: {
