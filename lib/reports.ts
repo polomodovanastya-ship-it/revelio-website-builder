@@ -4,6 +4,9 @@ import { LoyaltyAzs2026Body } from '@/components/research/reports/loyalty-azs-20
 import { CdpComparison2026Body } from '@/components/research/reports/cdp-comparison-2026'
 import { UxB2bTravel2026Body } from '@/components/research/reports/ux-b2b-travel-2026'
 
+// Set to true to publish the research block (home section + /research/* pages + sitemap).
+export const RESEARCH_ENABLED = false
+
 export type ReportAccess = 'open' | 'gated'
 
 export type ReportMeta = {

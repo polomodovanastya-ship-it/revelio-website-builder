@@ -6,6 +6,7 @@ import { Services } from '@/components/services'
 import { Team } from '@/components/team'
 import { Process } from '@/components/process'
 import { ReportsSection } from '@/components/reports-section'
+import { RESEARCH_ENABLED } from '@/lib/reports'
 import { Contact } from '@/components/contact'
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default function Page() {
       <Services />
       <Team />
       <Process />
-      <ReportsSection />
+      {RESEARCH_ENABLED && <ReportsSection />}
       <Contact />
     </>
   )

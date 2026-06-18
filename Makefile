@@ -11,9 +11,12 @@ REMOTE_DIR ?= /home/web/revelio-static
 .PHONY: build deploy deploy-no-backup
 
 # Build the self-contained static export into ./out
+# When research is disabled (RESEARCH_ENABLED = false), prune the /research pages
+# so they return a real 404 (nginx try_files =404) instead of a soft-404 page.
 build:
 	rm -rf out
 	STATIC_EXPORT=1 node_modules/.bin/next build
+	@grep -q 'RESEARCH_ENABLED = false' lib/reports.ts && { rm -rf out/research; echo ">> research disabled — pruned out/research"; } || true
 
 # Build, back up the remote web root, then sync ./out over it.
 # test-form.html (root-owned, separate nginx location) and .DS_Store are left untouched.

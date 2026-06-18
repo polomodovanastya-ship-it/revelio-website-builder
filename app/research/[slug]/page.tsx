@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { REPORT_SLUGS, getReport, type ReportMeta } from '@/lib/reports'
+import { REPORT_SLUGS, RESEARCH_ENABLED, getReport, type ReportMeta } from '@/lib/reports'
 import { ReportRenderer } from '@/components/research/report-renderer'
 
 export const dynamicParams = false
@@ -27,7 +27,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const report = getReport(slug)
-  if (!report) return {}
+  if (!RESEARCH_ENABLED || !report) return {}
   return buildReportMetadata(report)
 }
 
@@ -38,6 +38,6 @@ export default async function ResearchReportPage({
 }) {
   const { slug } = await params
   const report = getReport(slug)
-  if (!report) notFound()
+  if (!RESEARCH_ENABLED || !report) notFound()
   return <ReportRenderer report={report} />
 }

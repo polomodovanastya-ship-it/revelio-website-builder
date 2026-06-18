@@ -1,16 +1,18 @@
 import type { MetadataRoute } from 'next'
-import { REPORT_SLUGS } from '@/lib/reports'
+import { REPORT_SLUGS, RESEARCH_ENABLED } from '@/lib/reports'
 
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://revelio.tech'
 
-  const researchEntries = REPORT_SLUGS.map((slug) => ({
-    url: `${base}/research/${slug}`,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  const researchEntries = RESEARCH_ENABLED
+    ? REPORT_SLUGS.map((slug) => ({
+        url: `${base}/research/${slug}`,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      }))
+    : []
 
   return [
     { url: `${base}/`, changeFrequency: 'weekly', priority: 1.0 },
