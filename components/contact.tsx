@@ -1,12 +1,20 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Check, Loader2 } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
+import { useToast } from '@/components/toast'
+import { submitContact } from '@/lib/contact-api'
+
+type Status = 'idle' | 'sending' | 'sent' | 'error'
+
+const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+const looksLikePhone = (v: string) => /[\d+()\-\s]{6,}/.test(v)
 
 export function Contact() {
   const ref = useReveal<HTMLDivElement>()
-  const [sent, setSent] = useState(false)
+  const { toast } = useToast()
+  const [status, setStatus] = useState<Status>('idle')
   const [agree, setAgree] = useState(false)
   const [form, setForm] = useState({
     name: '',
@@ -16,10 +24,48 @@ export function Contact() {
     message: '',
   })
 
-  const onSubmit = (e: React.FormEvent) => {
+  const fail = (msg: string) => {
+    toast.error(msg)
+    setStatus('error')
+  }
+
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!agree) return
-    setSent(true)
+    const name = form.name.trim()
+    const email = form.email.trim()
+    const phone = form.phone.trim()
+    const baseMessage = form.message.trim()
+
+    if (!name || !email || !baseMessage) {
+      return fail('Пожалуйста, заполните обязательные поля')
+    }
+    if (!isEmail(email)) return fail('Укажите корректный e-mail')
+    if (phone && !looksLikePhone(phone)) {
+      return fail('Укажите корректный номер телефона или оставьте поле пустым')
+    }
+    if (!agree) return fail('Необходимо согласие на обработку персональных данных')
+
+    const message = form.company.trim()
+      ? `${baseMessage}\n\nКомпания: ${form.company.trim()}`
+      : baseMessage
+
+    setStatus('sending')
+    const res = await submitContact({
+      name,
+      email,
+      phone: phone || undefined,
+      message,
+      consent: agree,
+    })
+
+    if (res.ok) {
+      setStatus('sent')
+      setForm({ name: '', email: '', phone: '', company: '', message: '' })
+      setAgree(false)
+    } else {
+      toast.error(res.error)
+      setStatus('error')
+    }
   }
 
   return (
@@ -41,7 +87,7 @@ export function Contact() {
           </div>
 
           <div className="rounded-2xl border border-border bg-card p-7 sm:p-9">
-            {sent ? (
+            {status === 'sent' ? (
               <div className="flex h-full flex-col items-center justify-center py-10 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
                   <Check className="h-6 w-6 text-accent" />
@@ -144,11 +190,20 @@ export function Contact() {
 
                 <button
                   type="submit"
-                  disabled={!agree}
+                  disabled={!agree || status === 'sending'}
                   className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Отправить
-                  <ArrowRight className="h-4 w-4" />
+                  {status === 'sending' ? (
+                    <>
+                      Отправка…
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Отправить
+                      <ArrowRight className="h-4 w-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}
