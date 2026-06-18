@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next'
 
 // Hardcoded 1:1 with prod public/sitemap.xml (12 URLs). Standalone in A:
 // do NOT import lib/reports.ts (not created until E; E refactors this file).
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://revelio.tech'
   return [
