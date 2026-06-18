@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
-// Static-export build for the /test-variant preview is gated behind an env var,
-// so a normal `next dev` / `next build` is unaffected.
+// Static export is gated behind env vars so a normal `next dev` / `next build`
+// is unaffected:
+//   STATIC_EXPORT=1           → static export at the site root (prod deploy)
+//   STATIC_BASE_PATH=/sub-dir → static export under a base path (preview variants)
 const staticBasePath = process.env.STATIC_BASE_PATH
+const staticExport = process.env.STATIC_EXPORT === '1' || !!staticBasePath
 
 const nextConfig = {
   typescript: {
@@ -10,12 +13,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  ...(staticBasePath
+  ...(staticExport
     ? {
         output: 'export',
-        basePath: staticBasePath,
-        assetPrefix: staticBasePath,
         trailingSlash: true,
+        ...(staticBasePath
+          ? { basePath: staticBasePath, assetPrefix: staticBasePath }
+          : {}),
       }
     : {}),
 }
