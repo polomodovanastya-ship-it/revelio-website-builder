@@ -2,15 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { asset } from '@/lib/asset'
+import { NAV } from '@/lib/nav'
+import { useEstimator } from '@/components/estimator-provider'
 
-const NAV = [
-  { label: 'Услуги', href: '#services' },
-  { label: 'Кейсы', href: '#cases' },
-  { label: 'Процесс', href: '#process' },
-  { label: 'Контакты', href: '#contact' },
-]
-
-export function SiteHeader({ onEstimate }: { onEstimate: () => void }) {
+export function SiteHeader() {
+  const { open: openEstimator } = useEstimator()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -30,7 +26,7 @@ export function SiteHeader({ onEstimate }: { onEstimate: () => void }) {
             : 'shadow-[0_10px_30px_-14px_rgba(20,37,80,0.35)]'
         }`}
       >
-        <a href="#top" className="flex items-center" aria-label="Ревелио — на главную">
+        <a href="/" className="flex items-center" aria-label="Ревелио — на главную">
           <img src={asset('/logo.svg')} alt="Ревелио" className="h-6 w-auto sm:h-7" />
         </a>
 
@@ -54,7 +50,7 @@ export function SiteHeader({ onEstimate }: { onEstimate: () => void }) {
             welcome@revelio.tech
           </a>
           <button
-            onClick={onEstimate}
+            onClick={openEstimator}
             className="hidden rounded-md bg-accent px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent-foreground transition-colors duration-300 hover:brightness-110 sm:inline-block lg:rounded-full"
           >
             Оценить проект

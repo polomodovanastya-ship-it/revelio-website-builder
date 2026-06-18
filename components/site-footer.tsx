@@ -1,9 +1,14 @@
 'use client'
 
 import { ArrowRight, Send } from 'lucide-react'
+import Link from 'next/link'
 import { asset } from '@/lib/asset'
+import { NAV } from '@/lib/nav'
+import { PHONE, TELEGRAM_URL, TELEGRAM_HANDLE, EMAIL, HOURS } from '@/lib/contacts'
+import { useEstimator } from '@/components/estimator-provider'
 
-export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
+export function SiteFooter() {
+  const { open } = useEstimator()
   return (
     <footer className="bg-background">
       {/* AI estimate strip */}
@@ -16,7 +21,7 @@ export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
             </span>
           </div>
           <button
-            onClick={onEstimate}
+            onClick={open}
             className="flex items-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
           >
             Тестировать в 1 клик
@@ -40,18 +45,13 @@ export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
               Навигация
             </div>
             <ul className="mt-4 space-y-2 text-sm">
-              {[
-                { l: 'Услуги', h: '#services' },
-                { l: 'Кейсы', h: '#cases' },
-                { l: 'Процесс', h: '#process' },
-                { l: 'Контакты', h: '#contact' },
-              ].map((i) => (
-                <li key={i.h}>
+              {NAV.map((i) => (
+                <li key={i.href}>
                   <a
-                    href={i.h}
+                    href={i.href}
                     className="text-foreground transition-colors hover:text-accent"
                   >
-                    {i.l}
+                    {i.label}
                   </a>
                 </li>
               ))}
@@ -63,29 +63,29 @@ export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
               Контакты
             </div>
             <a
-              href="tel:+79935909260"
+              href={`tel:${PHONE.replace(/-/g, '')}`}
               className="mt-4 block font-heading text-xl font-bold tracking-tight text-primary transition-colors hover:text-accent"
             >
-              +7-993-590-9260
+              {PHONE}
             </a>
             <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-              Ежедневно с 10:00 до 20:00
+              {HOURS}
             </p>
             <div className="mt-3 flex flex-col items-start gap-3">
               <a
-                href="https://t.me/reveliotech"
+                href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-primary transition-colors hover:border-accent hover:text-accent"
               >
                 <Send className="h-4 w-4" />
-                @reveliotech
+                {TELEGRAM_HANDLE}
               </a>
               <a
-                href="mailto:welcome@revelio.tech"
+                href={`mailto:${EMAIL}`}
                 className="text-sm text-foreground transition-colors hover:text-accent"
               >
-                welcome@revelio.tech
+                {EMAIL}
               </a>
             </div>
           </div>
@@ -94,10 +94,15 @@ export function SiteFooter({ onEstimate }: { onEstimate: () => void }) {
         <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026, ООО «Ревелио» · ИНН 9714091225</span>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <a href="#" className="transition-colors hover:text-foreground">
+            <Link href="/legal" className="transition-colors hover:text-foreground">
               Реквизиты организации
-            </a>
-            <a href="#" className="transition-colors hover:text-foreground">
+            </Link>
+            <a
+              href="https://revelio.tech/legal/revelio_tech_policy_pd.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-foreground"
+            >
               Политика обработки персональных данных
             </a>
           </div>

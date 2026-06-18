@@ -1,6 +1,11 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
+import { AppProviders } from '@/components/app-providers'
+import { MetrikaRouteTracker } from '@/components/metrika-route-tracker'
+import { YANDEX_METRIKA_ID } from '@/lib/metrika'
+import { PHONE, EMAIL } from '@/lib/contacts'
 import './globals.css'
 
 const interTight = Inter_Tight({
@@ -27,7 +32,10 @@ const asset = (path: string) => `${basePath}${path}`
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://revelio.tech'),
-  title: 'Ревелио — Консалтинг, разработка и внедрение экспертизы в бизнес',
+  title: {
+    default: 'Ревелио — Консалтинг, разработка и внедрение экспертизы в бизнес',
+    template: '%s — Ревелио',
+  },
   description:
     'Внедряем новую экспертизу в бизнес: от оценки задачи до запуска команды и передачи функции внутрь компании. Консалтинг, разработка продуктов и трансформация процессов для крупного B2B.',
   generator: 'v0.app',
@@ -44,6 +52,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: ['/og-image.png'],
   },
+  alternates: { canonical: '/' },
+  verification: { yandex: '15d799df6e828c70' },
   icons: {
     icon: [
       { url: asset('/favicon.ico'), sizes: 'any' },
@@ -56,7 +66,6 @@ export const metadata: Metadata = {
 // Yandex.Metrika is mirrored from prod (revelio.tech). Hits are sent only from a
 // real production build (not dev / static preview) so local work and the
 // /test-variant preview don't pollute counter stats.
-const YANDEX_METRIKA_ID = 108732849
 const enableMetrika = process.env.NODE_ENV === 'production' && !basePath
 
 export default function RootLayout({
@@ -70,7 +79,36 @@ export default function RootLayout({
       className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background`}
     >
       <body className="font-sans antialiased">
-        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'ООО Ревелио',
+              url: 'https://revelio.tech',
+              email: EMAIL,
+              telephone: PHONE,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Ревелио',
+              url: 'https://revelio.tech',
+              inLanguage: 'ru',
+              publisher: { '@type': 'Organization', name: 'ООО Ревелио' },
+            }),
+          }}
+        />
+        <AppProviders>{children}</AppProviders>
+        <Suspense fallback={null}>
+          <MetrikaRouteTracker />
+        </Suspense>
         {enableMetrika && (
           <>
             <Script id="yandex-metrika" strategy="afterInteractive">
