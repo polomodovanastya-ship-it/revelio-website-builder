@@ -17,6 +17,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="border-b border-border py-20 sm:py-28">
+      <span id="contacts" aria-hidden className="sr-only" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div ref={ref} className="reveal grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
