@@ -1,5 +1,6 @@
 // lib/evaluation-api.ts
 // Клиент AI-пайпа оценки проектов. Контракты сохранены 1:1 с прод-бэкендом.
+import * as mock from "./evaluation-api.mock"
 
 const API_BASE = (process.env.NEXT_PUBLIC_AI_API_BASE ?? "https://revelio.tech/api").replace(/\/+$/, "")
 
@@ -98,6 +99,7 @@ export async function createApplication(
   input: CreateApplicationInput,
   signal?: AbortSignal,
 ): Promise<CreateApplicationResponse> {
+  if (process.env.NEXT_PUBLIC_AI_API_MOCK === "1") return mock.createApplication(input, signal)
   const base = requireBase()
   const body = new FormData()
   if (input.file) body.append("file", input.file)
@@ -125,6 +127,7 @@ export async function getQueueStatus(
   jobId: string,
   signal?: AbortSignal,
 ): Promise<QueueStatusResponse> {
+  if (process.env.NEXT_PUBLIC_AI_API_MOCK === "1") return mock.getQueueStatus(jobId, signal)
   const base = requireBase()
   const res = await fetch(`${base}/queue/status/${encodeURIComponent(jobId)}`, {
     method: "GET",
@@ -219,6 +222,7 @@ export async function submitAnswers(
   answers: Record<string, string>,
   signal?: AbortSignal,
 ): Promise<SubmitAnswersResponse> {
+  if (process.env.NEXT_PUBLIC_AI_API_MOCK === "1") return mock.submitAnswers(applicationId, answers, signal)
   const base = requireBase()
   const res = await fetch(
     `${base}/applications/${encodeURIComponent(applicationId)}/answers`,
@@ -238,6 +242,7 @@ export async function skipQuestions(
   questionsJobId: string,
   signal?: AbortSignal,
 ): Promise<SkipQuestionsResponse> {
+  if (process.env.NEXT_PUBLIC_AI_API_MOCK === "1") return mock.skipQuestions(applicationId, questionsJobId, signal)
   if (!applicationId) throw new Error("application_id отсутствует")
   const base = requireBase()
   const res = await fetch(
@@ -257,6 +262,7 @@ export async function resumeApplication(
   resumeToken: string,
   signal?: AbortSignal,
 ): Promise<ResumeApplicationResponse> {
+  if (process.env.NEXT_PUBLIC_AI_API_MOCK === "1") return mock.resumeApplication(resumeToken, signal)
   const base = requireBase()
   const res = await fetch(
     `${base}/applications/resume/${encodeURIComponent(resumeToken)}`,
@@ -271,6 +277,7 @@ export async function patchApplicationEmail(
   email: string,
   signal?: AbortSignal,
 ): Promise<void> {
+  if (process.env.NEXT_PUBLIC_AI_API_MOCK === "1") return mock.patchApplicationEmail(applicationId, email, signal)
   const base = requireBase()
   const res = await fetch(
     `${base}/applications/${encodeURIComponent(applicationId)}/email`,
