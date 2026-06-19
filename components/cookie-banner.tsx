@@ -6,12 +6,17 @@ export function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    // Read defensively: if localStorage is unavailable (private mode, blocked
+    // storage), getItem throws — treat that as "no consent yet" and still show
+    // the banner instead of silently swallowing the error and hiding it.
+    let consented = false
     try {
-      if (!localStorage.getItem('revelio_cookie_consent')) {
-        const timer = setTimeout(() => setVisible(true), 600)
-        return () => clearTimeout(timer)
-      }
+      consented = !!localStorage.getItem('revelio_cookie_consent')
     } catch {}
+    if (!consented) {
+      const timer = setTimeout(() => setVisible(true), 600)
+      return () => clearTimeout(timer)
+    }
   }, [])
 
   const accept = () => {

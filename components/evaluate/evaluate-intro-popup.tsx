@@ -5,19 +5,15 @@ import { X, Target, BarChart, Bell } from 'lucide-react'
 export function EvaluateIntroPopup() {
   const [open, setOpen] = useState(false)
 
+  // Show on every visit, regardless of storage availability (private mode,
+  // blocked localStorage, etc.). State is raised in an effect so the static
+  // export's server HTML stays stable (no hydration mismatch / no-JS flash).
   useEffect(() => {
-    try {
-      if (!localStorage.getItem('revelio_evaluate_intro_seen')) {
-        setOpen(true)
-      }
-    } catch {}
+    setOpen(true)
   }, [])
 
   const close = () => {
     setOpen(false)
-    try {
-      localStorage.setItem('revelio_evaluate_intro_seen', '1')
-    } catch {}
   }
 
   useEffect(() => {
