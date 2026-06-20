@@ -179,7 +179,7 @@ export function EvaluateQueue({ state, dispatch }: Props) {
 
       {uiState === 'saving' && (
         <>
-          <h2 className="mb-2 text-2xl font-semibold">Сохраняем заявку{dots}</h2>
+          <h2 className="mb-2 text-2xl font-semibold">Сохраняем заявку<span className="inline-block w-[1.5ch] text-left align-baseline">{dots}</span></h2>
           <p className="text-muted-foreground">Пожалуйста, подождите</p>
         </>
       )}
@@ -201,13 +201,13 @@ export function EvaluateQueue({ state, dispatch }: Props) {
 
       {isNoFilePath && uiState !== 'error' && (
         <>
-          <h2 className="mb-2 text-2xl font-semibold">Готовим предварительную оценку{dots}</h2>
+          <h2 className="mb-2 text-2xl font-semibold">Готовим предварительную оценку<span className="inline-block w-[1.5ch] text-left align-baseline">{dots}</span></h2>
           {successEmail && <p className="text-muted-foreground">Оценку пришлём на почту {successEmail}</p>}
         </>
       )}
 
       {!isNoFilePath && uiState === 'running' && (
-        <h2 className="mb-2 text-2xl font-semibold">Составляем вопросы{dots}</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Составляем вопросы<span className="inline-block w-[1.5ch] text-left align-baseline">{dots}</span></h2>
       )}
 
       {!isNoFilePath && uiState === 'queued' && (

@@ -335,7 +335,7 @@ export function EvaluateForm({ dispatch }: Props) {
             )}
 
             {contactMethod === 'Мессенджеры' && (
-              <Field title="Telegram или WhatsApp" subtitle="@username или +7 123 456 7890" required error={attempted && errors.contactValue}>
+              <Field title="Имя пользователя или телефон" subtitle="@username или +7 123 456 7890" required error={attempted && errors.contactValue}>
                 <input type="text" value={contactValue} onChange={e => setContactValue(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
               </Field>
             )}
