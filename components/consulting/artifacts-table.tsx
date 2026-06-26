@@ -8,60 +8,47 @@ function priceLabel(price: string) {
   return /^\d/.test(price) ? `${price} ₽` : price
 }
 
+function fromPrice(group: ArtifactGroup) {
+  const nums = group.items
+    .map((a) => Number(a.price.replace(/\s/g, '')))
+    .filter((n) => !Number.isNaN(n) && n > 0)
+  if (!nums.length) return null
+  return Math.min(...nums).toLocaleString('ru-RU')
+}
+
 function Group({ group, defaultOpen }: { group: ArtifactGroup; defaultOpen?: boolean }) {
+  const from = fromPrice(group)
   return (
     <details
       open={defaultOpen}
       className="group overflow-hidden rounded-2xl border border-border bg-card"
     >
       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5">
-        <div className="flex items-baseline gap-3">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
           <span className="font-heading text-base font-bold uppercase tracking-tight text-primary">
             {group.group}
           </span>
           <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted-foreground">
-            {group.items.length} артефактов
+            {group.items.length} артефактов{from ? ` · от ${from} ₽` : ''}
           </span>
         </div>
         <ChevronDown className="h-5 w-5 shrink-0 text-accent transition-transform duration-300 group-open:rotate-180" />
       </summary>
 
-      {/* desktop table */}
-      <table className="hidden w-full border-t border-border md:table">
-        <thead>
-          <tr className="text-left font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-            <th className="px-6 py-3 font-normal">Артефакт</th>
-            <th className="px-3 py-3 font-normal">Результат</th>
-            <th className="px-3 py-3 font-normal">За что</th>
-            <th className="px-6 py-3 text-right font-normal">Стоимость</th>
-          </tr>
-        </thead>
-        <tbody>
-          {group.items.map((a) => (
-            <tr key={a.name} className="border-t border-border align-top">
-              <td className="px-6 py-3.5 text-sm leading-snug text-foreground">{a.name}</td>
-              <td className="px-3 py-3.5 font-mono text-xs text-muted-foreground">{a.result}</td>
-              <td className="px-3 py-3.5 font-mono text-xs text-muted-foreground">{a.unit}</td>
-              <td className="whitespace-nowrap px-6 py-3.5 text-right font-mono text-sm tabular-nums text-primary">
-                {priceLabel(a.price)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* mobile cards */}
-      <ul className="divide-y divide-border border-t border-border md:hidden">
+      <ul className="divide-y divide-border border-t border-border">
         {group.items.map((a) => (
-          <li key={a.name} className="px-5 py-4">
-            <div className="text-sm leading-snug text-foreground">{a.name}</div>
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
-              <span className="font-mono text-[11px] text-muted-foreground">
+          <li
+            key={a.name}
+            className="flex items-start justify-between gap-4 px-5 py-4 sm:px-6"
+          >
+            <div className="min-w-0">
+              <div className="text-sm leading-snug text-foreground">{a.name}</div>
+              <div className="mt-1 font-mono text-[11px] text-muted-foreground">
                 {a.result} · {a.unit}
-              </span>
-              <span className="font-mono text-sm tabular-nums text-primary">
-                {priceLabel(a.price)}
-              </span>
+              </div>
+            </div>
+            <div className="shrink-0 whitespace-nowrap pt-0.5 text-right font-mono text-sm tabular-nums text-primary">
+              {priceLabel(a.price)}
             </div>
           </li>
         ))}

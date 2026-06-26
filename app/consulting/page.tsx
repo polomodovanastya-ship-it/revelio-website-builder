@@ -22,9 +22,9 @@ export default function ConsultingPage() {
     <main>
       <ConsultingHero />
       <WorkFormats />
-      <ArtifactsTable />
       <Metrics />
       <SolutionClasses />
+      <ArtifactsTable />
       <Contact />
     </main>
   )

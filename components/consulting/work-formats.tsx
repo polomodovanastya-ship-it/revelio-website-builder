@@ -92,7 +92,17 @@ export function WorkFormats() {
                   </div>
                 </div>
 
-                <dl className="mt-6 space-y-3.5">
+                {f.inheritsLabel && (
+                  <p
+                    className={`mt-6 text-sm font-medium ${
+                      featured ? 'text-primary-foreground' : 'text-foreground'
+                    }`}
+                  >
+                    Всё из {f.inheritsLabel}, плюс глубина:
+                  </p>
+                )}
+
+                <dl className={`${f.inheritsLabel ? 'mt-4' : 'mt-6'} space-y-3.5`}>
                   {f.rows.map((r) => (
                     <div key={r.label} className="flex gap-3">
                       <Check
@@ -135,6 +145,11 @@ export function WorkFormats() {
             )
           })}
         </div>
+
+        <p className="mt-6 text-sm text-muted-foreground">
+          Другие области консалтинга — ценообразование, продажи, лояльность,
+          коммуникации — обсуждаем индивидуально.
+        </p>
       </div>
     </section>
   )

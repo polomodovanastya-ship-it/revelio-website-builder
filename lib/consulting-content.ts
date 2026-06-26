@@ -1,6 +1,7 @@
 // Content for the /consulting page.
 // Transcribed verbatim from `sources/Ревелио _ CX-консалтинг (1).pdf`.
 
+export type WorkRow = { label: string; value: string }
 export type WorkFormat = {
   id: string
   name: string
@@ -8,8 +9,9 @@ export type WorkFormat = {
   duration: string
   price: string
   featured?: boolean
-  rows: { label: string; value: string }[]
-  extras?: string[]
+  rows: WorkRow[]
+  /** When set, the card renders «Всё из <inheritsLabel>, плюс:» before its rows. */
+  inheritsLabel?: string
 }
 
 export type Artifact = {
@@ -51,18 +53,15 @@ export const WORK_FORMATS: WorkFormat[] = [
   {
     id: 'numbers',
     name: 'Проверка и рекомендации на цифрах',
-    feeling:
-      'Связь изначального целеполагания в прошлом с положением дел сейчас и будущим целевым образом компании.',
+    feeling: 'Глубокий аудит на цифрах: регламенты, метрики и оценка изменений в деньгах.',
     duration: '4 недели',
     price: '590 000 ₽',
     featured: true,
+    inheritsLabel: '«Быстрого аудита»',
     rows: [
-      { label: 'Обследуем AS IS', value: 'бизнес-процессы, ИТ-системы, регламенты, клиентские пути, метрики' },
-      { label: 'Интервью', value: 'C-level, middle management, линейный персонал' },
+      { label: 'Обследование AS IS', value: 'добавляем регламенты и метрики' },
+      { label: 'Интервью', value: 'полные: C-level, middle management, линейный персонал' },
       { label: 'Метод', value: 'маппинг «проблемных точек» и «бизнес-метрик»' },
-      { label: 'Рекомендации', value: 'к изменению бизнес-процессов' },
-      { label: 'Рекомендации по изменениям', value: 'фичи / продукт / ландшафт' },
-      { label: 'Оценка стоимости', value: 'разработки и поддержки на 3 года' },
     ],
   },
 ]
