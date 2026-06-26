@@ -68,6 +68,20 @@ export function LandingHero() {
               Обсудить с консультантом
             </Link>
           </div>
+
+          <div
+            className="reveal in-view mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5"
+            style={{ animationDelay: '380ms' }}
+          >
+            {['бесплатно', '3–5 минут', 'погрешность 10–20%'].map((m, i) => (
+              <span key={m} className="flex items-center gap-2">
+                <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+                  {m}
+                </span>
+                {i < 2 && <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* right — at a glance card */}

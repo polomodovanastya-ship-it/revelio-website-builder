@@ -28,7 +28,7 @@ export function HowEstimationWorks() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section className="border-b border-border py-20 sm:py-28">
+    <section className="border-y border-border bg-secondary py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ Как устроена оценка ]
@@ -121,7 +121,7 @@ export function HowEstimationWorks() {
 
             {/* manual estimate — oscillates between over-detail and under-confidence */}
             <path
-              d="M 64 258 C 120 175, 150 95, 205 102 S 305 250, 350 226 S 455 105, 500 122 S 620 188, 710 184"
+              d="M 64 258 C 120 175, 150 95, 205 102 S 305 250, 350 226 S 455 105, 500 122 S 630 184, 700 166"
               className="text-muted-foreground"
               stroke="currentColor"
               strokeOpacity="0.55"
@@ -132,12 +132,19 @@ export function HowEstimationWorks() {
 
             {/* AI estimate — climbs straight into the confidence zone and stays */}
             <path
-              d="M 64 258 C 110 208, 150 180, 205 178 C 330 174, 520 178, 710 178"
+              d="M 64 258 C 110 208, 150 180, 205 178 C 360 176, 540 178, 700 178"
               className="text-accent"
               stroke="currentColor"
               strokeWidth="3.5"
               fill="none"
               strokeLinecap="round"
+            />
+            <circle
+              cx="700"
+              cy="178"
+              r="4.5"
+              className="text-accent"
+              fill="currentColor"
             />
 
             {/* leader: overshoot peak */}
