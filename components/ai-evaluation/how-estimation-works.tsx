@@ -37,10 +37,10 @@ export function HowEstimationWorks() {
           На время ты покупаешь не качество, а детали
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Оценка не становится точнее линейно со временем. По мере пересборок
-          количество деталей то растёт, то падает — а уверенность приходит, когда
-          их достаточно, но не слишком много. AI-оценка помогает быстро пройти
-          первые этапы пересборки.
+          Оценка не становится точнее линейно со временем. Вручную количество
+          деталей то растёт, то падает — а уверенность приходит, когда их
+          достаточно, но не слишком много. AI-оценка быстро выводит проект в эту
+          зону, минуя качели пересборок.
         </p>
 
         {/* annotated schematic */}
@@ -49,131 +49,132 @@ export function HowEstimationWorks() {
           className="reveal mt-12 overflow-hidden rounded-2xl border border-border bg-card p-5 sm:p-8"
         >
           <svg
-            viewBox="0 0 760 320"
+            viewBox="0 0 760 340"
             className="h-auto w-full"
             role="img"
-            aria-label="Схема: количество деталей оценки колеблется по мере пересборок, а зона уверенности — посередине"
+            aria-label="Схема: ручная оценка колеблется между перерасходом деталей и нехваткой уверенности, а с AI-оценкой проект быстро выходит в зону уверенности"
           >
-            {/* comfort band */}
+            {/* confidence band + dashed guides */}
             <rect
-              x="60"
-              y="135"
-              width="660"
-              height="55"
+              x="64"
+              y="150"
+              width="646"
+              height="52"
               rx="6"
               className="text-accent"
               fill="currentColor"
-              fillOpacity="0.08"
+              fillOpacity="0.07"
+            />
+            <line
+              x1="64"
+              y1="150"
+              x2="710"
+              y2="150"
+              className="text-accent"
+              stroke="currentColor"
+              strokeOpacity="0.35"
+              strokeWidth="1"
+              strokeDasharray="5 5"
+            />
+            <line
+              x1="64"
+              y1="202"
+              x2="710"
+              y2="202"
+              className="text-accent"
+              stroke="currentColor"
+              strokeOpacity="0.35"
+              strokeWidth="1"
+              strokeDasharray="5 5"
             />
             <text
-              x="70"
+              x="387"
               y="167"
+              textAnchor="middle"
               className="font-mono text-accent"
               fill="currentColor"
-              fontSize="12"
-              style={{ letterSpacing: '0.08em' }}
+              fontSize="11"
+              style={{ letterSpacing: '0.14em' }}
             >
               ЗОНА УВЕРЕННОСТИ
             </text>
 
-            {/* early AI zone */}
-            <rect
-              x="60"
-              y="40"
-              width="150"
-              height="230"
-              rx="6"
-              className="text-accent"
-              fill="currentColor"
-              fillOpacity="0.05"
-            />
-            <line
-              x1="210"
-              y1="40"
-              x2="210"
-              y2="270"
-              className="text-accent"
-              stroke="currentColor"
-              strokeOpacity="0.4"
-              strokeWidth="1"
-              strokeDasharray="4 4"
-            />
-
             {/* axes */}
             <line
-              x1="60"
-              y1="270"
-              x2="720"
-              y2="270"
+              x1="64"
+              y1="280"
+              x2="710"
+              y2="280"
               className="text-border"
               stroke="currentColor"
               strokeWidth="1.5"
             />
             <line
-              x1="60"
-              y1="40"
-              x2="60"
-              y2="270"
+              x1="64"
+              y1="50"
+              x2="64"
+              y2="280"
               className="text-border"
               stroke="currentColor"
               strokeWidth="1.5"
             />
 
-            {/* details curve (non-linear, oscillating through rebuilds) */}
+            {/* manual estimate — oscillates between over-detail and under-confidence */}
             <path
-              d="M 60 250 C 110 170, 150 110, 200 120 S 290 215, 330 188 S 420 95, 470 108 S 560 175, 605 158 S 685 144, 720 150"
-              className="text-accent"
+              d="M 64 258 C 120 175, 150 95, 205 102 S 305 250, 350 226 S 455 105, 500 122 S 620 188, 710 184"
+              className="text-muted-foreground"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeOpacity="0.55"
+              strokeWidth="2.5"
               fill="none"
               strokeLinecap="round"
             />
 
-            {/* rebuild markers */}
-            {[
-              { x: 330, label: 'пересборка 1' },
-              { x: 470, label: 'пересборка 2' },
-            ].map((m) => (
-              <g key={m.label}>
-                <line
-                  x1={m.x}
-                  y1="40"
-                  x2={m.x}
-                  y2="270"
-                  className="text-muted-foreground"
-                  stroke="currentColor"
-                  strokeOpacity="0.35"
-                  strokeWidth="1"
-                  strokeDasharray="3 5"
-                />
-                <text
-                  x={m.x}
-                  y="288"
-                  textAnchor="middle"
-                  className="font-mono text-muted-foreground"
-                  fill="currentColor"
-                  fontSize="11"
-                >
-                  {m.label}
-                </text>
-              </g>
-            ))}
+            {/* AI estimate — climbs straight into the confidence zone and stays */}
+            <path
+              d="M 64 258 C 110 208, 150 180, 205 178 C 330 174, 520 178, 710 178"
+              className="text-accent"
+              stroke="currentColor"
+              strokeWidth="3.5"
+              fill="none"
+              strokeLinecap="round"
+            />
 
-            {/* zone labels */}
+            {/* leader: overshoot peak */}
+            <line
+              x1="205"
+              y1="102"
+              x2="248"
+              y2="76"
+              className="text-muted-foreground"
+              stroke="currentColor"
+              strokeOpacity="0.45"
+              strokeWidth="1"
+            />
             <text
-              x="715"
-              y="70"
-              textAnchor="end"
+              x="254"
+              y="73"
               className="text-muted-foreground"
               fill="currentColor"
               fontSize="12"
             >
               много деталей — перерасход ресурсов
             </text>
+
+            {/* leader: under-confidence valley */}
+            <line
+              x1="350"
+              y1="226"
+              x2="362"
+              y2="252"
+              className="text-muted-foreground"
+              stroke="currentColor"
+              strokeOpacity="0.45"
+              strokeWidth="1"
+            />
             <text
-              x="715"
-              y="255"
-              textAnchor="end"
+              x="368"
+              y="259"
               className="text-muted-foreground"
               fill="currentColor"
               fontSize="12"
@@ -181,23 +182,51 @@ export function HowEstimationWorks() {
               мало деталей — нет уверенности
             </text>
 
-            {/* AI badge */}
+            {/* legend */}
+            <line
+              x1="90"
+              y1="64"
+              x2="118"
+              y2="64"
+              className="text-accent"
+              stroke="currentColor"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+            />
             <text
-              x="135"
-              y="60"
-              textAnchor="middle"
-              className="font-mono text-accent"
+              x="126"
+              y="68"
+              className="font-mono text-foreground"
               fill="currentColor"
               fontSize="11"
-              style={{ letterSpacing: '0.06em' }}
             >
-              AI ускоряет
+              с AI-оценкой
+            </text>
+            <line
+              x1="90"
+              y1="86"
+              x2="118"
+              y2="86"
+              className="text-muted-foreground"
+              stroke="currentColor"
+              strokeOpacity="0.55"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+            <text
+              x="126"
+              y="90"
+              className="font-mono text-muted-foreground"
+              fill="currentColor"
+              fontSize="11"
+            >
+              ручная оценка
             </text>
 
             {/* axis captions */}
             <text
-              x="60"
-              y="32"
+              x="64"
+              y="42"
               className="font-mono text-muted-foreground"
               fill="currentColor"
               fontSize="11"
@@ -205,9 +234,9 @@ export function HowEstimationWorks() {
               детали
             </text>
             <text
-              x="720"
-              y="305"
-              textAnchor="end"
+              x="387"
+              y="312"
+              textAnchor="middle"
               className="font-mono text-muted-foreground"
               fill="currentColor"
               fontSize="11"
