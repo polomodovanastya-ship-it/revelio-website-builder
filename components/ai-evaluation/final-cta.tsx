@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
-const MICRO = ['бесплатно', '3–5 минут', 'погрешность 15–30%']
+const MICRO = ['бесплатно', '3–5 минут', 'погрешность 10–20%']
 
 export function FinalCta() {
   return (
