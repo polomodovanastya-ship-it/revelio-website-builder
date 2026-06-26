@@ -8,7 +8,7 @@ export function ErrorsCaught() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section className="border-b border-border py-20 sm:py-28">
+    <section className="border-b border-border bg-secondary/40 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ Что AI ловит за вас ]
@@ -31,7 +31,9 @@ export function ErrorsCaught() {
                 {stage.stage}
               </h3>
               <ul className="mt-5 space-y-4">
-                {stage.items.map((item) => (
+                {[...stage.items]
+                  .sort((a, b) => b.pct - a.pct)
+                  .map((item) => (
                   <li key={item.text}>
                     <div className="flex items-baseline justify-between gap-4">
                       <span className="text-sm leading-snug text-foreground">

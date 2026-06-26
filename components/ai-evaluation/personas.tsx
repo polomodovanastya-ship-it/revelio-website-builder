@@ -39,7 +39,7 @@ export function Personas() {
 
               <p className="mt-5 text-sm font-medium text-foreground">{p.need}</p>
 
-              <blockquote className="mt-4 border-l-2 border-accent/50 pl-4">
+              <blockquote className="mt-4 border-l-2 border-accent/50 pl-4 sm:mt-auto sm:pt-4">
                 <Quote className="mb-1.5 h-4 w-4 text-accent/60" aria-hidden />
                 <p className="text-sm italic leading-relaxed text-muted-foreground">
                   {p.quote}
