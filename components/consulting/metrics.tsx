@@ -18,11 +18,12 @@ export function Metrics() {
         </h2>
         <p className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
           <span className="flex items-center gap-1.5">
-            <ArrowUpRight className="h-4 w-4 text-accent" /> растёт
+            <ArrowUpRight className="h-4 w-4 text-accent" /> растим
           </span>
           <span className="flex items-center gap-1.5">
-            <ArrowDownRight className="h-4 w-4 text-primary" /> снижается
+            <ArrowDownRight className="h-4 w-4 text-primary" /> сокращаем
           </span>
+          <span className="text-muted-foreground/70">— и то, и другое в вашу пользу</span>
         </p>
 
         <div ref={ref} className="reveal mt-12 grid grid-cols-1 gap-5 lg:grid-cols-2">
