@@ -4,7 +4,6 @@ import { Loader2 } from 'lucide-react'
 import { useEvaluateFlow } from '@/hooks/use-evaluate-flow'
 import { useToast } from '@/components/toast'
 import { resumeApplication } from '@/lib/evaluation-api'
-import { EvaluateIntroPopup } from '@/components/evaluate/evaluate-intro-popup'
 import { EvaluateForm } from '@/components/evaluate/evaluate-form'
 import { EvaluateQueue } from '@/components/evaluate/evaluate-queue'
 import { EvaluateQuestions } from '@/components/evaluate/evaluate-questions'
@@ -57,7 +56,6 @@ export default function EvaluatePage() {
 
   return (
     <main className="pb-16 pt-28">
-      <EvaluateIntroPopup />
       {state.phase === 'resuming' || !resumeChecked ? (
         <div className="flex min-h-[50vh] items-center justify-center">
           <div className="text-center">

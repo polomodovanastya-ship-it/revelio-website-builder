@@ -1,8 +1,8 @@
 'use client'
 
 import { Check, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import { useReveal } from '@/hooks/use-reveal'
-import { useEstimator } from '@/components/estimator-provider'
 
 const SERVICES = [
   {
@@ -52,7 +52,6 @@ const SERVICES = [
 
 export function Services() {
   const ref = useReveal<HTMLDivElement>()
-  const { open } = useEstimator()
 
   return (
     <section id="services" className="border-b border-border py-20 sm:py-28">
@@ -182,13 +181,13 @@ export function Services() {
               </p>
             </div>
           </div>
-          <button
-            onClick={open}
+          <Link
+            href="/ai-evaluation"
             className="relative flex shrink-0 items-center gap-2 rounded-lg bg-accent px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
           >
             Тестировать в 1 клик
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>
