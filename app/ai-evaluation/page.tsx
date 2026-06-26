@@ -3,6 +3,7 @@ import { LandingIntroModal } from '@/components/ai-evaluation/landing-intro-moda
 import { LandingHero } from '@/components/ai-evaluation/landing-hero'
 import { Dimensions } from '@/components/ai-evaluation/dimensions'
 import { Personas } from '@/components/ai-evaluation/personas'
+import { HowEstimationWorks } from '@/components/ai-evaluation/how-estimation-works'
 
 export const metadata: Metadata = {
   title: 'AI-оценка ИТ-проектов как сервис',
@@ -19,6 +20,7 @@ export default function AiEvaluationPage() {
       <LandingHero />
       <Dimensions />
       <Personas />
+      <HowEstimationWorks />
     </main>
   )
 }
