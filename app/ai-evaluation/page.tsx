@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { LandingIntroModal } from '@/components/ai-evaluation/landing-intro-modal'
 import { LandingHero } from '@/components/ai-evaluation/landing-hero'
+import { Dimensions } from '@/components/ai-evaluation/dimensions'
 
 export const metadata: Metadata = {
   title: 'AI-оценка ИТ-проектов как сервис',
@@ -15,6 +16,7 @@ export default function AiEvaluationPage() {
     <main>
       <LandingIntroModal />
       <LandingHero />
+      <Dimensions />
     </main>
   )
 }
