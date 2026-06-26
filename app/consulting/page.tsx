@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { ConsultingHero } from '@/components/consulting/consulting-hero'
 import { WorkFormats } from '@/components/consulting/work-formats'
+import { ArtifactsTable } from '@/components/consulting/artifacts-table'
+import { Metrics } from '@/components/consulting/metrics'
+import { SolutionClasses } from '@/components/consulting/solution-classes'
 import { Contact } from '@/components/contact'
 
 export const metadata: Metadata = {
@@ -19,6 +22,9 @@ export default function ConsultingPage() {
     <main>
       <ConsultingHero />
       <WorkFormats />
+      <ArtifactsTable />
+      <Metrics />
+      <SolutionClasses />
       <Contact />
     </main>
   )
