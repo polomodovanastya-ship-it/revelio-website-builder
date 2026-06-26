@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { PageContainer } from '@/components/page-shell'
+import { LandingIntroModal } from '@/components/ai-evaluation/landing-intro-modal'
+import { LandingHero } from '@/components/ai-evaluation/landing-hero'
 
 export const metadata: Metadata = {
   title: 'AI-оценка ИТ-проектов как сервис',
@@ -11,10 +12,9 @@ export const metadata: Metadata = {
 
 export default function AiEvaluationPage() {
   return (
-    <PageContainer>
-      <h1 className="font-heading text-3xl font-extrabold uppercase text-primary">
-        AI-оценка-как-сервис
-      </h1>
-    </PageContainer>
+    <main>
+      <LandingIntroModal />
+      <LandingHero />
+    </main>
   )
 }
