@@ -6,6 +6,7 @@ import { Personas } from '@/components/ai-evaluation/personas'
 import { HowEstimationWorks } from '@/components/ai-evaluation/how-estimation-works'
 import { ErrorsCaught } from '@/components/ai-evaluation/errors-caught'
 import { RisksLimits } from '@/components/ai-evaluation/risks-limits'
+import { Projects } from '@/components/ai-evaluation/projects'
 
 export const metadata: Metadata = {
   title: 'AI-оценка ИТ-проектов как сервис',
@@ -25,6 +26,7 @@ export default function AiEvaluationPage() {
       <HowEstimationWorks />
       <ErrorsCaught />
       <RisksLimits />
+      <Projects />
     </main>
   )
 }
