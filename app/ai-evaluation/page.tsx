@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
-import { LandingIntroModal } from '@/components/ai-evaluation/landing-intro-modal'
+// Intro modal скрыт: лендинг сам по себе объясняет продукт, вся инфа есть инлайн
+// в hero-карточке. Раскомментировать импорт и <LandingIntroModal /> ниже, если
+// решим вернуть всплывающее окно.
+// import { LandingIntroModal } from '@/components/ai-evaluation/landing-intro-modal'
 import { LandingHero } from '@/components/ai-evaluation/landing-hero'
 import { Dimensions } from '@/components/ai-evaluation/dimensions'
 import { Personas } from '@/components/ai-evaluation/personas'
@@ -20,7 +23,7 @@ export const metadata: Metadata = {
 export default function AiEvaluationPage() {
   return (
     <main>
-      <LandingIntroModal />
+      {/* <LandingIntroModal /> */}
       <LandingHero />
       <Dimensions />
       <Personas />
