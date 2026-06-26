@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${base}/`, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${base}/evaluate`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/ai-evaluation`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/legal`, changeFrequency: 'yearly', priority: 0.3 },
     ...researchEntries,
     { url: `${base}/for_ai`, changeFrequency: 'monthly', priority: 0.6 },

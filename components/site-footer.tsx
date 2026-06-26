@@ -2,16 +2,20 @@
 
 import { ArrowRight, Send } from 'lucide-react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { asset } from '@/lib/asset'
 import { NAV } from '@/lib/nav'
 import { PHONE, TELEGRAM_URL, TELEGRAM_HANDLE, EMAIL, HOURS } from '@/lib/contacts'
-import { useEstimator } from '@/components/estimator-provider'
 
 export function SiteFooter() {
-  const { open } = useEstimator()
+  // Suppress the AI-estimate promo strip on the AI-evaluation landing itself —
+  // the whole page is about AI-оценка and already ends with its own CTA.
+  const pathname = usePathname()
+  const showEstimateStrip = pathname !== '/ai-evaluation'
   return (
     <footer className="bg-background">
       {/* AI estimate strip */}
+      {showEstimateStrip && (
       <div className="border-b border-border">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 px-5 py-10 sm:flex-row sm:items-center sm:px-8">
           <div className="flex items-center gap-3">
@@ -20,15 +24,16 @@ export function SiteFooter() {
               AI-оценка как сервис
             </span>
           </div>
-          <button
-            onClick={open}
+          <Link
+            href="/ai-evaluation"
             className="flex items-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
           >
             Тестировать в 1 клик
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </Link>
         </div>
       </div>
+      )}
 
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">

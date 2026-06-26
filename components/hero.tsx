@@ -1,11 +1,10 @@
 'use client'
 
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import { asset } from '@/lib/asset'
-import { useEstimator } from '@/components/estimator-provider'
 
 export function Hero() {
-  const { open } = useEstimator()
   return (
     <section
       id="top"
@@ -57,12 +56,12 @@ export function Hero() {
           className="reveal in-view mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
           style={{ animationDelay: '320ms' }}
         >
-          <button
-            onClick={open}
+          <Link
+            href="/ai-evaluation"
             className="group flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors duration-300 hover:bg-primary"
           >
             Оценить проект
-          </button>
+          </Link>
           <a
             href="https://t.me/reveliotech"
             target="_blank"
