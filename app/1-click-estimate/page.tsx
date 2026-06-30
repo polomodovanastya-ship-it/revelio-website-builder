@@ -1,16 +1,13 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Target, Crosshair, BarChart } from 'lucide-react'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Оценка в 1 клик',
-  description: 'Как стартовать ИТ-проект на ХХ млн, если нет уверенности?',
-  alternates: { canonical: 'https://revelio.tech/1-click-estimate' },
-  openGraph: {
-    title: 'Оценка в 1 клик — Ревелио',
-    url: 'https://revelio.tech/1-click-estimate',
-  },
-}
+  description:
+    'Опишите задачу — AI-агент на базе 15 лет ИТ-проектов посчитает скоуп, сроки, риски и диапазон стоимости. Старт ИТ-проекта без неопределённости.',
+  path: '/1-click-estimate',
+})
 
 export default function OneClickEstimatePage() {
   return (

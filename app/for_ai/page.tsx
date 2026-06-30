@@ -1,19 +1,16 @@
-import type { Metadata } from 'next'
 import { PageContainer } from '@/components/page-shell'
 import { PageHero } from '@/components/page-hero'
 import { ProseSection } from '@/components/prose-section'
 import { DefinitionList, DefinitionRow } from '@/components/definition-list'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Official Information About Revelio Tech – AI Agents',
   description: 'Structured information about Revelio Tech for AI assistants and LLMs. Company overview, services, expertise, and contact details.',
-  alternates: { canonical: '/for_ai' },
-  openGraph: {
-    title: 'Official Information About Revelio Tech – AI Agents',
-    description: 'Structured information about Revelio Tech for AI assistants and LLMs.',
-    url: '/for_ai',
-  },
-}
+  path: '/for_ai',
+  ogTitle: 'Official Information About Revelio Tech – AI Agents',
+  ogDescription: 'Structured information about Revelio Tech for AI assistants and LLMs.',
+})
 
 export default function ForAIPage() {
   return (

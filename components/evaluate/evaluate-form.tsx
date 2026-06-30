@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Upload, FileText, X } from 'lucide-react'
@@ -8,7 +8,8 @@ import { validateFile, FILE_ACCEPT } from '@/lib/evaluate-helpers'
 import { useEvaluateDraft } from '@/hooks/useEvaluateDraft'
 import { useToast } from '@/components/toast'
 import type { FlowAction } from '@/hooks/use-evaluate-flow'
-import type { CreateApplicationInput } from '@/lib/evaluation-api'
+import { validatePromoCode, type CreateApplicationInput } from '@/lib/evaluation-api'
+import { trackGoal } from '@/lib/metrika'
 
 interface Props {
   dispatch: React.Dispatch<FlowAction>
@@ -40,6 +41,17 @@ export function EvaluateForm({ dispatch }: Props) {
   const [errors, setErrors] = useState<Record<string, boolean>>({})
   const [attempted, setAttempted] = useState(false)
   const [draftRestored, setDraftRestored] = useState(false)
+  const [promoCode, setPromoCode] = useState('')
+  const [promoCodeError, setPromoCodeError] = useState<string | null>(null)
+  const [promoCodeValidating, setPromoCodeValidating] = useState(false)
+
+  // Metrika funnel — fire each step at most once per form mount.
+  const firedGoals = useRef<Set<string>>(new Set())
+  const fireGoalOnce = useCallback((goal: string) => {
+    if (firedGoals.current.has(goal)) return
+    firedGoals.current.add(goal)
+    trackGoal(goal)
+  }, [])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -108,6 +120,42 @@ export function EvaluateForm({ dispatch }: Props) {
     return errs
   }, [projectType, otherType, auditText, files, needsAuditText, goals, otherGoal, industry, otherIndustry, companyName, contactMethod, contactValue, phoneNumber, consent])
 
+  // Mirrors the step-3 contact validation in validateStep — used to fire the
+  // `eval_contact_filled` funnel step the moment a valid contact is entered.
+  const contactValid = useMemo(() => {
+    if (contactMethod === 'Звонок') {
+      const digits = phoneNumber.replace(/\D/g, '')
+      return digits.length >= 6 && digits.length <= 15
+    }
+    if (contactMethod === 'Почта') {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactValue.trim())
+    }
+    if (contactMethod === 'Мессенджеры') {
+      const val = contactValue.trim()
+      return /^@[A-Za-z0-9_]{3,32}$/.test(val) || /^\+?[\d\s\-()]{10,20}$/.test(val)
+    }
+    return false
+  }, [contactMethod, phoneNumber, contactValue])
+
+  // Funnel step 4: reached the final screen.
+  useEffect(() => {
+    if (step === 3) fireGoalOnce('eval_reached_final')
+  }, [step, fireGoalOnce])
+
+  // Funnel step 5: entered a valid contact on the final screen.
+  useEffect(() => {
+    if (step === 3 && contactValid) fireGoalOnce('eval_contact_filled')
+  }, [step, contactValid, fireGoalOnce])
+
+  const handlePromoBlur = useCallback(async () => {
+    const trimmed = promoCode.trim().toUpperCase()
+    if (!trimmed) { setPromoCodeError(null); return }
+    setPromoCodeValidating(true)
+    const valid = await validatePromoCode(trimmed)
+    setPromoCodeValidating(false)
+    setPromoCodeError(valid ? null : 'Промокод недействителен')
+  }, [promoCode])
+
   const handleGoalToggle = (g: string) => {
     if (goals.includes(g)) {
       setGoals(goals.filter(x => x !== g))
@@ -128,6 +176,7 @@ export function EvaluateForm({ dispatch }: Props) {
       return
     }
     setFiles([file])
+    fireGoalOnce('eval_file_uploaded')
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -150,7 +199,7 @@ export function EvaluateForm({ dispatch }: Props) {
     }
   }
 
-  const goNext = () => {
+  const goNext = async () => {
     setAttempted(true)
     const errs = validateStep(step)
     setErrors(errs)
@@ -163,6 +212,17 @@ export function EvaluateForm({ dispatch }: Props) {
       setStep(step + 1)
       window.scrollTo(0, 0)
     } else {
+      const trimmedPromo = promoCode.trim().toUpperCase()
+      if (trimmedPromo) {
+        setPromoCodeValidating(true)
+        const valid = await validatePromoCode(trimmedPromo)
+        setPromoCodeValidating(false)
+        if (!valid) {
+          setPromoCodeError('Промокод недействителен')
+          return
+        }
+        setPromoCodeError(null)
+      }
       submitToWorkflow()
     }
   }
@@ -189,6 +249,7 @@ export function EvaluateForm({ dispatch }: Props) {
       contactValue: normalizedContactValue,
       difficultiesJson: '[]',
       consent,
+      promoCode: promoCode.trim().toUpperCase() || undefined,
     }
 
     clearDraft()
@@ -340,6 +401,25 @@ export function EvaluateForm({ dispatch }: Props) {
               </Field>
             )}
 
+            <Field
+              title="Промокод"
+              error={promoCodeError !== null}
+              errorMessage={promoCodeError ?? undefined}
+            >
+              <input
+                type="text"
+                value={promoCode}
+                onChange={e => { setPromoCode(e.target.value.toUpperCase()); setPromoCodeError(null) }}
+                onBlur={handlePromoBlur}
+                disabled={promoCodeValidating}
+                placeholder="CODE-AB23CD"
+                className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm disabled:opacity-50"
+              />
+              <p className="mt-2 text-xs text-muted-foreground">
+                Укажете промокод — пришлём оценку на почту сразу после расчёта. Без кода — наш менеджер свяжется и презентует оценку лично.
+              </p>
+            </Field>
+
             <Field title="Согласие" required error={attempted && errors.consent}>
               <label className="flex cursor-pointer items-start gap-3">
                 <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-0.5" />
@@ -356,7 +436,7 @@ export function EvaluateForm({ dispatch }: Props) {
         <button type="button" onClick={goBack} className="rounded-lg border border-border bg-secondary px-6 py-3 text-sm font-medium transition-colors hover:bg-secondary/80">
           {step === 1 ? 'На главную' : 'Назад'}
         </button>
-        <button type="button" onClick={goNext} disabled={submitting} className="flex-1 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90 disabled:opacity-50">
+        <button type="button" onClick={goNext} disabled={submitting || promoCodeValidating} className="flex-1 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90 disabled:opacity-50">
           {step === 3 ? 'Оценить' : 'Далее'}
         </button>
       </div>

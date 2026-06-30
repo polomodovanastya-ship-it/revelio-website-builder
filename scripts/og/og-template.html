@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<!--
+  Revelio OG-image template (1200×630).
+  Render with Playwright at viewport 1200×630, scale "css", screenshot → public/*.png
+
+  Query params (all optional; defaults = main "ВНЕДРЯЕМ…" cover):
+    ?eyebrow=КОНСАЛТИНГ · РАЗРАБОТКА · ПРОЦЕССЫ      (split on "·")
+    ?headline=ВНЕДРЯЕМ|~НОВУЮ ЭКСПЕРТИЗУ~ В БИЗНЕС    ("|"=line break, "~…~"=blue)
+    ?subtext=От оценки задачи…
+    ?size=78                                          (headline font px, default 78)
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F5F0;
+    --navy:#152754;
+    --blue:#006DE2;
+    --gray:#787F8D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1200px;height:630px;}
+  .card{
+    position:relative;
+    width:1200px;height:630px;
+    overflow:hidden;
+    background:
+      linear-gradient(120deg, rgba(248,245,240,0) 45%, rgba(234,237,239,0.55) 78%, rgba(228,233,238,0.9) 100%),
+      var(--bg);
+    font-family:'Inter', sans-serif;
+    color:var(--navy);
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(21,39,84,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(21,39,84,0.035) 1px, transparent 1px);
+    background-size:60px 60px;
+    background-position:-1px -1px;
+    pointer-events:none;
+  }
+  .inner{position:relative;z-index:1;height:100%;padding:64px 72px;display:flex;flex-direction:column;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand svg{display:block;width:40px;height:40px;}
+  .brand .name{font-family:'Inter', sans-serif;font-weight:500;font-size:27px;letter-spacing:-0.005em;color:var(--navy);}
+  .eyebrow{
+    margin-top:72px;
+    font-weight:700;font-size:15px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);
+  }
+  .eyebrow .dot{margin:0 14px;color:var(--gray);opacity:.75;}
+  .headline{
+    margin-top:24px;
+    font-family:'Inter Tight', sans-serif;
+    font-weight:800;
+    font-size:66px;
+    line-height:1.03;
+    letter-spacing:-0.015em;
+    text-transform:uppercase;
+    color:var(--navy);
+    white-space:nowrap;
+  }
+  .headline .blue{color:var(--blue);}
+  .subtext{
+    margin-top:28px;
+    font-weight:400;
+    font-size:27px;
+    line-height:1.32;
+    color:var(--navy);
+    max-width:920px;
+  }
+  .spacer{flex:1;}
+  .footer{display:flex;align-items:center;gap:20px;}
+  .footer .dash{width:38px;height:4px;border-radius:2px;background:var(--blue);}
+  .footer .url{font-family:'JetBrains Mono', monospace;font-weight:500;font-size:23px;letter-spacing:0.01em;color:var(--navy);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="inner">
+      <div class="brand">
+        <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24.3835 8.74027e-05L27.8133 0.000116171C30.4271 0.000123571 32.0999 2.61721 31.9954 4.40159C31.8908 6.18597 30.7407 17.8439 30.7407 17.8439H12.7578L11.6077 32H3.24356C-0.206666 32 0.00244406 28.3123 0.00244406 28.3123C0.00244406 28.3123 1.58296 6.42387 1.88438 3.21199C2.18575 0.000628233 3.87098 0.000337252 5.23004 0.000102518C6.30526 -8.32577e-05 18.1762 2.88053e-05 24.3835 8.74027e-05Z" fill="#1A2550"/>
+          <path d="M11.9214 10.9443L12.2131 9.75472H20.2855L20.0036 10.9443H11.9214Z" fill="#EDF1FF"/>
+          <path d="M12.3396 9.04097L12.6313 7.85139H20.7037L20.4218 9.04097H12.3396Z" fill="#EDF1FF"/>
+          <path d="M13.3851 9.99264L13.6768 8.80305H21.7493L21.4673 9.99264H13.3851Z" fill="#EDF1FF"/>
+        </svg>
+        <span class="name">Ревелио</span>
+      </div>
+
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1 class="headline" id="headline"></h1>
+      <p class="subtext" id="subtext"></p>
+
+      <div class="spacer"></div>
+
+      <div class="footer">
+        <span class="dash"></span>
+        <span class="url">revelio.tech</span>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const p = new URLSearchParams(location.search);
+  const esc = (s) => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  const eyebrow = p.get('eyebrow') ?? 'КОНСАЛТИНГ · РАЗРАБОТКА · ПРОЦЕССЫ';
+  const headline = p.get('headline') ?? 'ВНЕДРЯЕМ|~НОВУЮ ЭКСПЕРТИЗУ~ В БИЗНЕС';
+  const subtext = p.get('subtext') ?? 'От оценки задачи до запуска команды и передачи функции внутрь бизнеса.';
+  const size = p.get('size');
+
+  // eyebrow: split on "·", join with styled dots
+  document.getElementById('eyebrow').innerHTML =
+    eyebrow.split('·').map(s => esc(s.trim())).join('<span class="dot">·</span>');
+
+  // headline: "|" = line break, "~…~" = blue span
+  document.getElementById('headline').innerHTML =
+    headline.split('|').map(line =>
+      esc(line).replace(/~([^~]+)~/g, '<span class="blue">$1</span>')
+    ).join('<br>');
+
+  document.getElementById('subtext').textContent = subtext;
+
+  // Fixed 66px headline (CSS) — sized to fit the longest phrase
+  // ("НОВУЮ ЭКСПЕРТИЗУ В БИЗНЕС") so every page's image uses the same size.
+  // ?size only overrides it for one-off experiments.
+  if (size) document.getElementById('headline').style.fontSize = parseInt(size, 10) + 'px';
+</script>
+</body>
+</html>

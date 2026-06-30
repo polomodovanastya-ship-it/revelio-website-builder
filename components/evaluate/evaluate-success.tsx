@@ -9,11 +9,16 @@ interface Props {
 }
 
 export function EvaluateSuccess({ state, dispatch }: Props) {
+  // The estimate is emailed only when a (valid) promo code was supplied. The form
+  // only submits with no code OR a valid one, so this flag predicts the gate.
+  const hasPromo = Boolean(state.pendingCreate?.promoCode)
   const title = state.alreadyAnswered ? 'Ответы уже отправлены' : 'Готово!'
   const description = state.alreadyAnswered
     ? 'Вы уже ответили на уточняющие вопросы по этой заявке. Результат будет отправлен на почту.'
     : state.email
-      ? 'Заявка принята в работу. Оценку пришлём на почту.'
+      ? hasPromo
+        ? 'Заявка принята в работу. Оценку пришлём на почту.'
+        : 'Заявка принята в работу. Почту записали — с вами свяжется менеджер и презентует оценку.'
       : 'Заявка принята в работу. Мы свяжемся с вами в ближайшее время.'
 
   return (

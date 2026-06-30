@@ -1,20 +1,17 @@
-import type { Metadata } from 'next'
 import { ShieldCheck } from 'lucide-react'
 import { PageContainer } from '@/components/page-shell'
 import { PageHero } from '@/components/page-hero'
 import { ServiceFeatureCard } from '@/components/service-card'
 import { PriceBlock } from '@/components/price-block'
 import { Contact } from '@/components/contact'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'ИТ-закупки как сервис',
-  description: 'Проверить поставщиков глазами интегратора',
-  alternates: { canonical: '/it-procurement-as-a-service' },
-  openGraph: {
-    title: 'ИТ-закупки как сервис — Ревелио',
-    url: '/it-procurement-as-a-service',
-  },
-}
+  description:
+    'Независимая проверка ИТ-поставщиков глазами интегратора: технический и коммерческий скоринг, аудит ТЗ и SLA, сопровождение тендера до подписания договора.',
+  path: '/it-procurement-as-a-service',
+})
 
 export default function ItProcurementPage() {
   return (

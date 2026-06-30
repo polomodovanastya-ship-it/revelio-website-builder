@@ -8,7 +8,7 @@ export function Dimensions() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section className="relative overflow-hidden border-b border-border py-20 sm:py-28">
+    <section id="answers" className="relative scroll-mt-24 overflow-hidden border-b border-border py-20 sm:py-28">
       <div
         aria-hidden
         className="blueprint pointer-events-none absolute inset-0 [background-size:56px_56px] opacity-70 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]"

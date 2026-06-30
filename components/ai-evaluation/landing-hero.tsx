@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { HERO_SUMMARY, PRODUCT_PROOF, USER_FLOW } from '@/lib/ai-evaluation-content'
+import { EvalStartLink } from '@/components/funnel-tracking'
 
 export function LandingHero() {
   return (
@@ -54,13 +55,12 @@ export function LandingHero() {
             className="reveal in-view mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
             style={{ animationDelay: '320ms' }}
           >
-            <Link
-              href="/evaluate"
+            <EvalStartLink
               className="group flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors duration-300 hover:bg-primary"
             >
               Перейти к оценке
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            </EvalStartLink>
             <Link
               href="/#contact"
               className="group flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-primary transition-colors duration-300 hover:border-primary/30 hover:bg-muted hover:text-accent"

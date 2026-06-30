@@ -10,7 +10,7 @@ export function Projects() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section className="border-b border-border py-20 sm:py-28">
+    <section id="sources" className="scroll-mt-24 border-b border-border py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ Что можно оценивать ]

@@ -28,7 +28,7 @@ export function HowEstimationWorks() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section className="border-y border-border bg-secondary py-20 sm:py-28">
+    <section id="what" className="scroll-mt-24 border-y border-border bg-secondary py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ Как устроена оценка ]

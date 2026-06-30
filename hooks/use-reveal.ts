@@ -30,7 +30,12 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
           }
         })
       },
-      { threshold: 0.15 },
+      // Fire as soon as the element's top edge crosses into the viewport
+      // (rootMargin), not by intersection ratio. A ratio-based threshold
+      // breaks for elements taller than the viewport — e.g. the single-column
+      // team grid on mobile is ~5000px tall, so 15% of it never fits the
+      // screen and the reveal triggers far too late (near-empty scroll).
+      { threshold: 0, rootMargin: '0px 0px -15% 0px' },
     )
 
     observer.observe(el)

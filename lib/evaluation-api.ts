@@ -37,6 +37,7 @@ export interface CreateApplicationInput {
   contactValue?: string
   difficultiesJson?: string
   consent?: boolean
+  promoCode?: string
 }
 
 export interface CreateApplicationResponse {
@@ -117,6 +118,7 @@ export async function createApplication(
   if (input.contactMethod != null) body.append("contact_method", input.contactMethod)
   if (input.contactValue != null) body.append("contact_value", input.contactValue)
   body.append("consent", input.consent ? "true" : "false")
+  if (input.promoCode) body.append("promo_code", input.promoCode)
 
   const res = await fetch(`${base}/applications`, { method: "POST", body, signal })
   if (!res.ok) throw new Error(await parseError(res))
@@ -289,6 +291,34 @@ export async function patchApplicationEmail(
     },
   )
   if (!res.ok) throw new Error(await parseError(res))
+}
+
+// validatePromoCode is an ADVISORY pre-check for inline UX only. It blocks the
+// form only when a healthy server explicitly says the code is invalid
+// ({valid:false} with HTTP 200). On any uncertainty — throttling (429), server
+// error, or a network failure — it fails OPEN (returns true) so a legitimate
+// user is never locked out of submitting. The authoritative, unthrottled check
+// runs server-side at submit (POST /applications returns 409 for a bad code).
+export async function validatePromoCode(
+  code: string,
+  signal?: AbortSignal,
+): Promise<boolean> {
+  if (!code) return true // no code is allowed; nothing to validate
+  if (process.env.NEXT_PUBLIC_AI_API_MOCK === "1") return mock.validatePromoCode(code, signal)
+  const base = requireBase()
+  try {
+    const res = await fetch(
+      `${base}/promo-codes/validate?code=${encodeURIComponent(code)}`,
+      { method: "GET", signal },
+    )
+    if (res.status === 200) {
+      const data = await res.json()
+      return Boolean(data?.valid)
+    }
+    return true // 429/5xx → advisory check unavailable, fail open
+  } catch {
+    return true // network error → fail open
+  }
 }
 
 export function statusToError(status: QueueStatus): string | null {

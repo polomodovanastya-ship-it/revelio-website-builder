@@ -1,18 +1,15 @@
-import type { Metadata } from 'next'
 import { PageContainer } from '@/components/page-shell'
 import { PageHero } from '@/components/page-hero'
 import { DefinitionList, DefinitionRow } from '@/components/definition-list'
 import { PHONE, EMAIL } from '@/lib/contacts'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: { absolute: 'Реквизиты ООО «Ревелио» — ИНН, ОГРН, адрес' },
   description: 'Юридические реквизиты ООО «Ревелио»: ИНН 9714091225, ОГРН 1267700146548, адрес в Москве, контактные данные.',
-  alternates: { canonical: '/legal' },
-  openGraph: {
-    title: 'Реквизиты ООО «Ревелио»',
-    url: '/legal',
-  },
-}
+  path: '/legal',
+  ogTitle: 'Реквизиты ООО «Ревелио»',
+})
 
 const localBusinessLd = {
   '@context': 'https://schema.org',

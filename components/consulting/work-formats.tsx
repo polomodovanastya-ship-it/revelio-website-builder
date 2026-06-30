@@ -48,7 +48,7 @@ export function WorkFormats() {
                   {f.feeling}
                 </p>
 
-                <div className="mt-5 flex items-baseline gap-3">
+                <div className="mt-5 flex items-center gap-3">
                   <span
                     className={`font-heading text-2xl font-bold tracking-tight ${
                       featured ? 'text-primary-foreground' : 'text-primary'

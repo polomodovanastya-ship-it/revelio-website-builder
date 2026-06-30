@@ -4,6 +4,7 @@ import { Loader2, AlertTriangle } from 'lucide-react'
 import { createApplication, pollQueueStatus, extractQuestions, statusToError, skipQuestions, patchApplicationEmail } from '@/lib/evaluation-api'
 import { POLL_TIMEOUT_MS } from '@/lib/evaluate-helpers'
 import { useToast } from '@/components/toast'
+import { trackGoal } from '@/lib/metrika'
 import type { FlowState, FlowAction } from '@/hooks/use-evaluate-flow'
 
 interface Props {
@@ -22,12 +23,16 @@ export function EvaluateQueue({ state, dispatch }: Props) {
   const [lateEmailSaving, setLateEmailSaving] = useState(false)
   const [lateEmailSaved, setLateEmailSaved] = useState(false)
   const skippedRef = useRef(false)
+  const submitGoalFiredRef = useRef(false)
   const creatingRef = useRef(false)
   const successEmailRef = useRef(state.email)
 
   const initialEmail = state.email
   const successEmail = lateEmailSaved ? lateEmail.trim() : initialEmail
   successEmailRef.current = successEmail
+  // The estimate is emailed only when a (valid) promo code was supplied. The form
+  // only submits with no code OR a valid one, so this flag predicts the gate.
+  const hasPromo = Boolean(state.pendingCreate?.promoCode)
 
   const isNoFilePath = !!state.noFileJobId
   const showEmailPanel = isNoFilePath && !initialEmail && !lateEmailSaved && (uiState === 'queued' || uiState === 'running')
@@ -57,6 +62,13 @@ export function EvaluateQueue({ state, dispatch }: Props) {
           dispatch({ type: 'CREATE_OK', applicationId: res.application_id, questionsJobId: res.questions_job_id })
         } else {
           throw new Error('Сервер не вернул ID очереди')
+        }
+        // Funnel step 6: application accepted by the server (a real submit,
+        // not a click that errored out). Guard against the effect re-running
+        // (React Strict Mode / retries) so the goal fires at most once.
+        if (!submitGoalFiredRef.current) {
+          submitGoalFiredRef.current = true
+          trackGoal('eval_submit')
         }
         setUiState('queued')
       } catch (err) {
@@ -202,7 +214,11 @@ export function EvaluateQueue({ state, dispatch }: Props) {
       {isNoFilePath && uiState !== 'error' && (
         <>
           <h2 className="mb-2 text-2xl font-semibold">Готовим предварительную оценку<span className="inline-block w-[1.5ch] text-left align-baseline">{dots}</span></h2>
-          {successEmail && <p className="text-muted-foreground">Оценку пришлём на почту {successEmail}</p>}
+          {successEmail && (
+            hasPromo
+              ? <p className="text-muted-foreground">Оценку пришлём на почту {successEmail}</p>
+              : <p className="text-muted-foreground">Почту записали ({successEmail}) — с вами свяжется менеджер и презентует оценку.</p>
+          )}
         </>
       )}
 

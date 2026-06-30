@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { EvalStartLink } from '@/components/funnel-tracking'
 
 const MICRO = ['бесплатно', '3–5 минут', 'погрешность 10–20%']
 
@@ -22,13 +23,12 @@ export function FinalCta() {
             </p>
 
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link
-                href="/evaluate"
+              <EvalStartLink
                 className="group flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors duration-300 hover:brightness-110 sm:w-auto"
               >
                 Перейти к оценке
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </EvalStartLink>
               <Link
                 href="/#contact"
                 className="flex w-full items-center justify-center gap-2 rounded-lg border border-primary-foreground/25 bg-transparent px-7 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-primary-foreground transition-colors duration-300 hover:bg-primary-foreground/10 sm:w-auto"

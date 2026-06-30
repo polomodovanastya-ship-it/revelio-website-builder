@@ -84,3 +84,8 @@ export async function resumeApplication(token: string, signal?: AbortSignal): Pr
 export async function patchApplicationEmail(applicationId: string, email: string, signal?: AbortSignal): Promise<void> {
   await new Promise(r => setTimeout(r, 200))
 }
+
+export async function validatePromoCode(code: string, signal?: AbortSignal): Promise<boolean> {
+  await new Promise(r => setTimeout(r, 150))
+  return Boolean(code)
+}

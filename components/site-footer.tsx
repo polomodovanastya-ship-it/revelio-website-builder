@@ -112,6 +112,10 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
+
+        <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground/80">
+          Цены и сроки на сайте носят предварительный характер и не являются публичной офертой.
+        </p>
       </div>
     </footer>
   )

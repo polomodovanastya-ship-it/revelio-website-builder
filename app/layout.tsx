@@ -46,11 +46,11 @@ export const metadata: Metadata = {
       'Консалтинг и ИТ-разработка * Проектирование * Data-аналитика продаж и маркетинга * Web, CRM/Loyalty/CDP, MDM, DWH, НСИ, HRM',
     type: 'website',
     url: '/',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-cover.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/og-image.png'],
+    images: ['/og-cover.png'],
   },
   alternates: { canonical: '/' },
   verification: { yandex: '15d799df6e828c70' },

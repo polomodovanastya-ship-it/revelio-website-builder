@@ -1,19 +1,16 @@
-import type { Metadata } from 'next'
 import { Rocket } from 'lucide-react'
 import { PageContainer } from '@/components/page-shell'
 import { PageHero } from '@/components/page-hero'
 import { PriceBlock } from '@/components/price-block'
 import { Contact } from '@/components/contact'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'MVP за 2 недели',
-  description: 'Разработка прототипов с LLM на базе 15+ лет опыта',
-  alternates: { canonical: '/mvp-in-2-weeks' },
-  openGraph: {
-    title: 'MVP за 2 недели — Ревелио',
-    url: '/mvp-in-2-weeks',
-  },
-}
+  description:
+    'Рабочий прототип за 2 недели: разработка MVP с LLM руками команды с 15+ годами опыта. Собираем решение, а не бесплодные эксперименты.',
+  path: '/mvp-in-2-weeks',
+})
 
 export default function MvpIn2WeeksPage() {
   return (
