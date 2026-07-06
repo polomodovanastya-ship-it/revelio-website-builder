@@ -8,8 +8,11 @@ import { NAV } from '@/lib/nav'
 
 
 export function SiteHeader() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+
+  const evalHref = pathname?.startsWith('/ai-evaluation') ? '/evaluate' : '/ai-evaluation'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -17,6 +20,7 @@ export function SiteHeader() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
 
   return (
     <header className="fixed inset-x-0 top-3 z-50 px-4 sm:px-6">
