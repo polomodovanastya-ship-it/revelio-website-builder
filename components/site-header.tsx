@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { asset } from '@/lib/asset'
 import { NAV } from '@/lib/nav'
+
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
