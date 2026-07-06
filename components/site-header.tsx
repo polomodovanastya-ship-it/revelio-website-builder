@@ -55,7 +55,7 @@ export function SiteHeader() {
             welcome@revelio.tech
           </a>
           <Link
-            href="/evaluate"
+            href={evalHref}
             className="hidden rounded-md bg-accent px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent-foreground transition-colors duration-300 hover:brightness-110 sm:inline-block lg:rounded-full"
           >
             Оценить проект
