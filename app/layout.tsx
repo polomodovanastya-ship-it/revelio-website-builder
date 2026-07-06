@@ -5,6 +5,11 @@ import Script from 'next/script'
 import { AppProviders } from '@/components/app-providers'
 import { MetrikaRouteTracker } from '@/components/metrika-route-tracker'
 import { YANDEX_METRIKA_ID } from '@/lib/metrika'
+import {
+  INTERNAL_TRAFFIC_COOKIE,
+  INTERNAL_TRAFFIC_QUERY_PARAM,
+  INTERNAL_TRAFFIC_SECRET,
+} from '@/lib/internal-traffic'
 import { PHONE, EMAIL } from '@/lib/contacts'
 import './globals.css'
 
@@ -83,6 +88,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: 'window._ab_id_=173315' }}
         />
         <script src="https://cdn.botfaqtor.ru/one.js" async />
+        {enableMetrika && (
+          // Runs before the Metrika script below (document order, both
+          // blocking inline scripts). A visit carrying the secret query
+          // param sets a long-lived cookie and strips the param from the
+          // URL; any visit carrying the cookie sets window.__RV_INTERNAL__,
+          // which the Metrika init script checks before loading.
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){try{var c=${JSON.stringify(INTERNAL_TRAFFIC_COOKIE)};var p=new URLSearchParams(location.search);if(p.get(${JSON.stringify(INTERNAL_TRAFFIC_QUERY_PARAM)})===${JSON.stringify(INTERNAL_TRAFFIC_SECRET)}){document.cookie=c+'=1;max-age=31536000;path=/;samesite=lax';p.delete(${JSON.stringify(INTERNAL_TRAFFIC_QUERY_PARAM)});var q=p.toString();history.replaceState(null,'',location.pathname+(q?'?'+q:'')+location.hash);}window.__RV_INTERNAL__=document.cookie.indexOf(c+'=1')!==-1;}catch(e){window.__RV_INTERNAL__=false;}})();`,
+            }}
+          />
+        )}
       </head>
       <body className="font-sans antialiased">
         <script
@@ -118,7 +135,7 @@ export default function RootLayout({
         {enableMetrika && (
           <>
             <Script id="yandex-metrika" strategy="afterInteractive">
-              {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(${YANDEX_METRIKA_ID},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,ecommerce:"dataLayer"});`}
+              {`if(!window.__RV_INTERNAL__){(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(${YANDEX_METRIKA_ID},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,ecommerce:"dataLayer"});}`}
             </Script>
             <noscript>
               <div>
