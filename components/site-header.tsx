@@ -2,12 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { asset } from '@/lib/asset'
 import { NAV } from '@/lib/nav'
 
 export function SiteHeader() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+
+  const evalHref = pathname?.startsWith('/ai-evaluation') ? '/evaluate' : '/ai-evaluation'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -49,7 +53,7 @@ export function SiteHeader() {
             welcome@revelio.tech
           </a>
           <Link
-            href="/evaluate"
+            href={evalHref}
             className="hidden rounded-md bg-accent px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent-foreground transition-colors duration-300 hover:brightness-110 sm:inline-block lg:rounded-full"
           >
             Оценить проект
