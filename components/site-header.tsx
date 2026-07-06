@@ -20,7 +20,6 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-
   return (
     <header className="fixed inset-x-0 top-3 z-50 px-4 sm:px-6">
       <div
