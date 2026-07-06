@@ -78,6 +78,12 @@ export default function RootLayout({
       lang="ru"
       className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: 'window._ab_id_=173315' }}
+        />
+        <script src="https://cdn.botfaqtor.ru/one.js" async />
+      </head>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
