@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Upload, FileText, X } from 'lucide-react'
 import { Field, ChipSelect, projectTypes, industries, contactMethods, countryCodes, STEPS } from './fields'
