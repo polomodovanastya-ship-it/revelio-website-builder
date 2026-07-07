@@ -1,9 +1,8 @@
 'use client'
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Upload, FileText, X } from 'lucide-react'
-import { Field, ChipSelect, projectTypes, industries, goalOptions, contactMethods, countryCodes, STEPS, MAX_GOALS } from './fields'
+import { Field, ChipSelect, projectTypes, industries, contactMethods, countryCodes, STEPS } from './fields'
 import { validateFile, FILE_ACCEPT } from '@/lib/evaluate-helpers'
 import { useEvaluateDraft } from '@/hooks/useEvaluateDraft'
 import { useToast } from '@/components/toast'
@@ -23,15 +22,11 @@ export function EvaluateForm({ dispatch }: Props) {
   const [step, setStep] = useState(1)
   const [projectType, setProjectType] = useState('')
   const [otherType, setOtherType] = useState('')
-  const [auditText, setAuditText] = useState('')
   const [files, setFiles] = useState<File[]>([])
   const [dragActive, setDragActive] = useState(false)
-  const [goals, setGoals] = useState<string[]>([])
-  const [otherGoal, setOtherGoal] = useState('')
   const [industry, setIndustry] = useState('')
   const [otherIndustry, setOtherIndustry] = useState('')
   const [companyName, setCompanyName] = useState('')
-  const [contactName, setContactName] = useState('')
   const [contactMethod, setContactMethod] = useState('')
   const [contactValue, setContactValue] = useState('')
   const [phoneCode, setPhoneCode] = useState('+7')
@@ -61,48 +56,31 @@ export function EvaluateForm({ dispatch }: Props) {
     if (!draft) { setDraftRestored(true); return }
     setProjectType(draft.step1.projectType)
     setOtherType(draft.step1.otherType)
-    setAuditText(draft.step1.auditText)
-    setGoals(draft.step2.goals)
-    setOtherGoal(draft.step2.otherGoal)
-    setIndustry(draft.step3.industry)
-    setOtherIndustry(draft.step3.otherIndustry)
-    setCompanyName(draft.step3.companyName)
-    setContactName(draft.step3.contactName)
-    setContactMethod(draft.step3.contactMethod)
-    setContactValue(draft.step3.contactValue)
-    setPhoneCode(draft.step3.phoneCode)
-    setPhoneNumber(draft.step3.phoneNumber)
+    setIndustry(draft.step2.industry)
+    setOtherIndustry(draft.step2.otherIndustry)
+    setCompanyName(draft.step2.companyName)
+    setContactMethod(draft.step2.contactMethod)
+    setContactValue(draft.step2.contactValue)
+    setPhoneCode(draft.step2.phoneCode)
+    setPhoneNumber(draft.step2.phoneNumber)
     setDraftRestored(true)
   }, [readDraft])
 
   useEffect(() => {
     if (!draftRestored) return
     saveDraft({
-      step1: { projectType, otherType, auditText },
-      step2: { goals, otherGoal },
-      step3: { industry, otherIndustry, companyName, contactName, contactMethod, contactValue, phoneCode, phoneNumber },
+      step1: { projectType, otherType },
+      step2: { industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber },
     })
-  }, [draftRestored, projectType, otherType, auditText, goals, otherGoal, industry, otherIndustry, companyName, contactName, contactMethod, contactValue, phoneCode, phoneNumber, saveDraft])
-
-  const needsAuditText = projectType === 'audit'
-
-  useEffect(() => {
-    if (projectType !== 'audit') setAuditText('')
-  }, [projectType])
+  }, [draftRestored, projectType, otherType, industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber, saveDraft])
 
   const validateStep = useCallback((s: number) => {
     const errs: Record<string, boolean> = {}
     if (s === 1) {
       if (!projectType) errs.projectType = true
       if (projectType === 'other' && !otherType.trim()) errs.otherType = true
-      if (projectType === 'existing' && files.length === 0) errs.files = true
-      if (needsAuditText && !auditText.trim()) errs.auditText = true
     }
     if (s === 2) {
-      if (goals.length === 0) errs.goals = true
-      if (goals.includes('Другое') && !otherGoal.trim()) errs.otherGoal = true
-    }
-    if (s === 3) {
       if (!industry && !companyName.trim()) errs.identity = true
       if (industry === 'Другое' && !otherIndustry.trim() && !companyName.trim()) errs.otherIndustry = true
       if (!contactMethod) errs.contactMethod = true
@@ -118,9 +96,9 @@ export function EvaluateForm({ dispatch }: Props) {
       if (!consent) errs.consent = true
     }
     return errs
-  }, [projectType, otherType, auditText, files, needsAuditText, goals, otherGoal, industry, otherIndustry, companyName, contactMethod, contactValue, phoneNumber, consent])
+  }, [projectType, otherType, industry, otherIndustry, companyName, contactMethod, contactValue, phoneNumber, consent])
 
-  // Mirrors the step-3 contact validation in validateStep — used to fire the
+  // Mirrors the step-2 contact validation in validateStep — used to fire the
   // `eval_contact_filled` funnel step the moment a valid contact is entered.
   const contactValid = useMemo(() => {
     if (contactMethod === 'Звонок') {
@@ -139,12 +117,12 @@ export function EvaluateForm({ dispatch }: Props) {
 
   // Funnel step 4: reached the final screen.
   useEffect(() => {
-    if (step === 3) fireGoalOnce('eval_reached_final')
+    if (step === 2) fireGoalOnce('eval_reached_final')
   }, [step, fireGoalOnce])
 
   // Funnel step 5: entered a valid contact on the final screen.
   useEffect(() => {
-    if (step === 3 && contactValid) fireGoalOnce('eval_contact_filled')
+    if (step === 2 && contactValid) fireGoalOnce('eval_contact_filled')
   }, [step, contactValid, fireGoalOnce])
 
   const handlePromoBlur = useCallback(async () => {
@@ -155,18 +133,6 @@ export function EvaluateForm({ dispatch }: Props) {
     setPromoCodeValidating(false)
     setPromoCodeError(valid ? null : 'Промокод недействителен')
   }, [promoCode])
-
-  const handleGoalToggle = (g: string) => {
-    if (goals.includes(g)) {
-      setGoals(goals.filter(x => x !== g))
-    } else {
-      if (goals.length >= MAX_GOALS) {
-        toast.info('Можно выбрать не более 3 целей')
-        return
-      }
-      setGoals([...goals, g])
-    }
-  }
 
   const acceptFile = (file?: File | null) => {
     if (!file) return
@@ -208,7 +174,7 @@ export function EvaluateForm({ dispatch }: Props) {
       el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       return
     }
-    if (step < 3) {
+    if (step < 2) {
       setStep(step + 1)
       window.scrollTo(0, 0)
     } else {
@@ -235,14 +201,12 @@ export function EvaluateForm({ dispatch }: Props) {
 
     const pendingCreate: CreateApplicationInput = {
       file: fileForApi,
-      fullName: contactName.trim() || '—',
+      fullName: '—',
       email: emailForApi,
       company: companyForApi,
-      requestText: auditText.trim(),
+      requestText: '',
       projectType,
       projectTypeOther: otherType.trim(),
-      goalsJson: JSON.stringify(goals),
-      goalOther: otherGoal.trim(),
       industry,
       industryOther: otherIndustry.trim(),
       contactMethod,
@@ -257,13 +221,13 @@ export function EvaluateForm({ dispatch }: Props) {
   }
 
   const currentStep = STEPS[step - 1]
-  const progress = (step / 3) * 100
+  const progress = (step / 2) * 100
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
       <div className="mb-8">
         <div className="mb-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-          [ ШАГ {step} / 3 — {currentStep.title.toUpperCase()} ]
+          [ ШАГ {step} / 2 — {currentStep.title.toUpperCase()} ]
         </div>
         <div className="h-1 overflow-hidden rounded-full bg-secondary">
           <div className="h-full bg-accent transition-all duration-300" style={{ width: `${progress}%` }} />
@@ -290,13 +254,11 @@ export function EvaluateForm({ dispatch }: Props) {
               </Field>
             )}
 
-            {needsAuditText && (
-              <Field title="Что нужно проаудировать?" required error={attempted && errors.auditText}>
-                <textarea value={auditText} onChange={e => setAuditText(e.target.value)} rows={4} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
-              </Field>
-            )}
-
-            <Field title="Загрузить документы" subtitle="PDF, DOCX, ODT, MD или TXT до 25 МБ" error={attempted && errors.files} errorMessage={projectType === 'existing' ? 'Для доработки готового решения нужен файл' : undefined}>
+            <Field
+              title="Загрузить документы"
+              subtitle="PDF, DOCX, ODT, MD или TXT до 25 МБ"
+              badge={<span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">[ опционально ]</span>}
+            >
               <div className="space-y-2">
                 <label
                   onDragEnter={(e) => { e.preventDefault(); setDragActive(true) }}
@@ -342,20 +304,6 @@ export function EvaluateForm({ dispatch }: Props) {
 
         {step === 2 && (
           <>
-            <Field title="Цели оценки" subtitle="Выберите до 3 целей" required error={attempted && errors.goals}>
-              <ChipSelect options={goalOptions} selected={goals} onToggle={handleGoalToggle} multi />
-            </Field>
-
-            {goals.includes('Другое') && (
-              <Field title="Опишите вашу цель" required error={attempted && errors.otherGoal}>
-                <input type="text" value={otherGoal} onChange={e => setOtherGoal(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
-              </Field>
-            )}
-          </>
-        )}
-
-        {step === 3 && (
-          <>
             <Field title="Отрасль" subtitle="Или укажите название компании" error={attempted && (errors.identity || errors.otherIndustry)}>
               <ChipSelect options={industries} selected={industry} onToggle={setIndustry} />
             </Field>
@@ -368,10 +316,6 @@ export function EvaluateForm({ dispatch }: Props) {
 
             <Field title="Название компании">
               <input type="text" value={companyName} onChange={e => setCompanyName(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
-            </Field>
-
-            <Field title="Ваше имя">
-              <input type="text" value={contactName} onChange={e => setContactName(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
             </Field>
 
             <Field title="Как с вами связаться?" required error={attempted && errors.contactMethod}>
@@ -437,7 +381,7 @@ export function EvaluateForm({ dispatch }: Props) {
           {step === 1 ? 'На главную' : 'Назад'}
         </button>
         <button type="button" onClick={goNext} disabled={submitting || promoCodeValidating} className="flex-1 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90 disabled:opacity-50">
-          {step === 3 ? 'Оценить' : 'Далее'}
+          {step === 2 ? 'Оценить' : 'Далее'}
         </button>
       </div>
     </div>

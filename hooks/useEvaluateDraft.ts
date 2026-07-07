@@ -5,13 +5,11 @@ const DRAFT_KEY = "evaluate_draft"
 const DEBOUNCE_MS = 300
 
 export interface EvaluateDraft {
-  step1: { projectType: string; otherType: string; auditText: string }
-  step2: { goals: string[]; otherGoal: string }
-  step3: {
+  step1: { projectType: string; otherType: string }
+  step2: {
     industry: string
     otherIndustry: string
     companyName: string
-    contactName: string
     contactMethod: string
     contactValue: string
     phoneCode: string
