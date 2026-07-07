@@ -267,7 +267,7 @@ export function EvaluateForm({ dispatch }: Props) {
             <Field
               title="Загрузить документы"
               subtitle="PDF, DOCX, ODT, MD или TXT до 25 МБ"
-              badge={<span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">[ опционально ]</span>}
+              badge={<span className="text-sm text-accent">[ опционально ]</span>}
             >
               <div className="space-y-2">
                 <label
