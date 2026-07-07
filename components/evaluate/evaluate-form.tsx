@@ -56,6 +56,7 @@ export function EvaluateForm({ dispatch }: Props) {
     if (!draft) { setDraftRestored(true); return }
     setProjectType(draft.step1.projectType)
     setOtherType(draft.step1.otherType)
+    setConsent(draft.step1.consent)
     setIndustry(draft.step2.industry)
     setOtherIndustry(draft.step2.otherIndustry)
     setCompanyName(draft.step2.companyName)
@@ -69,16 +70,17 @@ export function EvaluateForm({ dispatch }: Props) {
   useEffect(() => {
     if (!draftRestored) return
     saveDraft({
-      step1: { projectType, otherType },
+      step1: { projectType, otherType, consent },
       step2: { industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber },
     })
-  }, [draftRestored, projectType, otherType, industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber, saveDraft])
+  }, [draftRestored, projectType, otherType, consent, industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber, saveDraft])
 
   const validateStep = useCallback((s: number) => {
     const errs: Record<string, boolean> = {}
     if (s === 1) {
       if (!projectType) errs.projectType = true
       if (projectType === 'other' && !otherType.trim()) errs.otherType = true
+      if (!consent) errs.consent = true
     }
     if (s === 2) {
       if (!industry && !companyName.trim()) errs.identity = true
@@ -93,10 +95,9 @@ export function EvaluateForm({ dispatch }: Props) {
         const val = contactValue.trim()
         if (!/^@[A-Za-z0-9_]{3,32}$/.test(val) && !/^\+?[\d\s\-()]{10,20}$/.test(val)) errs.contactValue = true
       }
-      if (!consent) errs.consent = true
     }
     return errs
-  }, [projectType, otherType, industry, otherIndustry, companyName, contactMethod, contactValue, phoneNumber, consent])
+  }, [projectType, otherType, consent, industry, otherIndustry, companyName, contactMethod, contactValue, phoneNumber])
 
   // Mirrors the step-2 contact validation in validateStep — used to fire the
   // `eval_contact_filled` funnel step the moment a valid contact is entered.
