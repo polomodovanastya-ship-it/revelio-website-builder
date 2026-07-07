@@ -81,8 +81,7 @@ export const countryCodes = [
 
 export const STEPS = [
   { id: 1, title: "О проекте" },
-  { id: 2, title: "Обзор" },
-  { id: 3, title: "Контакты" },
+  { id: 2, title: "Контакты" },
 ]
 
 export const MAX_GOALS = 3
@@ -91,12 +90,13 @@ interface FieldProps {
   children: React.ReactNode
   title: string
   subtitle?: string
+  badge?: React.ReactNode
   error?: boolean
   errorMessage?: string
   required?: boolean
 }
 
-export function Field({ children, title, subtitle, error, errorMessage, required }: FieldProps) {
+export function Field({ children, title, subtitle, badge, error, errorMessage, required }: FieldProps) {
   return (
     <div
       data-error={error || undefined}
@@ -111,7 +111,12 @@ export function Field({ children, title, subtitle, error, errorMessage, required
           {title}
           {required && <span className="ml-1 text-destructive">*</span>}
         </div>
-        {subtitle && <div className="mt-1 text-xs text-muted-foreground">{subtitle}</div>}
+        {(subtitle || badge) && (
+          <div className="mt-1 flex flex-wrap items-center gap-2">
+            {subtitle && <div className="text-xs text-muted-foreground">{subtitle}</div>}
+            {badge}
+          </div>
+        )}
       </div>
       {children}
       {error && errorMessage && <div className="mt-2 text-sm text-destructive">{errorMessage}</div>}
