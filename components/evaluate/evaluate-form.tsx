@@ -56,7 +56,6 @@ export function EvaluateForm({ dispatch }: Props) {
     if (!draft) { setDraftRestored(true); return }
     setProjectType(draft.step1.projectType)
     setOtherType(draft.step1.otherType)
-    setConsent(draft.step1.consent)
     setIndustry(draft.step2.industry)
     setOtherIndustry(draft.step2.otherIndustry)
     setCompanyName(draft.step2.companyName)
@@ -64,23 +63,23 @@ export function EvaluateForm({ dispatch }: Props) {
     setContactValue(draft.step2.contactValue)
     setPhoneCode(draft.step2.phoneCode)
     setPhoneNumber(draft.step2.phoneNumber)
+    setConsent(draft.step2.consent ?? false)
     setDraftRestored(true)
   }, [readDraft])
 
   useEffect(() => {
     if (!draftRestored) return
     saveDraft({
-      step1: { projectType, otherType, consent },
-      step2: { industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber },
+      step1: { projectType, otherType },
+      step2: { industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber, consent },
     })
-  }, [draftRestored, projectType, otherType, consent, industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber, saveDraft])
+  }, [draftRestored, projectType, otherType, industry, otherIndustry, companyName, contactMethod, contactValue, phoneCode, phoneNumber, consent, saveDraft])
 
   const validateStep = useCallback((s: number) => {
     const errs: Record<string, boolean> = {}
     if (s === 1) {
       if (!projectType) errs.projectType = true
       if (projectType === 'other' && !otherType.trim()) errs.otherType = true
-      if (!consent) errs.consent = true
     }
     if (s === 2) {
       if (!industry && !companyName.trim()) errs.identity = true
@@ -95,6 +94,7 @@ export function EvaluateForm({ dispatch }: Props) {
         const val = contactValue.trim()
         if (!/^@[A-Za-z0-9_]{3,32}$/.test(val) && !/^\+?[\d\s\-()]{10,20}$/.test(val)) errs.contactValue = true
       }
+      if (!consent) errs.consent = true
     }
     return errs
   }, [projectType, otherType, consent, industry, otherIndustry, companyName, contactMethod, contactValue, phoneNumber])
@@ -255,14 +255,6 @@ export function EvaluateForm({ dispatch }: Props) {
               </Field>
             )}
 
-            <Field title="Согласие" required error={attempted && errors.consent}>
-              <label className="flex cursor-pointer items-start gap-3">
-                <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-0.5" />
-                <span className="text-sm">
-                  Даю согласие на <a href="/legal/consent_pd.pdf" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">обработку персональных данных</a> в соответствии с <a href="/legal/revelio_tech_policy_pd.pdf" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">политикой конфиденциальности</a>
-                </span>
-              </label>
-            </Field>
 
             <Field
               title="Загрузить документы"
@@ -354,6 +346,15 @@ export function EvaluateForm({ dispatch }: Props) {
                 <input type="text" value={contactValue} onChange={e => setContactValue(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
               </Field>
             )}
+
+            <Field title="Согласие" required error={attempted && errors.consent}>
+              <label className="flex cursor-pointer items-start gap-3">
+                <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-0.5" />
+                <span className="text-sm">
+                  Даю согласие на <a href="/legal/consent_pd.pdf" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">обработку персональных данных</a> в соответствии с <a href="/legal/revelio_tech_policy_pd.pdf" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">политикой конфиденциальности</a>
+                </span>
+              </label>
+            </Field>
 
             <Field
               title="Промокод"
