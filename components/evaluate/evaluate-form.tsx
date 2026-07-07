@@ -255,14 +255,6 @@ export function EvaluateForm({ dispatch }: Props) {
               </Field>
             )}
 
-            <Field title="Согласие" required error={attempted && errors.consent}>
-              <label className="flex cursor-pointer items-start gap-3">
-                <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-0.5" />
-                <span className="text-sm">
-                  Даю согласие на <a href="/legal/consent_pd.pdf" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">обработку персональных данных</a> в соответствии с <a href="/legal/revelio_tech_policy_pd.pdf" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">политикой конфиденциальности</a>
-                </span>
-              </label>
-            </Field>
 
             <Field
               title="Загрузить документы"
