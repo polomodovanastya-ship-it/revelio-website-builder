@@ -22,7 +22,9 @@ export function LandingHero() {
             className="reveal in-view mt-5 max-w-2xl text-balance font-heading text-4xl font-black uppercase leading-[1.05] tracking-[-0.02em] text-primary sm:text-5xl lg:text-6xl"
             style={{ animationDelay: '90ms' }}
           >
-            Оценивай разработку <span className="text-accent">быстро</span>
+            Посчитай оценку
+            <br />
+            <span className="text-accent">ИТ-проекта за ~10 минут с AI</span>
           </h1>
 
           <p
