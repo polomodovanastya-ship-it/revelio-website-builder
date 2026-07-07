@@ -19,7 +19,7 @@ export function LandingHero() {
           </span>
 
           <h1
-            className="reveal in-view mt-5 max-w-2xl text-balance font-heading text-4xl font-black uppercase leading-[1.05] tracking-[-0.02em] text-primary sm:text-5xl lg:text-6xl"
+            className="reveal in-view mt-5 max-w-2xl text-balance font-heading text-[45px] font-black uppercase leading-[1.05] tracking-[-0.02em] text-primary"
             style={{ animationDelay: '90ms' }}
           >
             Посчитай оценку
