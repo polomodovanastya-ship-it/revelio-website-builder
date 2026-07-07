@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { HERO_SUMMARY, PRODUCT_PROOF, USER_FLOW } from '@/lib/ai-evaluation-content'
+import { HERO_SUMMARY, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
 import { EvalStartLink } from '@/components/funnel-tracking'
 
 export function LandingHero() {
@@ -33,23 +33,6 @@ export function LandingHero() {
             оценку проекта с рисками и ограничениями. Делай уверенно, без
             многонедельного ожидания.
           </p>
-
-          {/* user flow */}
-          <ol
-            className="reveal in-view mt-7 flex flex-wrap items-center gap-x-2 gap-y-2"
-            style={{ animationDelay: '240ms' }}
-          >
-            {USER_FLOW.map((step, i) => (
-              <li key={step} className="flex items-center gap-2">
-                <span className="rounded-lg border border-border bg-card px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-foreground">
-                  {step}
-                </span>
-                {i < USER_FLOW.length - 1 && (
-                  <ArrowRight className="h-3.5 w-3.5 text-accent" aria-hidden />
-                )}
-              </li>
-            ))}
-          </ol>
 
           <div
             className="reveal in-view mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
