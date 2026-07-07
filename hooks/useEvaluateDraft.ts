@@ -5,7 +5,7 @@ const DRAFT_KEY = "evaluate_draft"
 const DEBOUNCE_MS = 300
 
 export interface EvaluateDraft {
-  step1: { projectType: string; otherType: string }
+  step1: { projectType: string; otherType: string; consent: boolean }
   step2: {
     industry: string
     otherIndustry: string
