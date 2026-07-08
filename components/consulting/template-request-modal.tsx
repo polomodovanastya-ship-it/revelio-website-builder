@@ -115,7 +115,7 @@ export function TemplateRequestModal({
             >
               {title}
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-2 whitespace-nowrap text-xs leading-relaxed text-muted-foreground">
               Наш консультант пришлет ссылку на файл в Telegram или SMS
             </p>
 
