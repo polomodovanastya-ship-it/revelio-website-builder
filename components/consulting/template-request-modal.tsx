@@ -11,10 +11,12 @@ export function TemplateRequestModal({
   open,
   onClose,
   artifactName,
+  title = 'Запросить шаблон артефакта',
 }: {
   open: boolean
   onClose: () => void
   artifactName: string
+  title?: string
 }) {
   const { toast } = useToast()
   const [phone, setPhone] = useState('')
