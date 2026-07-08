@@ -1,4 +1,4 @@
-import { Heart, Flame } from 'lucide-react'
+import { Heart, Flame, Users } from 'lucide-react'
 import { IF_YOU_SEE, WHEN_YOU_WANT, MAU_TIERS } from '@/lib/cdp-research-data'
 
 export function WhenToImplement() {
@@ -48,17 +48,42 @@ export function WhenToImplement() {
             key={tier.range}
             className="rounded-lg border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
           >
+            <div className="mb-4 flex gap-1.5">
+              {([1, 2, 3] as const).map((n) => (
+                <span
+                  key={n}
+                  className={`h-1.5 flex-1 rounded-full ${n <= tier.stage ? 'bg-accent' : 'bg-border'}`}
+                />
+              ))}
+            </div>
             <h4 className="mb-4 font-heading text-base font-bold text-primary">{tier.range}</h4>
-            <ul className="mb-4 space-y-1.5 border-b border-border pb-4 text-xs leading-snug text-muted-foreground">
-              {tier.stack.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ul>
-            <ul className="space-y-1.5 text-xs leading-snug text-muted-foreground">
-              {tier.team.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ul>
+
+            <div className="mb-4 flex items-center gap-3 rounded-lg bg-secondary/50 p-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                <Users className="h-4 w-4 text-accent" />
+              </span>
+              <span className="font-heading text-lg font-extrabold leading-none text-primary">
+                {tier.headcount}
+              </span>
+            </div>
+
+            <div className="mb-4 border-b border-border pb-4">
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">Стек</p>
+              <ul className="space-y-1.5 text-xs leading-snug text-muted-foreground">
+                {tier.stack.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">Команда</p>
+              <ul className="space-y-1.5 text-xs leading-snug text-muted-foreground">
+                {tier.team.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>

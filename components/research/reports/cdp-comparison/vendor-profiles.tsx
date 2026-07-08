@@ -1,4 +1,5 @@
 // components/research/reports/cdp-comparison/vendor-profiles.tsx
+import { Plus, Minus } from 'lucide-react'
 import { VENDOR_PROFILES, HONORABLE_MENTIONS } from '@/lib/cdp-research-data'
 
 function ProfileCard({
@@ -68,15 +69,25 @@ export function VendorProfiles() {
               <h4 className="mb-4 font-heading text-lg font-bold uppercase tracking-tight text-primary">
                 {v.name}
               </h4>
-              <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">+</p>
-              <ul className="mb-4 space-y-2">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15">
+                  <Plus className="h-3.5 w-3.5 text-accent" strokeWidth={3} />
+                </span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">Плюсы</p>
+              </div>
+              <ul className="mb-5 space-y-2">
                 {v.pros.map((p) => (
                   <li key={p} className="text-sm leading-snug text-foreground">
                     {p}
                   </li>
                 ))}
               </ul>
-              <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">−</p>
+              <div className="mb-3 flex items-center gap-2">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted-foreground/15">
+                  <Minus className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={3} />
+                </span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Минусы</p>
+              </div>
               <ul className="space-y-2">
                 {v.cons.map((c) => (
                   <li key={c} className="text-sm leading-snug text-muted-foreground">
