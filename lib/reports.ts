@@ -5,7 +5,7 @@ import { CdpComparison2026Body } from '@/components/research/reports/cdp-compari
 import { UxB2bTravel2026Body } from '@/components/research/reports/ux-b2b-travel-2026'
 
 // Set to true to publish the research block (home section + /research/* pages + sitemap).
-export const RESEARCH_ENABLED = false
+export const RESEARCH_ENABLED = true
 
 export type ReportAccess = 'open' | 'gated'
 
