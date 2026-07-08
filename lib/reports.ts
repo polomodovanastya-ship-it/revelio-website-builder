@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 
-import { LoyaltyAzs2026Body } from '@/components/research/reports/loyalty-azs-2026'
+// import { LoyaltyAzs2026Body } from '@/components/research/reports/loyalty-azs-2026'
 import { CdpComparison2026Body } from '@/components/research/reports/cdp-comparison-2026'
 import { UxB2bTravel2026Body } from '@/components/research/reports/ux-b2b-travel-2026'
 
