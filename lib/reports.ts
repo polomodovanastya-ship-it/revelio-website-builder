@@ -21,17 +21,17 @@ export type ReportMeta = {
 }
 
 export const REPORTS: Record<string, ReportMeta> = {
-  'loyalty-azs-2026': {
-    slug: 'loyalty-azs-2026',
-    title: 'Конкурентный mystery-audit АЗС-сетей',
-    cardTitle: 'Обзор программ\nлояльности АЗС-рынка\nв 2026',
-    metaTitle: 'Программы лояльности АЗС, 2026',
-    summary:
-      'Сравнительный анализ программ лояльности крупнейших АЗС-сетей: механики, барьеры входа, экономика баллов и тренды цифровизации сервисов на заправках.',
-    access: 'open',
-    badge: 'Открытое исследование · 2026',
-    Body: LoyaltyAzs2026Body,
-  },
+  // 'loyalty-azs-2026': {
+  //   slug: 'loyalty-azs-2026',
+  //   title: 'Конкурентный mystery-audit АЗС-сетей',
+  //   cardTitle: 'Обзор программ\nлояльности АЗС-рынка\nв 2026',
+  //   metaTitle: 'Программы лояльности АЗС, 2026',
+  //   summary:
+  //     'Сравнительный анализ программ лояльности крупнейших АЗС-сетей: механики, барьеры входа, экономика баллов и тренды цифровизации сервисов на заправках.',
+  //   access: 'open',
+  //   badge: 'Открытое исследование · 2026',
+  //   Body: LoyaltyAzs2026Body,
+  // },
   'ux-b2b-travel-2026': {
     slug: 'ux-b2b-travel-2026',
     title: 'UX B2B Travel, 2026',
