@@ -95,6 +95,7 @@ export const ARTIFACTS: ArtifactGroup[] = [
         unit: '1 юнит',
         price: '350 000',
       },
+      { name: 'Матрица BCG (Boston Consulting Group)', result: 'Excel', unit: '1 юнит', price: 'по запросу' },
     ],
   },
   {
@@ -140,6 +141,7 @@ export const ARTIFACTS: ArtifactGroup[] = [
       },
       { name: 'Спецификация на интеграционные и логические связи между модулями', result: 'Word', unit: '1 проект', price: 'по запросу' },
       { name: 'Целевая ролевая модель', result: 'Word', unit: '1 продукт', price: 'по запросу' },
+      { name: 'Матрица BCG (Boston Consulting Group)', result: 'Excel', unit: '1 юнит', price: 'по запросу' },
     ],
   },
 ]
