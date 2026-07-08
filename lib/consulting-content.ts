@@ -95,6 +95,7 @@ export const ARTIFACTS: ArtifactGroup[] = [
         unit: '1 юнит',
         price: '350 000',
       },
+      { name: 'Матрица BCG (Boston Consulting Group)', result: 'Excel', unit: '1 юнит', price: 'по запросу' },
     ],
   },
   {
