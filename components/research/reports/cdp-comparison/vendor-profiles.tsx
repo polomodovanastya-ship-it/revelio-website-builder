@@ -13,7 +13,7 @@ function ProfileCard({
   cons: string[]
 }) {
   return (
-    <div>
+    <div className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/20 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)] md:p-8">
       <div className="mb-6 flex items-center gap-4">
         <h3 className="font-heading text-3xl font-extrabold leading-none tracking-tight text-primary md:text-4xl">
           {name}
@@ -54,7 +54,7 @@ function ProfileCard({
 
 export function VendorProfiles() {
   return (
-    <section className="mb-16 space-y-16">
+    <section className="mb-16 space-y-8">
       {VENDOR_PROFILES.map((v) => (
         <ProfileCard key={v.name} {...v} />
       ))}

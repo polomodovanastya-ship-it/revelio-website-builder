@@ -33,16 +33,27 @@ export function ReportRadar({
       role="img"
       aria-label="Радар-диаграмма сравнения"
     >
-      {rings.map((v) => (
+      <defs>
+        <radialGradient id="radar-backdrop" cx="50%" cy="50%" r="65%">
+          <stop offset="0%" stopColor="currentColor" stopOpacity={0.05} className="text-accent" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity={0} className="text-accent" />
+        </radialGradient>
+        <filter id="radar-shadow" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="3" stdDeviation="4" floodOpacity={0.16} />
+        </filter>
+      </defs>
+      <circle cx={cx} cy={cy} r={radius * 1.05} fill="url(#radar-backdrop)" />
+      {rings.map((v, i) => (
         <circle
           key={v}
           cx={cx}
           cy={cy}
           r={(v / max) * radius}
-          fill="none"
+          fill={i % 2 === 1 ? 'currentColor' : 'none'}
+          className={i % 2 === 1 ? 'text-muted-foreground/[0.04]' : undefined}
           stroke="currentColor"
-          className="text-border"
           strokeWidth={1}
+          style={{ color: 'var(--border)' }}
         />
       ))}
       {axes.map((_, i) => {
@@ -64,17 +75,17 @@ export function ReportRadar({
         const pts = s.values.map((v, i) => pointAt(i, v))
         const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p[0]} ${p[1]}`).join(' ') + ' Z'
         return (
-          <g key={s.name}>
+          <g key={s.name} filter="url(#radar-shadow)">
             <path
               d={d}
               fill={s.color}
-              fillOpacity={0.1}
+              fillOpacity={0.16}
               stroke={s.color}
-              strokeWidth={2}
+              strokeWidth={2.25}
               strokeLinejoin="round"
             />
             {pts.map((p, i) => (
-              <circle key={i} cx={p[0]} cy={p[1]} r={3} fill={s.color} />
+              <circle key={i} cx={p[0]} cy={p[1]} r={3.5} fill={s.color} stroke="var(--card)" strokeWidth={1.5} />
             ))}
           </g>
         )
@@ -89,11 +100,11 @@ export function ReportRadar({
             x={x}
             y={y}
             textAnchor={anchor}
-            className="fill-muted-foreground font-mono"
-            fontSize={9}
+            className="fill-muted-foreground font-mono font-medium"
+            fontSize={9.5}
           >
             {lines.map((ln, li) => (
-              <tspan key={li} x={x} dy={li === 0 ? 0 : 11}>
+              <tspan key={li} x={x} dy={li === 0 ? 0 : 11.5}>
                 {ln}
               </tspan>
             ))}

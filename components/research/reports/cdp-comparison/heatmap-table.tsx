@@ -28,7 +28,10 @@ export function HeatmapTable() {
           </thead>
           <tbody>
             {HEATMAP_ROWS.map((row) => (
-              <tr key={row.criterion} className="border-b border-border last:border-0">
+              <tr
+                key={row.criterion}
+                className="border-b border-border transition-colors last:border-0 odd:bg-secondary/30 hover:bg-accent/[0.06]"
+              >
                 <td className="p-3 font-medium text-foreground">{row.criterion}</td>
                 {row.statuses.map((status, i) => {
                   const legend = HEATMAP_LEGEND.find((l) => l.status === status)!

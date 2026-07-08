@@ -20,7 +20,8 @@ export function CdpComparison2026Body() {
   const [unlocked, setUnlocked] = useState(false)
 
   useEffect(() => {
-    if (sessionStorage.getItem(UNLOCK_KEY) === '1') setUnlocked(true)
+    const previewFull = new URLSearchParams(window.location.search).get('preview') === 'full'
+    if (previewFull || sessionStorage.getItem(UNLOCK_KEY) === '1') setUnlocked(true)
   }, [])
 
   const handleUnlock = () => {
@@ -30,17 +31,23 @@ export function CdpComparison2026Body() {
 
   return (
     <>
-      <div className="mb-12">
-        <span className="mb-6 inline-block font-mono text-xs uppercase tracking-[0.22em] text-accent">
-          [ Закрытое исследование · по запросу ]
-        </span>
-        <h1 className="mb-8 text-balance font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
-          Как выбрать CDP / Loyalty / Comms платформу в 2026?
-        </h1>
-        <p className="max-w-2xl text-base leading-relaxed text-foreground">
-          Инструмент для анализа и выбора единой платформы для управления клиентскими данными (CDP), омниканальных
-          кампаний, лояльностью и промо с персонализацией.
-        </p>
+      <div className="relative -mx-5 mb-12 overflow-hidden px-5 pb-2 pt-2 sm:-mx-8 sm:px-8">
+        <div
+          aria-hidden
+          className="blueprint pointer-events-none absolute inset-0 [background-size:48px_48px] opacity-60 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_70%)]"
+        />
+        <div className="relative">
+          <span className="mb-6 inline-block font-mono text-xs uppercase tracking-[0.22em] text-accent">
+            [ Закрытое исследование · по запросу ]
+          </span>
+          <h1 className="mb-8 text-balance font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
+            Как выбрать CDP / Loyalty / Comms платформу в 2026?
+          </h1>
+          <p className="max-w-2xl text-base leading-relaxed text-foreground">
+            Инструмент для анализа и выбора единой платформы для управления клиентскими данными (CDP), омниканальных
+            кампаний, лояльностью и промо с персонализацией.
+          </p>
+        </div>
       </div>
 
       <Audience />

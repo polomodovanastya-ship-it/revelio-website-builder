@@ -65,7 +65,7 @@ export function LeadGate({ onUnlock }: { onUnlock: () => void }) {
           name="name"
           type="text"
           required
-          placeholder="Имя"
+          placeholder="Как к вам обращаться"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent focus:ring-2 focus:ring-accent/20"
@@ -74,7 +74,7 @@ export function LeadGate({ onUnlock }: { onUnlock: () => void }) {
           name="email"
           type="email"
           required
-          placeholder="Эл.почта"
+          placeholder="you@company.ru"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent focus:ring-2 focus:ring-accent/20"
@@ -82,7 +82,7 @@ export function LeadGate({ onUnlock }: { onUnlock: () => void }) {
         <input
           name="phone"
           type="tel"
-          placeholder="Телефон"
+          placeholder="+7 ··· (необязательно)"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent focus:ring-2 focus:ring-accent/20"
@@ -129,7 +129,9 @@ export function LeadGate({ onUnlock }: { onUnlock: () => void }) {
                 <Loader2 className="h-4 w-4 animate-spin" />
               </>
             ) : (
-              'Открыть!'
+              <>
+                Открыть<span className="tracking-normal">!</span>
+              </>
             )}
           </button>
           <a

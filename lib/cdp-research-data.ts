@@ -1,12 +1,28 @@
 // lib/cdp-research-data.ts
 import type { LucideIcon } from 'lucide-react'
-import { Megaphone, Gem, Cpu, ClipboardList } from 'lucide-react'
+import {
+  Megaphone, Gem, Cpu, ClipboardList,
+  ShoppingCart, Store, UtensilsCrossed, Trophy, Cast, Landmark,
+  ShieldCheck, Dumbbell, TrendingUp, Fuel, Gamepad2, Plane,
+  Cloud, Users, Puzzle, Receipt, Coins, Timer, Server, Handshake,
+} from 'lucide-react'
 import type { RadarSeries } from '@/components/research/report-radar'
 
-export const INDUSTRIES = [
-  'eCom', 'Ритейл', 'HoReCa', 'Спорт-менеджмент',
-  'Стриминги', 'Банки', 'Страхование', 'Фитнес',
-  'Брокеры', 'АЗС-сети', 'Gaming-tech', 'Travel B2C',
+export type IndustryItem = { icon: LucideIcon; label: string }
+
+export const INDUSTRIES: IndustryItem[] = [
+  { icon: ShoppingCart, label: 'eCom' },
+  { icon: Store, label: 'Ритейл' },
+  { icon: UtensilsCrossed, label: 'HoReCa' },
+  { icon: Trophy, label: 'Спорт-менеджмент' },
+  { icon: Cast, label: 'Стриминги' },
+  { icon: Landmark, label: 'Банки' },
+  { icon: ShieldCheck, label: 'Страхование' },
+  { icon: Dumbbell, label: 'Фитнес' },
+  { icon: TrendingUp, label: 'Брокеры' },
+  { icon: Fuel, label: 'АЗС-сети' },
+  { icon: Gamepad2, label: 'Gaming-tech' },
+  { icon: Plane, label: 'Travel B2C' },
 ]
 
 export type AudienceRole = { icon: LucideIcon; label: string }
@@ -18,17 +34,20 @@ export const AUDIENCE_ROLES: AudienceRole[] = [
   { icon: ClipboardList, label: 'Project / Product Manager-у' },
 ]
 
-export const CLOUD_ONPREM_QUESTIONS = [
-  'Когда выбирать облако или onprem?',
-  'Какой продукт выбрать если у меня 1 млн, до 3 млн или 10+ млн MAU?',
-  'У кого меньше ограничений в конструкторе механик?',
-  'Почему лояльность для анонимных чеков – база?',
-  'Какие фичи помогут нарастить регулярную выручку с клиента? (ARPU)',
-  'Я открою ПО и настрою активацию за 30 минут?',
-  'Сколько нужно vCPU, vRAM, vHDD для onprem?',
-  'Можно внедрить самостоятельно? А когда с интегратором?',
-  'и другие секретные знания :)',
+export type CloudOnpremQuestion = { icon: LucideIcon; text: string }
+
+export const CLOUD_ONPREM_QUESTIONS: CloudOnpremQuestion[] = [
+  { icon: Cloud, text: 'Когда выбирать облако или onprem?' },
+  { icon: Users, text: 'Какой продукт выбрать если у меня 1 млн, до 3 млн или 10+ млн MAU?' },
+  { icon: Puzzle, text: 'У кого меньше ограничений в конструкторе механик?' },
+  { icon: Receipt, text: 'Почему лояльность для анонимных чеков – база?' },
+  { icon: Coins, text: 'Какие фичи помогут нарастить регулярную выручку с клиента? (ARPU)' },
+  { icon: Timer, text: 'Я открою ПО и настрою активацию за 30 минут?' },
+  { icon: Server, text: 'Сколько нужно vCPU, vRAM, vHDD для onprem?' },
+  { icon: Handshake, text: 'Можно внедрить самостоятельно? А когда с интегратором?' },
 ]
+
+export const SECRET_KNOWLEDGE_NOTE = 'и другие секретные знания :)'
 
 export const MODULES = [
   'Финансы и устойчивость',
@@ -49,8 +68,10 @@ export const MODULES = [
 ]
 
 export const RESEARCH_STATS = {
-  vendorsCount: '12 вендоров',
-  criteriaCount: '150+ критериев',
+  vendorsValue: '12',
+  vendorsLabel: 'вендоров',
+  criteriaValue: '150+',
+  criteriaLabel: 'критериев',
   blockFactorsNote: 'Блок-факторы и желательные фичи',
   liveDemoNote: 'Live-демо по запросу',
   docConfirmNote: 'Подтверждение через документацию',
@@ -101,10 +122,13 @@ export const VENDOR_SCORES: VendorRawScore[] = [
   { name: 'Altcraft', group: 'cloud', color: '#3B82F6', totalScore: 268, data: 48.5, campaigns: 84, integrations: 28, itArchitecture: 18.5, infoSecurity: 21, communityScore: 5 },
 ]
 
+// Axes 1 and 2 are line-broken deliberately: ReportRadar positions long axis
+// labels near the SVG viewBox edge, where browsers clip <svg> overflow by
+// default — a single long line runs off-canvas. Two shorter lines stay inside.
 export const RADAR_AXES = [
   'Данные + Кампании + Интеграции',
-  'Комьюнити и обучение',
-  'Инфобез/Архитектура',
+  'Комьюнити\nи обучение',
+  'Инфобез /\nАрхитектура',
 ]
 
 function segmentValues(v: VendorRawScore): number[] {
