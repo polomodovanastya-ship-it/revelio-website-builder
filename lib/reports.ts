@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 
-import { LoyaltyAzs2026Body } from '@/components/research/reports/loyalty-azs-2026'
+// import { LoyaltyAzs2026Body } from '@/components/research/reports/loyalty-azs-2026'
 import { CdpComparison2026Body } from '@/components/research/reports/cdp-comparison-2026'
 import { UxB2bTravel2026Body } from '@/components/research/reports/ux-b2b-travel-2026'
 
@@ -21,17 +21,17 @@ export type ReportMeta = {
 }
 
 export const REPORTS: Record<string, ReportMeta> = {
-  'loyalty-azs-2026': {
-    slug: 'loyalty-azs-2026',
-    title: 'Конкурентный mystery-audit АЗС-сетей',
-    cardTitle: 'Обзор программ\nлояльности АЗС-рынка\nв 2026',
-    metaTitle: 'Программы лояльности АЗС, 2026',
-    summary:
-      'Сравнительный анализ программ лояльности крупнейших АЗС-сетей: механики, барьеры входа, экономика баллов и тренды цифровизации сервисов на заправках.',
-    access: 'open',
-    badge: 'Открытое исследование · 2026',
-    Body: LoyaltyAzs2026Body,
-  },
+  // 'loyalty-azs-2026': {
+  //   slug: 'loyalty-azs-2026',
+  //   title: 'Конкурентный mystery-audit АЗС-сетей',
+  //   cardTitle: 'Обзор программ\nлояльности АЗС-рынка\nв 2026',
+  //   metaTitle: 'Программы лояльности АЗС, 2026',
+  //   summary:
+  //     'Сравнительный анализ программ лояльности крупнейших АЗС-сетей: механики, барьеры входа, экономика баллов и тренды цифровизации сервисов на заправках.',
+  //   access: 'open',
+  //   badge: 'Открытое исследование · 2026',
+  //   Body: LoyaltyAzs2026Body,
+  // },
   'ux-b2b-travel-2026': {
     slug: 'ux-b2b-travel-2026',
     title: 'UX B2B Travel, 2026',
@@ -57,7 +57,7 @@ export const REPORTS: Record<string, ReportMeta> = {
 }
 
 export const REPORTS_ORDER = [
-  'loyalty-azs-2026',
+  // 'loyalty-azs-2026',
   'ux-b2b-travel-2026',
   'cdp-comparison-2026',
 ] as const
