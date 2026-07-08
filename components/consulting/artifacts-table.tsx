@@ -1,8 +1,10 @@
 'use client'
 
-import { ChevronDown } from 'lucide-react'
+import { useState } from 'react'
+import { ChevronDown, ArrowDown } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
 import { ARTIFACTS, type ArtifactGroup } from '@/lib/consulting-content'
+import { TemplateRequestModal } from './template-request-modal'
 
 function priceLabel(price: string) {
   return /^\d/.test(price) ? `${price} ₽` : price
@@ -16,8 +18,17 @@ function fromPrice(group: ArtifactGroup) {
   return Math.min(...nums).toLocaleString('ru-RU')
 }
 
-function Group({ group, defaultOpen }: { group: ArtifactGroup; defaultOpen?: boolean }) {
+function Group({
+  group,
+  defaultOpen,
+  onRequestTemplate,
+}: {
+  group: ArtifactGroup
+  defaultOpen?: boolean
+  onRequestTemplate?: (name: string) => void
+}) {
   const from = fromPrice(group)
+  const showRequest = group.group === 'AS IS' && !!onRequestTemplate
   return (
     <details
       open={defaultOpen}
@@ -41,12 +52,23 @@ function Group({ group, defaultOpen }: { group: ArtifactGroup; defaultOpen?: boo
             key={a.name}
             className="flex items-start justify-between gap-4 px-5 py-4 sm:px-6"
           >
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <div className="text-sm leading-snug text-foreground">{a.name}</div>
               <div className="mt-1 font-mono text-[11px] text-muted-foreground">
                 {a.result} · {a.unit}
               </div>
             </div>
+            {showRequest && (
+              <button
+                type="button"
+                onClick={() => onRequestTemplate?.(a.name)}
+                className="flex shrink-0 items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:border-accent hover:text-accent sm:text-[11px]"
+                aria-label={`Запросить шаблон: ${a.name}`}
+              >
+                <ArrowDown className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">Запросить шаблон</span>
+              </button>
+            )}
             <div className="shrink-0 whitespace-nowrap pt-0.5 text-right font-mono text-sm tabular-nums text-primary">
               {priceLabel(a.price)}
             </div>
@@ -59,6 +81,7 @@ function Group({ group, defaultOpen }: { group: ArtifactGroup; defaultOpen?: boo
 
 export function ArtifactsTable() {
   const ref = useReveal<HTMLDivElement>()
+  const [requested, setRequested] = useState<string | null>(null)
 
   return (
     <section id="artifacts" className="border-b border-border py-20 sm:py-28 scroll-mt-24">
@@ -76,10 +99,21 @@ export function ArtifactsTable() {
 
         <div ref={ref} className="reveal mt-12 space-y-4">
           {ARTIFACTS.map((g) => (
-            <Group key={g.group} group={g} defaultOpen={g.group === 'AS IS'} />
+            <Group
+              key={g.group}
+              group={g}
+              defaultOpen={g.group === 'AS IS'}
+              onRequestTemplate={setRequested}
+            />
           ))}
         </div>
       </div>
+
+      <TemplateRequestModal
+        open={requested !== null}
+        onClose={() => setRequested(null)}
+        artifactName={requested ?? ''}
+      />
     </section>
   )
 }
