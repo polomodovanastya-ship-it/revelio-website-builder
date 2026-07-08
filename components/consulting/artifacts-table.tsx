@@ -75,8 +75,8 @@ export function ArtifactsTable() {
         </p>
 
         <div ref={ref} className="reveal mt-12 space-y-4">
-          {ARTIFACTS.map((g, i) => (
-            <Group key={g.group} group={g} defaultOpen={i === 0} />
+          {ARTIFACTS.map((g) => (
+            <Group key={g.group} group={g} defaultOpen={g.group === 'AS IS'} />
           ))}
         </div>
       </div>
