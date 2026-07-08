@@ -57,7 +57,7 @@ export const REPORTS: Record<string, ReportMeta> = {
 }
 
 export const REPORTS_ORDER = [
-  'loyalty-azs-2026',
+  // 'loyalty-azs-2026',
   'ux-b2b-travel-2026',
   'cdp-comparison-2026',
 ] as const
