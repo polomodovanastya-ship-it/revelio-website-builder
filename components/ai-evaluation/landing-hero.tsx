@@ -42,9 +42,9 @@ export function LandingHero() {
             className="reveal in-view mt-5 max-w-2xl text-balance font-heading text-[40px] font-black uppercase leading-[1.05] tracking-[-0.02em] text-primary"
             style={{ animationDelay: '90ms' }}
           >
-            <span aria-live="polite">{ROTATING_HEADLINES[headlineIndex]}</span>
+            <span aria-live="polite" className="text-accent">{ROTATING_HEADLINES[headlineIndex]}</span>
             <br />
-            <span className="text-accent">ИТ-проекта за ~10 минут с AI</span>
+            <span className="text-primary">ИТ-проекта за ~10 минут с AI</span>
           </h1>
 
           <p
