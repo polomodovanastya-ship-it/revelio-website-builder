@@ -1,9 +1,29 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { HERO_SUMMARY, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
 import { EvalStartLink } from '@/components/funnel-tracking'
 
+const ROTATING_HEADLINES = [
+  'Посчитай оценку',
+  'Сформируй GANT',
+  'Выяви риски',
+  'Найди ограничения',
+  'Оцени трудозатраты',
+]
+
 export function LandingHero() {
+  const [headlineIndex, setHeadlineIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeadlineIndex((i) => (i + 1) % ROTATING_HEADLINES.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="relative overflow-hidden border-b border-border pt-28 pb-16 sm:pt-36 sm:pb-24">
       <div
@@ -22,7 +42,7 @@ export function LandingHero() {
             className="reveal in-view mt-5 max-w-2xl text-balance font-heading text-[40px] font-black uppercase leading-[1.05] tracking-[-0.02em] text-primary"
             style={{ animationDelay: '90ms' }}
           >
-            Посчитай оценку
+            <span aria-live="polite">{ROTATING_HEADLINES[headlineIndex]}</span>
             <br />
             <span className="text-accent">ИТ-проекта за ~10 минут с AI</span>
           </h1>
