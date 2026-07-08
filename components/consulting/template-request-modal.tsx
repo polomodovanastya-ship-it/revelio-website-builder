@@ -114,7 +114,7 @@ export function TemplateRequestModal({
               Запросить шаблон артефакта
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {artifactName}
+              Наш консультант пришлет ссылку на файл в Telegram или SMS
             </p>
 
             <form onSubmit={onSubmit} noValidate className="mt-5 flex flex-col gap-4">

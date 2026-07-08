@@ -28,7 +28,8 @@ function Group({
   onRequestTemplate?: (name: string) => void
 }) {
   const from = fromPrice(group)
-  const showRequest = group.group === 'AS IS' && !!onRequestTemplate
+  const showRequest =
+    (group.group === 'AS IS' || group.group === 'TO BE') && !!onRequestTemplate
   return (
     <details
       open={defaultOpen}
