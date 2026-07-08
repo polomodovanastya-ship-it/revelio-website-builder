@@ -32,7 +32,7 @@ export function CdpComparison2026Body() {
     <>
       <div className="mb-12">
         <span className="mb-6 inline-block font-mono text-xs uppercase tracking-[0.22em] text-accent">
-          [ Исследование ]
+          [ Закрытое исследование · по запросу ]
         </span>
         <h1 className="mb-8 text-balance font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
           Как выбрать CDP / Loyalty / Comms платформу в 2026?
