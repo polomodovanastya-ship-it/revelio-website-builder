@@ -1,12 +1,15 @@
 'use client'
 
-import { Check, ArrowRight } from 'lucide-react'
+import { useState } from 'react'
+import { Check, ArrowRight, ArrowDown } from 'lucide-react'
 import Link from 'next/link'
 import { useReveal } from '@/hooks/use-reveal'
 import { WORK_FORMATS, AREAS } from '@/lib/consulting-content'
+import { TemplateRequestModal } from './template-request-modal'
 
 export function WorkFormats() {
   const ref = useReveal<HTMLDivElement>()
+  const [requested, setRequested] = useState<string | null>(null)
 
   return (
     <section id="formats" className="border-b border-border py-20 sm:py-28 scroll-mt-24">
@@ -141,6 +144,19 @@ export function WorkFormats() {
                   Отправить заявку
                   <ArrowRight className="h-4 w-4" />
                 </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setRequested(f.name)}
+                  className={`mt-3 flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
+                    featured
+                      ? 'border border-primary-foreground/20 text-primary-foreground hover:bg-white/10'
+                      : 'border border-border bg-secondary text-primary hover:border-primary/30 hover:bg-muted hover:text-accent'
+                  }`}
+                >
+                  <ArrowDown className="h-4 w-4" />
+                  Запросить шаблон
+                </button>
               </div>
             )
           })}
@@ -151,6 +167,13 @@ export function WorkFormats() {
           коммуникации — обсуждаем индивидуально.
         </p>
       </div>
+
+      <TemplateRequestModal
+        open={requested !== null}
+        onClose={() => setRequested(null)}
+        artifactName={requested ?? ''}
+        title="Запросить шаблон"
+      />
     </section>
   )
 }

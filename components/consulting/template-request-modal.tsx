@@ -11,10 +11,12 @@ export function TemplateRequestModal({
   open,
   onClose,
   artifactName,
+  title = 'Запросить шаблон артефакта',
 }: {
   open: boolean
   onClose: () => void
   artifactName: string
+  title?: string
 }) {
   const { toast } = useToast()
   const [phone, setPhone] = useState('')
@@ -111,7 +113,7 @@ export function TemplateRequestModal({
               id="template-request-title"
               className="pr-10 font-heading text-lg font-bold uppercase tracking-tight text-primary sm:text-xl"
             >
-              Запросить шаблон артефакта
+              {title}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Наш консультант пришлет ссылку на файл в Telegram или SMS
