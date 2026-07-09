@@ -7,6 +7,7 @@ import {
   Cloud, Users, Puzzle, Receipt, Coins, Timer, Server, Handshake,
 } from 'lucide-react'
 import type { RadarSeries } from '@/components/research/report-radar'
+import methodologyAsset from '@/src/assets/methodology-cdp-criteria.xlsx.asset.json'
 
 export type IndustryItem = { icon: LucideIcon; label: string }
 
@@ -77,7 +78,7 @@ export const RESEARCH_STATS = {
   docConfirmNote: 'Подтверждение через документацию',
 }
 
-export const METHODOLOGY_XLSX_HREF = '/files/cdp-methodology-criteria.xlsx'
+export const METHODOLOGY_XLSX_HREF = methodologyAsset.url
 
 export const ONPREM_VENDORS = ['Manzana', 'Rubbles', 'Loymax', 'RightWay']
 export const CLOUD_VENDORS = ['Mindbox', 'Retail Rocket', 'KonnectU', 'Altcraft']
