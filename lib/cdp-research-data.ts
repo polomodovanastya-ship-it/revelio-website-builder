@@ -5,6 +5,7 @@ import {
   ShoppingCart, Store, UtensilsCrossed, Trophy, Cast, Landmark,
   ShieldCheck, Dumbbell, TrendingUp, Fuel, Gamepad2, Plane,
   Cloud, Users, Puzzle, Receipt, Coins, Timer, Server, Handshake,
+  Database, Filter, Share2, BarChart3, MessageCircleQuestion,
 } from 'lucide-react'
 import type { RadarSeries } from '@/components/research/report-radar'
 import methodologyAsset from '@/src/assets/methodology-cdp-criteria.xlsx.asset.json'
