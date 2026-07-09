@@ -18,10 +18,13 @@ export function DemoChecklist() {
         {DEMO_CHECKLIST.map((stage) => (
           <div key={stage.n} className="rounded-2xl border border-border bg-card p-6">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="font-heading text-base font-bold uppercase tracking-tight text-primary">
-                Этап {stage.n}. {stage.title}
-              </h3>
-              <span className="shrink-0 font-mono text-xs text-muted-foreground">{stage.minutes} мин</span>
+              <div className="flex items-center gap-2">
+                <stage.icon className="shrink-0 text-accent" size={18} />
+                <h3 className="font-heading text-base font-bold uppercase tracking-tight text-primary">
+                  Этап {stage.n}. {stage.title}
+                </h3>
+              </div>
+              <span className="shrink-0 font-mono text-xs font-semibold text-accent">{stage.minutes} мин</span>
             </div>
             <ul className="list-disc space-y-2.5 pl-4">
               {stage.items.map((item) => (
