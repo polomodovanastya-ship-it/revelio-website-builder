@@ -62,7 +62,7 @@ function ProfileCard({
 
   return (
     <div className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/20 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)] md:p-8">
-      <div className="mb-6 flex items-center gap-4">
+      <div className="mb-4 flex items-center gap-4">
         <h3 className="font-heading text-3xl font-extrabold leading-none tracking-tight text-primary md:text-4xl">
           {name}
         </h3>
@@ -72,7 +72,9 @@ function ProfileCard({
           </span>
         )}
       </div>
+      <ResourceHeader resources={resources} />
       <div className="grid gap-x-8 gap-y-6 md:grid-cols-2">
+
         <div>
           <span className="mb-4 block select-none font-heading text-5xl font-extrabold leading-none text-primary">
             +
