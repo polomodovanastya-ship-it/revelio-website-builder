@@ -60,7 +60,7 @@ export function RadarSection() {
   return (
     <section className="mb-16 grid gap-8 md:grid-cols-2">
       <RadarGroup title="Onprem:" subtitle="для enterprise и крупного бизнеса" group="onprem" />
-      <RadarGroup title="Cloud-first:" subtitle="для среднего и крупного бизнеса" group="cloud" />
+      <RadarGroup title="Cloud-first:" subtitle="для среднего и крупного бизнеса" group="cloud" invertBands />
       <p className="text-xs leading-relaxed text-muted-foreground md:col-span-2">
         Сегмент «Комьюнити и обучение» — экспертная оценка на основе открытых данных о вендорах, не входит в
         балльную систему 150+ критериев.
