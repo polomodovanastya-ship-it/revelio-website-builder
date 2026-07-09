@@ -38,7 +38,7 @@ function RadarGroup({
         </span>
       </h3>
       <div className="rounded-2xl border border-border bg-card p-4 md:p-6">
-        <ReportRadar axes={RADAR_AXES} series={filtered} max={10} invertBands={invertBands} />
+        <ReportRadar axes={RADAR_AXES} series={filtered} max={10} />
         <div className="mt-4 flex flex-wrap gap-3">
           {allSeries.map((s) => (
             <label key={s.name} className="flex cursor-pointer items-center gap-2 text-sm">
@@ -62,7 +62,7 @@ export function RadarSection() {
   return (
     <section className="mb-16 grid gap-8 md:grid-cols-2">
       <RadarGroup title="Onprem:" subtitle="для enterprise и крупного бизнеса" group="onprem" />
-      <RadarGroup title="Cloud-first:" subtitle="для среднего и крупного бизнеса" group="cloud" invertBands />
+      <RadarGroup title="Cloud-first:" subtitle="для среднего и крупного бизнеса" group="cloud" />
       <p className="text-xs leading-relaxed text-muted-foreground md:col-span-2">
         Сегмент «Комьюнити и обучение» — экспертная оценка на основе открытых данных о вендорах, не входит в
         балльную систему 150+ критериев.
