@@ -20,7 +20,7 @@ export function Participants() {
 
       <div className="mb-6 grid gap-6 sm:grid-cols-2">
         <div>
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">Onprem</p>
+          
           <div className="flex flex-wrap gap-3">
             {ONPREM_VENDORS.map((v) => (
               <ParticipantChip key={v} name={v} />
