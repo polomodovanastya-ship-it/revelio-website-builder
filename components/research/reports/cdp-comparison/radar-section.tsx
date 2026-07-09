@@ -8,10 +8,12 @@ function RadarGroup({
   title,
   subtitle,
   group,
+  invertBands = false,
 }: {
   title: string
   subtitle: string
   group: VendorGroup
+  invertBands?: boolean
 }) {
   const allSeries = radarSeriesFor(group)
   const [visible, setVisible] = useState<Set<string>>(new Set(allSeries.map((s) => s.name)))
