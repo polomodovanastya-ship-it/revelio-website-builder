@@ -1,5 +1,5 @@
 // components/research/reports/cdp-comparison/vendor-profiles.tsx
-import { Plus, Minus } from 'lucide-react'
+import { Minus } from 'lucide-react'
 import { VENDOR_PROFILES, HONORABLE_MENTIONS } from '@/lib/cdp-research-data'
 
 function ProfileCard({
@@ -59,45 +59,13 @@ export function VendorProfiles() {
       {VENDOR_PROFILES.map((v) => (
         <ProfileCard key={v.name} {...v} />
       ))}
-      <div>
-        <h3 className="mb-8 font-heading text-xl font-bold uppercase tracking-tight text-muted-foreground">
+      <div className="space-y-8">
+        <h3 className="font-heading text-xl font-bold uppercase tracking-tight text-muted-foreground">
           И ещё (Honorable mentions)
         </h3>
-        <div className="grid gap-8 md:grid-cols-3">
-          {HONORABLE_MENTIONS.map((v) => (
-            <div key={v.name} className="rounded-2xl border border-border bg-card p-6">
-              <h4 className="mb-4 font-heading text-lg font-bold uppercase tracking-tight text-primary">
-                {v.name}
-              </h4>
-              <div className="mb-3 flex items-center gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15">
-                  <Plus className="h-3.5 w-3.5 text-accent" strokeWidth={3} />
-                </span>
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">Плюсы</p>
-              </div>
-              <ul className="mb-5 list-disc space-y-2 pl-4">
-                {v.pros.map((p) => (
-                  <li key={p} className="text-sm leading-snug text-foreground">
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <div className="mb-3 flex items-center gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted-foreground/15">
-                  <Minus className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={3} />
-                </span>
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Минусы</p>
-              </div>
-              <ul className="list-disc space-y-2 pl-4">
-                {v.cons.map((c) => (
-                  <li key={c} className="text-sm leading-snug text-muted-foreground">
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        {HONORABLE_MENTIONS.map((v) => (
+          <ProfileCard key={v.name} {...v} />
+        ))}
       </div>
     </section>
   )
