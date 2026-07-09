@@ -1,5 +1,5 @@
 // components/research/reports/cdp-comparison/vendor-profiles.tsx
-import { Plus, Minus } from 'lucide-react'
+import { Minus } from 'lucide-react'
 import { VENDOR_PROFILES, HONORABLE_MENTIONS } from '@/lib/cdp-research-data'
 
 function ProfileCard({
