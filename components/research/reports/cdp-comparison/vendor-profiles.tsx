@@ -30,7 +30,7 @@ function ProfileCard({
           <span className="mb-4 block select-none font-heading text-5xl font-extrabold leading-none text-primary">
             +
           </span>
-          <ul className="space-y-3">
+          <ul className="list-disc space-y-3 pl-5">
             {pros.map((p) => (
               <li key={p} className="text-sm leading-snug text-foreground md:text-base">
                 {p}
@@ -39,8 +39,8 @@ function ProfileCard({
           </ul>
         </div>
         <div>
-          <span className="mb-5 mt-2 inline-block h-3.5 w-16 rounded-sm bg-accent" />
-          <ul className="space-y-3">
+          <Minus className="mb-4 h-12 w-12 text-accent" strokeWidth={2.5} />
+          <ul className="list-disc space-y-3 pl-5">
             {cons.map((c) => (
               <li key={c} className="text-sm leading-snug text-foreground md:text-base">
                 {c}
@@ -75,7 +75,7 @@ export function VendorProfiles() {
                 </span>
                 <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">Плюсы</p>
               </div>
-              <ul className="mb-5 space-y-2">
+              <ul className="mb-5 list-disc space-y-2 pl-4">
                 {v.pros.map((p) => (
                   <li key={p} className="text-sm leading-snug text-foreground">
                     {p}
@@ -88,7 +88,7 @@ export function VendorProfiles() {
                 </span>
                 <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Минусы</p>
               </div>
-              <ul className="space-y-2">
+              <ul className="list-disc space-y-2 pl-4">
                 {v.cons.map((c) => (
                   <li key={c} className="text-sm leading-snug text-muted-foreground">
                     {c}
