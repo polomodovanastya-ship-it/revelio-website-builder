@@ -51,8 +51,8 @@ export function ReportRadar({
           cx={cx}
           cy={cy}
           r={(v / max) * radius}
-          fill={i % 2 === 1 ? 'currentColor' : 'none'}
-          className={i % 2 === 1 ? 'text-muted-foreground/[0.04]' : undefined}
+          fill={i % 2 === (invertBands ? 0 : 1) ? 'currentColor' : 'none'}
+          className={i % 2 === (invertBands ? 0 : 1) ? 'text-muted-foreground/[0.04]' : undefined}
           stroke="currentColor"
           strokeWidth={1}
           style={{ color: 'var(--border)' }}
