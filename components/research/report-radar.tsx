@@ -7,13 +7,11 @@ export function ReportRadar({
   series,
   max,
   size = 380,
-  invertBands = false,
 }: {
   axes: string[]
   series: RadarSeries[]
   max: number
   size?: number
-  invertBands?: boolean
 }) {
   const cx = size / 2
   const cy = size / 2
