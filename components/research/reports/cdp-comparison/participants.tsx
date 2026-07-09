@@ -28,7 +28,7 @@ export function Participants() {
           </div>
         </div>
         <div>
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">Cloud-first</p>
+          
           <div className="flex flex-wrap gap-3">
             {CLOUD_VENDORS.map((v) => (
               <ParticipantChip key={v} name={v} />
