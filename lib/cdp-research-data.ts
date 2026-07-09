@@ -182,7 +182,10 @@ export const RECOMMENDATIONS: Recommendation[] = [
 
 // --- Vendor profiles ---------------------------------------------------------
 
-export type VendorProfile = { name: string; score?: number; pros: string[]; cons: string[] }
+export type VendorResources = { docs?: string; api?: string; cases?: string; sla?: string }
+
+export type VendorProfile = { name: string; score?: number; resources?: VendorResources; pros: string[]; cons: string[] }
+
 
 export const VENDOR_PROFILES: VendorProfile[] = [
   {
