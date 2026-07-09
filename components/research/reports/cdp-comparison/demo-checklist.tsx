@@ -7,10 +7,12 @@ export function DemoChecklist() {
       <h2 className="mb-2 font-heading text-3xl font-bold tracking-tight text-primary md:text-4xl">
         Чек-лист для Live-демо
       </h2>
-      <p className="mb-8 max-w-2xl text-base leading-relaxed text-muted-foreground">
-        Как проверить вендора за 1 встречу? Время прохождения готового сценария займет ~{DEMO_TOTAL_MINUTES} минут.
-        Практический инструмент, который превращает абстрактное исследование в готовый сценарий действий для
-        заказчика.
+      <p className="mb-8 max-w-2xl text-base leading-relaxed text-muted-foreground italic">
+        <span>Как проверить вендора за 1 встречу?</span>
+        <br />
+        <span>Время прохождения готового сценария займет ~{DEMO_TOTAL_MINUTES} минут.</span>
+        <br />
+        <span>Практический инструмент, который превращает абстрактное исследование в готовый сценарий действий для заказчика.</span>
       </p>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {DEMO_CHECKLIST.map((stage) => (
@@ -21,7 +23,7 @@ export function DemoChecklist() {
               </h3>
               <span className="shrink-0 font-mono text-xs text-muted-foreground">{stage.minutes} мин</span>
             </div>
-            <ul className="space-y-2.5">
+            <ul className="list-disc space-y-2.5 pl-4">
               {stage.items.map((item) => (
                 <li key={item} className="text-sm leading-snug text-foreground">
                   {item}
