@@ -7,6 +7,7 @@ import {
   Cloud, Users, Puzzle, Receipt, Coins, Timer, Server, Handshake,
 } from 'lucide-react'
 import type { RadarSeries } from '@/components/research/report-radar'
+import methodologyAsset from '@/assets/methodology-cdp-criteria.xlsx.asset.json'
 
 export type IndustryItem = { icon: LucideIcon; label: string }
 
