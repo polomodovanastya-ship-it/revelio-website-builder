@@ -118,7 +118,7 @@ export const VENDOR_SCORES: VendorRawScore[] = [
   { name: 'Rubbles', group: 'onprem', color: '#2E8B57', totalScore: 310, data: 47, campaigns: 110, integrations: 21, itArchitecture: 42, infoSecurity: 23, communityScore: 3 },
   { name: 'Loymax', group: 'onprem', color: '#D4A017', totalScore: 339, data: 48, campaigns: 110, integrations: 32.5, itArchitecture: 37, infoSecurity: 23, communityScore: 8 },
   { name: 'RightWay', group: 'onprem', color: '#3B82F6', totalScore: 237, data: 43, campaigns: 74.5, integrations: 21, itArchitecture: 33, infoSecurity: 17, communityScore: 4 },
-  { name: 'Mindbox', group: 'cloud', color: '#C0392B', totalScore: 276, data: 45, campaigns: 107.5, integrations: 34, itArchitecture: 24, infoSecurity: 21.5, communityScore: 5 },
+  { name: 'Mindbox', group: 'cloud', color: '#C0392B', totalScore: 276, data: 45, campaigns: 107.5, integrations: 34, itArchitecture: 24, infoSecurity: 21.5, communityScore: 7 },
   { name: 'Retail Rocket', group: 'cloud', color: '#2E8B57', totalScore: 276, data: 42, campaigns: 103, integrations: 33, itArchitecture: 24, infoSecurity: 15, communityScore: 5 },
   { name: 'KonnectU', group: 'cloud', color: '#D4A017', totalScore: 257, data: 41, campaigns: 94, integrations: 29, itArchitecture: 23, infoSecurity: 22, communityScore: 5 },
   { name: 'Altcraft', group: 'cloud', color: '#3B82F6', totalScore: 268, data: 48.5, campaigns: 84, integrations: 28, itArchitecture: 18.5, infoSecurity: 21, communityScore: 5 },

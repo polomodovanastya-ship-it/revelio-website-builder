@@ -7,13 +7,11 @@ export function ReportRadar({
   series,
   max,
   size = 380,
-  invertBands = false,
 }: {
   axes: string[]
   series: RadarSeries[]
   max: number
   size?: number
-  invertBands?: boolean
 }) {
   const cx = size / 2
   const cy = size / 2
@@ -45,9 +43,8 @@ export function ReportRadar({
         </filter>
       </defs>
       <circle cx={cx} cy={cy} r={radius * 1.05} fill="url(#radar-backdrop)" />
-      {(invertBands ? [...rings].reverse() : rings).map((v, i) => {
-        const originalIndex = invertBands ? rings.length - 1 - i : i
-        const filled = originalIndex % 2 === (invertBands ? 0 : 1)
+      {rings.map((v, i) => {
+        const filled = i % 2 === 1
         return (
           <circle
             key={v}
