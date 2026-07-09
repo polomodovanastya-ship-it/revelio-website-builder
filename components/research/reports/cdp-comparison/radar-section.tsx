@@ -38,7 +38,7 @@ function RadarGroup({
         </span>
       </h3>
       <div className="rounded-2xl border border-border bg-card p-4 md:p-6">
-        <ReportRadar axes={RADAR_AXES} series={filtered} max={10} />
+        <ReportRadar axes={RADAR_AXES} series={filtered} max={10} invertBands={invertBands} />
         <div className="mt-4 flex flex-wrap gap-3">
           {allSeries.map((s) => (
             <label key={s.name} className="flex cursor-pointer items-center gap-2 text-sm">
