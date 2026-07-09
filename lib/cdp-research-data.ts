@@ -403,11 +403,11 @@ export const MAU_TIERS: MauTier[] = [
 
 // --- Live-demo checklist ---------------------------------------------------
 
-export type DemoStage = { n: number; title: string; minutes: number; items: string[] }
+export type DemoStage = { n: number; title: string; minutes: number; icon: LucideIcon; items: string[] }
 
 export const DEMO_CHECKLIST: DemoStage[] = [
   {
-    n: 1, title: 'Данные и профиль клиента', minutes: 10,
+    n: 1, title: 'Данные и профиль клиента', minutes: 10, icon: Database,
     items: [
       'Golden ID: покажите клиента, который идентифицирован по телефону, email и ID в приложении',
       'Массовая загрузка атрибутов: CSV с 10 000 клиентов для обогащения профилей новыми атрибутами',
@@ -415,14 +415,14 @@ export const DEMO_CHECKLIST: DemoStage[] = [
     ],
   },
   {
-    n: 2, title: 'Сегментация', minutes: 15,
+    n: 2, title: 'Сегментация', minutes: 15, icon: Filter,
     items: [
       'Скорость: создайте сегмент из 3 условий. Засеките время. 5 минут — хорошо, >10 минут — красный флаг',
       'Вложенные сегменты: создайте сегмент из пересечения двух других сегментов',
     ],
   },
   {
-    n: 3, title: 'Кампании и цепочки', minutes: 20,
+    n: 3, title: 'Кампании и цепочки', minutes: 20, icon: Megaphone,
     items: [
       'Триггерная цепочка: «Брошенная корзина → Push через 1 час → Email через 24 часа → SMS через 48 часов» на одном холсте',
       'Настройте A/B-тест триггерной цепочки на существующем сегменте',
@@ -430,7 +430,7 @@ export const DEMO_CHECKLIST: DemoStage[] = [
     ],
   },
   {
-    n: 4, title: 'Каналы и интеграции', minutes: 15,
+    n: 4, title: 'Каналы и интеграции', minutes: 15, icon: Share2,
     items: [
       'Создайте шаблон и отправьте тестовое сообщение по одному из каналов (Email, SMS, Mobile Push, Web Push)',
       'Дашборд аналитики по статусам доставки: «доставлено», «открыто», «кликнуто»',
@@ -438,7 +438,7 @@ export const DEMO_CHECKLIST: DemoStage[] = [
     ],
   },
   {
-    n: 5, title: 'Аналитика', minutes: 15,
+    n: 5, title: 'Аналитика', minutes: 15, icon: BarChart3,
     items: [
       'Дашборд по кампании: конверсия, доход',
       'Постройте воронку «Клик → Корзина → Покупка»',
@@ -446,7 +446,7 @@ export const DEMO_CHECKLIST: DemoStage[] = [
     ],
   },
   {
-    n: 6, title: 'Q&A', minutes: 15,
+    n: 6, title: 'Q&A', minutes: 15, icon: MessageCircleQuestion,
     items: ['Свободные вопросы вендору по итогам сценария'],
   },
 ]
