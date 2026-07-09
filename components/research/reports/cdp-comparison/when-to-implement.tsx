@@ -68,8 +68,7 @@ export function WhenToImplement() {
             </div>
 
             <div className="mb-4 border-b border-border pb-4">
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">Стек</p>
-              <ul className="space-y-1.5 text-xs leading-snug text-muted-foreground">
+              <ul className="list-disc space-y-1.5 pl-4 text-xs leading-snug text-muted-foreground">
                 {tier.stack.map((s) => (
                   <li key={s}>{s}</li>
                 ))}
@@ -77,8 +76,7 @@ export function WhenToImplement() {
             </div>
 
             <div>
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">Команда</p>
-              <ul className="space-y-1.5 text-xs leading-snug text-muted-foreground">
+              <ul className="list-disc space-y-1.5 pl-4 text-xs leading-snug text-muted-foreground">
                 {tier.team.map((s) => (
                   <li key={s}>{s}</li>
                 ))}
