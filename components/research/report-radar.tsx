@@ -7,11 +7,13 @@ export function ReportRadar({
   series,
   max,
   size = 380,
+  invertBands = false,
 }: {
   axes: string[]
   series: RadarSeries[]
   max: number
   size?: number
+  invertBands?: boolean
 }) {
   const cx = size / 2
   const cy = size / 2
@@ -43,19 +45,23 @@ export function ReportRadar({
         </filter>
       </defs>
       <circle cx={cx} cy={cy} r={radius * 1.05} fill="url(#radar-backdrop)" />
-      {rings.map((v, i) => (
-        <circle
-          key={v}
-          cx={cx}
-          cy={cy}
-          r={(v / max) * radius}
-          fill={i % 2 === 1 ? 'currentColor' : 'none'}
-          className={i % 2 === 1 ? 'text-muted-foreground/[0.04]' : undefined}
-          stroke="currentColor"
-          strokeWidth={1}
-          style={{ color: 'var(--border)' }}
-        />
-      ))}
+      {(invertBands ? [...rings].reverse() : rings).map((v, i) => {
+        const originalIndex = invertBands ? rings.length - 1 - i : i
+        const filled = originalIndex % 2 === (invertBands ? 0 : 1)
+        return (
+          <circle
+            key={v}
+            cx={cx}
+            cy={cy}
+            r={(v / max) * radius}
+            fill={filled ? 'currentColor' : 'none'}
+            className={filled ? 'text-muted-foreground/[0.04]' : undefined}
+            stroke="currentColor"
+            strokeWidth={1}
+            style={{ color: 'var(--border)' }}
+          />
+        )
+      })}
       {axes.map((_, i) => {
         const [x, y] = pointAt(i, max)
         return (
