@@ -269,7 +269,14 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
-    name: 'Loymax', score: 339,
+    name: 'Loymax',
+    score: 339,
+    resources: {
+      docs: { href: 'https://docs.loymax.io/' },
+      api: { href: 'https://docs.loymax.io/bin/view/Main/Frequently_asked_questions/' },
+      cases: { href: 'https://loymax.ru/blog/category/all-materials/user-stories/' },
+      sla: { note: '24/7' },
+    },
     pros: [
       'Качественно проработанные интеграционные сервисы под кассы / мобилки',
       'Сильная персонализация под кейсы ритейла',
@@ -284,7 +291,14 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
-    name: 'Manzana', score: 281,
+    name: 'Manzana',
+    score: 281,
+    resources: {
+      docs: { href: 'https://docs.manzanagroup.ru/xwiki/bin/view/Main/' },
+      api: { href: 'https://manzanagroup.ru/API/' },
+      cases: { href: 'https://manzanagroup.ru/news/?cat=keysy' },
+      sla: { note: '24/7' },
+    },
     pros: [
       'Платформа построена вокруг мощного ядра лояльности — ключевое преимущество для бизнеса с развитыми программами лояльности',
       'Давно на рынке (с 2004 г.), крупные клиенты',
@@ -306,6 +320,12 @@ export const VENDOR_PROFILES: VendorProfile[] = [
 export const HONORABLE_MENTIONS: VendorProfile[] = [
   {
     name: 'REES46',
+    resources: {
+      docs: { href: 'https://rees46.ru/docs/ru/' },
+      api: { href: 'https://reference.api.rees46.com/' },
+      cases: { href: 'https://rees46.ru/cases/' },
+      sla: { note: 'по запросу' },
+    },
     pros: [
       'All-in-one решение',
       'Развитые механики и сервисы лояльности',
@@ -320,6 +340,12 @@ export const HONORABLE_MENTIONS: VendorProfile[] = [
   },
   {
     name: 'HFLabs',
+    resources: {
+      docs: { note: 'по запросу' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://hflabs.ru/blog/keisy/' },
+      sla: { note: '24/7' },
+    },
     pros: [
       'Зрелая команда для доработки в контуре',
       'Сильная система дедупликации',
@@ -335,6 +361,12 @@ export const HONORABLE_MENTIONS: VendorProfile[] = [
   },
   {
     name: 'CSI SetLoyalty',
+    resources: {
+      docs: { href: 'https://crystals.atlassian.net/wiki/' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://crystals.ru/projects/' },
+      sla: { note: '24/7' },
+    },
     pros: [
       'Глубокая детализация всех контактов с клиентом с наличием дедупликации',
       'Расширенные возможности управления бонусами (история, api, срочные, начисление/списание из кабинета)',
