@@ -183,14 +183,26 @@ export const RECOMMENDATIONS: Recommendation[] = [
 
 // --- Vendor profiles ---------------------------------------------------------
 
-export type VendorResources = { docs?: string; api?: string; cases?: string; sla?: string }
+export type VendorResources = {
+  docs?: { href?: string; note?: string }
+  api?: { href?: string; note?: string }
+  cases?: { href?: string; note?: string }
+  sla?: { href?: string; note?: string }
+}
 
 export type VendorProfile = { name: string; score?: number; resources?: VendorResources; pros: string[]; cons: string[] }
 
 
 export const VENDOR_PROFILES: VendorProfile[] = [
   {
-    name: 'Rubbles', score: 310,
+    name: 'Rubbles',
+    score: 310,
+    resources: {
+      docs: { note: 'по запросу' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://www.rubbles.ru/industries/retail' },
+      sla: { note: 'по запросу NDA' },
+    },
     pros: [
       'Каждое внедрение – глубоко кастомизированный форк',
       'Выдается доступ к базе и настройкам',
@@ -209,7 +221,14 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
-    name: 'Retail Rocket', score: 276,
+    name: 'Retail Rocket',
+    score: 276,
+    resources: {
+      docs: { href: 'https://docs.retailrocket.net/' },
+      api: { href: 'https://docs.retailrocket.net/' },
+      cases: { href: 'https://retailrocket.ru/blog/cases/' },
+      sla: { note: '24/7 + рабочие часы' },
+    },
     pros: [
       'Super friendly UX – 30 мин и создаешь реальные механики',
       'Уникальные фичи: теги, анонимные чеки, не суммирование акций',
@@ -227,7 +246,14 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
-    name: 'RightWay', score: 237,
+    name: 'RightWay',
+    score: 237,
+    resources: {
+      docs: { note: 'по запросу' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://rightway-tech.ru/cases/' },
+      sla: { note: '10–19 МСК, 24/7 форс-мажоры' },
+    },
     pros: [
       'Сильный BPM-конструктор (согласования)',
       'Хорошая ролевая модель + атрибутивный редактор',

@@ -5,10 +5,10 @@ import { VENDOR_PROFILES, HONORABLE_MENTIONS } from '@/lib/cdp-research-data'
 
 function ResourceHeader({ resources }: { resources?: VendorResources }) {
   const items = [
-    { key: 'docs', label: 'Документация', icon: FileText, href: resources?.docs },
-    { key: 'api', label: 'API', icon: LinkIcon, href: resources?.api },
-    { key: 'cases', label: 'Кейсы', icon: Building2, href: resources?.cases },
-    { key: 'sla', label: 'SLA', icon: ClipboardList, href: resources?.sla },
+    { key: 'docs', label: 'Документация', icon: FileText, item: resources?.docs },
+    { key: 'api', label: 'API', icon: LinkIcon, item: resources?.api },
+    { key: 'cases', label: 'Кейсы', icon: Building2, item: resources?.cases },
+    { key: 'sla', label: 'SLA', icon: ClipboardList, item: resources?.sla },
   ] as const
 
   return (
@@ -16,11 +16,15 @@ function ResourceHeader({ resources }: { resources?: VendorResources }) {
       <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
         [ Ресурсы ]
       </span>
-      {items.map(({ key, label, icon: Icon, href }) => {
+      {items.map(({ key, label, icon: Icon, item }) => {
+        const href = item?.href
         const content = (
           <>
             <Icon className="h-4 w-4" />
             <span className="text-sm">{label}</span>
+            {item?.note && (
+              <span className="text-sm text-muted-foreground"> ({item.note})</span>
+            )}
           </>
         )
         return href ? (
