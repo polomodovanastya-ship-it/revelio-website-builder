@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import consultingHeroAsset from '@/assets/consulting-hero.png.asset.json'
+import consultingHeroAsset from '@/src/assets/consulting-hero.png.asset.json'
 import { STEPS } from '@/lib/consulting-content'
 
 export function ConsultingHero() {
