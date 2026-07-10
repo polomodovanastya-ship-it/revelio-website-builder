@@ -16,10 +16,10 @@ export function ConsultingHero() {
         </span>
 
         <h1
-          className="reveal in-view mt-5 font-heading text-4xl font-black uppercase leading-[1.04] tracking-[-0.02em] text-primary sm:text-6xl lg:text-7xl"
+          className="reveal in-view mt-5 font-heading text-3xl font-black uppercase leading-[1.04] tracking-[-0.02em] text-primary sm:text-5xl lg:text-6xl"
           style={{ animationDelay: '90ms' }}
         >
-          Консалтинг
+          Бизнес/ИТ/AI-консалтинг
         </h1>
 
         <div
