@@ -37,9 +37,6 @@ export function CdpComparison2026Body() {
           className="blueprint pointer-events-none absolute inset-0 [background-size:48px_48px] opacity-60 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_70%)]"
         />
         <div className="relative">
-          <span className="mb-6 inline-block font-mono text-xs uppercase tracking-[0.22em] text-accent">
-            [ Закрытое исследование · по запросу ]
-          </span>
           <h1 className="mb-8 text-balance font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
             Как выбрать CDP / Loyalty / Comms платформу в 2026?
           </h1>
