@@ -271,6 +271,31 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
+    name: 'Altcraft',
+    score: 268,
+    resources: {
+      docs: { href: 'https://use.altcraft.com/' },
+      api: { href: 'https://use.altcraft.com/developer-guide/api-interaction/' },
+      cases: { href: 'https://altcraft.com/ru/blog?page=2&tag=%D0%9A%D0%B5%D0%B9%D1%81%D1%8B' },
+      sla: { href: 'https://altcraft.com/ru/SLA_SaaS.pdf' },
+    },
+    pros: [
+      'Хорошо проработана базовая лояльность',
+      'All-in-one решение, подходят для быстрого и дешевого пуска в контуре',
+      'База более 100 млн контактов, хорошая масштабируемость по объему',
+      'Собственный отправщик Email, поддержка всех каналов коммуникаций',
+      'В лидерах по модулю опросов',
+      'Развитая встроенная аналитика (когортный отчет, CLT, карта кликов, конверсии, возвраты)',
+      'Тихие окна, A/B, реал-тайм триггеры, Best Send Time',
+    ],
+    cons: [
+      'Выросли из банкинга, нет адаптации сущностей под ритейл и HoReCa',
+      'Не развит функционал золотой записи и дедупликации',
+      'Нет Next Best Offer, товарных рекомендаций, предсказаний — слабая персонализация',
+      'Отсутствует поддержка SFTP, SMTP, SDK, ограниченные интеграционные возможности',
+    ],
+  },
+  {
     name: 'RightWay',
     score: 237,
     resources: {
