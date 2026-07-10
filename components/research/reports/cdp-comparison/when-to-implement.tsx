@@ -8,7 +8,7 @@ export function WhenToImplement() {
         Когда внедрять?
       </h2>
       <p className="mb-8 text-base italic leading-relaxed text-muted-foreground">
-        Когда исчерпаны все методы ручного взаимодействия
+        Когда исчерпаны все методы ручного взаимодействия.
       </p>
       <div className="mb-10 grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border border-border bg-card p-6">
