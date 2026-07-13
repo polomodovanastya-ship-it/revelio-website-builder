@@ -432,6 +432,27 @@ export const HONORABLE_MENTIONS: VendorProfile[] = [
     ],
   },
   {
+    name: 'MAXMA',
+    resources: {
+      docs: { href: 'https://help.maxma.com/p/6VihWWCv8WNTRg/Rukovodstva' },
+      api: { href: 'https://docs.maxma.com/api/' },
+      cases: { href: 'https://maxma.com/blog/category/cases' },
+      sla: { note: '10–18 МСК' },
+    },
+    pros: [
+      'Очень простое и удобное решение с комфортным онбордингом в систему',
+      'Интуитивно понятный UI',
+      'Обширный опыт в Fashion и beauty ритейле',
+      'Добротный выбор кассовых интеграций',
+      'Качественная документация по платформе и интеграциям',
+    ],
+    cons: [
+      'Нет возможности кастомной доработки решения со стороны заказчика',
+      'Под проработку запроса может быть выделена малочисленная команда',
+      'Нет опыта крупного развертывания on premise',
+    ],
+  },
+  {
     name: 'CSI SetLoyalty',
     resources: {
       docs: { href: 'https://crystals.atlassian.net/wiki/' },
