@@ -46,8 +46,8 @@ export const REPORTS: Record<string, ReportMeta> = {
   'cdp-comparison-2026': {
     slug: 'cdp-comparison-2026',
     title: 'Как выбрать CDP / Loyalty / Comms платформу в 2026?',
-    cardTitle: 'Сравнение CDP-систем\n(Loyalty, Campaign, CVM,\nRTDM) в 2025',
-    metaTitle: 'Сравнение CDP-систем, 2025',
+    cardTitle: 'Сравнение CDP-систем\n(Loyalty, Campaign, CVM,\nRTDM) в 2026',
+    metaTitle: 'Сравнение CDP-систем, 2026',
     summary:
       'Функциональное и архитектурное сравнение CDP-систем: модели данных, сегментация в реальном времени, интеграции с каналами, аналитика и стоимость владения.',
     access: 'gated',
