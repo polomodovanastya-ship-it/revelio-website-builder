@@ -1,5 +1,5 @@
 import { ReportSectionCard, StatTile, BarRow } from '../primitives'
-import { formatNumber } from '@/lib/report-format'
+import { formatHours } from '@/lib/report-format'
 import type { ReportGroup, ReportTotals } from '@/lib/report-api'
 
 // 01 Краткое резюме
@@ -16,9 +16,9 @@ export function SummarySection({
     <ReportSectionCard number="01" title="Краткое резюме">
       {summary && <p className="mb-6 text-sm leading-relaxed text-foreground">{summary}</p>}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        <StatTile value={`${formatNumber(totals.hours_expected)} ч`} label="Ожидаемо" highlight />
+        <StatTile value={`${formatHours(totals.hours_expected)} ч`} label="Ожидаемо" highlight />
         <StatTile
-          value={`${formatNumber(totals.hours_min)}–${formatNumber(totals.hours_max)} ч`}
+          value={`${formatHours(totals.hours_min)}–${formatHours(totals.hours_max)} ч`}
           label="Диапазон"
         />
         <StatTile value={String(totals.tasks)} label="Задач" />

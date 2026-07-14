@@ -1,6 +1,6 @@
 import { Users } from 'lucide-react'
 import { ReportSectionCard, BarRow } from '../primitives'
-import { formatNumber, toPercent } from '@/lib/report-format'
+import { formatHours, toPercent } from '@/lib/report-format'
 import type { ReportRoles } from '@/lib/report-api'
 
 // Часы по ролям — не входит в нумерованные 8 секций дефолт-спека, поэтому
@@ -15,7 +15,7 @@ export function RolesSection({ roles }: { roles: ReportRoles }) {
             key={r.role}
             label={r.label}
             share={r.share}
-            trailing={`${formatNumber(r.hours_expected)} ч · ${Math.round(toPercent(r.share))}%`}
+            trailing={`${formatHours(r.hours_expected)} ч · ${Math.round(toPercent(r.share))}%`}
           />
         ))}
       </div>

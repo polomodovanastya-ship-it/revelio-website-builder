@@ -1,5 +1,5 @@
 import { ReportSectionCard, Badge, accuracyTone } from '../primitives'
-import { formatNumber, toPercent } from '@/lib/report-format'
+import { formatHours, toPercent } from '@/lib/report-format'
 import type { ReportGroup, ReportTotals } from '@/lib/report-api'
 
 // 03 Сводная оценка
@@ -46,9 +46,9 @@ export function GroupsSection({
               <tr key={g.name} className="border-b border-border last:border-b-0">
                 <td className="py-2.5 font-medium text-foreground">{g.name}</td>
                 <td className="py-2.5 text-muted-foreground">{g.count}</td>
-                <td className="py-2.5 text-muted-foreground">{formatNumber(g.min)}</td>
-                <td className="py-2.5 text-foreground">{formatNumber(g.expected)}</td>
-                <td className="py-2.5 text-muted-foreground">{formatNumber(g.max)}</td>
+                <td className="py-2.5 text-muted-foreground">{formatHours(g.min)}</td>
+                <td className="py-2.5 text-foreground">{formatHours(g.expected)}</td>
+                <td className="py-2.5 text-muted-foreground">{formatHours(g.max)}</td>
                 <td className="py-2.5 text-muted-foreground">{Math.round(toPercent(g.share))}%</td>
                 <td className="py-2.5">
                   <Badge tone={accuracyTone(g.accuracy)}>{g.accuracy}</Badge>
@@ -58,9 +58,9 @@ export function GroupsSection({
             <tr className="bg-muted/60 font-semibold">
               <td className="py-2.5 text-foreground">Итого</td>
               <td className="py-2.5 text-foreground">{totals.tasks}</td>
-              <td className="py-2.5 text-foreground">{formatNumber(totals.hours_min)}</td>
-              <td className="py-2.5 text-foreground">{formatNumber(totals.hours_expected)}</td>
-              <td className="py-2.5 text-foreground">{formatNumber(totals.hours_max)}</td>
+              <td className="py-2.5 text-foreground">{formatHours(totals.hours_min)}</td>
+              <td className="py-2.5 text-foreground">{formatHours(totals.hours_expected)}</td>
+              <td className="py-2.5 text-foreground">{formatHours(totals.hours_max)}</td>
               <td className="py-2.5 text-foreground">100%</td>
               <td className="py-2.5">
                 {accuracyOverall && <Badge tone={accuracyTone(accuracyOverall)}>{accuracyOverall}</Badge>}

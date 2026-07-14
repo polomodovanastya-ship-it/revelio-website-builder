@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { ReportSectionCard, Badge, accuracyTone } from '../primitives'
-import { formatNumber } from '@/lib/report-format'
+import { formatHours } from '@/lib/report-format'
 import type { ReportTask } from '@/lib/report-api'
 
 // 04 Детализация задач
@@ -51,7 +51,7 @@ export function TasksSection({ tasks }: { tasks: ReportTask[] }) {
                     <tr key={i} className="border-b border-border last:border-b-0">
                       <td className="py-2.5 text-foreground">{t.title}</td>
                       <td className="py-2.5 text-muted-foreground">
-                        {formatNumber(t.min)}–{formatNumber(t.expected)}–{formatNumber(t.max)}
+                        {formatHours(t.min)}–{formatHours(t.expected)}–{formatHours(t.max)}
                       </td>
                       <td className="py-2.5">
                         <Badge tone={accuracyTone(t.accuracy)}>{t.accuracy}</Badge>
