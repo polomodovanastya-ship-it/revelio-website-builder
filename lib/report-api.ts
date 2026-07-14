@@ -114,6 +114,7 @@ function requireBase(): string {
 async function parseError(res: Response): Promise<string> {
   try {
     const data = await res.json()
+    if (data && typeof data.error === "string") return data.error
     if (data && typeof data.message === "string") return data.message
   } catch {
     /* noop */
