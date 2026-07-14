@@ -1,23 +1,12 @@
 'use client'
 import { useMemo } from 'react'
-import { ChevronDown, Download, Loader2 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { ChevronDown } from 'lucide-react'
 import { ReportSectionCard, Badge, accuracyTone } from '../primitives'
 import { formatNumber } from '@/lib/report-format'
-import type { ReportDownloads, ReportTask } from '@/lib/report-api'
+import type { ReportTask } from '@/lib/report-api'
 
 // 04 Детализация задач
-export function TasksSection({
-  tasks,
-  downloads,
-  onDownload,
-  downloading,
-}: {
-  tasks: ReportTask[]
-  downloads: ReportDownloads
-  onDownload: (kind: 'pdf' | 'csv') => void
-  downloading: 'pdf' | 'csv' | null
-}) {
+export function TasksSection({ tasks }: { tasks: ReportTask[] }) {
   const groups = useMemo(() => {
     const order: string[] = []
     const byGroup = new Map<string, ReportTask[]>()
@@ -75,22 +64,6 @@ export function TasksSection({
           </details>
         ))}
       </div>
-      {(downloads.csv || downloads.pdf) && (
-        <div className="mt-6 flex flex-wrap gap-3">
-          {downloads.csv && (
-            <Button variant="outline" onClick={() => onDownload('csv')} disabled={downloading !== null}>
-              {downloading === 'csv' ? <Loader2 className="animate-spin" /> : <Download />}
-              Скачать CSV
-            </Button>
-          )}
-          {downloads.pdf && (
-            <Button onClick={() => onDownload('pdf')} disabled={downloading !== null}>
-              {downloading === 'pdf' ? <Loader2 className="animate-spin" /> : <Download />}
-              Скачать PDF
-            </Button>
-          )}
-        </div>
-      )}
     </ReportSectionCard>
   )
 }

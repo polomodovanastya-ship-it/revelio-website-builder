@@ -2,6 +2,7 @@
 import { useCallback, useState } from 'react'
 import { useToast } from '@/components/toast'
 import { downloadReport, type ReportData } from '@/lib/report-api'
+import { DownloadsBar } from './downloads-bar'
 import { SummarySection } from './sections/summary-section'
 import { ContextSection } from './sections/context-section'
 import { GroupsSection } from './sections/groups-section'
@@ -52,16 +53,12 @@ export function ReportView({ data, token, password }: ReportViewProps) {
         {contactLine && <p className="mt-2 text-sm text-muted-foreground">{contactLine}</p>}
       </header>
 
+      <DownloadsBar downloads={data.downloads} onDownload={handleDownload} downloading={downloading} />
+
       <div className="space-y-6">
         <SummarySection summary={data.project.summary} totals={data.totals} groups={data.groups} />
 
-        <ContextSection
-          project={data.project}
-          qa={data.qa}
-          showCsv={data.downloads.csv}
-          onDownloadCsv={() => handleDownload('csv')}
-          downloading={downloading === 'csv'}
-        />
+        <ContextSection project={data.project} qa={data.qa} />
 
         {data.groups.length > 0 && (
           <GroupsSection groups={data.groups} totals={data.totals} accuracyOverall={data.accuracy?.overall} />
@@ -69,14 +66,7 @@ export function ReportView({ data, token, password }: ReportViewProps) {
 
         {data.roles && data.roles.roles.length > 0 && <RolesSection roles={data.roles} />}
 
-        {data.tasks.length > 0 && (
-          <TasksSection
-            tasks={data.tasks}
-            downloads={data.downloads}
-            onDownload={handleDownload}
-            downloading={downloading}
-          />
-        )}
+        {data.tasks.length > 0 && <TasksSection tasks={data.tasks} />}
 
         {data.risks.length > 0 && <RisksSection risks={data.risks} />}
 

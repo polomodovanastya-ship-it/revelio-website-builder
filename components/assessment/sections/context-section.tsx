@@ -1,5 +1,3 @@
-import { Download, Loader2 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { ReportSectionCard } from '../primitives'
 import type { ReportProject, ReportQA } from '@/lib/report-api'
 
@@ -7,21 +5,17 @@ import type { ReportProject, ReportQA } from '@/lib/report-api'
 export function ContextSection({
   project,
   qa,
-  showCsv,
-  onDownloadCsv,
-  downloading,
 }: {
   project: ReportProject
   qa: ReportQA[]
-  showCsv: boolean
-  onDownloadCsv: () => void
-  downloading: boolean
 }) {
   const pills = [
     { label: 'Тип проекта', value: project.type },
     { label: 'Отрасль', value: project.industry },
     { label: 'Компания', value: project.company },
   ].filter((p) => p.value)
+
+  if (pills.length === 0 && qa.length === 0) return null
 
   return (
     <ReportSectionCard number="02" title="Контекст проекта">
@@ -36,7 +30,7 @@ export function ContextSection({
         </div>
       )}
       {qa.length > 0 && (
-        <dl className="mt-6 space-y-4">
+        <dl className={pills.length > 0 ? 'mt-6 space-y-4' : 'space-y-4'}>
           {qa.map((item, i) => (
             <div key={i} className="border-b border-border pb-4 last:border-b-0 last:pb-0">
               <dt className="text-sm font-semibold text-foreground">{item.question}</dt>
@@ -44,12 +38,6 @@ export function ContextSection({
             </div>
           ))}
         </dl>
-      )}
-      {showCsv && (
-        <Button variant="outline" className="mt-6" onClick={onDownloadCsv} disabled={downloading}>
-          {downloading ? <Loader2 className="animate-spin" /> : <Download />}
-          Скачать CSV
-        </Button>
       )}
     </ReportSectionCard>
   )
