@@ -32,16 +32,16 @@ export function TasksSection({ tasks }: { tasks: ReportTask[] }) {
               <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
             </summary>
             <div className="overflow-x-auto px-4 pb-4">
-              <table className="w-full text-sm">
+              <table className="w-full min-w-[520px] text-sm">
                 <thead>
-                  <tr className="border-b border-border text-left">
-                    <th className="pb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                  <tr className="border-b border-border">
+                    <th className="w-full px-3 pb-3 pl-0 text-left font-mono text-xs uppercase tracking-wide text-muted-foreground">
                       Задача
                     </th>
-                    <th className="pb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                    <th className="whitespace-nowrap px-3 pb-3 text-right font-mono text-xs uppercase tracking-wide text-muted-foreground">
                       Min–Ожид–Max, ч
                     </th>
-                    <th className="pb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                    <th className="whitespace-nowrap px-3 pb-3 pr-0 text-left font-mono text-xs uppercase tracking-wide text-muted-foreground">
                       Точность
                     </th>
                   </tr>
@@ -49,11 +49,11 @@ export function TasksSection({ tasks }: { tasks: ReportTask[] }) {
                 <tbody>
                   {g.items.map((t, i) => (
                     <tr key={i} className="border-b border-border last:border-b-0">
-                      <td className="py-2.5 text-foreground">{t.title}</td>
-                      <td className="py-2.5 text-muted-foreground">
+                      <td className="px-3 py-3 pl-0 text-foreground">{t.title}</td>
+                      <td className="whitespace-nowrap px-3 py-3 text-right tabular-nums text-muted-foreground">
                         {formatHours(t.min)}–{formatHours(t.expected)}–{formatHours(t.max)}
                       </td>
-                      <td className="py-2.5">
+                      <td className="whitespace-nowrap px-3 py-3 pr-0">
                         <Badge tone={accuracyTone(t.accuracy)}>{t.accuracy}</Badge>
                       </td>
                     </tr>
