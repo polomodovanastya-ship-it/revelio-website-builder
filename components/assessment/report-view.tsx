@@ -75,7 +75,7 @@ export function ReportView({ data, token, password }: ReportViewProps) {
   )
 
   return (
-    <div className="lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:items-start lg:gap-10">
+    <div className="lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-10">
       <ReportNav items={navItems} />
 
       <div>
