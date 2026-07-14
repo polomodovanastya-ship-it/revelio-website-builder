@@ -7,7 +7,7 @@ import type { ReportData } from "./report-api"
 export const reportFixture: ReportData = {
   project: {
     title: "Развитие и масштабирование ИИ-ассистента",
-    type: "Продуктовая разработка",
+    type: "new_direction",
     industry: "Retail / Logistics",
     company: "АО «Тандер»",
     summary:
