@@ -43,19 +43,22 @@ export function ReportRadar({
         </filter>
       </defs>
       <circle cx={cx} cy={cy} r={radius * 1.05} fill="url(#radar-backdrop)" />
-      {rings.map((v, i) => (
-        <circle
-          key={v}
-          cx={cx}
-          cy={cy}
-          r={(v / max) * radius}
-          fill={i % 2 === 1 ? 'currentColor' : 'none'}
-          className={i % 2 === 1 ? 'text-muted-foreground/[0.04]' : undefined}
-          stroke="currentColor"
-          strokeWidth={1}
-          style={{ color: 'var(--border)' }}
-        />
-      ))}
+      {rings.map((v, i) => {
+        const filled = i % 2 === 1
+        return (
+          <circle
+            key={v}
+            cx={cx}
+            cy={cy}
+            r={(v / max) * radius}
+            fill={filled ? 'currentColor' : 'none'}
+            className={filled ? 'text-muted-foreground/[0.04]' : undefined}
+            stroke="currentColor"
+            strokeWidth={1}
+            style={{ color: 'var(--border)' }}
+          />
+        )
+      })}
       {axes.map((_, i) => {
         const [x, y] = pointAt(i, max)
         return (

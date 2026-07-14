@@ -5,8 +5,10 @@ import {
   ShoppingCart, Store, UtensilsCrossed, Trophy, Cast, Landmark,
   ShieldCheck, Dumbbell, TrendingUp, Fuel, Gamepad2, Plane,
   Cloud, Users, Puzzle, Receipt, Coins, Timer, Server, Handshake,
+  Database, Filter, Share2, BarChart3, MessageCircleQuestion,
 } from 'lucide-react'
 import type { RadarSeries } from '@/components/research/report-radar'
+import methodologyAsset from '@/src/assets/methodology-cdp-criteria.xlsx.asset.json'
 
 export type IndustryItem = { icon: LucideIcon; label: string }
 
@@ -77,7 +79,7 @@ export const RESEARCH_STATS = {
   docConfirmNote: 'Подтверждение через документацию',
 }
 
-export const METHODOLOGY_XLSX_HREF = '/files/cdp-methodology-criteria.xlsx'
+export const METHODOLOGY_XLSX_HREF = methodologyAsset.url
 
 export const ONPREM_VENDORS = ['Manzana', 'Rubbles', 'Loymax', 'RightWay']
 export const CLOUD_VENDORS = ['Mindbox', 'Retail Rocket', 'KonnectU', 'Altcraft']
@@ -116,7 +118,7 @@ export const VENDOR_SCORES: VendorRawScore[] = [
   { name: 'Rubbles', group: 'onprem', color: '#2E8B57', totalScore: 310, data: 47, campaigns: 110, integrations: 21, itArchitecture: 42, infoSecurity: 23, communityScore: 3 },
   { name: 'Loymax', group: 'onprem', color: '#D4A017', totalScore: 339, data: 48, campaigns: 110, integrations: 32.5, itArchitecture: 37, infoSecurity: 23, communityScore: 8 },
   { name: 'RightWay', group: 'onprem', color: '#3B82F6', totalScore: 237, data: 43, campaigns: 74.5, integrations: 21, itArchitecture: 33, infoSecurity: 17, communityScore: 4 },
-  { name: 'Mindbox', group: 'cloud', color: '#C0392B', totalScore: 276, data: 45, campaigns: 107.5, integrations: 34, itArchitecture: 24, infoSecurity: 21.5, communityScore: 5 },
+  { name: 'Mindbox', group: 'cloud', color: '#C0392B', totalScore: 276, data: 45, campaigns: 107.5, integrations: 34, itArchitecture: 24, infoSecurity: 21.5, communityScore: 7 },
   { name: 'Retail Rocket', group: 'cloud', color: '#2E8B57', totalScore: 276, data: 42, campaigns: 103, integrations: 33, itArchitecture: 24, infoSecurity: 15, communityScore: 5 },
   { name: 'KonnectU', group: 'cloud', color: '#D4A017', totalScore: 257, data: 41, campaigns: 94, integrations: 29, itArchitecture: 23, infoSecurity: 22, communityScore: 5 },
   { name: 'Altcraft', group: 'cloud', color: '#3B82F6', totalScore: 268, data: 48.5, campaigns: 84, integrations: 28, itArchitecture: 18.5, infoSecurity: 21, communityScore: 5 },
@@ -176,16 +178,31 @@ export const RECOMMENDATIONS: Recommendation[] = [
   { categories: ['ФИЧИ', 'ВНЕДРЕНИЕ'], title: 'Не используйте встроенный контакт-центр', text: '«Родной» Service Desk в CDP часто медленный и неудобный. Лучше интегрировать 5-6 сервисов в сторонний' },
   { categories: ['АРХИТЕКТУРА', 'КОМАНДА'], title: 'Обращайте внимание, «откуда» вырос продукт', text: 'Из «BPM-решения», из мини-сервиса опросов, копия SAS, копия Exponea, нацелен изначально на СМБ и т.д.' },
   { categories: ['ФИЧИ', 'ДЕНЬГИ'], title: 'Не забудьте про антифрод', text: 'Объем фрода на 5 млн MAU может достигать 200 млн руб / год – отслеживайте через дэшборды и противодействуйте правилами' },
-  { categories: ['ФИЧИ', 'ВНЕДРЕНИЕ'], title: '«Реализуйте акцию» — лучшая проверка', text: 'Передайте вендору перечень своих акций и предложите показать нативную реализацию на демо – вы сразу поймете, какой продукт вам не подходит' },
+  { categories: ['ФИЧИ', 'ВНЕДРЕНИЕ'], title: '«Реализуйте акцию» лучшая проверка', text: 'Передайте вендору перечень своих акций и предложите показать нативную реализацию на демо – вы сразу поймете, какой продукт вам не подходит' },
 ]
 
 // --- Vendor profiles ---------------------------------------------------------
 
-export type VendorProfile = { name: string; score?: number; pros: string[]; cons: string[] }
+export type VendorResources = {
+  docs?: { href?: string; note?: string }
+  api?: { href?: string; note?: string }
+  cases?: { href?: string; note?: string }
+  sla?: { href?: string; note?: string }
+}
+
+export type VendorProfile = { name: string; score?: number; resources?: VendorResources; pros: string[]; cons: string[] }
+
 
 export const VENDOR_PROFILES: VendorProfile[] = [
   {
-    name: 'Rubbles', score: 310,
+    name: 'Rubbles',
+    score: 310,
+    resources: {
+      docs: { note: 'по запросу' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://www.rubbles.ru/industries/retail' },
+      sla: { note: 'по запросу NDA' },
+    },
     pros: [
       'Каждое внедрение – глубоко кастомизированный форк',
       'Выдается доступ к базе и настройкам',
@@ -204,7 +221,14 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
-    name: 'Retail Rocket', score: 276,
+    name: 'Retail Rocket',
+    score: 276,
+    resources: {
+      docs: { href: 'https://docs.retailrocket.net/' },
+      api: { href: 'https://docs.retailrocket.net/' },
+      cases: { href: 'https://retailrocket.ru/blog/cases/' },
+      sla: { note: '24/7 + рабочие часы' },
+    },
     pros: [
       'Super friendly UX – 30 мин и создаешь реальные механики',
       'Уникальные фичи: теги, анонимные чеки, не суммирование акций',
@@ -222,7 +246,86 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
-    name: 'RightWay', score: 237,
+    name: 'Mindbox',
+    score: 286,
+    resources: {
+      docs: { href: 'https://help.mindbox.ru/' },
+      api: { href: 'https://help.mindbox.ru/' },
+      cases: { href: 'https://mindbox.ru/clients/' },
+      sla: { href: 'https://mindbox.ru/journal/news/digest-october22' },
+    },
+    pros: [
+      'Богатая функциональность "из коробки", отточенная на большом наборе клиентов',
+      'Опыт работы с базами в десятки миллионов пользователей и миллиардами событий',
+      'Развитая персонализация (алгоритмы рекомендаций, Next Best Offer)',
+      'Десятки готовых отчетов по direct marketing (выручка, динамика рассылок, тепловая карта кликов, АБ-тесты, доходность механик, RFM, лояльность)',
+      'Быстрый запуск и низкий порог входа (готовые SDK для МП, конструктор рассылок, гибкая передача данных, поддержка low-code подхода)',
+      'Глубокая методологическая экспертиза в стратегиях работы с данными и автоматизации маркетинга',
+      'Доступ к полноценной экосистеме обучения (база знаний, бот, журнал, открытые вебинары и конференции)',
+    ],
+    cons: [
+      'Нет функционала опросов (NPS, CSAT)',
+      'Только собственный Email-шлюз, нет гибкости в выборе провайдера',
+      'Ограниченная аналитика ad hoc',
+      'Высокий сайзинг в контексте on-premise',
+    ],
+  },
+  {
+    name: 'Altcraft',
+    score: 268,
+    resources: {
+      docs: { href: 'https://use.altcraft.com/' },
+      api: { href: 'https://use.altcraft.com/developer-guide/api-interaction/' },
+      cases: { href: 'https://altcraft.com/ru/blog?page=2&tag=%D0%9A%D0%B5%D0%B9%D1%81%D1%8B' },
+      sla: { href: 'https://altcraft.com/ru/SLA_SaaS.pdf' },
+    },
+    pros: [
+      'Хорошо проработана базовая лояльность',
+      'All-in-one решение, подходят для быстрого и дешевого пуска в контуре',
+      'База более 100 млн контактов, хорошая масштабируемость по объему',
+      'Собственный отправщик Email, поддержка всех каналов коммуникаций',
+      'В лидерах по модулю опросов',
+      'Развитая встроенная аналитика (когортный отчет, CLT, карта кликов, конверсии, возвраты)',
+      'Тихие окна, A/B, реал-тайм триггеры, Best Send Time',
+    ],
+    cons: [
+      'Выросли из банкинга, нет адаптации сущностей под ритейл и HoReCa',
+      'Не развит функционал золотой записи и дедупликации',
+      'Нет Next Best Offer, товарных рекомендаций, предсказаний, слабая персонализация',
+      'Отсутствует поддержка SFTP, SMTP, SDK, ограниченные интеграционные возможности',
+    ],
+  },
+  {
+    name: 'KonnectU',
+    score: 257,
+    resources: {
+      docs: { note: 'по запросу' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://konnektu.ai/blog/' },
+      sla: { note: 'по запросу' },
+    },
+    pros: [
+      'Гибкая модель данных, база может находиться вне контура вендора',
+      'Есть собственное SDK для интеграции с приложениями',
+      'Поддержка всех каналов коммуникации (Email, SMS, Viber, мобильные и вебпуши, чат-боты)',
+      'Опыт работы с высоконагруженными клиентами с 1 млн событий за сутки',
+    ],
+    cons: [
+      'Плохо развита персонализация (нет товарных рекомендаций, Next Best Offer, предсказаний)',
+      'Нет функционала опросов (NPS, CSAT)',
+      'Доработки только в рамках общего road-map',
+      'Нет функционала по работе с каталогами, только при условии передачи данных извне',
+    ],
+  },
+  {
+    name: 'RightWay',
+    score: 237,
+    resources: {
+      docs: { note: 'по запросу' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://rightway-tech.ru/cases/' },
+      sla: { note: '10–19 МСК, 24/7 форс-мажоры' },
+    },
     pros: [
       'Сильный BPM-конструктор (согласования)',
       'Хорошая ролевая модель + атрибутивный редактор',
@@ -238,7 +341,14 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
-    name: 'Loymax', score: 339,
+    name: 'Loymax',
+    score: 339,
+    resources: {
+      docs: { href: 'https://docs.loymax.io/' },
+      api: { href: 'https://docs.loymax.io/bin/view/Main/Frequently_asked_questions/' },
+      cases: { href: 'https://loymax.ru/blog/category/all-materials/user-stories/' },
+      sla: { note: '24/7' },
+    },
     pros: [
       'Качественно проработанные интеграционные сервисы под кассы / мобилки',
       'Сильная персонализация под кейсы ритейла',
@@ -253,7 +363,14 @@ export const VENDOR_PROFILES: VendorProfile[] = [
     ],
   },
   {
-    name: 'Manzana', score: 281,
+    name: 'Manzana',
+    score: 281,
+    resources: {
+      docs: { href: 'https://docs.manzanagroup.ru/xwiki/bin/view/Main/' },
+      api: { href: 'https://manzanagroup.ru/API/' },
+      cases: { href: 'https://manzanagroup.ru/news/?cat=keysy' },
+      sla: { note: '24/7' },
+    },
     pros: [
       'Платформа построена вокруг мощного ядра лояльности — ключевое преимущество для бизнеса с развитыми программами лояльности',
       'Давно на рынке (с 2004 г.), крупные клиенты',
@@ -275,6 +392,12 @@ export const VENDOR_PROFILES: VendorProfile[] = [
 export const HONORABLE_MENTIONS: VendorProfile[] = [
   {
     name: 'REES46',
+    resources: {
+      docs: { href: 'https://rees46.ru/docs/ru/' },
+      api: { href: 'https://reference.api.rees46.com/' },
+      cases: { href: 'https://rees46.ru/cases/' },
+      sla: { note: 'по запросу' },
+    },
     pros: [
       'All-in-one решение',
       'Развитые механики и сервисы лояльности',
@@ -289,6 +412,12 @@ export const HONORABLE_MENTIONS: VendorProfile[] = [
   },
   {
     name: 'HFLabs',
+    resources: {
+      docs: { note: 'по запросу' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://hflabs.ru/blog/keisy/' },
+      sla: { note: '24/7' },
+    },
     pros: [
       'Зрелая команда для доработки в контуре',
       'Сильная система дедупликации',
@@ -303,7 +432,34 @@ export const HONORABLE_MENTIONS: VendorProfile[] = [
     ],
   },
   {
+    name: 'MAXMA',
+    resources: {
+      docs: { href: 'https://help.maxma.com/p/6VihWWCv8WNTRg/Rukovodstva' },
+      api: { href: 'https://docs.maxma.com/api/' },
+      cases: { href: 'https://maxma.com/blog/category/cases' },
+      sla: { note: '10–18 МСК' },
+    },
+    pros: [
+      'Очень простое и удобное решение с комфортным онбордингом в систему',
+      'Интуитивно понятный UI',
+      'Обширный опыт в Fashion и beauty ритейле',
+      'Добротный выбор кассовых интеграций',
+      'Качественная документация по платформе и интеграциям',
+    ],
+    cons: [
+      'Нет возможности кастомной доработки решения со стороны заказчика',
+      'Под проработку запроса может быть выделена малочисленная команда',
+      'Нет опыта крупного развертывания on premise',
+    ],
+  },
+  {
     name: 'CSI SetLoyalty',
+    resources: {
+      docs: { href: 'https://crystals.atlassian.net/wiki/' },
+      api: { note: 'по запросу' },
+      cases: { href: 'https://crystals.ru/projects/' },
+      sla: { note: '24/7' },
+    },
     pros: [
       'Глубокая детализация всех контактов с клиентом с наличием дедупликации',
       'Расширенные возможности управления бонусами (история, api, срочные, начисление/списание из кабинета)',
@@ -398,11 +554,11 @@ export const MAU_TIERS: MauTier[] = [
 
 // --- Live-demo checklist ---------------------------------------------------
 
-export type DemoStage = { n: number; title: string; minutes: number; items: string[] }
+export type DemoStage = { n: number; title: string; minutes: number; icon: LucideIcon; items: string[] }
 
 export const DEMO_CHECKLIST: DemoStage[] = [
   {
-    n: 1, title: 'Данные и профиль клиента', minutes: 10,
+    n: 1, title: 'Данные и профиль клиента', minutes: 10, icon: Database,
     items: [
       'Golden ID: покажите клиента, который идентифицирован по телефону, email и ID в приложении',
       'Массовая загрузка атрибутов: CSV с 10 000 клиентов для обогащения профилей новыми атрибутами',
@@ -410,14 +566,14 @@ export const DEMO_CHECKLIST: DemoStage[] = [
     ],
   },
   {
-    n: 2, title: 'Сегментация', minutes: 15,
+    n: 2, title: 'Сегментация', minutes: 15, icon: Filter,
     items: [
       'Скорость: создайте сегмент из 3 условий. Засеките время. 5 минут — хорошо, >10 минут — красный флаг',
       'Вложенные сегменты: создайте сегмент из пересечения двух других сегментов',
     ],
   },
   {
-    n: 3, title: 'Кампании и цепочки', minutes: 20,
+    n: 3, title: 'Кампании и цепочки', minutes: 20, icon: Megaphone,
     items: [
       'Триггерная цепочка: «Брошенная корзина → Push через 1 час → Email через 24 часа → SMS через 48 часов» на одном холсте',
       'Настройте A/B-тест триггерной цепочки на существующем сегменте',
@@ -425,7 +581,7 @@ export const DEMO_CHECKLIST: DemoStage[] = [
     ],
   },
   {
-    n: 4, title: 'Каналы и интеграции', minutes: 15,
+    n: 4, title: 'Каналы и интеграции', minutes: 15, icon: Share2,
     items: [
       'Создайте шаблон и отправьте тестовое сообщение по одному из каналов (Email, SMS, Mobile Push, Web Push)',
       'Дашборд аналитики по статусам доставки: «доставлено», «открыто», «кликнуто»',
@@ -433,7 +589,7 @@ export const DEMO_CHECKLIST: DemoStage[] = [
     ],
   },
   {
-    n: 5, title: 'Аналитика', minutes: 15,
+    n: 5, title: 'Аналитика', minutes: 15, icon: BarChart3,
     items: [
       'Дашборд по кампании: конверсия, доход',
       'Постройте воронку «Клик → Корзина → Покупка»',
@@ -441,7 +597,7 @@ export const DEMO_CHECKLIST: DemoStage[] = [
     ],
   },
   {
-    n: 6, title: 'Q&A', minutes: 15,
+    n: 6, title: 'Q&A', minutes: 15, icon: MessageCircleQuestion,
     items: ['Свободные вопросы вендору по итогам сценария'],
   },
 ]

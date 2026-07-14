@@ -1,21 +1,72 @@
 // components/research/reports/cdp-comparison/vendor-profiles.tsx
-import { Plus, Minus } from 'lucide-react'
+import { Minus, FileText, Link as LinkIcon, Building2, ClipboardList } from 'lucide-react'
+import type { VendorResources } from '@/lib/cdp-research-data'
 import { VENDOR_PROFILES, HONORABLE_MENTIONS } from '@/lib/cdp-research-data'
+
+function ResourceHeader({ resources }: { resources?: VendorResources }) {
+  const items = [
+    { key: 'docs', label: 'Документация', icon: FileText, item: resources?.docs },
+    { key: 'api', label: 'API', icon: LinkIcon, item: resources?.api },
+    { key: 'cases', label: 'Кейсы', icon: Building2, item: resources?.cases },
+    { key: 'sla', label: 'SLA', icon: ClipboardList, item: resources?.sla },
+  ] as const
+
+  return (
+    <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-border/50 py-3">
+      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+        [ Ресурсы ]
+      </span>
+      {items.map(({ key, label, icon: Icon, item }) => {
+        const href = item?.href
+        const content = (
+          <>
+            <Icon className="h-4 w-4" />
+            <span className="text-sm">{label}</span>
+            {item?.note && (
+              <span className="text-sm text-muted-foreground"> ({item.note})</span>
+            )}
+          </>
+        )
+        return href ? (
+          <a
+            key={key}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-primary transition-colors hover:text-primary/80 hover:underline"
+          >
+            {content}
+          </a>
+        ) : (
+          <span
+            key={key}
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground"
+          >
+            {content}
+          </span>
+        )
+      })}
+    </div>
+  )
+}
 
 function ProfileCard({
   name,
   score,
+  resources,
   pros,
   cons,
 }: {
   name: string
   score?: number
+  resources?: VendorResources
   pros: string[]
   cons: string[]
 }) {
+
   return (
     <div className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/20 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)] md:p-8">
-      <div className="mb-6 flex items-center gap-4">
+      <div className="mb-4 flex items-center gap-4">
         <h3 className="font-heading text-3xl font-extrabold leading-none tracking-tight text-primary md:text-4xl">
           {name}
         </h3>
@@ -25,12 +76,14 @@ function ProfileCard({
           </span>
         )}
       </div>
+      <ResourceHeader resources={resources} />
       <div className="grid gap-x-8 gap-y-6 md:grid-cols-2">
+
         <div>
           <span className="mb-4 block select-none font-heading text-5xl font-extrabold leading-none text-primary">
             +
           </span>
-          <ul className="space-y-3">
+          <ul className="list-disc space-y-3 pl-5">
             {pros.map((p) => (
               <li key={p} className="text-sm leading-snug text-foreground md:text-base">
                 {p}
@@ -39,8 +92,8 @@ function ProfileCard({
           </ul>
         </div>
         <div>
-          <span className="mb-5 mt-2 inline-block h-3.5 w-16 rounded-sm bg-accent" />
-          <ul className="space-y-3">
+          <Minus className="mb-4 h-12 w-12 text-accent" strokeWidth={2.5} />
+          <ul className="list-disc space-y-3 pl-5">
             {cons.map((c) => (
               <li key={c} className="text-sm leading-snug text-foreground md:text-base">
                 {c}
@@ -59,45 +112,13 @@ export function VendorProfiles() {
       {VENDOR_PROFILES.map((v) => (
         <ProfileCard key={v.name} {...v} />
       ))}
-      <div>
-        <h3 className="mb-8 font-heading text-xl font-bold uppercase tracking-tight text-muted-foreground">
+      <div className="space-y-8">
+        <h3 className="font-heading text-xl font-bold uppercase tracking-tight text-muted-foreground">
           И ещё (Honorable mentions)
         </h3>
-        <div className="grid gap-8 md:grid-cols-3">
-          {HONORABLE_MENTIONS.map((v) => (
-            <div key={v.name} className="rounded-2xl border border-border bg-card p-6">
-              <h4 className="mb-4 font-heading text-lg font-bold uppercase tracking-tight text-primary">
-                {v.name}
-              </h4>
-              <div className="mb-3 flex items-center gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15">
-                  <Plus className="h-3.5 w-3.5 text-accent" strokeWidth={3} />
-                </span>
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">Плюсы</p>
-              </div>
-              <ul className="mb-5 space-y-2">
-                {v.pros.map((p) => (
-                  <li key={p} className="text-sm leading-snug text-foreground">
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <div className="mb-3 flex items-center gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted-foreground/15">
-                  <Minus className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={3} />
-                </span>
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Минусы</p>
-              </div>
-              <ul className="space-y-2">
-                {v.cons.map((c) => (
-                  <li key={c} className="text-sm leading-snug text-muted-foreground">
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        {HONORABLE_MENTIONS.map((v) => (
+          <ProfileCard key={v.name} {...v} />
+        ))}
       </div>
     </section>
   )
