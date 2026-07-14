@@ -1,25 +1,10 @@
 'use client'
 import { useState } from 'react'
 import { ReportSectionCard, ShowMoreToggle } from '../primitives'
-import { projectTypes } from '@/components/evaluate/fields'
+import { resolveProjectType } from '@/lib/report-format'
 import type { ReportProject, ReportQA } from '@/lib/report-api'
 
 const QA_VISIBLE = 3
-
-// project.type comes back as the form id (e.g. "new_direction") — map it to
-// the Russian label shown on /evaluate, falling back to the raw value so an
-// unknown code (or a bare "other") never renders blank.
-// project.industry has no separate id in the form (the industries list IS
-// the set of display values, and "Другое" allows free text), so it arrives
-// already resolved and needs no lookup here.
-const projectTypeLabelById: Record<string, string> = Object.fromEntries(
-  projectTypes.map((t) => [t.id, t.label])
-)
-
-function resolveProjectType(raw: string): string {
-  if (!raw) return raw
-  return projectTypeLabelById[raw] ?? raw
-}
 
 // 02 Контекст проекта
 export function ContextSection({

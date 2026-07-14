@@ -1,8 +1,24 @@
 // lib/report-format.ts
 // Small formatting helpers shared by the assessment report sections.
+import { projectTypes } from "@/components/evaluate/fields"
 
 export function formatNumber(n: number): string {
   return n.toLocaleString("ru-RU")
+}
+
+// project.type comes back as the raw /evaluate form id (e.g.
+// "new_direction"), not the Russian label. Map it via the canonical
+// projectTypes list, falling back to the raw value for an unmapped/unknown
+// code so it never renders blank. project.industry needs no equivalent
+// lookup — the form has no separate industry id, so it already arrives as
+// display text.
+const projectTypeLabelById: Record<string, string> = Object.fromEntries(
+  projectTypes.map((t) => [t.id, t.label])
+)
+
+export function resolveProjectType(raw: string): string {
+  if (!raw) return raw
+  return projectTypeLabelById[raw] ?? raw
 }
 
 // The PDF/docx render hours rounded to whole numbers everywhere (%.0f) — a
