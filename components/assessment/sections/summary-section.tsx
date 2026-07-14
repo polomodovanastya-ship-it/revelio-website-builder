@@ -12,6 +12,8 @@ export function SummarySection({
   totals: ReportTotals
   groups: ReportGroup[]
 }) {
+  const maxGroupShare = groups.length > 0 ? Math.max(...groups.map((g) => g.share)) : 0
+
   return (
     <ReportSectionCard number="01" title="Краткое резюме">
       {summary && <p className="mb-6 text-sm leading-relaxed text-foreground">{summary}</p>}
@@ -28,7 +30,7 @@ export function SummarySection({
       {groups.length > 0 && (
         <div className="mt-6 space-y-2.5">
           {groups.map((g) => (
-            <BarRow key={g.name} label={g.name} share={g.share} />
+            <BarRow key={g.name} label={g.name} share={g.share} maxShare={maxGroupShare} />
           ))}
         </div>
       )}

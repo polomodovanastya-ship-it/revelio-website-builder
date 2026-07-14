@@ -7,6 +7,8 @@ import type { ReportRoles } from '@/lib/report-api'
 // без номера; визуально перекликается со сводкой по группам (01), но
 // отмечена своей иконкой вместо номера.
 export function RolesSection({ roles }: { roles: ReportRoles }) {
+  const maxRoleShare = roles.roles.length > 0 ? Math.max(...roles.roles.map((r) => r.share)) : 0
+
   return (
     <ReportSectionCard icon={Users} title="Часы по ролям">
       <div className="space-y-2.5">
@@ -15,6 +17,7 @@ export function RolesSection({ roles }: { roles: ReportRoles }) {
             key={r.role}
             label={r.label}
             share={r.share}
+            maxShare={maxRoleShare}
             trailing={`${formatHours(r.hours_expected)} ч · ${Math.round(toPercent(r.share))}%`}
           />
         ))}
