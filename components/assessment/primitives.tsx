@@ -105,11 +105,3 @@ export function accuracyTone(level: string): Tone {
   if (l.includes('низ')) return 'destructive'
   return 'muted'
 }
-
-// Влияние риска: выше — хуже.
-export function impactTone(level: string): Tone {
-  const l = level.toLowerCase()
-  if (l.includes('выс')) return 'destructive'
-  if (l.includes('низ')) return 'accent'
-  return 'muted'
-}

@@ -56,12 +56,6 @@ export interface ReportRoles {
   roles: ReportRole[]
 }
 
-export interface ReportRisk {
-  risk: string
-  impact: string
-  comment: string
-}
-
 export interface ReportAccuracy {
   overall: string
   low_conf_tasks: number
@@ -86,7 +80,9 @@ export interface ReportData {
   groups: ReportGroup[]
   tasks: ReportTask[]
   roles?: ReportRoles | null
-  risks: ReportRisk[]
+  // Curated, deduped list of risk sentences (mirrors the PDF) — the backend
+  // has no structured impact/comment source, so this is plain text.
+  risks: string[]
   assumptions: string[]
   accuracy: ReportAccuracy
   qa: ReportQA[]
