@@ -106,8 +106,8 @@ export function Badge({ tone, children }: { tone: Tone; children: React.ReactNod
 }
 
 // Точность задачи/группы: выше — лучше.
-export function accuracyTone(level: string): Tone {
-  const l = level.toLowerCase()
+export function accuracyTone(level: string | null | undefined): Tone {
+  const l = (level ?? '').toLowerCase()
   if (l.includes('выс')) return 'accent'
   if (l.includes('низ')) return 'destructive'
   return 'muted'

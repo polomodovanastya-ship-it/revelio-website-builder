@@ -137,7 +137,27 @@ export async function fetchReport(
   if (res.status === 401) throw new ReportAuthError()
   if (res.status === 429) throw new ReportRateLimitError()
   if (!res.ok) throw new Error(await parseError(res))
-  return (await res.json()) as ReportData
+  return normalizeReport(await res.json())
+}
+
+// normalizeReport makes the payload honour the non-null contract the components
+// assume: every array field defaults to [] and downloads to a concrete object,
+// so a backend that ever emits null/omits a field (as `qa` once did) can't
+// crash the report page via an unguarded .length/.map. The backend also
+// guarantees this now; this is defense-in-depth against contract drift.
+function normalizeReport(raw: any): ReportData {
+  const roles = raw?.roles ? { ...raw.roles, roles: raw.roles.roles ?? [] } : null
+  return {
+    ...raw,
+    groups: raw?.groups ?? [],
+    tasks: raw?.tasks ?? [],
+    risks: raw?.risks ?? [],
+    assumptions: raw?.assumptions ?? [],
+    qa: raw?.qa ?? [],
+    questions: raw?.questions ?? [],
+    downloads: raw?.downloads ?? { pdf: false, csv: false },
+    roles,
+  } as ReportData
 }
 
 function filenameFromDisposition(header: string | null, fallback: string): string {
