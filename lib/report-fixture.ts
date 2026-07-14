@@ -48,13 +48,15 @@ export const reportFixture: ReportData = {
   roles: {
     total_expected: 3906,
     roles: [
-      { role: "backend", label: "Backend-разработка", hours_min: 720, hours_expected: 1120, hours_max: 1520, task_count: 28, share: 0.29 },
-      { role: "frontend", label: "Frontend-разработка", hours_min: 560, hours_expected: 860, hours_max: 1180, task_count: 22, share: 0.22 },
-      { role: "devops", label: "DevOps / инфраструктура", hours_min: 640, hours_expected: 940, hours_max: 1260, task_count: 14, share: 0.24 },
-      { role: "qa", label: "QA / тестирование", hours_min: 200, hours_expected: 253, hours_max: 306, task_count: 6, share: 0.06 },
-      { role: "analytics", label: "Аналитика и данные", hours_min: 96, hours_expected: 156, hours_max: 220, task_count: 6, share: 0.04 },
-      { role: "pm", label: "Управление проектом", hours_min: 200, hours_expected: 300, hours_max: 400, task_count: 8, share: 0.08 },
-      { role: "docs", label: "Документация и обучение", hours_min: 199, hours_expected: 277, hours_max: 432, task_count: 10, share: 0.07 },
+      { role: "frontend", label: "Frontend", hours_min: 560, hours_expected: 860, hours_max: 1180, task_count: 22, share: 0.22 },
+      { role: "backend", label: "Backend", hours_min: 720, hours_expected: 1120, hours_max: 1520, task_count: 28, share: 0.29 },
+      { role: "devops", label: "DevOps", hours_min: 640, hours_expected: 940, hours_max: 1260, task_count: 14, share: 0.24 },
+      { role: "qa", label: "QA", hours_min: 200, hours_expected: 253, hours_max: 306, task_count: 6, share: 0.06 },
+      { role: "analyst", label: "Аналитик", hours_min: 96, hours_expected: 156, hours_max: 220, task_count: 6, share: 0.04 },
+      { role: "pm", label: "PM", hours_min: 200, hours_expected: 300, hours_max: 400, task_count: 8, share: 0.08 },
+      { role: "designer", label: "Дизайнер", hours_min: 60, hours_expected: 90, hours_max: 130, task_count: 4, share: 0.02 },
+      { role: "data", label: "Data Engineer", hours_min: 90, hours_expected: 130, hours_max: 190, task_count: 5, share: 0.03 },
+      { role: "ml", label: "ML", hours_min: 40, hours_expected: 57, hours_max: 80, task_count: 3, share: 0.02 },
     ],
   },
   risks: [
