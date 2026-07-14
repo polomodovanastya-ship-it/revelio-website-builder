@@ -1,4 +1,4 @@
-import type { LucideIcon } from 'lucide-react'
+import { ChevronDown, type LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { toPercent } from '@/lib/report-format'
 
@@ -104,4 +104,29 @@ export function accuracyTone(level: string): Tone {
   if (l.includes('выс')) return 'accent'
   if (l.includes('низ')) return 'destructive'
   return 'muted'
+}
+
+// Shared "show first N, rest behind a spoiler" toggle button — used by the
+// Q&A, risks, and assumptions lists. State lives with the caller.
+export function ShowMoreToggle({
+  expanded,
+  onToggle,
+  moreLabel,
+  lessLabel = 'Свернуть',
+}: {
+  expanded: boolean
+  onToggle: () => void
+  moreLabel: string
+  lessLabel?: string
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      className="mt-3 flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+    >
+      {expanded ? lessLabel : moreLabel}
+      <ChevronDown className={cn('h-4 w-4 transition-transform', expanded && 'rotate-180')} />
+    </button>
+  )
 }
