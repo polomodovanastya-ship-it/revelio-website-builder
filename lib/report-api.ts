@@ -146,10 +146,19 @@ function filenameFromDisposition(header: string | null, fallback: string): strin
   return match ? decodeURIComponent(match[1]) : fallback
 }
 
+export type ReportDownloadKind = "pdf" | "csv" | "questions"
+
+function fallbackFilename(kind: ReportDownloadKind): string {
+  // questions is always a CSV export (Вопрос;Ответ), unlike the generic
+  // pdf/csv kinds whose extension matches their kind name 1:1.
+  if (kind === "questions") return "questions.csv"
+  return `report.${kind}`
+}
+
 export async function downloadReport(
   token: string,
   password: string,
-  kind: "pdf" | "csv",
+  kind: ReportDownloadKind,
   signal?: AbortSignal,
 ): Promise<void> {
   const base = requireBase()
@@ -164,7 +173,7 @@ export async function downloadReport(
   if (!res.ok) throw new Error(await parseError(res))
 
   const blob = await res.blob()
-  const filename = filenameFromDisposition(res.headers.get("content-disposition"), `report.${kind}`)
+  const filename = filenameFromDisposition(res.headers.get("content-disposition"), fallbackFilename(kind))
   const url = URL.createObjectURL(blob)
   const a = document.createElement("a")
   a.href = url

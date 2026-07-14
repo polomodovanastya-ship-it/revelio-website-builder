@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useMemo, useState } from 'react'
 import { useToast } from '@/components/toast'
-import { downloadReport, type ReportData } from '@/lib/report-api'
+import { downloadReport, type ReportData, type ReportDownloadKind } from '@/lib/report-api'
 import { resolveProjectType } from '@/lib/report-format'
 import { DownloadsBar } from './downloads-bar'
 import { ReportNav } from './report-nav'
@@ -23,10 +23,10 @@ interface ReportViewProps {
 
 export function ReportView({ data, token, password }: ReportViewProps) {
   const { toast } = useToast()
-  const [downloading, setDownloading] = useState<'pdf' | 'csv' | null>(null)
+  const [downloading, setDownloading] = useState<ReportDownloadKind | null>(null)
 
   const handleDownload = useCallback(
-    async (kind: 'pdf' | 'csv') => {
+    async (kind: ReportDownloadKind) => {
       setDownloading(kind)
       try {
         await downloadReport(token, password, kind)
