@@ -1,17 +1,12 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, ChevronUp, Download, Play } from 'lucide-react'
+import { ArrowUpRight, Download, Play } from 'lucide-react'
 import type { MediaItem } from '@/lib/media'
 
 export function MediaCard({ item }: { item: MediaItem }) {
   const external = /^https?:\/\//.test(item.primaryHref)
   const isPodcast = item.kind === 'podcast'
-  const hasEmbed = isPodcast && !!item.embedHref
-  const [playerOpen, setPlayerOpen] = useState(false)
-
-  const isAudioEmbed = !!item.embedHref && /podcasts\.apple|embed\.podcasts|zvuk\.com|music\.yandex/.test(item.embedHref)
 
   const primaryClass =
     'inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary'
@@ -53,48 +48,13 @@ export function MediaCard({ item }: { item: MediaItem }) {
             </div>
           </div>
         )}
-
-        {playerOpen && hasEmbed && (
-          <div className="mt-5 overflow-hidden rounded-xl border border-border bg-secondary/40">
-            {isAudioEmbed ? (
-              <iframe
-                src={item.embedHref}
-                title={item.embedTitle ?? item.title}
-                allow="autoplay *; encrypted-media *;"
-                loading="lazy"
-                className="h-[175px] w-full"
-              />
-            ) : (
-              <div className="aspect-video w-full bg-black">
-                <iframe
-                  src={item.embedHref}
-                  title={item.embedTitle ?? item.title}
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                  className="h-full w-full"
-                />
-              </div>
-            )}
-          </div>
-        )}
       </div>
 
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
-        {hasEmbed ? (
-          <button
-            type="button"
-            onClick={() => setPlayerOpen((v) => !v)}
-            className={primaryClass}
-            aria-expanded={playerOpen}
-          >
-            {playerOpen ? 'Свернуть' : item.primaryLabel}
-            {playerOpen ? <ChevronUp className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
-          </button>
-        ) : external ? (
+        {external ? (
           <a href={item.primaryHref} target="_blank" rel="noopener noreferrer" className={primaryClass}>
             {item.primaryLabel}
-            <ArrowUpRight className="h-3.5 w-3.5" />
+            {isPodcast ? <Play className="h-3.5 w-3.5" /> : <ArrowUpRight className="h-3.5 w-3.5" />}
           </a>
         ) : (
           <Link href={item.primaryHref} className={primaryClass}>
