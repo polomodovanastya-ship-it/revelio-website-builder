@@ -31,7 +31,9 @@ export type MediaItem = {
   embedTitle?: string
   audioSrc?: string
   coverSrc?: string
+  logoSrc?: string
 }
+
 
 const RAW_MEDIA_ITEMS: MediaItem[] = [
   {
