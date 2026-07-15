@@ -1,5 +1,6 @@
 // Content for the "Media" section (home preview + /media page).
 import bartAudio from '@/src/assets/bart-podcast.mp3.asset.json'
+import saCommunityCover from '@/src/assets/sa-community-cover.jpg.asset.json'
 
 export type MediaKind = 'research' | 'article' | 'podcast'
 
