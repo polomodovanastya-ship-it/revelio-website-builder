@@ -2,6 +2,7 @@
 import bartAudio from '@/src/assets/bart-podcast.mp3.asset.json'
 import saCommunityCover from '@/src/assets/sa-community-cover.jpg.asset.json'
 import rbcLogo from '@/src/assets/RBK_logo.svg.asset.json'
+import forbesLogo from '@/src/assets/Forbes-logo.svg.asset.json'
 
 export type MediaKind = 'research' | 'article' | 'podcast'
 
