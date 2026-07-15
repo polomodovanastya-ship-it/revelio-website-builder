@@ -6,10 +6,12 @@ import { MEDIA_ITEMS } from '@/lib/media'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata = pageMetadata({
-  title: 'Медиа',
+  title: 'Журнал',
   description:
-    'Публичная экспертиза Ревелио: рыночные исследования, статьи в деловых СМИ и подкасты команды.',
+    'Открытые материалы команды Revelio по рынкам (eCom, Retail, Finance, Telco, Travel) и доменам (Marcom, CX, ITSM, HR, Data).',
   path: '/media',
+  ogTitle: 'Revelio – Журнал (статьи, исследования, подкасты)',
+  ogImage: '/og-media.png',
 })
 
 function TelegramIcon({ className }: { className?: string }) {
