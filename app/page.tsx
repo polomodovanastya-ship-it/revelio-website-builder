@@ -4,6 +4,7 @@ import { Cases } from '@/components/cases'
 import { Clients } from '@/components/clients'
 import { Services } from '@/components/services'
 import { Team } from '@/components/team'
+import { Media } from '@/components/media'
 import { Process } from '@/components/process'
 import { Contact } from '@/components/contact'
 
@@ -17,8 +18,9 @@ export default function Page() {
       <Hero />
       <Cases />
       <Clients />
-      <Services />
       <Team />
+      <Media />
+      <Services />
       <Process />
       <Contact />
     </>
