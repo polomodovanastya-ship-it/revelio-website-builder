@@ -6,6 +6,8 @@ import forbesLogo from '@/src/assets/Forbes-logo.svg.asset.json'
 import nrLogo from '@/src/assets/New_retail_logo.png.asset.json'
 import sostavLogo from '@/src/assets/Sostav_logo.svg.asset.json'
 import incLogo from '@/src/assets/Inc_logo.webp.asset.json'
+import sostavIllustration from '@/src/assets/Sostav_illustration.jpg.asset.json'
+import rbkIllustration from '@/src/assets/RBK_illustration.jpg.asset.json'
 
 
 export type MediaKind = 'research' | 'article' | 'podcast'
