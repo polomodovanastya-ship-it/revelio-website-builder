@@ -46,7 +46,6 @@ export default function MediaPage() {
           >
             Больше контента в tg-канале
             <TelegramIcon className="h-4 w-4" />
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>
