@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Download, Pause, Play } from 'lucide-react'
+import { cn } from '@/lib/utils'
 import type { MediaItem } from '@/lib/media'
 
 function formatTime(sec: number) {
@@ -108,23 +109,23 @@ export function MediaCard({ item }: { item: MediaItem }) {
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
-      {isPodcast && item.coverSrc && (
+      {item.coverSrc && (
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-secondary px-5 py-5">
           <Image
             src={item.coverSrc}
             alt={item.title}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            className="rounded-xl object-cover"
+            className={cn('rounded-xl', isPodcast ? 'object-cover' : 'object-contain')}
           />
         </div>
       )}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-1 flex-col">
-          {!isPodcast && (
+          {!isPodcast && (item.emoji || item.tag || item.date) && (
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                <span className="text-base leading-none">{item.emoji}</span>
+                {item.emoji && <span className="text-base leading-none">{item.emoji}</span>}
                 {item.tag}
               </span>
               {item.date && (
