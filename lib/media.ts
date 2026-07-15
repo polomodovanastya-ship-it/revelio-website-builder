@@ -57,14 +57,14 @@ export const MEDIA_ITEMS: MediaItem[] = [
   {
     id: 'rbc-pro-pricing',
     kind: 'article',
-    emoji: '📝',
-    tag: 'Статья',
+    emoji: '',
+    tag: '',
     title: 'Динамическое ценообразование в ритейле',
     desc:
       'Как ритейлеры переходят к динамическим ценам: данные, ML-модели, влияние на маржу и клиентский опыт.',
     primaryHref: 'https://pro.rbc.ru/demo/67035fff9a79476cf7d676ca',
     primaryLabel: 'Читать',
-    date: '2024',
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${rbcLogo.url}`,
   },
   {
     id: 'newretail-ml-pricing',
