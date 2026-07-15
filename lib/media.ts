@@ -29,7 +29,7 @@ export type MediaItem = {
   coverSrc?: string
 }
 
-export const MEDIA_ITEMS: MediaItem[] = [
+const RAW_MEDIA_ITEMS: MediaItem[] = [
   {
     id: 'cdp-comparison-2026',
     kind: 'research',
