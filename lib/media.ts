@@ -177,9 +177,9 @@ const SHUFFLED_ORDER = [
   'podcast-bart',
   'newretail-ml-pricing',
   'rbc-pro-pricing',
+  'incrussia-dynamic-prices',
   'podcast-sa-community',
   'sostav-gamification',
-  'incrussia-dynamic-prices',
 ]
 
 export const MEDIA_ITEMS: MediaItem[] = SHUFFLED_ORDER
