@@ -5,6 +5,7 @@ import { ChevronDown } from 'lucide-react'
 
 import { useReveal } from '@/hooks/use-reveal'
 import { asset } from '@/lib/asset'
+import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 
 type Member = {
