@@ -28,10 +28,12 @@ export function Media() {
 
         <div
           ref={ref}
-          className="reveal mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3"
         >
           {MEDIA_ITEMS.slice(0, 6).map((item) => (
-            <MediaCard key={item.id} item={item} />
+            <div key={item.id} className="mb-5 break-inside-avoid">
+              <MediaCard item={item} />
+            </div>
           ))}
         </div>
 
