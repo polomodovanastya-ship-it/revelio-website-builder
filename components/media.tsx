@@ -18,7 +18,7 @@ export function Media() {
               [ Медиа ]
             </span>
             <h2 className="mt-3 max-w-2xl text-balance font-heading text-2xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
-              Исследования, статьи и подкасты
+              Revelio – Журнал
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
