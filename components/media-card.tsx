@@ -109,14 +109,14 @@ export function MediaCard({ item }: { item: MediaItem }) {
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
-      {isPodcast && item.coverSrc && (
+      {item.coverSrc && (
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-secondary px-5 py-5">
           <Image
             src={item.coverSrc}
             alt={item.title}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            className="rounded-xl object-cover"
+            className={cn('rounded-xl', isPodcast ? 'object-cover' : 'object-contain')}
           />
         </div>
       )}
