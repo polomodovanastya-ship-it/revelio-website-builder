@@ -6,10 +6,12 @@ import { MEDIA_ITEMS } from '@/lib/media'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata = pageMetadata({
-  title: 'Медиа',
+  title: 'Журнал',
   description:
-    'Публичная экспертиза Ревелио: рыночные исследования, статьи в деловых СМИ и подкасты команды.',
+    'Открытые материалы команды Revelio по рынкам (eCom, Retail, Finance, Telco, Travel) и доменам (Marcom, CX, ITSM, HR, Data).',
   path: '/media',
+  ogTitle: 'Revelio – Журнал (статьи, исследования, подкасты)',
+  ogImage: '/og-media.png',
 })
 
 function TelegramIcon({ className }: { className?: string }) {
@@ -40,7 +42,7 @@ export default function MediaPage() {
           [ МЕДИА ]
         </span>
         <h1 className="mt-3 font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
-          Исследования, статьи и подкасты
+          Revelio – Журнал
         </h1>
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-3xl text-base text-primary/85 sm:text-lg">
