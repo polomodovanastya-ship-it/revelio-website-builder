@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Download, Pause, Play } from 'lucide-react'
+import { cn } from '@/lib/utils'
 import type { MediaItem } from '@/lib/media'
 
 function formatTime(sec: number) {
