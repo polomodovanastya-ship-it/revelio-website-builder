@@ -3,7 +3,7 @@ import bartAudio from '@/src/assets/bart-podcast.mp3.asset.json'
 import saCommunityCover from '@/src/assets/sa-community-cover.jpg.asset.json'
 import rbcLogo from '@/src/assets/RBK_logo.svg.asset.json'
 import forbesLogo from '@/src/assets/Forbes-logo.svg.asset.json'
-import nrLogo from '@/src/assets/NR_logo.webp.asset.json'
+import nrLogo from '@/src/assets/New_retail_logo.png.asset.json'
 import sostavLogo from '@/src/assets/Sostav_logo.svg.asset.json'
 import incLogo from '@/src/assets/Inc_logo.webp.asset.json'
 
