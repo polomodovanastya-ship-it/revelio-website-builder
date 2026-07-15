@@ -21,6 +21,8 @@ export type MediaItem = {
   date?: string
   embedHref?: string
   embedTitle?: string
+  audioSrc?: string
+  coverSrc?: string
 }
 
 export const MEDIA_ITEMS: MediaItem[] = [
