@@ -42,7 +42,7 @@ export default function MediaPage() {
           [ МЕДИА ]
         </span>
         <h1 className="mt-3 font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
-          Исследования, статьи и подкасты
+          Revelio – Журнал
         </h1>
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-3xl text-base text-primary/85 sm:text-lg">
