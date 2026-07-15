@@ -1,4 +1,7 @@
 // Content for the "Media" section (home preview + /media page).
+import bartAudio from '@/src/assets/bart-podcast.weba.asset.json'
+import bartCover from '@/src/assets/bart-cover.jpg.asset.json'
+import insightCover from '@/src/assets/insight-cover.jpg.asset.json'
 
 export type MediaKind = 'research' | 'article' | 'podcast'
 
