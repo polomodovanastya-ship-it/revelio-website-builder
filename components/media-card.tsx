@@ -124,10 +124,18 @@ export function MediaCard({ item }: { item: MediaItem }) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-1 flex-col">
-          {!isPodcast && (item.emoji || item.tag || item.date) && (
-            <div className="flex items-center justify-between">
+          {!isPodcast && (item.logoSrc || item.emoji || item.tag || item.date) && (
+            <div className="flex items-center justify-between gap-3">
               <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                {item.emoji && <span className="text-base leading-none">{item.emoji}</span>}
+                {item.logoSrc ? (
+                  <img
+                    src={item.logoSrc}
+                    alt=""
+                    className="h-6 w-auto max-w-[110px] object-contain"
+                  />
+                ) : (
+                  item.emoji && <span className="text-base leading-none">{item.emoji}</span>
+                )}
                 {item.tag}
               </span>
               {item.date && (
@@ -137,6 +145,7 @@ export function MediaCard({ item }: { item: MediaItem }) {
               )}
             </div>
           )}
+
 
           <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
             {item.title}
