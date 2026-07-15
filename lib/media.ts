@@ -60,7 +60,8 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     primaryHref:
       'https://www.forbes.ru/tekhnologii/517827-ot-excel-k-ml-kak-biznesu-perejti-na-dinamiceskoe-cenoobrazovanie',
     primaryLabel: 'Читать',
-    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${forbesLogo.url}`,
+    date: '2025',
+    logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${forbesLogo.url}`,
   },
   {
     id: 'rbc-pro-pricing',
