@@ -1,4 +1,7 @@
 // Content for the "Media" section (home preview + /media page).
+import bartAudio from '@/src/assets/bart-podcast.weba.asset.json'
+import bartCover from '@/src/assets/bart-cover.jpg.asset.json'
+import insightCover from '@/src/assets/insight-cover.jpg.asset.json'
 
 export type MediaKind = 'research' | 'article' | 'podcast'
 
@@ -21,6 +24,8 @@ export type MediaItem = {
   date?: string
   embedHref?: string
   embedTitle?: string
+  audioSrc?: string
+  coverSrc?: string
 }
 
 export const MEDIA_ITEMS: MediaItem[] = [
@@ -112,6 +117,8 @@ export const MEDIA_ITEMS: MediaItem[] = [
     date: '2024',
     embedHref: 'https://www.youtube.com/embed/9oEWCF3fLsc',
     embedTitle: 'Подкаст о групповой динамике и модели BART',
+    audioSrc: bartAudio.url,
+    coverSrc: bartCover.url,
     platforms: [
       {
         label: 'Podster',
@@ -137,6 +144,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     embedHref:
       'https://embed.podcasts.apple.com/us/podcast/id1770487261?i=1000730702310',
     embedTitle: 'У системных аналитиков нет комьюнити: миф или реальность',
+    coverSrc: insightCover.url,
     platforms: [
       {
         label: 'Apple Podcasts',
