@@ -122,10 +122,10 @@ export function MediaCard({ item }: { item: MediaItem }) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-1 flex-col">
-          {!isPodcast && (
+          {!isPodcast && (item.emoji || item.tag || item.date) && (
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                <span className="text-base leading-none">{item.emoji}</span>
+                {item.emoji && <span className="text-base leading-none">{item.emoji}</span>}
                 {item.tag}
               </span>
               {item.date && (
