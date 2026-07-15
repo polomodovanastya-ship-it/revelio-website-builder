@@ -1,4 +1,5 @@
-
+import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 import { PageContainer } from '@/components/page-shell'
 import { MediaCard } from '@/components/media-card'
 import { MEDIA_ITEMS } from '@/lib/media'
@@ -27,7 +28,14 @@ function TelegramIcon({ className }: { className?: string }) {
 export default function MediaPage() {
   return (
     <PageContainer width="wide">
-      <div className="mb-12">
+      <Link
+        href="/"
+        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        На главную
+      </Link>
+      <div className="mt-8 mb-12">
         <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ МЕДИА ]
         </span>
