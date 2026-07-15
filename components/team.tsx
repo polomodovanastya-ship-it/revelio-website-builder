@@ -88,8 +88,14 @@ const TEAM: Member[] = [
   },
 ]
 
+const VISIBLE_COUNT = 4
+
 export function Team() {
   const ref = useReveal<HTMLDivElement>()
+  const [expanded, setExpanded] = useState(false)
+
+  const visibleTeam = TEAM.slice(0, VISIBLE_COUNT)
+  const hiddenTeam = TEAM.slice(VISIBLE_COUNT)
 
   return (
     <section id="team" className="border-b border-border py-20 sm:py-28">
@@ -113,50 +119,75 @@ export function Team() {
           ref={ref}
           className="reveal mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {TEAM.map((m, i) => (
-            <article
-              key={`${m.name}-${i}`}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
-            >
-              {m.photo ? (
-                <img
-                  src={asset(`/team/${m.photo}.webp`)}
-                  alt={m.name}
-                  className="aspect-[4/3] w-full object-cover object-center"
-                />
-              ) : (
-                <div className="flex aspect-[4/3] w-full items-center justify-center bg-secondary">
-                  <span className="font-heading text-5xl font-black text-primary/20">
-                    {m.name.charAt(0)}
-                  </span>
-                </div>
-              )}
+          {visibleTeam.map((m, i) => (
+            <TeamCard key={`${m.name}-${i}`} member={m} />
+          ))}
+          {expanded &&
+            hiddenTeam.map((m, i) => (
+              <TeamCard key={`${m.name}-${i}`} member={m} />
+            ))}
+        </div>
 
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="font-heading text-base font-bold uppercase tracking-tight text-primary">
-                  {m.name}
-                </h3>
-                <span className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
-                  {m.role}
-                </span>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {m.bio}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {m.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-md bg-secondary px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
+        {hiddenTeam.length > 0 && (
+          <div className="mt-10 flex justify-center">
+            <Button
+              variant="outline"
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+            >
+              {expanded ? 'Свернуть' : 'Показать всех'}
+              <ChevronDown
+                className={cn(
+                  'transition-transform duration-300',
+                  expanded && 'rotate-180',
+                )}
+              />
+            </Button>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+function TeamCard({ member: m }: { member: Member }) {
+  return (
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+      {m.photo ? (
+        <img
+          src={asset(`/team/${m.photo}.webp`)}
+          alt={m.name}
+          className="aspect-[4/3] w-full object-cover object-center"
+        />
+      ) : (
+        <div className="flex aspect-[4/3] w-full items-center justify-center bg-secondary">
+          <span className="font-heading text-5xl font-black text-primary/20">
+            {m.name.charAt(0)}
+          </span>
+        </div>
+      )}
+
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-heading text-base font-bold uppercase tracking-tight text-primary">
+          {m.name}
+        </h3>
+        <span className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
+          {m.role}
+        </span>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          {m.bio}
+        </p>
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {m.tags.map((t) => (
+            <span
+              key={t}
+              className="rounded-md bg-secondary px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground"
+            >
+              {t}
+            </span>
           ))}
         </div>
       </div>
-    </section>
+    </article>
   )
 }
