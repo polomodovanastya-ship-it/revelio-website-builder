@@ -37,15 +37,21 @@ function InlineAudioPlayer({ src, title }: { src: string; title: string }) {
     }
   }, [])
 
-  const toggle = () => {
+  const toggle = async () => {
     const a = audioRef.current
     if (!a) return
     if (playing) {
       a.pause()
       setPlaying(false)
-    } else {
-      a.play()
+      return
+    }
+    try {
+      if (a.readyState < 2) a.load()
+      await a.play()
       setPlaying(true)
+    } catch (err) {
+      console.error('Audio play failed:', err, 'src:', a.currentSrc, 'error:', a.error)
+      setPlaying(false)
     }
   }
 
