@@ -27,9 +27,6 @@ export function MediaCard({ item }: { item: MediaItem }) {
 
       {item.kind === 'podcast' && item.platforms && item.platforms.length > 0 && (
         <div className="mt-5">
-          <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-            Слушать на платформах
-          </div>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {item.platforms.map((p) => (
               <a
