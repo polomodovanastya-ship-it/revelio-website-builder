@@ -156,16 +156,20 @@ export function MediaCard({ item }: { item: MediaItem }) {
         </div>
 
         <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
-          {external ? (
-            <a href={item.primaryHref} target="_blank" rel="noopener noreferrer" className={primaryClass}>
-              {item.primaryLabel}
-              {isPodcast ? <Play className="h-3.5 w-3.5" /> : <ArrowUpRight className="h-3.5 w-3.5" />}
-            </a>
-          ) : (
-            <Link href={item.primaryHref} className={primaryClass}>
-              {item.primaryLabel}
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+          {!isPodcast && (
+            <>
+              {external ? (
+                <a href={item.primaryHref} target="_blank" rel="noopener noreferrer" className={primaryClass}>
+                  {item.primaryLabel}
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              ) : (
+                <Link href={item.primaryHref} className={primaryClass}>
+                  {item.primaryLabel}
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
+            </>
           )}
           {item.downloadHref && (
             <a
