@@ -144,6 +144,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     embedHref:
       'https://embed.podcasts.apple.com/us/podcast/id1770487261?i=1000730702310',
     embedTitle: 'У системных аналитиков нет комьюнити: миф или реальность',
+    coverSrc: insightCover.url,
     platforms: [
       {
         label: 'Apple Podcasts',
