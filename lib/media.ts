@@ -72,7 +72,9 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
       'Как ритейлеры переходят к динамическим ценам: данные, ML-модели, влияние на маржу и клиентский опыт.',
     primaryHref: 'https://pro.rbc.ru/demo/67035fff9a79476cf7d676ca',
     primaryLabel: 'Читать',
-    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${rbcLogo.url}`,
+    date: '2024',
+    logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${rbcLogo.url}`,
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${rbkIllustration.url}`,
   },
   {
     id: 'newretail-ml-pricing',
