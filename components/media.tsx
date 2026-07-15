@@ -30,11 +30,17 @@ export function Media() {
           ref={ref}
           className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3"
         >
-          {MEDIA_ITEMS.slice(0, 6).map((item) => (
-            <div key={item.id} className="mb-5 break-inside-avoid">
-              <MediaCard item={item} />
-            </div>
-          ))}
+          {MEDIA_ITEMS.filter(
+            (item) =>
+              item.id !== 'newretail-ml-pricing' &&
+              item.id !== 'incrussia-dynamic-prices'
+          )
+            .slice(0, 6)
+            .map((item) => (
+              <div key={item.id} className="mb-5 break-inside-avoid">
+                <MediaCard item={item} />
+              </div>
+            ))}
         </div>
 
         <div className="mt-8 flex justify-center">
