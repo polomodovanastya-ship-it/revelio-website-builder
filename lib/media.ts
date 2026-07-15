@@ -65,6 +65,10 @@ export const MEDIA_ITEMS: MediaItem[] = [
         label: 'Podster',
         href: 'https://podster.fm/podcasts/code-of-leadership/e/382829/interview-with-anastasia-about-group-dynamics-and-bart-model',
       },
+      {
+        label: 'YouTube',
+        href: 'https://www.youtube.com/watch?v=9oEWCF3fLsc',
+      },
     ],
   },
   {
@@ -83,10 +87,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
         href: 'https://podcasts.apple.com/us/podcast/id1770487261?i=1000730702310',
       },
       { label: 'Yandex Music', href: 'https://music.yandex.ru/album/33430820/track/143773747' },
-      { label: 'Звук', href: 'https://zvuk.com/episode/160551506' },
-      { label: 'Castbox', href: 'https://castbox.fm/vic/1770487261' },
-      { label: 'Overcast', href: 'https://overcast.fm/itunes1770487261' },
-      { label: 'Pocket Casts', href: 'https://pca.st/itunes/1770487261' },
+      { label: 'Zvuk', href: 'https://zvuk.com/episode/160551506' },
     ],
   },
 ]
