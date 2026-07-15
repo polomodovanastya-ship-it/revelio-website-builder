@@ -1,7 +1,5 @@
 // Content for the "Media" section (home preview + /media page).
 import bartAudio from '@/src/assets/bart-podcast.mp3.asset.json'
-import bartCover from '@/src/assets/bart-cover.jpg.asset.json'
-import insightCover from '@/src/assets/insight-cover.jpg.asset.json'
 
 export type MediaKind = 'research' | 'article' | 'podcast'
 
@@ -118,7 +116,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     embedHref: 'https://www.youtube.com/embed/9oEWCF3fLsc',
     embedTitle: 'Подкаст о групповой динамике и модели BART',
     audioSrc: bartAudio.url,
-    coverSrc: bartCover.url,
+    coverSrc: '/bart-cover.jpg',
     platforms: [
       {
         label: 'Podster',
@@ -144,7 +142,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     embedHref:
       'https://embed.podcasts.apple.com/us/podcast/id1770487261?i=1000730702310',
     embedTitle: 'У системных аналитиков нет комьюнити: миф или реальность',
-    coverSrc: insightCover.url,
+    coverSrc: '/insight-cover.jpg',
     platforms: [
       {
         label: 'Apple Podcasts',
