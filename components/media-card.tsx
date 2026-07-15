@@ -124,6 +124,11 @@ export function MediaCard({ item }: { item: MediaItem }) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-1 flex-col">
+          {isPodcast && item.tag && (
+            <span className="mb-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+              {item.tag}
+            </span>
+          )}
           {!isPodcast && (item.logoSrc || item.emoji || item.tag || item.date) && (
             <div className="flex items-center justify-between gap-3">
               <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">

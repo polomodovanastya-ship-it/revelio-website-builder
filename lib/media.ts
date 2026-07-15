@@ -39,14 +39,13 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
   {
     id: 'cdp-comparison-2026',
     kind: 'research',
-    emoji: '📊',
+    emoji: '',
     tag: 'Исследование',
     title: 'Как выбрать CDP / Loyalty / Comms платформу в 2026?',
     desc:
       'Сравнение CDP, кампейн-менеджеров и RTDM: модели данных, сегментация в реальном времени, интеграции с каналами, TCO.',
     primaryHref: '/research/cdp-comparison-2026',
     primaryLabel: 'Получить доступ',
-    date: '2026',
   },
   {
     id: 'forbes-excel-to-ml',
@@ -117,7 +116,7 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
   {
     id: 'podcast-bart',
     kind: 'podcast',
-    emoji: '🎙️',
+    emoji: '',
     tag: 'Подкаст',
     title: 'Подкаст о групповой динамике и модели BART',
     desc:
@@ -125,7 +124,6 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     primaryHref:
       'https://podster.fm/podcasts/code-of-leadership/e/382829/interview-with-anastasia-about-group-dynamics-and-bart-model',
     primaryLabel: 'Слушать',
-    date: '2024',
     embedHref: 'https://www.youtube.com/embed/9oEWCF3fLsc',
     embedTitle: 'Подкаст о групповой динамике и модели BART',
     audioSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${bartAudio.url}`,
@@ -144,14 +142,13 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
   {
     id: 'podcast-sa-community',
     kind: 'podcast',
-    emoji: '🎙️',
+    emoji: '',
     tag: 'Подкаст',
     title: 'У системных аналитиков нет комьюнити: миф или реальность',
     desc:
       'Как строятся профессиональные комьюнити, роль лидера, конфликтность и безопасность, что мешает и что помогает аналитикам собирать сообщества.',
     primaryHref: 'https://podcast.ru/e/.JZEV3pzZRB',
     primaryLabel: 'Слушать',
-    date: '2025',
     embedHref:
       'https://embed.podcasts.apple.com/us/podcast/id1770487261?i=1000730702310',
     embedTitle: 'У системных аналитиков нет комьюнити: миф или реальность',
