@@ -22,8 +22,7 @@ export function Media() {
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Публичная экспертиза команды: рыночные исследования, статьи в
-            деловых СМИ и подкасты.
+            Публичная экспертиза команды
           </p>
         </div>
 
