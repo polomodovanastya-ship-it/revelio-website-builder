@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react'
+
 import { PageContainer } from '@/components/page-shell'
 import { MediaCard } from '@/components/media-card'
 import { MEDIA_ITEMS } from '@/lib/media'
