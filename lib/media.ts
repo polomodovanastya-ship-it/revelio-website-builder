@@ -76,8 +76,8 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
   {
     id: 'newretail-ml-pricing',
     kind: 'article',
-    emoji: '📝',
-    tag: 'Статья',
+    emoji: '',
+    tag: '',
     title: 'Умное ценообразование для бизнеса: определяем стоимость товаров с помощью ML-алгоритмов',
     desc:
       'New Retail: как ML-алгоритмы помогают бизнесу назначать цены — модели, данные, кейсы и подводные камни внедрения.',
@@ -85,31 +85,35 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
       'https://new-retail.ru/tehnologii/umnoe_tsenoobrazovanie_dlya_biznesa_opredelyaem_stoimost_tovarov_s_pomoshchyu_ml_algoritmov/',
     primaryLabel: 'Читать',
     date: '2024',
+    logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${nrLogo.url}`,
   },
   {
     id: 'sostav-gamification',
     kind: 'article',
-    emoji: '📝',
-    tag: 'Статья',
+    emoji: '',
+    tag: '',
     title: 'Геймификация и мини-игры в маркетинге',
     desc:
       'Как бренды используют мини-игры и геймификацию для вовлечения аудитории, роста удержания и продаж.',
     primaryHref: 'https://www.sostav.ru/publication/gejmifikatsiya-67052.html',
     primaryLabel: 'Читать',
     date: '2024',
+    logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${sostavLogo.url}`,
   },
   {
     id: 'incrussia-dynamic-prices',
     kind: 'article',
-    emoji: '📝',
-    tag: 'Статья',
+    emoji: '',
+    tag: '',
     title: 'Динамические цены в e-com и рознице',
     desc:
       'Как динамическое ценообразование меняет e-com и офлайн-розницу: механика, эффекты и ограничения.',
     primaryHref: 'https://incrussia.ru/share/dinamicheskie-ceni-v-ecom-i-roznice/',
     primaryLabel: 'Читать',
     date: '2024',
+    logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${incLogo.url}`,
   },
+
   {
     id: 'podcast-bart',
     kind: 'podcast',
