@@ -45,15 +45,15 @@ export const MEDIA_ITEMS: MediaItem[] = [
   {
     id: 'forbes-excel-to-ml',
     kind: 'article',
-    emoji: '📝',
-    tag: 'Статья',
+    emoji: '',
+    tag: '',
     title: 'От Excel к ML: как бизнесу перейти на динамическое ценообразование',
     desc:
       'Разбор шагов перехода от ручных прайс-листов к ML-моделям динамического ценообразования: данные, команда, пилоты и метрики.',
     primaryHref:
       'https://www.forbes.ru/tekhnologii/517827-ot-excel-k-ml-kak-biznesu-perejti-na-dinamiceskoe-cenoobrazovanie',
     primaryLabel: 'Читать',
-    date: '2025',
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${forbesLogo.url}`,
   },
   {
     id: 'rbc-pro-pricing',
