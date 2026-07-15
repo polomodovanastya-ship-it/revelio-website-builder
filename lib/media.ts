@@ -156,3 +156,19 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     ],
   },
 ]
+
+// Shuffled order interleaves cards with/without covers for masonry layout.
+const SHUFFLED_ORDER = [
+  'forbes-excel-to-ml',
+  'cdp-comparison-2026',
+  'podcast-bart',
+  'newretail-ml-pricing',
+  'rbc-pro-pricing',
+  'podcast-sa-community',
+  'sostav-gamification',
+  'incrussia-dynamic-prices',
+]
+
+export const MEDIA_ITEMS: MediaItem[] = SHUFFLED_ORDER
+  .map((id) => RAW_MEDIA_ITEMS.find((it) => it.id === id))
+  .filter((it): it is MediaItem => Boolean(it))
