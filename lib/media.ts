@@ -115,7 +115,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     date: '2024',
     embedHref: 'https://www.youtube.com/embed/9oEWCF3fLsc',
     embedTitle: 'Подкаст о групповой динамике и модели BART',
-    audioSrc: bartAudio.url,
+    audioSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${bartAudio.url}`,
     coverSrc: '/bart-cover.jpg',
     platforms: [
       {
