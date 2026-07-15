@@ -6,6 +6,8 @@ import forbesLogo from '@/src/assets/Forbes-logo.svg.asset.json'
 import nrLogo from '@/src/assets/New_retail_logo.png.asset.json'
 import sostavLogo from '@/src/assets/Sostav_logo.svg.asset.json'
 import incLogo from '@/src/assets/Inc_logo.webp.asset.json'
+import sostavIllustration from '@/src/assets/Sostav_illustration.jpg.asset.json'
+import rbkIllustration from '@/src/assets/RBK_illustration.jpg.asset.json'
 
 
 export type MediaKind = 'research' | 'article' | 'podcast'
@@ -70,7 +72,9 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
       'Как ритейлеры переходят к динамическим ценам: данные, ML-модели, влияние на маржу и клиентский опыт.',
     primaryHref: 'https://pro.rbc.ru/demo/67035fff9a79476cf7d676ca',
     primaryLabel: 'Читать',
-    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${rbcLogo.url}`,
+    date: '2024',
+    logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${rbcLogo.url}`,
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${rbkIllustration.url}`,
   },
   {
     id: 'newretail-ml-pricing',
@@ -98,6 +102,7 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     primaryLabel: 'Читать',
     date: '2024',
     logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${sostavLogo.url}`,
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${sostavIllustration.url}`,
   },
   {
     id: 'incrussia-dynamic-prices',
