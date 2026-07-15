@@ -115,17 +115,19 @@ export function MediaCard({ item }: { item: MediaItem }) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-1 flex-col">
-          <div className="flex items-center justify-between">
-            <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-              <span className="text-base leading-none">{item.emoji}</span>
-              {item.tag}
-            </span>
-            {item.date && (
-              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                {item.date}
+          {!isPodcast && (
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+                <span className="text-base leading-none">{item.emoji}</span>
+                {item.tag}
               </span>
-            )}
-          </div>
+              {item.date && (
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                  {item.date}
+                </span>
+              )}
+            </div>
+          )}
 
           <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
             {item.title}
