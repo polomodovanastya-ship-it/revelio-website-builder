@@ -1,6 +1,4 @@
 // Content for the "Media" section (home preview + /media page).
-// Order proposal: research → article → podcasts (business value first,
-// educational/personal-brand content second).
 
 export type MediaKind = 'research' | 'article' | 'podcast'
 
@@ -21,6 +19,8 @@ export type MediaItem = {
   platforms?: MediaPlatformLink[]
   downloadHref?: string
   date?: string
+  embedHref?: string
+  embedTitle?: string
 }
 
 export const MEDIA_ITEMS: MediaItem[] = [
@@ -28,38 +28,41 @@ export const MEDIA_ITEMS: MediaItem[] = [
     id: 'cdp-comparison-2026',
     kind: 'research',
     emoji: '📊',
-    tag: 'Исследование · CDP',
+    tag: 'Исследование',
     title: 'Как выбрать CDP / Loyalty / Comms платформу в 2026?',
     desc:
       'Сравнение CDP, кампейн-менеджеров и RTDM: модели данных, сегментация в реальном времени, интеграции с каналами, TCO.',
     primaryHref: '/research/cdp-comparison-2026',
-    primaryLabel: 'Открыть исследование',
+    primaryLabel: 'Получить доступ',
     date: '2026',
   },
   {
     id: 'forbes-excel-to-ml',
     kind: 'article',
     emoji: '📝',
-    tag: 'Статья · Forbes',
+    tag: 'Статья',
     title: 'От Excel к ML: как бизнесу перейти на динамическое ценообразование',
     desc:
       'Разбор шагов перехода от ручных прайс-листов к ML-моделям динамического ценообразования: данные, команда, пилоты и метрики.',
     primaryHref:
       'https://www.forbes.ru/tekhnologii/517827-ot-excel-k-ml-kak-biznesu-perejti-na-dinamiceskoe-cenoobrazovanie',
-    primaryLabel: 'Читать на Forbes',
+    primaryLabel: 'Перейти',
     date: '2025',
   },
   {
     id: 'podcast-bart',
     kind: 'podcast',
     emoji: '🎙️',
-    tag: 'Подкаст · Code of Leadership',
+    tag: 'Подкаст',
     title: 'Подкаст о групповой динамике и модели BART',
     desc:
       'Анастасия — о ролях, границах и власти в командах через призму модели BART (Boundary, Authority, Role, Task).',
     primaryHref:
       'https://podster.fm/podcasts/code-of-leadership/e/382829/interview-with-anastasia-about-group-dynamics-and-bart-model',
-    primaryLabel: 'Слушать на Podster',
+    primaryLabel: 'Слушать',
+    date: '2024',
+    embedHref: 'https://www.youtube.com/embed/9oEWCF3fLsc',
+    embedTitle: 'Подкаст о групповой динамике и модели BART',
     platforms: [
       {
         label: 'Podster',
@@ -75,12 +78,15 @@ export const MEDIA_ITEMS: MediaItem[] = [
     id: 'podcast-sa-community',
     kind: 'podcast',
     emoji: '🎙️',
-    tag: 'Подкаст · InSAйт',
+    tag: 'Подкаст',
     title: 'У системных аналитиков нет комьюнити: миф или реальность',
     desc:
       'Как строятся профессиональные комьюнити, роль лидера, конфликтность и безопасность, что мешает и что помогает аналитикам собирать сообщества.',
     primaryHref: 'https://podcast.ru/e/.JZEV3pzZRB',
-    primaryLabel: 'Слушать эпизод',
+    primaryLabel: 'Слушать',
+    embedHref:
+      'https://embed.podcasts.apple.com/us/podcast/id1770487261?i=1000730702310',
+    embedTitle: 'У системных аналитиков нет комьюнити: миф или реальность',
     platforms: [
       {
         label: 'Apple Podcasts',
