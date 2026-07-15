@@ -1,5 +1,6 @@
 // Content for the "Media" section (home preview + /media page).
 import bartAudio from '@/src/assets/bart-podcast.mp3.asset.json'
+import saCommunityCover from '@/src/assets/sa-community-cover.jpg.asset.json'
 
 export type MediaKind = 'research' | 'article' | 'podcast'
 
@@ -142,7 +143,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     embedHref:
       'https://embed.podcasts.apple.com/us/podcast/id1770487261?i=1000730702310',
     embedTitle: 'У системных аналитиков нет комьюнити: миф или реальность',
-    coverSrc: '/insight-cover.jpg',
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${saCommunityCover.url}`,
     platforms: [
       {
         label: 'Apple Podcasts',
