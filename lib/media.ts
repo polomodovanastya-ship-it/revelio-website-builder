@@ -102,6 +102,7 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     primaryLabel: 'Читать',
     date: '2024',
     logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${sostavLogo.url}`,
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${sostavIllustration.url}`,
   },
   {
     id: 'incrussia-dynamic-prices',
