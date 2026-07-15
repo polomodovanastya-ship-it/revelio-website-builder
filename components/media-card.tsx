@@ -27,7 +27,7 @@ export function MediaCard({ item }: { item: MediaItem }) {
 
       {item.kind === 'podcast' && item.platforms && item.platforms.length > 0 && (
         <div className="mt-5">
-          <div className="mt-2 flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5">
             {item.platforms.map((p) => (
               <a
                 key={p.href}
