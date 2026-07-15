@@ -59,7 +59,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     kind: 'article',
     emoji: '📝',
     tag: 'Статья',
-    title: 'РБК Pro: динамическое ценообразование в ритейле',
+    title: 'Динамическое ценообразование в ритейле',
     desc:
       'Как ритейлеры переходят к динамическим ценам: данные, ML-модели, влияние на маржу и клиентский опыт.',
     primaryHref: 'https://pro.rbc.ru/demo/67035fff9a79476cf7d676ca',
@@ -84,7 +84,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     kind: 'article',
     emoji: '📝',
     tag: 'Статья',
-    title: 'Sostav: геймификация и мини-игры в маркетинге',
+    title: 'Геймификация и мини-игры в маркетинге',
     desc:
       'Как бренды используют мини-игры и геймификацию для вовлечения аудитории, роста удержания и продаж.',
     primaryHref: 'https://www.sostav.ru/publication/gejmifikatsiya-67052.html',
@@ -96,7 +96,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     kind: 'article',
     emoji: '📝',
     tag: 'Статья',
-    title: 'INC.Russia: динамические цены в e-com и рознице',
+    title: 'Динамические цены в e-com и рознице',
     desc:
       'Как динамическое ценообразование меняет e-com и офлайн-розницу: механика, эффекты и ограничения.',
     primaryHref: 'https://incrussia.ru/share/dinamicheskie-ceni-v-ecom-i-roznice/',
