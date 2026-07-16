@@ -11,6 +11,7 @@ import sostavIllustration2 from '@/src/assets/Sostav_illustration_2_1.png.asset.
 import rbkIllustration from '@/src/assets/RBK_illustration.jpg.asset.json'
 import rbkIllustration1 from '@/src/assets/RBK_illustration_1.png.asset.json'
 import bartIllustration from '@/src/assets/Code_of_leadership_illustration_2.png.asset.json'
+import tInsightIllustration from '@/src/assets/T-Insight_illustration_2.png.asset.json'
 
 
 
@@ -162,7 +163,7 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     embedHref:
       'https://embed.podcasts.apple.com/us/podcast/id1770487261?i=1000730702310',
     embedTitle: 'У системных аналитиков нет комьюнити: миф или реальность',
-    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${saCommunityCover.url}`,
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${tInsightIllustration.url}`,
     platforms: [
       {
         label: 'Apple Podcasts',
