@@ -7,6 +7,7 @@ import nrLogo from '@/src/assets/New_retail_logo.png.asset.json'
 import sostavLogo from '@/src/assets/Sostav_logo.svg.asset.json'
 import incLogo from '@/src/assets/Inc_logo.webp.asset.json'
 import sostavIllustration from '@/src/assets/Sostav_illustration.jpg.asset.json'
+import sostavIllustration2 from '@/src/assets/Sostav_illustration_2_1.png.asset.json'
 import rbkIllustration from '@/src/assets/RBK_illustration.jpg.asset.json'
 import rbkIllustration1 from '@/src/assets/RBK_illustration_1.png.asset.json'
 import bartIllustration from '@/src/assets/Code_of_leadership_illustration_2.png.asset.json'
@@ -106,7 +107,7 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     primaryLabel: 'Читать',
     date: '2024',
     logoSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${sostavLogo.url}`,
-    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${sostavIllustration.url}`,
+    coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${sostavIllustration2.url}`,
   },
   {
     id: 'incrussia-dynamic-prices',
