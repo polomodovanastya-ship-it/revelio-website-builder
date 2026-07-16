@@ -13,7 +13,7 @@ export function ConsultingHero() {
       />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid gap-8 lg:grid-cols-1 lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
           <div>
             <span className="reveal in-view inline-block font-mono text-xs uppercase tracking-[0.22em] text-accent">
               [ УСЛУГА ]
@@ -82,7 +82,7 @@ export function ConsultingHero() {
           </div>
 
           <div
-            className="reveal in-view relative hidden aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border lg:mt-0 lg:aspect-auto lg:min-h-[360px]"
+            className="reveal in-view relative hidden aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border lg:block lg:mt-0 lg:aspect-auto lg:min-h-[360px]"
             style={{ animationDelay: '120ms' }}
           >
             <Image
