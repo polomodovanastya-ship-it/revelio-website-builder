@@ -82,7 +82,7 @@ export function ConsultingHero() {
           </div>
 
           <div
-            className="reveal in-view relative hidden aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border lg:mt-0 lg:aspect-auto lg:min-h-[360px]"
+            className="reveal in-view relative hidden aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border lg:block lg:mt-0 lg:aspect-auto lg:min-h-[360px]"
             style={{ animationDelay: '120ms' }}
           >
             <Image
