@@ -112,7 +112,7 @@ export function Team() {
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
             ИТ и бизнес-экспертиза в индустриях: банки, ритейл, телеком, eCom,
-            недвижимость, авто.
+            недвижимость, авто
           </p>
         </div>
 

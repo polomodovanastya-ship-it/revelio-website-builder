@@ -49,7 +49,7 @@ export function Hero() {
           className="reveal in-view mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground lg:max-w-none lg:whitespace-nowrap"
           style={{ animationDelay: '220ms' }}
         >
-          От оценки задачи до запуска команды и передачи функции внутрь бизнеса.
+          От оценки задачи до запуска команды и передачи функции внутрь бизнеса
         </p>
 
         <div

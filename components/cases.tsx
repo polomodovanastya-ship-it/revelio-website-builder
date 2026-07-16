@@ -76,7 +76,7 @@ export function Cases() {
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
             От декомпозиции за 2–7 дней до решающего боли пользователей
-            продукта за 3–5 месяцев.
+            продукта за 3–5 месяцев
           </p>
         </div>
 
