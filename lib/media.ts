@@ -8,6 +8,7 @@ import sostavLogo from '@/src/assets/Sostav_logo.svg.asset.json'
 import incLogo from '@/src/assets/Inc_logo.webp.asset.json'
 import sostavIllustration from '@/src/assets/Sostav_illustration.jpg.asset.json'
 import rbkIllustration from '@/src/assets/RBK_illustration.jpg.asset.json'
+import rbkIllustration1 from '@/src/assets/RBK_illustration_1.png.asset.json'
 
 
 export type MediaKind = 'research' | 'article' | 'podcast'
