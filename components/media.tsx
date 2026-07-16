@@ -22,7 +22,7 @@ export function Media() {
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Публичная экспертиза команды.
+            Публичная экспертиза команды
           </p>
         </div>
 

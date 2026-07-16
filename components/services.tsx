@@ -67,7 +67,7 @@ export function Services() {
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
             Подберём формат под задачу: от второго мнения до полной команды
-            разработки.
+            разработки
           </p>
         </div>
 
