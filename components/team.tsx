@@ -46,25 +46,11 @@ const TEAM: Member[] = [
     tags: ['Бигтех', 'GenAI', 'AI4SDLC', 'System Design', 'Platform', 'Leadership'],
   },
   {
-    name: 'Павел',
-    role: 'Консультант · eCom',
-    bio: 'Запускал процессы eCom, прайсинг и обеспечение для mid-size FMCG, fashion и БТиЭ (Mepsi, Lulu, MILLY).',
-    photo: 'pavel',
-    tags: ['eCom', 'Процессы', 'Обеспечение', 'Склад', 'Прогнозирование', 'Продажи'],
-  },
-  {
     name: 'Артём',
     role: 'Консультант · Инфра',
     bio: 'Развивал IaaS-сервисы и private cloud для enterprise, внедрял SecOps в крупных ИТ-службах.',
     photo: 'artem',
     tags: ['Cloud', 'SecOps', 'ЦОД', 'IaaS', 'Private Cloud', 'Enterprise'],
-  },
-  {
-    name: 'Мария',
-    role: 'Консультант · Data',
-    bio: 'Руководила проектами внедрения сквозной аналитики для крупных девелоперов.',
-    photo: 'maria',
-    tags: ['Недвижимость', 'Сквозная аналитика', 'ROMI', 'CAC', 'Data', 'Marketing'],
   },
   {
     name: 'Евгений',
