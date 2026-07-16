@@ -82,14 +82,14 @@ export function ConsultingHero() {
           </div>
 
           <div
-            className="reveal in-view relative hidden aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border lg:block lg:mt-0 lg:aspect-auto lg:min-h-[360px]"
+            className="reveal in-view relative hidden w-full overflow-hidden rounded-2xl border border-border lg:block lg:mt-0 lg:min-h-[360px]"
             style={{ animationDelay: '120ms' }}
           >
             <Image
               src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${consultingHeroAsset.url}`}
               alt="Иллюстрация консалтинговой услуги"
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(max-width: 1024px) 100vw, 50vw"
               priority
             />
