@@ -178,33 +178,35 @@ export function MediaCard({ item }: { item: MediaItem }) {
           )}
         </div>
 
-        <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
-          {!isPodcast && (
-            <>
-              {external ? (
-                <a href={item.primaryHref} target="_blank" rel="noopener noreferrer" className={primaryClass}>
-                  {item.primaryLabel}
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              ) : (
-                <Link href={item.primaryHref} className={primaryClass}>
-                  {item.primaryLabel}
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              )}
-            </>
-          )}
-          {item.downloadHref && (
-            <a
-              href={item.downloadHref}
-              download
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary transition-colors hover:border-primary/30 hover:bg-muted hover:text-accent"
-            >
-              <Download className="h-3.5 w-3.5" />
-              Скачать
-            </a>
-          )}
-        </div>
+        {(!isPodcast || item.downloadHref) && (
+          <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
+            {!isPodcast && (
+              <>
+                {external ? (
+                  <a href={item.primaryHref} target="_blank" rel="noopener noreferrer" className={primaryClass}>
+                    {item.primaryLabel}
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                ) : (
+                  <Link href={item.primaryHref} className={primaryClass}>
+                    {item.primaryLabel}
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </Link>
+                )}
+              </>
+            )}
+            {item.downloadHref && (
+              <a
+                href={item.downloadHref}
+                download
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary transition-colors hover:border-primary/30 hover:bg-muted hover:text-accent"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Скачать
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </article>
   )
