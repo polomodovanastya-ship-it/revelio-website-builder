@@ -6,5 +6,5 @@ export const NAV = [
   { label: 'Кейсы', href: '/#cases' },
   { label: 'Процесс', href: '/#process' },
   { label: 'Журнал', href: 'https://revelio.tech/#media' },
-  { label: 'Контакты', href: '/#contact' },
+  { label: 'Контакты', href: '/#contacts' },
 ] as const
