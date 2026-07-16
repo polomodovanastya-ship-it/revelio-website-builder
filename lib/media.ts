@@ -89,7 +89,7 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     tag: '',
     title: 'Умное ценообразование для бизнеса: определяем стоимость товаров с помощью ML-алгоритмов',
     desc:
-      'New Retail: как ML-алгоритмы помогают бизнесу назначать цены — модели, данные, кейсы и подводные камни внедрения.',
+      'Как ML-алгоритмы помогают бизнесу назначать цены — модели, данные, кейсы и подводные камни внедрения.',
     primaryHref:
       'https://new-retail.ru/tehnologii/umnoe_tsenoobrazovanie_dlya_biznesa_opredelyaem_stoimost_tovarov_s_pomoshchyu_ml_algoritmov/',
     primaryLabel: 'Читать',
