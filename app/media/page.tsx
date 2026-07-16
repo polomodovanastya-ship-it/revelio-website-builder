@@ -46,7 +46,7 @@ export default function MediaPage() {
         </h1>
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-3xl text-base text-primary/85 sm:text-lg">
-            Открытые материалы команды: рыночные исследования, публикации и подкасты.
+            Открытые материалы команды: рыночные исследования, публикации и подкасты
           </p>
           <a
             href="https://t.me/revelio_tech"
