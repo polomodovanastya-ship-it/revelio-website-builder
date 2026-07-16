@@ -5,6 +5,6 @@ export const NAV = [
   { label: 'Услуги', href: '/#services' },
   { label: 'Кейсы', href: '/#cases' },
   { label: 'Процесс', href: '/#process' },
-  { label: 'Журнал', href: '/media' },
+  { label: 'Журнал', href: 'https://revelio.tech/#media' },
   { label: 'Контакты', href: '/#contact' },
 ] as const
