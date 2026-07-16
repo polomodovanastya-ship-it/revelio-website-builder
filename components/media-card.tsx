@@ -108,105 +108,107 @@ export function MediaCard({ item }: { item: MediaItem }) {
     'inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary'
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
-      {item.coverSrc && (
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-card">
-          <Image
-            src={item.coverSrc}
-            alt={item.title}
-            fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            className={cn(isPodcast ? 'object-cover' : 'object-contain')}
-          />
-        </div>
-      )}
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex flex-1 flex-col">
-          {isPodcast && item.tag && (
-            <span className="mb-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-              {item.tag}
-            </span>
-          )}
-          {!isPodcast && (item.logoSrc || item.emoji || item.tag || item.date) && (
-            <div className="flex items-center justify-between gap-3">
-              <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                {item.logoSrc ? (
-                  <img
-                    src={item.logoSrc}
-                    alt=""
-                    className="h-6 w-auto max-w-[110px] object-contain"
-                  />
-                ) : (
-                  item.emoji && <span className="text-base leading-none">{item.emoji}</span>
-                )}
+    <article className="group block">
+      <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-[transform,box-shadow,border-color] duration-300 will-change-transform group-hover:-translate-y-0.5 group-hover:border-primary/25 group-hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+        {item.coverSrc && (
+          <div className="relative aspect-[16/9] w-full overflow-hidden bg-card">
+            <Image
+              src={item.coverSrc}
+              alt={item.title}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              className={cn(isPodcast ? 'object-cover' : 'object-contain')}
+            />
+          </div>
+        )}
+        <div className="flex flex-1 flex-col p-6">
+          <div className="flex flex-1 flex-col">
+            {isPodcast && item.tag && (
+              <span className="mb-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                 {item.tag}
               </span>
-              {item.date && (
-                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                  {item.date}
+            )}
+            {!isPodcast && (item.logoSrc || item.emoji || item.tag || item.date) && (
+              <div className="flex items-center justify-between gap-3">
+                <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+                  {item.logoSrc ? (
+                    <img
+                      src={item.logoSrc}
+                      alt=""
+                      className="h-6 w-auto max-w-[110px] object-contain"
+                    />
+                  ) : (
+                    item.emoji && <span className="text-base leading-none">{item.emoji}</span>
+                  )}
+                  {item.tag}
                 </span>
+                {item.date && (
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                    {item.date}
+                  </span>
+                )}
+              </div>
+            )}
+
+
+            <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
+              {item.title}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+
+            {isPodcast && item.audioSrc && (
+              <InlineAudioPlayer src={item.audioSrc} title={item.title} />
+            )}
+
+            {isPodcast && item.platforms && item.platforms.length > 0 && (
+              <div className="mt-5">
+                <div className="flex flex-wrap gap-1.5">
+                  {item.platforms.map((p) => (
+                    <a
+                      key={p.href}
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-md bg-secondary px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:bg-muted hover:text-accent"
+                    >
+                      {p.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {(!isPodcast || item.downloadHref) && (
+            <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
+              {!isPodcast && (
+                <>
+                  {external ? (
+                    <a href={item.primaryHref} target="_blank" rel="noopener noreferrer" className={primaryClass}>
+                      {item.primaryLabel}
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  ) : (
+                    <Link href={item.primaryHref} className={primaryClass}>
+                      {item.primaryLabel}
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </Link>
+                  )}
+                </>
+              )}
+              {item.downloadHref && (
+                <a
+                  href={item.downloadHref}
+                  download
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary transition-colors hover:border-primary/30 hover:bg-muted hover:text-accent"
+                >
+                  <Download className="h-3.5 w-3.5" />
+                  Скачать
+                </a>
               )}
             </div>
           )}
-
-
-          <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
-            {item.title}
-          </h3>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
-
-          {isPodcast && item.audioSrc && (
-            <InlineAudioPlayer src={item.audioSrc} title={item.title} />
-          )}
-
-          {isPodcast && item.platforms && item.platforms.length > 0 && (
-            <div className="mt-5">
-              <div className="flex flex-wrap gap-1.5">
-                {item.platforms.map((p) => (
-                  <a
-                    key={p.href}
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-md bg-secondary px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:bg-muted hover:text-accent"
-                  >
-                    {p.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
-
-        {(!isPodcast || item.downloadHref) && (
-          <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
-            {!isPodcast && (
-              <>
-                {external ? (
-                  <a href={item.primaryHref} target="_blank" rel="noopener noreferrer" className={primaryClass}>
-                    {item.primaryLabel}
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                ) : (
-                  <Link href={item.primaryHref} className={primaryClass}>
-                    {item.primaryLabel}
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
-                )}
-              </>
-            )}
-            {item.downloadHref && (
-              <a
-                href={item.downloadHref}
-                download
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary transition-colors hover:border-primary/30 hover:bg-muted hover:text-accent"
-              >
-                <Download className="h-3.5 w-3.5" />
-                Скачать
-              </a>
-            )}
-          </div>
-        )}
       </div>
     </article>
   )
