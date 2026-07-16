@@ -35,7 +35,7 @@ export function Media() {
               'forbes-excel-to-ml',
               'cdp-comparison-2026',
               'podcast-bart',
-              'rbc-pro-pricing',
+              'sostav-gamification',
             ].includes(item.id)
           ).map((item) => (
             <div key={item.id} className="mb-5 break-inside-avoid">
