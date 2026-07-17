@@ -40,7 +40,7 @@ export function ConsultingHero() {
               style={{ animationDelay: '220ms' }}
             >
               Помогаем заказчикам трансформировать ужасное&nbsp;→&nbsp;в феноменальное
-              и экономить бюджеты.
+              и экономить бюджеты
             </p>
 
             <ol
