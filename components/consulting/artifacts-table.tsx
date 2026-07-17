@@ -95,7 +95,7 @@ export function ArtifactsTable() {
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
           Любой артефакт можно заказать отдельно — от схемы процесса до целевой
-          архитектуры решения. Цены ориентировочные, финальные — под задачу.
+          архитектуры решения. Цены ориентировочные, финальные — под задачу
         </p>
 
         <div ref={ref} className="reveal mt-12 space-y-4">

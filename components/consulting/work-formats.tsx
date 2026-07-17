@@ -21,7 +21,7 @@ export function WorkFormats() {
           Два базовых формата работы
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Одна область на выбор — глубину аудита выбираете под задачу.
+          Одна область на выбор — глубину аудита выбираете под задачу
         </p>
 
         <div ref={ref} className="reveal mt-12 grid grid-cols-1 gap-5 lg:grid-cols-2">
