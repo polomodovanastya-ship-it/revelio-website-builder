@@ -39,8 +39,9 @@ export function ConsultingHero() {
               className="reveal in-view mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground"
               style={{ animationDelay: '220ms' }}
             >
-              Помогаем заказчикам трансформировать ужасное&nbsp;→&nbsp;в феноменальное
-              и экономить бюджеты
+              Помогаем заказчикам трансформировать ужасное&nbsp;→
+              <br />
+              в феноменальное и экономить бюджеты
             </p>
 
             <ol
