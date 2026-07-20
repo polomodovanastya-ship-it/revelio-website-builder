@@ -86,7 +86,7 @@ export function ConsultingHero() {
             style={{ animationDelay: '120ms' }}
           >
             <Image
-              src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${consultingHeroAsset.url}`}
+              src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${consultingWebsiteAsset.url}`}
               alt="Иллюстрация консалтинговой услуги"
               width={1920}
               height={1440}
