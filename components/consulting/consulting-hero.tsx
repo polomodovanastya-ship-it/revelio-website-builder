@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import consultingHeroAsset from '@/src/assets/consulting-hero.png.asset.json'
+import consultingWebsiteAsset from '@/src/assets/consulting-website.png.asset.json'
 import { STEPS } from '@/lib/consulting-content'
 
 export function ConsultingHero() {
@@ -86,7 +86,7 @@ export function ConsultingHero() {
             style={{ animationDelay: '120ms' }}
           >
             <Image
-              src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${consultingHeroAsset.url}`}
+              src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${consultingWebsiteAsset.url}`}
               alt="Иллюстрация консалтинговой услуги"
               width={1920}
               height={1440}
