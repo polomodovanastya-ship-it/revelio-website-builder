@@ -28,6 +28,7 @@ export default function AiEvaluationPage() {
       <TrackGoalOnMount goal="eval_landing" />
       {/* <LandingIntroModal /> */}
       <LandingHero />
+      <OnboardingPath />
       <Dimensions />
       <Personas />
       <HowEstimationWorks />
