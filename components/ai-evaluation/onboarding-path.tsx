@@ -40,7 +40,7 @@ export function OnboardingPath() {
         <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ Онбординг ]
         </span>
-        <h2 className="mt-3 max-w-3xl text-balance font-heading text-2xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-4xl">
+        <h2 className="mt-3 max-w-3xl text-balance font-heading text-xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-3xl">
           Как выглядит путь процесса оценки
         </h2>
 
@@ -72,7 +72,7 @@ export function OnboardingPath() {
                 <p className="mt-1 text-sm font-medium text-primary">
                   {step.caption}
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-secondary">
+                <p className="mt-3 rounded-lg bg-accent/12 px-4 py-3 text-sm leading-relaxed text-primary ring-1 ring-accent/20">
                   {step.instruction}
                 </p>
               </figcaption>
