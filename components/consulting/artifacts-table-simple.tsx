@@ -69,7 +69,7 @@ export function ArtifactsTableSimple() {
   const [requested, setRequested] = useState<string | null>(null)
 
   return (
-    <section className="border-b border-border py-16 sm:py-20">
+    <section className="border-b border-border pt-4 pb-16 sm:pt-6 sm:pb-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div ref={ref} className="reveal space-y-4">
           {ARTIFACTS.map((g) => (
