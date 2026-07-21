@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
 import { useReveal } from '@/hooks/use-reveal'
 import { DIMENSIONS, ENGINE_VERBS, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
 import decompCover from '@/src/assets/dimension-decomp-v2.png.asset.json'
@@ -48,15 +49,21 @@ export function Dimensions() {
 
         <div
           ref={ref}
-          className="reveal mt-12 columns-1 gap-4 sm:columns-2 lg:columns-3"
+          className="reveal mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-min lg:grid-flow-dense"
         >
           {DIMENSIONS.map((d, i) => {
             const cover = COVERS[d.key]
+            const isFeatured = d.key === 'estimate'
             return (
-              <div key={d.key} className="mb-4 break-inside-avoid">
-                <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]">
+              <div
+                key={d.key}
+                className={cn(
+                  isFeatured && 'sm:col-span-2 sm:row-span-2',
+                )}
+              >
+                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]">
                   {cover && (
-                    <div className="w-full overflow-hidden bg-secondary px-4 pt-4">
+                    <div className="w-full overflow-hidden bg-card px-4 pt-4">
                       <img
                         src={cover}
                         alt={d.title}
