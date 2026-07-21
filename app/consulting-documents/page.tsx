@@ -24,7 +24,7 @@ const GALLERY = [
 export default function ConsultingDocumentsPage() {
   return (
     <main>
-      <section className="border-b border-border pt-28 pb-12 sm:pt-36 sm:pb-16">
+      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
             [ ШАБЛОНЫ ]
