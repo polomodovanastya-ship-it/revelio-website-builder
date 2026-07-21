@@ -51,7 +51,7 @@ export function Dimensions() {
           ref={ref}
           className="reveal mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-min lg:grid-flow-dense"
         >
-          {DIMENSIONS.map((d, i) => {
+          {[DIMENSIONS.find((d) => d.key === 'estimate')!, ...DIMENSIONS.filter((d) => d.key !== 'estimate')].map((d, i) => {
             const cover = COVERS[d.key]
             const isFeatured = d.key === 'estimate'
             return (
