@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { HERO_SUMMARY, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
+import { PRODUCT_PROOF as _PRODUCT_PROOF, HERO_SUMMARY as _HERO_SUMMARY } from '@/lib/ai-evaluation-content'
 import { EvalStartLink } from '@/components/funnel-tracking'
 import summaryCover from '@/src/assets/Summary_cover.png.asset.json'
 
