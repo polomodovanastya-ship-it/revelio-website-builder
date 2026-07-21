@@ -192,7 +192,7 @@ export function Services() {
 
               <a
                 href="#contact"
-                className={`relative z-10 mt-auto flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
+                className={`relative z-20 mt-auto flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
                   s.featured
                     ? 'bg-accent text-accent-foreground hover:brightness-110'
                     : 'border border-border bg-secondary text-primary hover:border-primary/30 hover:bg-muted hover:text-accent'
