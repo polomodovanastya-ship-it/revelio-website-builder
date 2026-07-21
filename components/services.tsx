@@ -81,12 +81,19 @@ export function Services() {
                   : 'border-border bg-card hover:border-primary/25 hover:shadow-[0_18px_44px_-22px_rgba(20,37,80,0.30)]'
               }`}
             >
+              {s.name === 'Консалтинг' && (
+                <Link
+                  href="/consulting"
+                  className="absolute inset-0 z-10"
+                  aria-label="Консалтинг"
+                />
+              )}
               <div className="relative flex items-center gap-3">
                 <span className="text-2xl leading-none">{s.emoji}</span>
                 {s.name === 'Консалтинг' ? (
                   <Link
                     href="/consulting"
-                    className={`whitespace-nowrap font-heading text-base font-bold uppercase tracking-tight transition-colors hover:text-accent ${
+                    className={`relative z-20 whitespace-nowrap font-heading text-base font-bold uppercase tracking-tight transition-colors hover:text-accent ${
                       s.featured ? 'text-primary-foreground' : 'text-primary'
                     }`}
                   >
@@ -107,7 +114,7 @@ export function Services() {
                 {s.name === 'Консалтинг' ? (
                   <Link
                     href="/consulting#formats"
-                    className={`whitespace-nowrap font-heading text-2xl font-bold leading-none tracking-tight transition-colors hover:text-accent ${
+                    className={`relative z-20 whitespace-nowrap font-heading text-2xl font-bold leading-none tracking-tight transition-colors hover:text-accent ${
                       s.featured ? 'text-primary-foreground' : 'text-primary'
                     }`}
                   >
@@ -131,15 +138,26 @@ export function Services() {
                 </span>
               </div>
 
-              <p
-                className={`relative mt-4 text-sm leading-relaxed ${
-                  s.featured ? 'text-primary-foreground/85' : 'text-muted-foreground'
-                }`}
-              >
-                {s.pitch}
-              </p>
+              {s.name === 'Консалтинг' ? (
+                <Link
+                  href="/consulting#artifacts"
+                  className={`relative z-20 mt-4 block text-sm leading-relaxed no-underline transition-colors hover:text-accent ${
+                    s.featured ? 'text-primary-foreground/85' : 'text-muted-foreground'
+                  }`}
+                >
+                  {s.pitch}
+                </Link>
+              ) : (
+                <p
+                  className={`relative z-10 mt-4 text-sm leading-relaxed ${
+                    s.featured ? 'text-primary-foreground/85' : 'text-muted-foreground'
+                  }`}
+                >
+                  {s.pitch}
+                </p>
+              )}
 
-              <ul className="relative mt-6 space-y-3">
+              <ul className="relative z-10 mt-6 space-y-3">
                 {s.points.map((p) => (
                   <li
                     key={p}
@@ -157,7 +175,7 @@ export function Services() {
                 ))}
               </ul>
 
-              <div className="relative mt-6 mb-7 flex flex-wrap gap-1.5">
+              <div className="relative z-10 mt-6 mb-7 flex flex-wrap gap-1.5">
                 {s.meta.split('·').map((tag) => (
                   <span
                     key={tag}
@@ -174,7 +192,7 @@ export function Services() {
 
               <a
                 href="#contact"
-                className={`relative mt-auto flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
+                className={`relative z-20 mt-auto flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
                   s.featured
                     ? 'bg-accent text-accent-foreground hover:brightness-110'
                     : 'border border-border bg-secondary text-primary hover:border-primary/30 hover:bg-muted hover:text-accent'
