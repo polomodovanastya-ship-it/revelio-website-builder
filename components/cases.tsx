@@ -91,21 +91,32 @@ export function Cases() {
           {CASES.map((c) => (
             <article
               key={c.title}
-              className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
             >
-              <div className="flex items-center justify-between">
-                <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                  <span className="text-base leading-none">{c.emoji}</span>
-                  {c.tag}
-                </span>
-                {/* стрелка убрана временно — вернуть, когда у кейсов появятся посадочные */}
+              {c.cover && (
+                <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
+                  <img
+                    src={c.cover}
+                    alt={c.title}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-center justify-between">
+                  <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+                    <span className="text-base leading-none">{c.emoji}</span>
+                    {c.tag}
+                  </span>
+                </div>
+                <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
+                  {c.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {c.desc}
+                </p>
               </div>
-              <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
-                {c.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {c.desc}
-              </p>
             </article>
           ))}
         </div>
