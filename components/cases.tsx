@@ -6,17 +6,17 @@ import narcelleCover from '@/src/assets/Narcelle_illustration.png.asset.json'
 
 const CASES = [
   {
-    emoji: '🎮',
-    tag: 'Product Design',
-    title: 'Gaming App для Alfa Gen',
-    desc: 'Проектирование игрового приложения для поколений 8–16 лет в интеграции с лояльностью.',
-  },
-  {
     emoji: '✈️',
     tag: 'B2B Travel Tech',
     title: 'Портал «Командировки» для Банка ТОП-10 РФ',
     desc: 'Разработка в интеграции с процессингом TuTu.ru, ЭДО, контакт-центром и отельными API.',
     cover: komandirovkiCover.url,
+  },
+  {
+    emoji: '🎮',
+    tag: 'Product Design',
+    title: 'Gaming App для Alfa Gen',
+    desc: 'Проектирование игрового приложения для поколений 8–16 лет в интеграции с лояльностью.',
   },
   {
     emoji: '💬',
