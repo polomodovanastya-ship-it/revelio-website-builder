@@ -21,7 +21,11 @@ export function DocumentsGallery({ items }: { items: Item[] }) {
   }, [i, total, paused])
 
   return (
-    <div className="relative mx-auto max-w-4xl">
+    <div
+      className="relative mx-auto max-w-4xl"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="relative overflow-hidden rounded-2xl border border-border bg-card">
         <div
           className="flex transition-transform duration-500 ease-out"
