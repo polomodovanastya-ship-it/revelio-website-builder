@@ -72,7 +72,12 @@ export function Dimensions() {
                   )}
                 >
                   {cover && (
-                    <div className="w-full overflow-hidden bg-card px-4 pt-4">
+                    <div
+                      className={cn(
+                        'w-full overflow-hidden bg-card px-4 pt-4',
+                        (isFeatured || isTall) && 'flex-1',
+                      )}
+                    >
                       <img
                         src={cover}
                         alt={d.title}
