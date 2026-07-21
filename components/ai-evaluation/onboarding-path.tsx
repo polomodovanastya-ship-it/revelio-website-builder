@@ -35,7 +35,7 @@ export function OnboardingPath() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section className="relative overflow-hidden border-b border-border py-20 sm:py-28">
+    <section className="relative overflow-hidden border-b border-border pb-20 pt-4 sm:pb-28 sm:pt-6">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <span className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ Онбординг ]
