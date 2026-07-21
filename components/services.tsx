@@ -93,7 +93,7 @@ export function Services() {
                 {s.name === 'Консалтинг' ? (
                   <Link
                     href="/consulting"
-                    className={`whitespace-nowrap font-heading text-base font-bold uppercase tracking-tight transition-colors hover:text-accent ${
+                    className={`relative z-20 whitespace-nowrap font-heading text-base font-bold uppercase tracking-tight transition-colors hover:text-accent ${
                       s.featured ? 'text-primary-foreground' : 'text-primary'
                     }`}
                   >
