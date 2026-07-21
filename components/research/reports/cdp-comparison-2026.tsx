@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import cdpIllustrationAsset from '@/src/assets/CDP_illustration_1.png.asset.json'
 import { Audience } from './cdp-comparison/audience'
 import { QuestionsGrid } from './cdp-comparison/questions-grid'
 import { StatsBlock } from './cdp-comparison/stats-block'
