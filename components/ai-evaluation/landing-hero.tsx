@@ -108,7 +108,7 @@ export function LandingHero() {
       </div>
 
       {/* bottom — product summary strip (styled like [ Методология ]) */}
-      <div className="relative mx-auto w-full max-w-7xl px-5 pb-10 sm:px-8">
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8">
         <span className="mb-4 inline-block font-mono text-xs uppercase tracking-[0.22em] text-accent">
           [ Коротко о продукте ]
         </span>
