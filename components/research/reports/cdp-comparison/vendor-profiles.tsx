@@ -92,7 +92,7 @@ function ProfileCard({
           </ul>
         </div>
         <div>
-          <Minus className="mb-4 h-12 w-12 text-accent" strokeWidth={2.5} />
+          <Minus className="mb-4 h-12 w-12 text-[#F66B5E]" strokeWidth={2.5} />
           <ul className="list-disc space-y-3 pl-5">
             {cons.map((c) => (
               <li key={c} className="text-sm leading-snug text-foreground md:text-base">
