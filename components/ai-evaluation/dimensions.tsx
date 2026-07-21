@@ -3,6 +3,17 @@
 import { ArrowRight } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
 import { DIMENSIONS, ENGINE_VERBS, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
+import decompCover from '@/src/assets/dimension-decomp.png.asset.json'
+import estimateCover from '@/src/assets/dimension-estimate.png.asset.json'
+import risksCover from '@/src/assets/dimension-risks.png.asset.json'
+
+const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
+
+const COVERS: Record<string, string> = {
+  decomposition: `${ASSET_HOST}${decompCover.url}`,
+  estimate: `${ASSET_HOST}${estimateCover.url}`,
+  risks: `${ASSET_HOST}${risksCover.url}`,
+}
 
 export function Dimensions() {
   const ref = useReveal<HTMLDivElement>()
@@ -37,24 +48,38 @@ export function Dimensions() {
 
         <div
           ref={ref}
-          className="reveal mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          className="reveal mt-12 columns-1 gap-4 sm:columns-2 lg:columns-3"
         >
-          {DIMENSIONS.map((d, i) => (
-            <div
-              key={d.key}
-              className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]"
-            >
-              <span className="font-mono text-xs tabular-nums text-accent">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h3 className="mt-3 font-heading text-base font-bold uppercase tracking-tight text-primary">
-                {d.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {d.question}
-              </p>
-            </div>
-          ))}
+          {DIMENSIONS.map((d, i) => {
+            const cover = COVERS[d.key]
+            return (
+              <div key={d.key} className="mb-4 break-inside-avoid">
+                <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]">
+                  {cover && (
+                    <div className="w-full overflow-hidden bg-secondary">
+                      <img
+                        src={cover}
+                        alt={d.title}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-col p-6">
+                    <span className="font-mono text-xs tabular-nums text-accent">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="mt-3 font-heading text-base font-bold uppercase tracking-tight text-primary">
+                      {d.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {d.question}
+                    </p>
+                  </div>
+                </article>
+              </div>
+            )
+          })}
         </div>
 
         <p className="mt-8 max-w-2xl text-sm text-muted-foreground">
