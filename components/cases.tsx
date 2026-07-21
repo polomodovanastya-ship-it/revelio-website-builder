@@ -1,6 +1,8 @@
 'use client'
 
 import { useReveal } from '@/hooks/use-reveal'
+import komandirovkiCover from '@/assets/Komandirovki_illustration.png.asset.json'
+import narcelleCover from '@/assets/Narcelle_illustration.png.asset.json'
 
 const CASES = [
   {
@@ -8,12 +10,14 @@ const CASES = [
     tag: 'B2B Travel Tech',
     title: 'Портал «Командировки» для Банка ТОП-10 РФ',
     desc: 'Разработка в интеграции с процессингом TuTu.ru, ЭДО, контакт-центром и отельными API.',
+    cover: komandirovkiCover.url,
   },
   {
     emoji: '🔁',
-    tag: 'CDP / Loyalty',
-    title: 'Внедрение CDP на 1M MAU',
-    desc: 'Интеграция 7 систем с CDP, трансформация маркетинговых процессов, реализация базовых механик.',
+    tag: 'Fashion E-com',
+    title: 'Консалтинг по запуску программы лояльности и оптимизация UX',
+    desc: 'Аудит интерфейса и клиентских путей, проверка бэкенд интеграций с формированием артефакта рекомендаций по доработке UX и внедрению программы лояльности',
+    cover: narcelleCover.url,
   },
   {
     emoji: '🎮',
