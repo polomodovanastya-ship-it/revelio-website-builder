@@ -19,8 +19,8 @@ export default function Page() {
       <Cases />
       <Clients />
       <Team />
-      <Media />
       <Services />
+      <Media />
       <Process />
       <Contact />
     </>
