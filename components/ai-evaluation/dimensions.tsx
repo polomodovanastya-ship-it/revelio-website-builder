@@ -68,7 +68,7 @@ export function Dimensions() {
                 <article
                   className={cn(
                     'group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]',
-                    (isFeatured || isTall) && 'h-full',
+                    isFeatured && 'h-full',
                   )}
                 >
                   {cover && (
