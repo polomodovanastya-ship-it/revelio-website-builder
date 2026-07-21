@@ -1,18 +1,31 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 type Item = { src: string; alt: string }
 
+const AUTOPLAY_INTERVAL_MS = 5000
+
 export function DocumentsGallery({ items }: { items: Item[] }) {
   const [i, setI] = useState(0)
+  const [paused, setPaused] = useState(false)
   const total = items.length
   const go = (n: number) => setI((n + total) % total)
 
+  useEffect(() => {
+    if (total <= 1 || paused) return
+    const id = setInterval(() => go(i + 1), AUTOPLAY_INTERVAL_MS)
+    return () => clearInterval(id)
+  }, [i, total, paused])
+
   return (
-    <div className="relative mx-auto max-w-4xl">
+    <div
+      className="relative mx-auto max-w-4xl"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="relative overflow-hidden rounded-2xl border border-border bg-card">
         <div
           className="flex transition-transform duration-500 ease-out"
