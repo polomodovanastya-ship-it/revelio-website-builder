@@ -40,7 +40,7 @@ export function CdpComparison2026Body() {
         />
         <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_420px]">
           <div>
-            <h1 className="mb-8 text-balance font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
+            <h1 className="mb-8 max-w-4xl text-balance font-heading text-2xl font-black uppercase leading-[1.15] tracking-[-0.02em] text-primary sm:text-4xl">
               Как выбрать CDP / Loyalty / Comms платформу в 2026?
             </h1>
             <p className="max-w-2xl text-base leading-relaxed text-foreground">
