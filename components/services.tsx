@@ -83,23 +83,45 @@ export function Services() {
             >
               <div className="relative flex items-center gap-3">
                 <span className="text-2xl leading-none">{s.emoji}</span>
-                <h3
-                  className={`whitespace-nowrap font-heading text-base font-bold uppercase tracking-tight ${
-                    s.featured ? 'text-primary-foreground' : 'text-primary'
-                  }`}
-                >
-                  {s.name}
-                </h3>
+                {s.name === 'Консалтинг' ? (
+                  <Link
+                    href="/consulting"
+                    className={`whitespace-nowrap font-heading text-base font-bold uppercase tracking-tight transition-colors hover:text-accent ${
+                      s.featured ? 'text-primary-foreground' : 'text-primary'
+                    }`}
+                  >
+                    {s.name}
+                  </Link>
+                ) : (
+                  <h3
+                    className={`whitespace-nowrap font-heading text-base font-bold uppercase tracking-tight ${
+                      s.featured ? 'text-primary-foreground' : 'text-primary'
+                    }`}
+                  >
+                    {s.name}
+                  </h3>
+                )}
               </div>
 
               <div className="relative mt-5 flex flex-col gap-1">
-                <span
-                  className={`whitespace-nowrap font-heading text-2xl font-bold leading-none tracking-tight ${
-                    s.featured ? 'text-primary-foreground' : 'text-primary'
-                  }`}
-                >
-                  {s.price}
-                </span>
+                {s.name === 'Консалтинг' ? (
+                  <Link
+                    href="/consulting#formats"
+                    className={`whitespace-nowrap font-heading text-2xl font-bold leading-none tracking-tight transition-colors hover:text-accent ${
+                      s.featured ? 'text-primary-foreground' : 'text-primary'
+                    }`}
+                  >
+                    {s.price}
+                  </Link>
+                ) : (
+                  <span
+                    className={`whitespace-nowrap font-heading text-2xl font-bold leading-none tracking-tight ${
+                      s.featured ? 'text-primary-foreground' : 'text-primary'
+                    }`}
+                  >
+                    {s.price}
+                  </span>
+                )}
                 <span
                   className={`whitespace-nowrap font-mono text-xs ${
                     s.featured ? 'text-primary-foreground/70' : 'text-muted-foreground'
