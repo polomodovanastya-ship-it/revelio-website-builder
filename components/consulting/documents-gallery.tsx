@@ -18,16 +18,16 @@ export function DocumentsGallery({ items }: { items: Item[] }) {
           className="flex transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${i * 100}%)` }}
         >
-          {items.map((it) => (
+          {items.map((it, idx) => (
             <div key={it.src} className="relative w-full shrink-0">
               <Image
-                src={it.src}
+                src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${it.src}`}
                 alt={it.alt}
                 width={1600}
                 height={900}
                 className="block h-auto w-full"
                 sizes="(max-width: 1024px) 100vw, 1024px"
-                priority={items.indexOf(it) === 0}
+                priority={idx === 0}
               />
             </div>
           ))}
