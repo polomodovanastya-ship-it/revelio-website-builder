@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { HERO_SUMMARY, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
+import Image from 'next/image'
+
 import { EvalStartLink } from '@/components/funnel-tracking'
+import summaryCover from '@/src/assets/Summary_cover.png.asset.json'
 
 const ROTATING_HEADLINES = [
   'Посчитай оценку',
@@ -89,37 +91,19 @@ export function LandingHero() {
           </div>
         </div>
 
-        {/* right — at a glance card */}
+        {/* right — illustration */}
         <div
-          className="reveal in-view rounded-2xl border border-border bg-card p-6 shadow-[0_18px_44px_-24px_rgba(20,37,80,0.32)] sm:p-7"
+          className="reveal in-view"
           style={{ animationDelay: '260ms' }}
         >
-          <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-            Коротко о продукте
-          </div>
-          <dl className="mt-4 space-y-2.5 text-sm">
-            {HERO_SUMMARY.map((row, i) => (
-              <div
-                key={row.label}
-                className={`flex items-baseline justify-between gap-4 ${i < HERO_SUMMARY.length - 1 ? 'border-b border-border pb-2.5' : ''}`}
-              >
-                <dt className="text-muted-foreground">{row.label}</dt>
-                <dd
-                  className={`text-right font-medium ${row.value === 'бесплатно' ? 'text-accent' : 'text-foreground'}`}
-                >
-                  {row.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-          <div className="mt-5 space-y-1.5 border-t border-border pt-4">
-            {PRODUCT_PROOF.map((p) => (
-              <div key={p} className="flex gap-2 text-xs text-muted-foreground">
-                <span className="text-accent">●</span>
-                {p}
-              </div>
-            ))}
-          </div>
+          <Image
+            src={summaryCover.url}
+            alt="Пример оценки проекта"
+            width={1320}
+            height={820}
+            className="h-auto w-full"
+            priority
+          />
         </div>
       </div>
     </section>
