@@ -72,21 +72,10 @@ export function Dimensions() {
                     (isFeatured || isTall) && 'h-full',
                   )}
                 >
-                  <div className="flex flex-col p-6">
-                    <span className="font-mono text-xs tabular-nums text-accent">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="mt-3 font-heading text-base font-bold uppercase tracking-tight text-primary">
-                      {d.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {d.question}
-                    </p>
-                  </div>
                   {cover && (
                     <div
                       className={cn(
-                        'w-full overflow-hidden bg-card px-4 pb-4',
+                        'w-full overflow-hidden bg-card px-4 pt-4',
                         (isFeatured || isTall) && 'min-h-0 flex-1',
                       )}
                     >
@@ -98,6 +87,18 @@ export function Dimensions() {
                       />
                     </div>
                   )}
+                  <div className="flex flex-col p-6">
+                    <span className="font-mono text-xs tabular-nums text-accent">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="mt-3 font-heading text-base font-bold uppercase tracking-tight text-primary">
+                      {d.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {d.question}
+                    </p>
+                  </div>
+
                 </article>
               </div>
 
