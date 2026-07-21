@@ -27,13 +27,13 @@ export function LandingHero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
+    <section className="relative flex min-h-screen flex-col overflow-hidden pt-28 sm:pt-36">
       <div
         aria-hidden
         className="blueprint pointer-events-none absolute inset-0 [background-size:56px_56px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
       />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
+      <div className="relative mx-auto grid w-full max-w-7xl flex-1 gap-12 px-5 pb-12 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16 lg:pb-16">
         {/* left — message */}
         <div>
           <span className="reveal in-view inline-block font-mono text-xs uppercase tracking-[0.22em] text-accent">
@@ -50,7 +50,7 @@ export function LandingHero() {
           </h1>
 
           <p
-            className="reveal in-view mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
+            className="reveal in-view mt-6 max-w-xl col-xl text-pretty text-lg leading-relaxed text-muted-foreground"
             style={{ animationDelay: '170ms' }}
           >
             Загружаешь требования, отвечаешь на вопросы — и получаешь детальную
@@ -89,27 +89,6 @@ export function LandingHero() {
               </span>
             ))}
           </div>
-
-          <dl
-            className="reveal in-view mt-6 grid grid-cols-2 gap-x-6 gap-y-4 rounded-2xl border border-border bg-card/70 p-5 sm:grid-cols-4 sm:gap-x-8"
-            style={{ animationDelay: '440ms' }}
-          >
-            {[
-              { label: 'Для кого', value: 'бизнес, ИТ, PMO, Product' },
-              { label: 'Ситуация', value: 'быстро оценить БТ/ФТ' },
-              { label: 'Желательно', value: 'загрузить документы' },
-              { label: 'Погрешность', value: 'от 10 до 20% на тест-сете' },
-            ].map((item) => (
-              <div key={item.label} className="min-w-0">
-                <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  {item.label}
-                </dt>
-                <dd className="mt-1.5 text-sm leading-snug text-primary">
-                  {item.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
         {/* right — illustration */}
@@ -127,6 +106,28 @@ export function LandingHero() {
           />
         </div>
       </div>
+
+      {/* bottom — product summary strip */}
+      <dl
+        className="reveal in-view relative mt-auto grid w-full grid-cols-2 gap-x-6 gap-y-4 border-y border-border bg-card/80 px-5 py-5 backdrop-blur-sm sm:grid-cols-4 sm:gap-x-8 sm:px-8 sm:py-6 lg:px-16"
+        style={{ animationDelay: '440ms' }}
+      >
+        {[
+          { label: 'Для кого', value: 'бизнес, ИТ, PMO, Product' },
+          { label: 'Ситуация', value: 'быстро оценить БТ/ФТ' },
+          { label: 'Желательно', value: 'загрузить документы' },
+          { label: 'Погрешность', value: 'от 10 до 20% на тест-сете' },
+        ].map((item) => (
+          <div key={item.label} className="min-w-0">
+            <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+              {item.label}
+            </dt>
+            <dd className="mt-1.5 text-sm leading-snug text-primary">
+              {item.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </section>
   )
 }
