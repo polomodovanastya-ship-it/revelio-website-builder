@@ -12,7 +12,7 @@ export function DocumentsGallery({ items }: { items: Item[] }) {
   const go = (n: number) => setI((n + total) % total)
 
   return (
-    <div className="relative">
+    <div className="relative mx-auto max-w-4xl">
       <div className="relative overflow-hidden rounded-2xl border border-border bg-card">
         <div
           className="flex transition-transform duration-500 ease-out"

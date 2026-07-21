@@ -15,8 +15,8 @@ export const metadata = pageMetadata({
 })
 
 const GALLERY = [
-  { src: raci.url, alt: 'RACI матрица ролей и ответственности' },
   { src: gantt.url, alt: 'GANTT — план-график проекта' },
+  { src: raci.url, alt: 'RACI матрица ролей и ответственности' },
   { src: processMap.url, alt: 'Карта бизнес-процессов' },
   { src: processEval.url, alt: 'Оценка зрелости процессов' },
 ]
