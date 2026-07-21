@@ -50,7 +50,7 @@ export function LandingHero() {
           </h1>
 
           <p
-            className="reveal in-view mt-6 max-w-xl col-xl text-pretty text-lg leading-relaxed text-muted-foreground"
+            className="reveal in-view mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
             style={{ animationDelay: '170ms' }}
           >
             Загружаешь требования, отвечаешь на вопросы — и получаешь детальную
