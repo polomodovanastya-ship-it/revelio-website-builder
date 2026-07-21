@@ -27,7 +27,7 @@ export function LandingHero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden border-b border-border pt-28 pb-16 sm:pt-36 sm:pb-24">
+    <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
       <div
         aria-hidden
         className="blueprint pointer-events-none absolute inset-0 [background-size:56px_56px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
