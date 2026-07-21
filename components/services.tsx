@@ -81,6 +81,13 @@ export function Services() {
                   : 'border-border bg-card hover:border-primary/25 hover:shadow-[0_18px_44px_-22px_rgba(20,37,80,0.30)]'
               }`}
             >
+              {s.name === 'Консалтинг' && (
+                <Link
+                  href="/consulting"
+                  className="absolute inset-0 z-0"
+                  aria-label="Консалтинг"
+                />
+              )}
               <div className="relative flex items-center gap-3">
                 <span className="text-2xl leading-none">{s.emoji}</span>
                 {s.name === 'Консалтинг' ? (
