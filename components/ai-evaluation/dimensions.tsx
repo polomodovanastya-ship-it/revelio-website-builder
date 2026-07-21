@@ -49,21 +49,28 @@ export function Dimensions() {
 
         <div
           ref={ref}
-          className="reveal mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-min lg:grid-flow-dense"
+          className="reveal mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-min lg:grid-flow-dense"
         >
           {DIMENSIONS.map((d, i) => {
             const cover = COVERS[d.key]
             const isFeatured = d.key === 'estimate'
             const isTall = d.key === 'decomposition' || d.key === 'risks'
+            const isShort = !isFeatured && !isTall
             return (
               <div
                 key={d.key}
                 className={cn(
                   isFeatured && 'sm:col-span-2 sm:row-span-2',
                   isTall && 'sm:row-span-2',
+                  isShort && 'self-start',
                 )}
               >
-                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]">
+                <article
+                  className={cn(
+                    'group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]',
+                    (isFeatured || isTall) && 'h-full',
+                  )}
+                >
                   {cover && (
                     <div className="w-full overflow-hidden bg-card px-4 pt-4">
                       <img
