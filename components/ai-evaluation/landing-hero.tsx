@@ -89,6 +89,27 @@ export function LandingHero() {
               </span>
             ))}
           </div>
+
+          <dl
+            className="reveal in-view mt-6 grid grid-cols-2 gap-x-6 gap-y-4 rounded-2xl border border-border bg-card/70 p-5 sm:grid-cols-4 sm:gap-x-8"
+            style={{ animationDelay: '440ms' }}
+          >
+            {[
+              { label: 'Для кого', value: 'бизнес, ИТ, PMO, Product' },
+              { label: 'Ситуация', value: 'быстро оценить БТ/ФТ' },
+              { label: 'Желательно', value: 'загрузить документы' },
+              { label: 'Погрешность', value: 'от 10 до 20% на тест-сете' },
+            ].map((item) => (
+              <div key={item.label} className="min-w-0">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                  {item.label}
+                </dt>
+                <dd className="mt-1.5 text-sm leading-snug text-primary">
+                  {item.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         {/* right — illustration */}
