@@ -60,6 +60,7 @@ export function Dimensions() {
               <div
                 key={d.key}
                 className={cn(
+                  'flex',
                   isFeatured && 'sm:col-span-2 sm:row-span-2',
                   isTall && 'sm:row-span-2',
                   isShort && 'self-start',
@@ -67,25 +68,10 @@ export function Dimensions() {
               >
                 <article
                   className={cn(
-                    'group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]',
+                    'group flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]',
                     (isFeatured || isTall) && 'h-full',
                   )}
                 >
-                  {cover && (
-                    <div
-                      className={cn(
-                        'w-full overflow-hidden bg-card px-4 pt-4',
-                        (isFeatured || isTall) && 'flex-1',
-                      )}
-                    >
-                      <img
-                        src={cover}
-                        alt={d.title}
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
                   <div className="flex flex-col p-6">
                     <span className="font-mono text-xs tabular-nums text-accent">
                       {String(i + 1).padStart(2, '0')}
@@ -97,8 +83,24 @@ export function Dimensions() {
                       {d.question}
                     </p>
                   </div>
+                  {cover && (
+                    <div
+                      className={cn(
+                        'w-full overflow-hidden bg-card px-4 pb-4',
+                        (isFeatured || isTall) && 'min-h-0 flex-1',
+                      )}
+                    >
+                      <img
+                        src={cover}
+                        alt={d.title}
+                        className="h-full w-full object-cover object-top"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                 </article>
               </div>
+
             )
           })}
         </div>
