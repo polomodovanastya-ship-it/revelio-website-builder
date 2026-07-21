@@ -138,13 +138,24 @@ export function Services() {
                 </span>
               </div>
 
-              <p
-                className={`relative mt-4 text-sm leading-relaxed ${
-                  s.featured ? 'text-primary-foreground/85' : 'text-muted-foreground'
-                }`}
-              >
-                {s.pitch}
-              </p>
+              {s.name === 'Консалтинг' ? (
+                <Link
+                  href="/consulting#artifacts"
+                  className={`relative z-10 mt-4 block text-sm leading-relaxed transition-colors hover:text-accent ${
+                    s.featured ? 'text-primary-foreground/85' : 'text-muted-foreground'
+                  }`}
+                >
+                  {s.pitch}
+                </Link>
+              ) : (
+                <p
+                  className={`relative z-10 mt-4 text-sm leading-relaxed ${
+                    s.featured ? 'text-primary-foreground/85' : 'text-muted-foreground'
+                  }`}
+                >
+                  {s.pitch}
+                </p>
+              )}
 
               <ul className="relative mt-6 space-y-3">
                 {s.points.map((p) => (
