@@ -10,14 +10,14 @@ export function DocumentsGallery({ items }: { items: Item[] }) {
       {items.map((it, idx) => (
         <div
           key={it.src}
-          className="overflow-hidden rounded-xl border border-border bg-card"
+          className="flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-border bg-card p-2"
         >
           <Image
             src={`${ASSET_HOST}${it.src}`}
             alt={it.alt}
             width={400}
             height={225}
-            className="block aspect-video h-auto w-full object-cover"
+            className="block h-full w-full object-contain"
             sizes="(max-width: 640px) 50vw, 25vw"
             priority={idx < 2}
           />
