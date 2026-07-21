@@ -3,9 +3,9 @@
 import { ArrowRight } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
 import { DIMENSIONS, ENGINE_VERBS, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
-import decompCover from '@/src/assets/dimension-decomp.png.asset.json'
-import estimateCover from '@/src/assets/dimension-estimate.png.asset.json'
-import risksCover from '@/src/assets/dimension-risks.png.asset.json'
+import decompCover from '@/src/assets/dimension-decomp-v2.png.asset.json'
+import estimateCover from '@/src/assets/dimension-estimate-v2.png.asset.json'
+import risksCover from '@/src/assets/dimension-risks-v2.png.asset.json'
 
 const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
@@ -56,7 +56,7 @@ export function Dimensions() {
               <div key={d.key} className="mb-4 break-inside-avoid">
                 <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]">
                   {cover && (
-                    <div className="w-full overflow-hidden bg-secondary">
+                    <div className="w-full overflow-hidden bg-secondary px-4 pt-4">
                       <img
                         src={cover}
                         alt={d.title}
