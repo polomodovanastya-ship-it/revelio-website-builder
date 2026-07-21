@@ -84,7 +84,7 @@ export function Services() {
               {s.name === 'Консалтинг' && (
                 <Link
                   href="/consulting"
-                  className="absolute inset-0 z-0"
+                  className="absolute inset-0 z-10"
                   aria-label="Консалтинг"
                 />
               )}
