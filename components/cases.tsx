@@ -4,13 +4,15 @@ import { useReveal } from '@/hooks/use-reveal'
 import komandirovkiCover from '@/src/assets/Komandirovki_illustration.png.asset.json'
 import narcelleCover from '@/src/assets/Narcelle_illustration.png.asset.json'
 
+const ASSET_ORIGIN = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
+
 const CASES = [
   {
     emoji: '✈️',
     tag: 'B2B Travel Tech',
     title: 'Портал «Командировки» для Банка ТОП-10 РФ',
     desc: 'Разработка в интеграции с процессингом TuTu.ru, ЭДО, контакт-центром и отельными API.',
-    cover: komandirovkiCover.url,
+    cover: `${ASSET_ORIGIN}${komandirovkiCover.url}`,
   },
   {
     emoji: '🎮',
@@ -35,7 +37,7 @@ const CASES = [
     tag: 'Fashion E-com',
     title: 'Консалтинг по запуску программы лояльности и оптимизация UX',
     desc: 'Аудит интерфейса и клиентских путей, проверка бэкенд интеграций с формированием артефакта рекомендаций по доработке UX и внедрению программы лояльности',
-    cover: narcelleCover.url,
+    cover: `${ASSET_ORIGIN}${narcelleCover.url}`,
   },
   {
     emoji: '🛟',
