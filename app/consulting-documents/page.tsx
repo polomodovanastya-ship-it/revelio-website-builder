@@ -38,7 +38,7 @@ export default function ConsultingDocumentsPage() {
         </div>
       </section>
 
-      <section className="border-b border-border py-16 sm:py-20">
+      <section className="pb-16 sm:pb-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <DocumentsGallery items={GALLERY} />
         </div>
