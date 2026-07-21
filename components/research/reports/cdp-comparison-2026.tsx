@@ -45,7 +45,7 @@ export function CdpComparison2026Body() {
             </h1>
             <p className="max-w-2xl text-base leading-relaxed text-foreground">
               Инструмент для анализа и выбора единой платформы для управления клиентскими данными (CDP), омниканальных
-              кампаний, лояльностью и промо с персонализацией.
+              кампаний, лояльностью и промо с персонализацией
             </p>
           </div>
           <div className="relative hidden overflow-hidden rounded-2xl lg:block">
