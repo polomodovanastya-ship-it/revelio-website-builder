@@ -6,24 +6,17 @@ import narcelleCover from '@/src/assets/Narcelle_illustration.png.asset.json'
 
 const CASES = [
   {
+    emoji: '🎮',
+    tag: 'Product Design',
+    title: 'Gaming App для Alfa Gen',
+    desc: 'Проектирование игрового приложения для поколений 8–16 лет в интеграции с лояльностью.',
+  },
+  {
     emoji: '✈️',
     tag: 'B2B Travel Tech',
     title: 'Портал «Командировки» для Банка ТОП-10 РФ',
     desc: 'Разработка в интеграции с процессингом TuTu.ru, ЭДО, контакт-центром и отельными API.',
     cover: komandirovkiCover.url,
-  },
-  {
-    emoji: '🔁',
-    tag: 'Fashion E-com',
-    title: 'Консалтинг по запуску программы лояльности и оптимизация UX',
-    desc: 'Аудит интерфейса и клиентских путей, проверка бэкенд интеграций с формированием артефакта рекомендаций по доработке UX и внедрению программы лояльности',
-    cover: narcelleCover.url,
-  },
-  {
-    emoji: '🎮',
-    tag: 'Product Design',
-    title: 'Gaming App для Alfa Gen',
-    desc: 'Проектирование игрового приложения для поколений 8–16 лет в интеграции с лояльностью.',
   },
   {
     emoji: '💬',
@@ -36,6 +29,13 @@ const CASES = [
     tag: 'HR Tech',
     title: 'ЛК Кандидата и автоматизация найма',
     desc: 'Внешняя и авторизованная зона в интеграции с ATS. Унификация НСИ, дедупликация записей.',
+  },
+  {
+    emoji: '🔁',
+    tag: 'Fashion E-com',
+    title: 'Консалтинг по запуску программы лояльности и оптимизация UX',
+    desc: 'Аудит интерфейса и клиентских путей, проверка бэкенд интеграций с формированием артефакта рекомендаций по доработке UX и внедрению программы лояльности',
+    cover: narcelleCover.url,
   },
   {
     emoji: '🛟',
@@ -86,38 +86,37 @@ export function Cases() {
 
         <div
           ref={ref}
-          className="reveal mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3"
         >
           {CASES.map((c) => (
-            <article
-              key={c.title}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
-            >
-              {c.cover && (
-                <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
-                  <img
-                    src={c.cover}
-                    alt={c.title}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
+            <div key={c.title} className="mb-5 break-inside-avoid">
+              <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+                {c.cover && (
+                  <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
+                    <img
+                      src={c.cover}
+                      alt={c.title}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+                      <span className="text-base leading-none">{c.emoji}</span>
+                      {c.tag}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
+                    {c.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {c.desc}
+                  </p>
                 </div>
-              )}
-              <div className="flex flex-1 flex-col p-6">
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                    <span className="text-base leading-none">{c.emoji}</span>
-                    {c.tag}
-                  </span>
-                </div>
-                <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
-                  {c.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {c.desc}
-                </p>
-              </div>
-            </article>
+              </article>
+            </div>
           ))}
         </div>
       </div>
