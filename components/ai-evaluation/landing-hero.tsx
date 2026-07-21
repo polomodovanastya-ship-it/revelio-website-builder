@@ -97,7 +97,7 @@ export function LandingHero() {
           style={{ animationDelay: '260ms' }}
         >
           <Image
-            src={summaryCover.url}
+            src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${summaryCover.url}`}
             alt="Пример оценки проекта"
             width={1320}
             height={820}
