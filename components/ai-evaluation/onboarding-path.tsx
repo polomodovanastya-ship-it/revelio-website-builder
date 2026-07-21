@@ -63,12 +63,15 @@ export function OnboardingPath() {
                   </div>
                 </div>
               </div>
-              <figcaption className="mt-5 text-center">
+              <figcaption className="mt-5 max-w-[260px] text-center">
                 <span className="font-mono text-[11px] tabular-nums text-accent">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <p className="mt-1 text-sm font-medium text-primary">
                   {step.caption}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-secondary">
+                  {step.instruction}
                 </p>
               </figcaption>
             </figure>
