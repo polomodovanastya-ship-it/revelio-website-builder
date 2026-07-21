@@ -141,7 +141,7 @@ export function Services() {
               {s.name === 'Консалтинг' ? (
                 <Link
                   href="/consulting#artifacts"
-                  className={`relative z-10 mt-4 block text-sm leading-relaxed transition-colors hover:text-accent ${
+                  className={`relative z-20 mt-4 block text-sm leading-relaxed transition-colors hover:text-accent ${
                     s.featured ? 'text-primary-foreground/85' : 'text-muted-foreground'
                   }`}
                 >
