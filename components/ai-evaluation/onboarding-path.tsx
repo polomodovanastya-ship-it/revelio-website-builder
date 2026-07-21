@@ -7,10 +7,26 @@ import onb3 from '@/assets/onboarding-3.jpg.asset.json'
 import onb4 from '@/assets/onboarding-4.jpg.asset.json'
 
 const STEPS = [
-  { src: onb1.url, caption: 'Загрузка файла' },
-  { src: onb2.url, caption: 'Контакты для результата' },
-  { src: onb3.url, caption: 'Ответы на вопросы' },
-  { src: onb4.url, caption: 'Оценка на почте с приватным кодом' },
+  {
+    src: onb1.url,
+    caption: 'Загрузка файла',
+    instruction: 'Загрузи файлы бизнес требований/ФТ/ТЗ, userstory или любую постановку',
+  },
+  {
+    src: onb2.url,
+    caption: 'Контакты для результата',
+    instruction: 'Дай контакты куда тебе придет результат',
+  },
+  {
+    src: onb3.url,
+    caption: 'Ответы на вопросы',
+    instruction: 'Продукт задаст тебе вопросы основываясь на опыте +300 проектов — ответь на них',
+  },
+  {
+    src: onb4.url,
+    caption: 'Оценка на почте с приватным кодом',
+    instruction: 'Зайди в почту и получи секретный код для работы с результатом оценки',
+  },
 ]
 
 export function OnboardingPath() {
