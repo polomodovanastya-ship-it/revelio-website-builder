@@ -1,8 +1,8 @@
 'use client'
 
 import { useReveal } from '@/hooks/use-reveal'
-import komandirovkiCover from '@/assets/Komandirovki_illustration.png.asset.json'
-import narcelleCover from '@/assets/Narcelle_illustration.png.asset.json'
+import komandirovkiCover from '@/src/assets/Komandirovki_illustration.png.asset.json'
+import narcelleCover from '@/src/assets/Narcelle_illustration.png.asset.json'
 
 const CASES = [
   {
