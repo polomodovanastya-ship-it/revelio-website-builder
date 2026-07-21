@@ -38,14 +38,27 @@ export function CdpComparison2026Body() {
           aria-hidden
           className="blueprint pointer-events-none absolute inset-0 [background-size:48px_48px] opacity-60 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_70%)]"
         />
-        <div className="relative">
-          <h1 className="mb-8 text-balance font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
-            Как выбрать CDP / Loyalty / Comms платформу в 2026?
-          </h1>
-          <p className="max-w-2xl text-base leading-relaxed text-foreground">
-            Инструмент для анализа и выбора единой платформы для управления клиентскими данными (CDP), омниканальных
-            кампаний, лояльностью и промо с персонализацией.
-          </p>
+        <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_420px]">
+          <div>
+            <h1 className="mb-8 text-balance font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight text-primary sm:text-5xl">
+              Как выбрать CDP / Loyalty / Comms платформу в 2026?
+            </h1>
+            <p className="max-w-2xl text-base leading-relaxed text-foreground">
+              Инструмент для анализа и выбора единой платформы для управления клиентскими данными (CDP), омниканальных
+              кампаний, лояльностью и промо с персонализацией.
+            </p>
+          </div>
+          <div className="relative hidden overflow-hidden rounded-2xl lg:block">
+            <Image
+              src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${cdpIllustrationAsset.url}`}
+              alt="Иллюстрация исследования CDP"
+              width={1200}
+              height={675}
+              className="block h-auto w-full"
+              sizes="(max-width: 1024px) 100vw, 420px"
+              priority
+            />
+          </div>
         </div>
       </div>
 
