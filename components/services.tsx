@@ -157,7 +157,7 @@ export function Services() {
                 </p>
               )}
 
-              <ul className="relative mt-6 space-y-3">
+              <ul className="relative z-10 mt-6 space-y-3">
                 {s.points.map((p) => (
                   <li
                     key={p}
@@ -175,7 +175,7 @@ export function Services() {
                 ))}
               </ul>
 
-              <div className="relative mt-6 mb-7 flex flex-wrap gap-1.5">
+              <div className="relative z-10 mt-6 mb-7 flex flex-wrap gap-1.5">
                 {s.meta.split('·').map((tag) => (
                   <span
                     key={tag}
@@ -192,7 +192,7 @@ export function Services() {
 
               <a
                 href="#contact"
-                className={`relative mt-auto flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
+                className={`relative z-10 mt-auto flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] transition-colors ${
                   s.featured
                     ? 'bg-accent text-accent-foreground hover:brightness-110'
                     : 'border border-border bg-secondary text-primary hover:border-primary/30 hover:bg-muted hover:text-accent'
