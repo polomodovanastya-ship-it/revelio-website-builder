@@ -58,7 +58,7 @@ export function Dimensions() {
               <div
                 key={d.key}
                 className={cn(
-                  isFeatured && 'sm:col-span-2 sm:row-span-2',
+                  isFeatured && 'order-first sm:col-span-2 sm:row-span-2',
                 )}
               >
                 <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]">
