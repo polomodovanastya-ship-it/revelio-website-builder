@@ -59,12 +59,12 @@ export function Dimensions() {
                 className="group flex w-full flex-col self-start overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]"
               >
                 {cover && (
-                  <div className="border-b border-border bg-secondary/40 p-3">
+                  <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
                     <img
                       src={cover}
                       alt={d.title}
                       loading="lazy"
-                      className="h-32 w-full rounded-md object-cover object-left-top"
+                      className="h-full w-full object-cover"
                     />
                   </div>
                 )}
