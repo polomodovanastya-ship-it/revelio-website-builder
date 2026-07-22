@@ -1,6 +1,7 @@
 'use client'
 
 import { useReveal } from '@/hooks/use-reveal'
+import khdNsiBiCover from '@/src/assets/KHD_NSI_BI.png.asset.json'
 import komandirovkiCover from '@/src/assets/Komandirovki_illustration.png.asset.json'
 import narcelleCover from '@/src/assets/Narcelle_illustration.png.asset.json'
 
