@@ -6,7 +6,7 @@ import { useReveal } from '@/hooks/use-reveal'
 import { DIMENSIONS, ENGINE_VERBS, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
 import decompImg from '@/src/assets/dim-decomp.png.asset.json'
 import estimateImg from '@/src/assets/dim-estimate.png.asset.json'
-import risksImg from '@/src/assets/Riski_1-2.png.asset.json'
+import risksImg from '@/src/assets/Riski_1-3.png.asset.json'
 
 const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
