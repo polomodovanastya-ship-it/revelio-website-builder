@@ -50,20 +50,13 @@ export function OnboardingPath() {
         >
           {STEPS.map((step, i) => (
             <figure key={i} className="flex flex-col items-center">
-              <div className="relative w-full max-w-[260px]">
-                {/* iPhone 17 mockup frame */}
-                <div className="relative aspect-[9/19.5] rounded-[2.2rem] bg-[#0b0b0f] p-[6px] shadow-[0_25px_60px_-30px_rgba(20,37,80,0.55)] ring-1 ring-black/10">
-                  <div className="relative h-full w-full overflow-hidden rounded-[1.9rem] bg-background">
-                    {/* Dynamic Island */}
-                    <div className="pointer-events-none absolute left-1/2 top-2 z-10 h-[22px] w-[92px] -translate-x-1/2 rounded-full bg-black" />
-                    <img
-                      src={step.src}
-                      alt={step.caption}
-                      className="h-full w-full object-cover object-top"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
+              <div className="relative w-full max-w-[260px] overflow-hidden rounded-2xl bg-card shadow-[0_25px_60px_-30px_rgba(20,37,80,0.55)] ring-1 ring-black/10">
+                <img
+                  src={step.src}
+                  alt={step.caption}
+                  className="aspect-[9/19.5] h-full w-full object-cover object-top"
+                  loading="lazy"
+                />
               </div>
               <figcaption className="mt-5 max-w-[260px] text-center">
                 <span className="font-mono text-[11px] tabular-nums text-accent">
