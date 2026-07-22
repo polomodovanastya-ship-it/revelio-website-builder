@@ -1,10 +1,10 @@
 'use client'
 
 import { useReveal } from '@/hooks/use-reveal'
-import onb1 from '@/assets/onboarding-1-v2.png.asset.json'
-import onb2 from '@/assets/onboarding-2-v2.png.asset.json'
-import onb3 from '@/assets/onboarding-3-v2.png.asset.json'
-import onb4 from '@/assets/onboarding-4-v2.png.asset.json'
+import onb1 from '@/src/assets/onboarding-1-v2.png.asset.json'
+import onb2 from '@/src/assets/onboarding-2-v2.png.asset.json'
+import onb3 from '@/src/assets/onboarding-3-v2.png.asset.json'
+import onb4 from '@/src/assets/onboarding-4-v2.png.asset.json'
 
 const ASSET_HOST = process.env.NEXT_PUBLIC_ASSET_HOST ?? ''
 
