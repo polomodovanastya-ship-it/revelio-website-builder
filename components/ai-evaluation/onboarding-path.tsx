@@ -6,7 +6,7 @@ import onb2 from '@/src/assets/onboarding-2-v2.png.asset.json'
 import onb3 from '@/src/assets/onboarding-3-v2.png.asset.json'
 import onb4 from '@/src/assets/onboarding-4-v2.png.asset.json'
 
-const ASSET_HOST = process.env.NEXT_PUBLIC_ASSET_HOST ?? ''
+const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
 const STEPS = [
   {
