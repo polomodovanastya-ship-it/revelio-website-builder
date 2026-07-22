@@ -33,7 +33,7 @@ export function LandingHero() {
         className="blueprint pointer-events-none absolute inset-0 [background-size:56px_56px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
       />
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-5 pb-10 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
+      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-5 pb-10 sm:px-8 lg:grid-cols-[1.15fr_1.1fr] lg:items-center lg:gap-16">
         {/* left — message */}
         <div>
           <span className="reveal in-view inline-block font-mono text-xs uppercase tracking-[0.22em] text-accent">
