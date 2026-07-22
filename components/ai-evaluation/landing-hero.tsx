@@ -46,7 +46,7 @@ export function LandingHero() {
           >
             <span aria-live="polite" className="text-accent">{ROTATING_HEADLINES[headlineIndex]}</span>
             <br />
-            <span className="text-primary">ИТ-проекта за ~10 минут с AI</span>
+            <span className="text-primary text-[32px]">ИТ-проекта за ~10 минут с AI</span>
           </h1>
 
           <p
