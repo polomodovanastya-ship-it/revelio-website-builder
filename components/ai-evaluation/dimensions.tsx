@@ -57,7 +57,7 @@ export function Dimensions() {
               <div key={d.key} className="mb-5 break-inside-avoid">
                 <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
                   {cover && (
-                    <div className="aspect-[16/10] w-full overflow-hidden bg-card p-3">
+                    <div className="aspect-[16/10] w-full overflow-hidden bg-card p-2 pb-0">
                       <img
                         src={cover}
                         alt={d.title}
@@ -66,11 +66,11 @@ export function Dimensions() {
                       />
                     </div>
                   )}
-                  <div className="flex flex-1 flex-col p-6">
+                  <div className="flex flex-1 flex-col p-5 pt-3">
                     <span className="font-mono text-xs tabular-nums text-accent">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <h3 className="mt-3 font-heading text-base font-bold uppercase tracking-tight text-primary">
+                    <h3 className="mt-2 font-heading text-base font-bold uppercase tracking-tight text-primary">
                       {d.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
