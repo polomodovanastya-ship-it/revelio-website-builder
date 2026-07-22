@@ -49,37 +49,36 @@ export function Dimensions() {
 
         <div
           ref={ref}
-          className="reveal mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-min"
+          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3"
         >
           {DIMENSIONS.map((d, i) => {
             const cover = COVERS[d.key]
             return (
-              <article
-                key={d.key}
-                className="group flex w-full flex-col self-start overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_44px_-24px_rgba(20,37,80,0.30)]"
-              >
-                {cover && (
-                  <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
-                    <img
-                      src={cover}
-                      alt={d.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
+              <div key={d.key} className="mb-5 break-inside-avoid">
+                <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+                  {cover && (
+                    <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
+                      <img
+                        src={cover}
+                        alt={d.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="font-mono text-xs tabular-nums text-accent">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="mt-3 font-heading text-base font-bold uppercase tracking-tight text-primary">
+                      {d.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {d.question}
+                    </p>
                   </div>
-                )}
-                <div className="flex flex-1 flex-col p-6">
-                  <span className="font-mono text-xs tabular-nums text-accent">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-3 font-heading text-base font-bold uppercase tracking-tight text-primary">
-                    {d.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {d.question}
-                  </p>
-                </div>
-              </article>
+                </article>
+              </div>
             )
           })}
         </div>
