@@ -1,7 +1,7 @@
 'use client'
 
 import { useReveal } from '@/hooks/use-reveal'
-import onb1 from '@/src/assets/onboarding-1.jpg.asset.json'
+import onb1 from '@/src/assets/onboarding-1.png.asset.json'
 import onb2 from '@/src/assets/onboarding-2.jpg.asset.json'
 import onb3 from '@/src/assets/onboarding-3.jpg.asset.json'
 import onb4 from '@/src/assets/onboarding-4.jpg.asset.json'
