@@ -57,6 +57,7 @@ const CASES = [
     tag: 'Data / BI',
     title: 'КХД, НСИ и единая BI-система',
     desc: 'КХД на 3 слоя, ETL и глоссарий, BI для B2C+B2B: продажи, маркетинг, операции',
+    cover: `${ASSET_ORIGIN}${khdNsiBiCover.url}`,
   },
   {
     emoji: '🛡️',
