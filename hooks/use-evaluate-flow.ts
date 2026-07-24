@@ -2,7 +2,7 @@
 import { useReducer } from "react"
 import type { AiQuestion, CreateApplicationInput } from "@/lib/evaluation-api"
 
-export type Phase = "form" | "resuming" | "queue" | "questions" | "success"
+export type Phase = "form" | "resuming" | "queue" | "questions" | "success" | "not_suitable"
 
 export interface FlowState {
   phase: Phase
@@ -22,6 +22,7 @@ export type FlowAction =
   | { type: "CREATE_OK"; applicationId: string; questionsJobId?: string; noFileJobId?: string }
   | { type: "QUEUE_SUCCEEDED_TO_QUESTIONS"; questions: AiQuestion[] }
   | { type: "QUEUE_SUCCEEDED_TO_SUCCESS"; email: string }
+  | { type: "QUEUE_NOT_SUITABLE" }
   | { type: "SKIPPED" }
   | { type: "ANSWERS_OK"; email: string }
   | { type: "BEGIN_RESUME" }
@@ -71,6 +72,8 @@ export function evaluateReducer(state: FlowState, action: FlowAction): FlowState
       return { ...state, phase: "questions", questions: action.questions }
     case "QUEUE_SUCCEEDED_TO_SUCCESS":
       return { ...state, phase: "success", email: action.email, alreadyAnswered: false }
+    case "QUEUE_NOT_SUITABLE":
+      return { ...state, phase: "not_suitable" }
     case "SKIPPED":
       return { ...state, phase: "success", alreadyAnswered: false }
     case "ANSWERS_OK":

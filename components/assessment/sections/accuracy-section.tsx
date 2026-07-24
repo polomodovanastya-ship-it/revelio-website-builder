@@ -1,8 +1,14 @@
 import { ReportSectionCard, Badge, accuracyTone } from '../primitives'
 import type { ReportAccuracy } from '@/lib/report-api'
 
-// 07 Точность оценки
-export function AccuracySection({ accuracy }: { accuracy: ReportAccuracy }) {
+// Точность оценки — number is assigned by report-view based on render order.
+export function AccuracySection({
+  accuracy,
+  number,
+}: {
+  accuracy: ReportAccuracy
+  number?: string
+}) {
   const rows: [string, React.ReactNode][] = [
     ['Общая точность', <Badge key="overall" tone={accuracyTone(accuracy.overall)}>{accuracy.overall}</Badge>],
     ['Задач с низкой точностью', accuracy.low_conf_tasks],
@@ -12,7 +18,7 @@ export function AccuracySection({ accuracy }: { accuracy: ReportAccuracy }) {
   ]
 
   return (
-    <ReportSectionCard number="07" title="Точность оценки">
+    <ReportSectionCard number={number} title="Точность оценки">
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>

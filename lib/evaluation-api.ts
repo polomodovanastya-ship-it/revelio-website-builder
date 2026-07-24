@@ -219,6 +219,17 @@ export function extractQuestions(outputs: unknown): AiQuestion[] {
   return []
 }
 
+// Reads the backend's estimation-readiness verdict from a terminal queue
+// output. "not_suitable" means the input wasn't recognized as a valid brief —
+// no requirements were extracted, so no estimate will be produced/emailed.
+export function extractReadiness(outputs: unknown): string | null {
+  if (outputs && typeof outputs === "object") {
+    const o = outputs as Record<string, unknown>
+    if (typeof o.readiness_for_estimation === "string") return o.readiness_for_estimation
+  }
+  return null
+}
+
 export async function submitAnswers(
   applicationId: string,
   answers: Record<string, string>,

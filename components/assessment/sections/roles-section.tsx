@@ -3,14 +3,14 @@ import { ReportSectionCard, BarRow } from '../primitives'
 import { formatHours, toPercent } from '@/lib/report-format'
 import type { ReportRoles } from '@/lib/report-api'
 
-// Часы по ролям — не входит в нумерованные 8 секций дефолт-спека, поэтому
-// без номера; визуально перекликается со сводкой по группам (01), но
-// отмечена своей иконкой вместо номера.
-export function RolesSection({ roles }: { roles: ReportRoles }) {
+// Часы по ролям — participates in the sequential section numbering same as
+// every other section; number is assigned by report-view based on render
+// order (icon is kept as a fallback if a number is ever not supplied).
+export function RolesSection({ roles, number }: { roles: ReportRoles; number?: string }) {
   const maxRoleShare = roles.roles.length > 0 ? Math.max(...roles.roles.map((r) => r.share)) : 0
 
   return (
-    <ReportSectionCard icon={Users} title="Часы по ролям">
+    <ReportSectionCard icon={Users} number={number} title="Часы по ролям">
       <div className="space-y-2.5">
         {roles.roles.map((r) => (
           <BarRow

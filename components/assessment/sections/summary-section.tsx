@@ -2,20 +2,22 @@ import { ReportSectionCard, StatTile, BarRow } from '../primitives'
 import { formatHours } from '@/lib/report-format'
 import type { ReportGroup, ReportTotals } from '@/lib/report-api'
 
-// 01 Краткое резюме
+// Краткое резюме — number is assigned by report-view based on render order.
 export function SummarySection({
   summary,
   totals,
   groups,
+  number,
 }: {
   summary: string
   totals: ReportTotals
   groups: ReportGroup[]
+  number?: string
 }) {
   const maxGroupShare = groups.length > 0 ? Math.max(...groups.map((g) => g.share)) : 0
 
   return (
-    <ReportSectionCard number="01" title="Краткое резюме">
+    <ReportSectionCard number={number} title="Краткое резюме">
       {summary && <p className="mb-6 text-sm leading-relaxed text-foreground">{summary}</p>}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         <StatTile value={`${formatHours(totals.hours_expected)} ч`} label="Ожидаемо" highlight />

@@ -81,6 +81,10 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
+      // Browser extensions (e.g. Ember Inspector adds data-ember-extension) mutate
+      // <html> before React hydrates, causing a benign root-level hydration
+      // mismatch. Suppress it on <html> only — deeper mismatches still surface.
+      suppressHydrationWarning
       className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background`}
     >
       <head>

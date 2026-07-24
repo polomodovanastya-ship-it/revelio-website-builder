@@ -7,8 +7,8 @@ import type { ReportTask } from '@/lib/report-api'
 
 const thBase = 'py-3 px-3 text-[11px] font-medium uppercase tracking-wider text-muted-foreground'
 
-// 04 Детализация задач
-export function TasksSection({ tasks }: { tasks: ReportTask[] }) {
+// Детализация задач — number is assigned by report-view based on render order.
+export function TasksSection({ tasks, number }: { tasks: ReportTask[]; number?: string }) {
   const groups = useMemo(() => {
     const order: string[] = []
     const byGroup = new Map<string, ReportTask[]>()
@@ -23,7 +23,7 @@ export function TasksSection({ tasks }: { tasks: ReportTask[] }) {
   }, [tasks])
 
   return (
-    <ReportSectionCard number="04" title="Детализация задач">
+    <ReportSectionCard number={number} title="Детализация задач">
       <div className="space-y-2">
         {groups.map((g) => (
           <details key={g.name} className="group rounded-xl border border-border bg-background">

@@ -5,16 +5,17 @@ import { ReportSectionCard, ShowMoreToggle } from '../primitives'
 
 const VISIBLE = 5
 
-// 05 Риски — curated, deduped list of risk sentences from the backend
+// Риски — curated, deduped list of risk sentences from the backend
 // (mirrors the PDF); no structured impact/comment, so it's plain text.
-export function RisksSection({ risks }: { risks: string[] }) {
+// Number is assigned by report-view based on render order.
+export function RisksSection({ risks, number }: { risks: string[]; number?: string }) {
   const [expanded, setExpanded] = useState(false)
 
   const visible = expanded ? risks : risks.slice(0, VISIBLE)
   const hiddenCount = risks.length - VISIBLE
 
   return (
-    <ReportSectionCard number="05" title="Риски">
+    <ReportSectionCard number={number} title="Риски">
       <ul className="space-y-2">
         {visible.map((r, i) => (
           <li

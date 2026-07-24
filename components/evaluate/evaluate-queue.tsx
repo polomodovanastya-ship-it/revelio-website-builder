@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import { Loader2, AlertTriangle } from 'lucide-react'
-import { createApplication, pollQueueStatus, extractQuestions, statusToError, skipQuestions, patchApplicationEmail } from '@/lib/evaluation-api'
+import { createApplication, pollQueueStatus, extractQuestions, extractReadiness, statusToError, skipQuestions, patchApplicationEmail } from '@/lib/evaluation-api'
 import { POLL_TIMEOUT_MS } from '@/lib/evaluate-helpers'
 import { useToast } from '@/components/toast'
 import { trackGoal } from '@/lib/metrika'
@@ -103,7 +103,11 @@ export function EvaluateQueue({ state, dispatch }: Props) {
         })
         if (skippedRef.current) return
         if (final.status === 'succeeded') {
-          if (state.noFileJobId) {
+          // The backend won't produce/email an estimate for a document it deemed
+          // not_suitable — show an honest screen instead of promising delivery.
+          if (extractReadiness(final.outputs) === 'not_suitable') {
+            dispatch({ type: 'QUEUE_NOT_SUITABLE' })
+          } else if (state.noFileJobId) {
             dispatch({ type: 'QUEUE_SUCCEEDED_TO_SUCCESS', email: successEmailRef.current })
           } else {
             const questions = extractQuestions(final.outputs)

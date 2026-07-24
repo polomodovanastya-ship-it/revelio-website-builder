@@ -6,13 +6,15 @@ import type { ReportProject, ReportQA } from '@/lib/report-api'
 
 const QA_VISIBLE = 3
 
-// 02 Контекст проекта
+// Контекст проекта — number is assigned by report-view based on render order.
 export function ContextSection({
   project,
   qa,
+  number,
 }: {
   project: ReportProject
   qa: ReportQA[]
+  number?: string
 }) {
   const [qaExpanded, setQaExpanded] = useState(false)
 
@@ -28,7 +30,7 @@ export function ContextSection({
   const hasMoreQa = qa.length > QA_VISIBLE
 
   return (
-    <ReportSectionCard number="02" title="Контекст проекта">
+    <ReportSectionCard number={number} title="Контекст проекта">
       {pills.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {pills.map((p) => (

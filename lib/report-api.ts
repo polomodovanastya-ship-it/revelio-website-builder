@@ -33,6 +33,7 @@ export interface ReportGroup {
 }
 
 export interface ReportTask {
+  task_id: string
   group: string
   title: string
   min: number
@@ -56,6 +57,52 @@ export interface ReportRoles {
   roles: ReportRole[]
 }
 
+export interface ScheduleRole {
+  role: string
+  label: string
+  min: number
+  target: number
+  max: number
+}
+
+export interface ScheduleArea {
+  area: string
+  label: string
+  start_unit: number
+  duration_unit: number
+  lane_count: number
+}
+
+export interface ScheduleTask {
+  task_id: string
+  area: string
+  label: string
+  start_unit: number
+  duration_unit: number
+  lane: number
+  depends_on: string[]
+  is_fallback: boolean
+}
+
+export interface ScheduleOverhead {
+  role: string
+  label: string
+  start_unit: number
+  duration_unit: number
+  hours: number
+}
+
+export interface ReportSchedule {
+  unit: string
+  workday_hours: number
+  total_units: number
+  anchor_label: string
+  team: ScheduleRole[]
+  areas: ScheduleArea[]
+  tasks: ScheduleTask[]
+  overhead_lanes: ScheduleOverhead[]
+}
+
 export interface ReportAccuracy {
   overall: string
   low_conf_tasks: number
@@ -72,6 +119,7 @@ export interface ReportQA {
 export interface ReportDownloads {
   pdf: boolean
   csv: boolean
+  gantt: boolean
 }
 
 export interface ReportData {
@@ -80,6 +128,7 @@ export interface ReportData {
   groups: ReportGroup[]
   tasks: ReportTask[]
   roles?: ReportRoles | null
+  schedule?: ReportSchedule | null
   // Curated, deduped list of risk sentences (mirrors the PDF) — the backend
   // has no structured impact/comment source, so this is plain text.
   risks: string[]
@@ -145,8 +194,17 @@ export async function fetchReport(
 // so a backend that ever emits null/omits a field (as `qa` once did) can't
 // crash the report page via an unguarded .length/.map. The backend also
 // guarantees this now; this is defense-in-depth against contract drift.
-function normalizeReport(raw: any): ReportData {
+export function normalizeReport(raw: any): ReportData {
   const roles = raw?.roles ? { ...raw.roles, roles: raw.roles.roles ?? [] } : null
+  const schedule = raw?.schedule
+    ? {
+        ...raw.schedule,
+        team: raw.schedule.team ?? [],
+        areas: raw.schedule.areas ?? [],
+        tasks: raw.schedule.tasks ?? [],
+        overhead_lanes: raw.schedule.overhead_lanes ?? [],
+      }
+    : null
   return {
     ...raw,
     groups: raw?.groups ?? [],
@@ -155,8 +213,11 @@ function normalizeReport(raw: any): ReportData {
     assumptions: raw?.assumptions ?? [],
     qa: raw?.qa ?? [],
     questions: raw?.questions ?? [],
-    downloads: raw?.downloads ?? { pdf: false, csv: false },
+    downloads: raw?.downloads
+      ? { ...raw.downloads, gantt: raw.downloads.gantt ?? false }
+      : { pdf: false, csv: false, gantt: false },
     roles,
+    schedule,
   } as ReportData
 }
 
@@ -166,12 +227,13 @@ function filenameFromDisposition(header: string | null, fallback: string): strin
   return match ? decodeURIComponent(match[1]) : fallback
 }
 
-export type ReportDownloadKind = "pdf" | "csv" | "questions"
+export type ReportDownloadKind = "pdf" | "csv" | "questions" | "gantt"
 
 function fallbackFilename(kind: ReportDownloadKind): string {
   // questions is always a CSV export (Вопрос;Ответ), unlike the generic
   // pdf/csv kinds whose extension matches their kind name 1:1.
   if (kind === "questions") return "questions.csv"
+  if (kind === "gantt") return "gantt.xlsx"
   return `report.${kind}`
 }
 

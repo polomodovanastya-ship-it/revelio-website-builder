@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState, type ReactNode } from 'react'
 import { useToast } from '@/components/toast'
 import { downloadReport, type ReportData, type ReportDownloadKind } from '@/lib/report-api'
 import { resolveProjectType } from '@/lib/report-format'
@@ -9,6 +9,7 @@ import { SummarySection } from './sections/summary-section'
 import { ContextSection } from './sections/context-section'
 import { GroupsSection } from './sections/groups-section'
 import { RolesSection } from './sections/roles-section'
+import { GanttSection } from './sections/gantt-section'
 import { TasksSection } from './sections/tasks-section'
 import { RisksSection } from './sections/risks-section'
 import { AssumptionsSection } from './sections/assumptions-section'
@@ -19,6 +20,13 @@ interface ReportViewProps {
   data: ReportData
   token: string
   password: string
+}
+
+interface SectionDescriptor {
+  id: string
+  label: string
+  show: boolean
+  render: (number: string) => ReactNode
 }
 
 export function ReportView({ data, token, password }: ReportViewProps) {
@@ -56,22 +64,95 @@ export function ReportView({ data, token, password }: ReportViewProps) {
   const hasAccuracy = Boolean(data.accuracy)
   const hasQuestions = data.questions.length > 0
 
+  // Single source of truth for section order + visibility. Numbering is
+  // derived below (never hardcoded per-section), so nav and card headers can
+  // never drift apart, and hiding any section never leaves a gap.
+  const sections: SectionDescriptor[] = useMemo(
+    () => [
+      {
+        id: 'section-summary',
+        label: 'Краткое резюме',
+        show: true,
+        render: (number) => (
+          <SummarySection summary={data.project.summary} totals={data.totals} groups={data.groups} number={number} />
+        ),
+      },
+      {
+        id: 'section-context',
+        label: 'Контекст проекта',
+        show: hasContext,
+        render: (number) => <ContextSection project={data.project} qa={data.qa} number={number} />,
+      },
+      {
+        id: 'section-groups',
+        label: 'Сводная оценка',
+        show: hasGroups,
+        render: (number) => (
+          <GroupsSection
+            groups={data.groups}
+            totals={data.totals}
+            accuracyOverall={data.accuracy?.overall}
+            number={number}
+          />
+        ),
+      },
+      {
+        id: 'section-roles',
+        label: 'Часы по ролям',
+        show: hasRoles,
+        render: (number) => <RolesSection roles={data.roles!} number={number} />,
+      },
+      {
+        id: 'section-gantt',
+        label: 'План-график',
+        show: true,
+        render: (number) => <GanttSection schedule={data.schedule ?? null} number={number} />,
+      },
+      {
+        id: 'section-tasks',
+        label: 'Детализация задач',
+        show: hasTasks,
+        render: (number) => <TasksSection tasks={data.tasks} number={number} />,
+      },
+      {
+        id: 'section-risks',
+        label: 'Риски',
+        show: hasRisks,
+        render: (number) => <RisksSection risks={data.risks} number={number} />,
+      },
+      {
+        id: 'section-assumptions',
+        label: 'Чеклист ограничений и допущения',
+        show: hasAssumptions,
+        render: (number) => <AssumptionsSection assumptions={data.assumptions} number={number} />,
+      },
+      {
+        id: 'section-accuracy',
+        label: 'Точность оценки',
+        show: hasAccuracy,
+        render: (number) => <AccuracySection accuracy={data.accuracy} number={number} />,
+      },
+      {
+        id: 'section-questions',
+        label: 'Вопросы',
+        show: hasQuestions,
+        render: (number) => <QuestionsSection questions={data.questions} number={number} />,
+      },
+    ],
+    [data, hasContext, hasGroups, hasRoles, hasTasks, hasRisks, hasAssumptions, hasAccuracy, hasQuestions]
+  )
+
+  // Sequential 01..N over only the sections that actually render — this is
+  // the single place numbering is computed, so nav and card headers can
+  // never disagree, and a hidden section never leaves a gap in the sequence.
+  const numberedVisible = useMemo(
+    () => sections.filter((s) => s.show).map((s, i) => ({ ...s, number: String(i + 1).padStart(2, '0') })),
+    [sections]
+  )
+
   const navItems = useMemo(
-    () =>
-      [
-        { id: 'section-summary', label: '01 Краткое резюме', show: true },
-        { id: 'section-context', label: '02 Контекст проекта', show: hasContext },
-        { id: 'section-groups', label: '03 Сводная оценка', show: hasGroups },
-        { id: 'section-roles', label: 'Часы по ролям', show: hasRoles },
-        { id: 'section-tasks', label: '04 Детализация задач', show: hasTasks },
-        { id: 'section-risks', label: '05 Риски', show: hasRisks },
-        { id: 'section-assumptions', label: '06 Чеклист ограничений и допущения', show: hasAssumptions },
-        { id: 'section-accuracy', label: '07 Точность оценки', show: hasAccuracy },
-        { id: 'section-questions', label: '08 Вопросы', show: hasQuestions },
-      ]
-        .filter((item) => item.show)
-        .map(({ id, label }) => ({ id, label })),
-    [hasContext, hasGroups, hasRoles, hasTasks, hasRisks, hasAssumptions, hasAccuracy, hasQuestions]
+    () => numberedVisible.map(({ id, label, number }) => ({ id, label: `${number} ${label}` })),
+    [numberedVisible]
   )
 
   return (
@@ -92,57 +173,11 @@ export function ReportView({ data, token, password }: ReportViewProps) {
         <DownloadsBar downloads={data.downloads} onDownload={handleDownload} downloading={downloading} />
 
         <div className="space-y-6">
-          <div id="section-summary" className="scroll-mt-24">
-            <SummarySection summary={data.project.summary} totals={data.totals} groups={data.groups} />
-          </div>
-
-          {hasContext && (
-            <div id="section-context" className="scroll-mt-24">
-              <ContextSection project={data.project} qa={data.qa} />
+          {numberedVisible.map((s) => (
+            <div key={s.id} id={s.id} className="scroll-mt-24">
+              {s.render(s.number)}
             </div>
-          )}
-
-          {hasGroups && (
-            <div id="section-groups" className="scroll-mt-24">
-              <GroupsSection groups={data.groups} totals={data.totals} accuracyOverall={data.accuracy?.overall} />
-            </div>
-          )}
-
-          {hasRoles && data.roles && (
-            <div id="section-roles" className="scroll-mt-24">
-              <RolesSection roles={data.roles} />
-            </div>
-          )}
-
-          {hasTasks && (
-            <div id="section-tasks" className="scroll-mt-24">
-              <TasksSection tasks={data.tasks} />
-            </div>
-          )}
-
-          {hasRisks && (
-            <div id="section-risks" className="scroll-mt-24">
-              <RisksSection risks={data.risks} />
-            </div>
-          )}
-
-          {hasAssumptions && (
-            <div id="section-assumptions" className="scroll-mt-24">
-              <AssumptionsSection assumptions={data.assumptions} />
-            </div>
-          )}
-
-          {hasAccuracy && (
-            <div id="section-accuracy" className="scroll-mt-24">
-              <AccuracySection accuracy={data.accuracy} />
-            </div>
-          )}
-
-          {hasQuestions && (
-            <div id="section-questions" className="scroll-mt-24">
-              <QuestionsSection questions={data.questions} />
-            </div>
-          )}
+          ))}
         </div>
       </div>
     </div>

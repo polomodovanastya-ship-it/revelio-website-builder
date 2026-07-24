@@ -6,18 +6,20 @@ const thBase = 'py-3 px-3 text-[11px] font-medium uppercase tracking-wider text-
 const thNum = `${thBase} whitespace-nowrap text-right`
 const cellNum = 'whitespace-nowrap px-3 text-right tabular-nums'
 
-// 03 Сводная оценка
+// Сводная оценка — number is assigned by report-view based on render order.
 export function GroupsSection({
   groups,
   totals,
   accuracyOverall,
+  number,
 }: {
   groups: ReportGroup[]
   totals: ReportTotals
   accuracyOverall?: string
+  number?: string
 }) {
   return (
-    <ReportSectionCard number="03" title="Сводная оценка">
+    <ReportSectionCard number={number} title="Сводная оценка">
       <div className="overflow-hidden rounded-xl border border-border">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[680px] text-sm">

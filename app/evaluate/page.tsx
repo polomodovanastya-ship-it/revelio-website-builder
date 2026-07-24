@@ -8,6 +8,7 @@ import { EvaluateForm } from '@/components/evaluate/evaluate-form'
 import { EvaluateQueue } from '@/components/evaluate/evaluate-queue'
 import { EvaluateQuestions } from '@/components/evaluate/evaluate-questions'
 import { EvaluateSuccess } from '@/components/evaluate/evaluate-success'
+import { EvaluateNotSuitable } from '@/components/evaluate/evaluate-not-suitable'
 
 export default function EvaluatePage() {
   const { state, dispatch } = useEvaluateFlow()
@@ -71,6 +72,8 @@ export default function EvaluatePage() {
         <EvaluateQuestions state={state} dispatch={dispatch} />
       ) : state.phase === 'success' ? (
         <EvaluateSuccess state={state} dispatch={dispatch} />
+      ) : state.phase === 'not_suitable' ? (
+        <EvaluateNotSuitable state={state} dispatch={dispatch} />
       ) : null}
     </main>
   )
