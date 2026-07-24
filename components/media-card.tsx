@@ -109,7 +109,7 @@ export function MediaCard({ item }: { item: MediaItem }) {
 
   return (
     <article className="group block">
-      <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-[transform,box-shadow,border-color] duration-300 will-change-transform transform-gpu backface-hidden group-hover:-translate-y-0.5 group-hover:border-primary/25 group-hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+      <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-[box-shadow,border-color] duration-300 will-change-[box-shadow] transform-gpu backface-hidden group-hover:border-primary/25 group-hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
         {item.coverSrc && (
           <div className="relative aspect-[16/9] w-full overflow-hidden bg-card">
             <Image
