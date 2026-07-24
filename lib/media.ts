@@ -1,5 +1,4 @@
 // Content for the "Media" section (home preview + /media page).
-import bartAudio from '@/src/assets/bart-podcast.mp3.asset.json'
 import saCommunityCover from '@/src/assets/sa-community-cover.jpg.asset.json'
 import rbcLogo from '@/src/assets/RBK_logo.svg.asset.json'
 import forbesLogo from '@/src/assets/Forbes-logo.svg.asset.json'
@@ -138,7 +137,6 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     primaryLabel: 'Слушать',
     embedHref: 'https://www.youtube.com/embed/9oEWCF3fLsc',
     embedTitle: 'Подкаст о групповой динамике и модели BART',
-    audioSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${bartAudio.url}`,
     coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${bartIllustration.url}`,
     platforms: [
       {
