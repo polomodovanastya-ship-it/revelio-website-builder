@@ -139,6 +139,7 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     embedHref: 'https://www.youtube.com/embed/9oEWCF3fLsc',
     embedTitle: 'Подкаст о групповой динамике и модели BART',
     coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${bartIllustration.url}`,
+    audioSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${bartAudio.url}`,
     platforms: [
       {
         label: 'Podster',
