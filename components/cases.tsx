@@ -96,11 +96,11 @@ export function Cases() {
 
         <div
           ref={ref}
-          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3"
+          className="reveal masonry-cols mt-12 columns-1 gap-5 md:columns-2 lg:columns-3 [column-fill:_balance]"
         >
           {CASES.map((c) => (
             <div key={c.title} className="mb-5 break-inside-avoid">
-              <article className="safari-no-hover group flex flex-col overflow-hidden rounded-2xl bg-card hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+              <article className="safari-no-hover group flex flex-col overflow-hidden rounded-2xl bg-card shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
                 {c.cover && (
                   <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
                     <img

@@ -59,7 +59,7 @@ export default function MediaPage() {
           </a>
         </div>
       </div>
-      <div className="columns-1 gap-5 md:columns-2 lg:columns-3 [column-fill:_balance]">
+      <div className="masonry-cols columns-1 gap-5 md:columns-2 lg:columns-3 [column-fill:_balance]">
         {MEDIA_ITEMS.map((item) => (
           <div key={item.id} className="mb-5 break-inside-avoid">
             <MediaCard item={item} />

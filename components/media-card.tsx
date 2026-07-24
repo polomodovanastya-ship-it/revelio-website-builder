@@ -109,7 +109,7 @@ export function MediaCard({ item }: { item: MediaItem }) {
 
   return (
     <article className="group block">
-      <div className="safari-no-hover flex flex-col overflow-hidden rounded-2xl bg-card group-hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+      <div className="safari-no-hover flex flex-col overflow-hidden rounded-2xl bg-card shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
         {item.coverSrc && (
           <div className="relative aspect-[16/9] w-full overflow-hidden bg-card">
             <Image
