@@ -3,6 +3,7 @@
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useReveal } from '@/hooks/use-reveal'
+import { MasonryGrid } from '@/components/masonry-grid'
 import { DIMENSIONS, ENGINE_VERBS, PRODUCT_PROOF } from '@/lib/ai-evaluation-content'
 import decompImg from '@/src/assets/dim-decomp.png.asset.json'
 import estimateImg from '@/src/assets/dim-estimate.png.asset.json'
@@ -47,15 +48,15 @@ export function Dimensions() {
           ))}
         </div>
 
-        <div
-          ref={ref}
-          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3"
-        >
-          {DIMENSIONS.map((d, i) => {
-            const cover = COVERS[d.key]
-            return (
-              <div key={d.key} className="mb-5 break-inside-avoid">
-                <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+        <div ref={ref} className="reveal mt-12">
+          <MasonryGrid>
+            {DIMENSIONS.map((d, i) => {
+              const cover = COVERS[d.key]
+              return (
+                <article
+                  key={d.key}
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
+                >
                   {cover && (
                     <div className="w-full overflow-hidden bg-card px-2 pt-2">
                       <img
@@ -78,9 +79,9 @@ export function Dimensions() {
                     </p>
                   </div>
                 </article>
-              </div>
-            )
-          })}
+              )
+            })}
+          </MasonryGrid>
         </div>
 
         <p className="mt-8 max-w-2xl text-sm text-muted-foreground">

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { PageContainer } from '@/components/page-shell'
 import { MediaCard } from '@/components/media-card'
+import { MasonryGrid } from '@/components/masonry-grid'
 import { MEDIA_ITEMS } from '@/lib/media'
 import { pageMetadata } from '@/lib/seo'
 
@@ -59,13 +60,11 @@ export default function MediaPage() {
           </a>
         </div>
       </div>
-      <div className="columns-1 gap-5 md:columns-2 lg:columns-3 [column-fill:_balance]">
+      <MasonryGrid>
         {MEDIA_ITEMS.map((item) => (
-          <div key={item.id} className="mb-5 break-inside-avoid">
-            <MediaCard item={item} />
-          </div>
+          <MediaCard key={item.id} item={item} />
         ))}
-      </div>
+      </MasonryGrid>
     </PageContainer>
   )
 }

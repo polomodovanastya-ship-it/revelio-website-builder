@@ -1,6 +1,7 @@
 'use client'
 
 import { useReveal } from '@/hooks/use-reveal'
+import { MasonryGrid } from '@/components/masonry-grid'
 import khdNsiBiCover from '@/src/assets/KHD_NSI_BI.png.asset.json'
 import komandirovkiCover from '@/src/assets/Komandirovki_illustration.png.asset.json'
 import narcelleCover from '@/src/assets/Narcelle_illustration.png.asset.json'
@@ -94,13 +95,13 @@ export function Cases() {
           </p>
         </div>
 
-        <div
-          ref={ref}
-          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3"
-        >
-          {CASES.map((c) => (
-            <div key={c.title} className="mb-5 break-inside-avoid">
-              <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+        <div ref={ref} className="reveal mt-12">
+          <MasonryGrid>
+            {CASES.map((c) => (
+              <article
+                key={c.title}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
+              >
                 {c.cover && (
                   <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
                     <img
@@ -126,8 +127,8 @@ export function Cases() {
                   </p>
                 </div>
               </article>
-            </div>
-          ))}
+            ))}
+          </MasonryGrid>
         </div>
       </div>
     </section>

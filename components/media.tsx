@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
 import { MEDIA_ITEMS } from '@/lib/media'
 import { MediaCard } from './media-card'
+import { MasonryGrid } from '@/components/masonry-grid'
 
 export function Media() {
   const ref = useReveal<HTMLDivElement>()
@@ -26,22 +27,19 @@ export function Media() {
           </p>
         </div>
 
-        <div
-          ref={ref}
-          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3 [column-fill:_balance]"
-        >
-          {MEDIA_ITEMS.filter((item) =>
-            [
-              'forbes-excel-to-ml',
-              'cdp-comparison-2026',
-              'podcast-bart',
-              'sostav-gamification',
-            ].includes(item.id)
-          ).map((item) => (
-            <div key={item.id} className="mb-5 break-inside-avoid">
-              <MediaCard item={item} />
-            </div>
-          ))}
+        <div ref={ref} className="reveal mt-12">
+          <MasonryGrid>
+            {MEDIA_ITEMS.filter((item) =>
+              [
+                'forbes-excel-to-ml',
+                'cdp-comparison-2026',
+                'podcast-bart',
+                'sostav-gamification',
+              ].includes(item.id)
+            ).map((item) => (
+              <MediaCard key={item.id} item={item} />
+            ))}
+          </MasonryGrid>
         </div>
 
         <div className="mt-8 flex justify-center">
