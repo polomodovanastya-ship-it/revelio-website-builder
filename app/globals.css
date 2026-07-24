@@ -255,3 +255,15 @@
     outline: none !important;
   }
 }
+
+/* Ensure CSS multi-column layouts align the first item in every column
+   flush to the top (Safari sometimes offsets column 2 due to margin
+   collapse and column-fill quirks). */
+.masonry-cols > * {
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid;
+  margin-top: 0 !important;
+}
+.masonry-cols > *:first-child {
+  margin-top: 0 !important;
+}
