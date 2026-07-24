@@ -96,7 +96,7 @@ export function Cases() {
 
         <div
           ref={ref}
-          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3"
+          className="reveal masonry-cols mt-12 columns-1 gap-5 md:columns-2 lg:columns-3 [column-fill:_balance]"
         >
           {CASES.map((c) => (
             <div key={c.title} className="mb-5 break-inside-avoid">
