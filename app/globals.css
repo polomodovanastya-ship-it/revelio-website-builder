@@ -239,20 +239,57 @@
   }
 }
 
-/* Fix Safari card flicker: kill transitions/transforms/borders on hover,
-   but keep the static box-shadow so hover still reads visually. */
+/* Fix Safari 18.x card flicker: avoid multicolumn fragmentation + transform layers. */
 @supports (-webkit-hyphens: none) {
-  .safari-no-hover,
-  .safari-no-hover * {
+  .masonry-cols {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    column-count: initial !important;
+    column-gap: 0 !important;
+    gap: 1.25rem !important;
+  }
+
+  .masonry-cols.reveal,
+  .masonry-cols.reveal.in-view {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .masonry-cols > * {
+    margin: 0 !important;
+    break-inside: auto;
+    -webkit-column-break-inside: auto;
+  }
+
+  .safari-stable-card,
+  .safari-stable-card * {
     transition: none !important;
     will-change: auto !important;
-  }
-  .safari-no-hover,
-  .safari-no-hover:hover,
-  .group:hover .safari-no-hover {
     transform: none !important;
+    -webkit-transform: none !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+  }
+
+  .safari-stable-card {
     border: 0 !important;
     outline: none !important;
+    isolation: isolate;
+    box-shadow: 0 14px 36px -20px rgba(20, 37, 80, 0.28) !important;
+  }
+
+  @media (min-width: 768px) {
+    .masonry-cols {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry-cols {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 }
 
