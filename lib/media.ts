@@ -11,7 +11,7 @@ import sostavIllustration4 from '@/src/assets/Sostav_illustration_4.jpg.asset.js
 import rbkIllustration from '@/src/assets/RBK_illustration.jpg.asset.json'
 import rbkIllustration1 from '@/src/assets/RBK_illustration_1.png.asset.json'
 import bartIllustration from '@/src/assets/Code_of_leadership_illustration_2.png.asset.json'
-import bartAudio from '@/src/assets/bart-podcast.mp3.asset.json'
+
 import tInsightIllustration from '@/src/assets/T-Insight_illustration_2.png.asset.json'
 
 
@@ -139,7 +139,7 @@ const RAW_MEDIA_ITEMS: MediaItem[] = [
     embedHref: 'https://www.youtube.com/embed/9oEWCF3fLsc',
     embedTitle: 'Подкаст о групповой динамике и модели BART',
     coverSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${bartIllustration.url}`,
-    audioSrc: `https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${bartAudio.url}`,
+    
     platforms: [
       {
         label: 'Podster',
