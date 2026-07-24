@@ -40,7 +40,7 @@ export function Media() {
           ).map((item) => (
             <div
               key={item.id}
-              className="relative mb-5 break-inside-avoid transform-gpu [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+              className="mb-5 break-inside-avoid"
             >
               <MediaCard item={item} />
             </div>
