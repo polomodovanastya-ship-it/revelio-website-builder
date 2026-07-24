@@ -28,7 +28,7 @@ export function Media() {
 
         <div
           ref={ref}
-          className="reveal mt-12 columns-1 gap-5 md:columns-2 lg:columns-3 [column-fill:_balance]"
+          className="reveal masonry-cols mt-12 columns-1 gap-5 md:columns-2 lg:columns-3 [column-fill:_balance]"
         >
           {MEDIA_ITEMS.filter((item) =>
             [
