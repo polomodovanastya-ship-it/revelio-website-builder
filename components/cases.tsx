@@ -100,7 +100,7 @@ export function Cases() {
         >
           {CASES.map((c) => (
             <div key={c.title} className="mb-5 break-inside-avoid">
-              <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+              <article className="safari-no-hover group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
                 {c.cover && (
                   <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
                     <img
