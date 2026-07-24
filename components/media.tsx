@@ -38,7 +38,10 @@ export function Media() {
               'sostav-gamification',
             ].includes(item.id)
           ).map((item) => (
-            <div key={item.id} className="mb-5 break-inside-avoid">
+            <div
+              key={item.id}
+              className="relative mb-5 break-inside-avoid transform-gpu [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+            >
               <MediaCard item={item} />
             </div>
           ))}
