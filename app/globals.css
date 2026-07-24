@@ -238,3 +238,17 @@
     opacity: 1 !important;
   }
 }
+
+/* Disable card hover effects in Safari (fixes flicker/rendering bugs) */
+@supports (-webkit-hyphens: none) {
+  .safari-no-hover {
+    transition: none !important;
+    will-change: auto !important;
+  }
+  .safari-no-hover:hover,
+  .group:hover .safari-no-hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: hsl(var(--border)) !important;
+  }
+}
