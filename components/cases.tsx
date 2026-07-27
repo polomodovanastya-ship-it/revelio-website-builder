@@ -1,32 +1,43 @@
 'use client'
 
 import { useReveal } from '@/hooks/use-reveal'
-import { MasonryGrid } from '@/components/masonry-grid'
 import khdNsiBiCover from '@/src/assets/KHD_NSI_BI.png.asset.json'
 import komandirovkiCover from '@/src/assets/Komandirovki_illustration.png.asset.json'
 import narcelleCover from '@/src/assets/Narcelle_illustration.png.asset.json'
 
 const ASSET_ORIGIN = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
-const CASES = [
-  {
-    emoji: '✈️',
-    tag: 'B2B Travel Tech',
-    title: 'Портал «Командировки» для Банка ТОП-10 РФ',
-    desc: 'Разработка в интеграции с процессингом TuTu.ru, ЭДО, контакт-центром и отельными API',
-    cover: `${ASSET_ORIGIN}${komandirovkiCover.url}`,
-  },
+const travel = {
+  emoji: '✈️',
+  tag: 'B2B Travel Tech',
+  title: 'Портал «Командировки» для Банка ТОП-10 РФ',
+  desc: 'Разработка в интеграции с процессингом TuTu.ru, ЭДО, контакт-центром и отельными API',
+  cover: `${ASSET_ORIGIN}${komandirovkiCover.url}`,
+}
+
+const dataBi = {
+  emoji: '📊',
+  tag: 'Data / BI',
+  title: 'КХД, НСИ и единая BI-система',
+  desc: 'КХД на 3 слоя, ETL и глоссарий, BI для B2C+B2B: продажи, маркетинг, операции',
+  cover: `${ASSET_ORIGIN}${khdNsiBiCover.url}`,
+}
+
+const itsm = {
+  emoji: '🛟',
+  tag: 'ITSM',
+  title: 'L1, L2 процессы поддержки сотрудников',
+  desc: 'Процессы обслуживания для 50+ ЮЛ крупной добывающей компании РФ',
+}
+
+const COLUMN_1 = [travel, dataBi, itsm]
+
+const COLUMN_2 = [
   {
     emoji: '🎮',
     tag: 'Product Design',
     title: 'Gaming App для Alfa Gen',
     desc: 'Проектирование игрового приложения для поколений 8–16 лет в интеграции с лояльностью',
-  },
-  {
-    emoji: '💬',
-    tag: 'CX Consulting',
-    title: 'Трансформация контакт-центра в omni CX',
-    desc: 'Описание БП контакт-центра для ТОП-5 food-retail, проектирование целевого решения',
   },
   {
     emoji: '🧩',
@@ -41,17 +52,20 @@ const CASES = [
     desc: 'Аудит интерфейса и клиентских путей, проверка бэкенд интеграций с формированием артефакта рекомендаций по доработке UX и внедрению программы лояльности',
     cover: `${ASSET_ORIGIN}${narcelleCover.url}`,
   },
+]
+
+const COLUMN_3 = [
+  {
+    emoji: '💬',
+    tag: 'CX Consulting',
+    title: 'Трансформация контакт-центра в omni CX',
+    desc: 'Описание БП контакт-центра для ТОП-5 food-retail, проектирование целевого решения',
+  },
   {
     emoji: '📞',
     tag: 'WFM',
     title: 'WFM-система на 300 операторов КЦ',
     desc: 'Перевод КЦ телеком-оператора с калькулятора Эрланга на WFM → экономия 20+ FTE',
-  },
-  {
-    emoji: '🛟',
-    tag: 'ITSM',
-    title: 'L1, L2 процессы поддержки сотрудников',
-    desc: 'Процессы обслуживания для 50+ ЮЛ крупной добывающей компании РФ',
   },
   {
     emoji: '🛡️',
@@ -65,14 +79,54 @@ const CASES = [
     title: 'Консалтинг AI для застройщика',
     desc: 'Аудит и поиск процессов, подходящих под оптимизацию с помощью AI и ML',
   },
-  {
-    emoji: '📊',
-    tag: 'Data / BI',
-    title: 'КХД, НСИ и единая BI-система',
-    desc: 'КХД на 3 слоя, ETL и глоссарий, BI для B2C+B2B: продажи, маркетинг, операции',
-    cover: `${ASSET_ORIGIN}${khdNsiBiCover.url}`,
-  },
 ]
+
+type CaseItem = {
+  emoji: string
+  tag: string
+  title: string
+  desc: string
+  cover?: string
+}
+
+function CaseCard({ c }: { c: CaseItem }) {
+  return (
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
+      {c.cover && (
+        <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
+          <img
+            src={c.cover}
+            alt={c.title}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-6">
+        <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+          <span className="text-base leading-none">{c.emoji}</span>
+          {c.tag}
+        </span>
+        <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
+          {c.title}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          {c.desc}
+        </p>
+      </div>
+    </article>
+  )
+}
+
+function CaseColumn({ items }: { items: CaseItem[] }) {
+  return (
+    <div className="flex flex-col gap-5 md:w-1/2 lg:w-1/3">
+      {items.map((c) => (
+        <CaseCard key={c.title} c={c} />
+      ))}
+    </div>
+  )
+}
 
 export function Cases() {
   const ref = useReveal<HTMLDivElement>()
@@ -95,38 +149,10 @@ export function Cases() {
           </p>
         </div>
 
-        <div ref={ref} className="reveal mt-12">
-          <MasonryGrid>
-            {CASES.map((c, i) => (
-              <article
-                key={c.title}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
-              >
-                {c.cover && (
-                  <div className="aspect-[16/10] w-full overflow-hidden bg-secondary">
-                    <img
-                      src={c.cover}
-                      alt={c.title}
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-                <div className="flex flex-1 flex-col p-6">
-                  <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                    <span className="text-base leading-none">{c.emoji}</span>
-                    {c.tag}
-                  </span>
-                  <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
-                    {c.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {c.desc}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </MasonryGrid>
+        <div ref={ref} className="reveal mt-12 flex flex-col gap-5 md:flex-row">
+          <CaseColumn items={COLUMN_1} />
+          <CaseColumn items={COLUMN_2} />
+          <CaseColumn items={COLUMN_3} />
         </div>
       </div>
     </section>
