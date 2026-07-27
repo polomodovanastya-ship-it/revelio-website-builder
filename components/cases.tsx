@@ -97,7 +97,7 @@ export function Cases() {
 
         <div ref={ref} className="reveal mt-12">
           <MasonryGrid>
-            {CASES.map((c) => (
+            {CASES.map((c, i) => (
               <article
                 key={c.title}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
@@ -117,6 +117,9 @@ export function Cases() {
                     <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                       <span className="text-base leading-none">{c.emoji}</span>
                       {c.tag}
+                    </span>
+                    <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
+                      {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
                   <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
