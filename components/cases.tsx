@@ -118,6 +118,9 @@ export function Cases() {
                       <span className="text-base leading-none">{c.emoji}</span>
                       {c.tag}
                     </span>
+                    <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
                   </div>
                   <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
                     {c.title}
