@@ -30,7 +30,7 @@ const itsm = {
   desc: 'Процессы обслуживания для 50+ ЮЛ крупной добывающей компании РФ',
 }
 
-const COLUMN_1 = [travel, dataBi, itsm]
+const COLUMN_1 = [travel, itsm, dataBi]
 
 const COLUMN_2 = [
   {
