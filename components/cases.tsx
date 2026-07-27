@@ -97,7 +97,7 @@ export function Cases() {
 
         <div ref={ref} className="reveal mt-12">
           <MasonryGrid>
-            {CASES.map((c) => (
+            {CASES.map((c, i) => (
               <article
                 key={c.title}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]"
