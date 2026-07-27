@@ -5,6 +5,7 @@ import onb1 from '@/src/assets/onboarding-1-v2.png.asset.json'
 import onb2 from '@/src/assets/onboarding-2-v2.png.asset.json'
 import onb3 from '@/src/assets/onboarding-3-v2.png.asset.json'
 import onb4 from '@/src/assets/onboarding-4-v2.png.asset.json'
+import messageIcon from '@/src/assets/message-icon.png.asset.json'
 
 const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
@@ -50,12 +51,23 @@ export function OnboardingPath() {
         >
           {STEPS.map((step, i) => (
             <div key={i} className="flex flex-col items-center text-center">
-              <img
-                src={`${ASSET_HOST}${step.image}`}
-                alt={step.caption}
-                className="mb-5 w-full max-w-[240px] object-contain"
-                loading="lazy"
-              />
+              <div className="relative mb-5 w-full max-w-[240px]">
+                <img
+                  src={`${ASSET_HOST}${step.image}`}
+                  alt={step.caption}
+                  className="w-full object-contain"
+                  loading="lazy"
+                />
+                {i === 3 && (
+                  <img
+                    src={`${ASSET_HOST}${messageIcon.url}`}
+                    alt=""
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -right-4 -top-4 w-16 sm:-right-6 sm:-top-6 sm:w-20"
+                    loading="lazy"
+                  />
+                )}
+              </div>
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/12 font-mono text-sm tabular-nums text-accent ring-1 ring-accent/20">
                 {String(i + 1).padStart(2, '0')}
               </span>
