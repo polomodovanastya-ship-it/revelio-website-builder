@@ -113,15 +113,10 @@ export function Cases() {
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                      <span className="text-base leading-none">{c.emoji}</span>
-                      {c.tag}
-                    </span>
-                    <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
+                  <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+                    <span className="text-base leading-none">{c.emoji}</span>
+                    {c.tag}
+                  </span>
                   <h3 className="mt-4 font-heading text-base font-semibold uppercase leading-snug tracking-tight text-primary">
                     {c.title}
                   </h3>
