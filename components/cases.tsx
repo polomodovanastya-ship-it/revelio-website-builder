@@ -68,7 +68,7 @@ const CASES = [
   },
   {
     emoji: '🤖',
-    tag: 'Developer Consulting',
+    tag: 'Consulting',
     title: 'Консалтинг AI для застройщика',
     desc: 'Аудит и поиск процессов, подходящих под оптимизацию с помощью AI и ML',
   },
