@@ -38,14 +38,14 @@ const TEAM: Member[] = [
   {
     name: 'Александр',
     role: 'Партнёр',
-    bio: 'Руководил CX-практикой и командами в проектах для KIA, Лукойл, Unitel, Ренессанс, СИБУР.',
+    bio: 'Руководил CX-практикой и командами в проектах для KIA, Лукойл, Unitel, Ренессанс, СИБУР',
     photo: 'alexander-v',
     tags: ['eCom', 'Retail', 'Telco', 'CX', 'Loyalty', 'Pricing', 'CDP', 'Data'],
   },
   {
     name: 'Илья',
     role: 'Консультант · Технологии',
-    bio: 'Проектировал B2B, loyalty и cloud-native k8s-платформы, AI/Dify-пайплайны, интеграции и high-load.',
+    bio: 'Проектировал B2B, loyalty и cloud-native k8s-платформы, AI/Dify-пайплайны, интеграции и high-load',
     photo: null,
     photoSrc: `${ASSET_HOST}${ilyaAsset.url}`,
     tags: ['AI', 'LLM Pipelines', 'Kubernetes', 'Cloud Platform', 'CI/CD', 'Integrations'],
@@ -53,7 +53,7 @@ const TEAM: Member[] = [
   {
     name: 'Александр',
     role: 'Консультант · Технологии',
-    bio: 'Развивал tech привлечения и маркетинга, управление ИТ и gen AI в банках РФ ТОП-10.',
+    bio: 'Развивал tech привлечения и маркетинга, управление ИТ и gen AI в банках РФ ТОП-10',
     photo: null,
     photoSrc: `${ASSET_HOST}${alexanderAsset.url}`,
     tags: ['Бигтех', 'GenAI', 'AI4SDLC', 'System Design', 'Platform', 'Leadership'],
@@ -61,7 +61,7 @@ const TEAM: Member[] = [
   {
     name: 'Артём',
     role: 'Консультант · Инфра',
-    bio: 'Развивал IaaS-сервисы и private cloud для enterprise, внедрял SecOps в крупных ИТ-службах.',
+    bio: 'Развивал IaaS-сервисы и private cloud для enterprise, внедрял SecOps в крупных ИТ-службах',
     photo: null,
     photoSrc: `${ASSET_HOST}${artemAsset.url}`,
     tags: ['Cloud', 'SecOps', 'ЦОД', 'IaaS', 'Private Cloud', 'Enterprise'],
@@ -69,7 +69,7 @@ const TEAM: Member[] = [
   {
     name: 'Евгений',
     role: 'Консультант · eLearning',
-    bio: 'Разрабатывал ИОТ-платформу, внедрял микросервисы, оптимизировал highload-системы.',
+    bio: 'Разрабатывал ИОТ-платформу, внедрял микросервисы, оптимизировал highload-системы',
     photo: null,
     photoSrc: `${ASSET_HOST}${eugeneAsset.url}`,
     tags: ['SaaS', 'LMS', 'ИОТ', 'Integrations', 'Микросервисы', 'Highload'],
@@ -77,7 +77,7 @@ const TEAM: Member[] = [
   {
     name: 'Максим',
     role: 'Консультант · AI',
-    bio: 'Директор по продуктам, экс-МКБ и «Инфосистемы Джет».',
+    bio: 'Директор по продуктам, экс-МКБ и «Инфосистемы Джет»',
     photo: null,
     photoSrc: `${ASSET_HOST}${maksimAsset.url}`,
     tags: ['Финтех', 'Скоринг', 'LLM On-Prem', 'AI Ops', 'ITSM', 'Ассистенты'],
@@ -85,7 +85,7 @@ const TEAM: Member[] = [
   {
     name: 'Светлана',
     role: 'Консультант · Аналитика',
-    bio: 'Вела проекты аналитики в HoReCa, оптимизации процессов цепи поставок, внедряла АСУ ТП для топ-10 НПЗ.',
+    bio: 'Вела проекты аналитики в HoReCa, оптимизации процессов цепи поставок, внедряла АСУ ТП для топ-10 НПЗ',
     photo: null,
     photoSrc: `${ASSET_HOST}${svetlanaAsset.url}`,
     tags: ['SA/BA', 'SCM', 'MDM', 'HoReCa', 'QA', 'Обучение пользователей', 'Автоматизация', 'Базы знаний'],
