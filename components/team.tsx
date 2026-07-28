@@ -7,12 +7,14 @@ import { useReveal } from '@/hooks/use-reveal'
 import { asset } from '@/lib/asset'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import anastasiaAsset from '@/src/assets/anastasia.png.asset.json'
 
 type Member = {
   name: string
   role: string
   bio: string
   photo: string | null
+  photoSrc?: string
   tags: string[]
 }
 
