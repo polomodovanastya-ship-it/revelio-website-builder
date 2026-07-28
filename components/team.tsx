@@ -23,7 +23,8 @@ const TEAM: Member[] = [
     name: 'Анастасия',
     role: 'CEO',
     bio: 'Руководила ИТ-командами в Ameria Bank, «Джет». Запускала проекты с Ингосстрах, TuTu, Дикси.',
-    photo: 'anastasia',
+    photo: null,
+    photoSrc: anastasiaAsset.url,
     tags: ['Банки', 'Retail', 'AI for IT', 'RPA', 'ITIL', 'Group Dynamics'],
   },
   {
