@@ -7,12 +7,14 @@ import { useReveal } from '@/hooks/use-reveal'
 import { asset } from '@/lib/asset'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import anastasiaAsset from '@/src/assets/anastasia.png.asset.json'
 
 type Member = {
   name: string
   role: string
   bio: string
   photo: string | null
+  photoSrc?: string
   tags: string[]
 }
 
@@ -21,7 +23,8 @@ const TEAM: Member[] = [
     name: 'Анастасия',
     role: 'CEO',
     bio: 'Руководила ИТ-командами в Ameria Bank, «Джет». Запускала проекты с Ингосстрах, TuTu, Дикси.',
-    photo: 'anastasia',
+    photo: null,
+    photoSrc: anastasiaAsset.url,
     tags: ['Банки', 'Retail', 'AI for IT', 'RPA', 'ITIL', 'Group Dynamics'],
   },
   {
@@ -138,11 +141,13 @@ export function Team() {
 }
 
 function TeamCard({ member: m }: { member: Member }) {
+  const photoSrc = m.photoSrc ?? (m.photo ? asset(`/team/${m.photo}.webp`) : null)
+
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_14px_36px_-20px_rgba(20,37,80,0.28)]">
-      {m.photo ? (
+      {photoSrc ? (
         <img
-          src={asset(`/team/${m.photo}.webp`)}
+          src={photoSrc}
           alt={m.name}
           className="aspect-[4/3] w-full object-cover object-center"
         />
