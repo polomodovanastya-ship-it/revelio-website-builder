@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import alexanderAsset from '@/src/assets/alexander.png.asset.json'
 import anastasiaAsset from '@/src/assets/anastasia.png.asset.json'
 import ilyaAsset from '@/src/assets/ilya.png.asset.json'
+import svetlanaAsset from '@/src/assets/svetlana.png.asset.json'
 
 const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
