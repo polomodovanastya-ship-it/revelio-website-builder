@@ -51,7 +51,7 @@ const TEAM: Member[] = [
     role: 'Консультант · Технологии',
     bio: 'Развивал tech привлечения и маркетинга, управление ИТ и gen AI в банках РФ ТОП-10.',
     photo: null,
-    photoSrc: alexanderAsset.url,
+    photoSrc: `${ASSET_HOST}${alexanderAsset.url}`,
     tags: ['Бигтех', 'GenAI', 'AI4SDLC', 'System Design', 'Platform', 'Leadership'],
   },
   {
