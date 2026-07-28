@@ -28,7 +28,7 @@ const TEAM: Member[] = [
     role: 'CEO',
     bio: 'Руководила ИТ-командами в Ameria Bank, «Джет». Запускала проекты с Ингосстрах, TuTu, Дикси.',
     photo: null,
-    photoSrc: anastasiaAsset.url,
+    photoSrc: `${ASSET_HOST}${anastasiaAsset.url}`,
     tags: ['Банки', 'Retail', 'AI for IT', 'RPA', 'ITIL', 'Group Dynamics'],
   },
   {
