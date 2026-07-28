@@ -48,7 +48,8 @@ const TEAM: Member[] = [
     name: 'Александр',
     role: 'Консультант · Технологии',
     bio: 'Развивал tech привлечения и маркетинга, управление ИТ и gen AI в банках РФ ТОП-10.',
-    photo: 'alexander-p',
+    photo: null,
+    photoSrc: alexanderAsset.url,
     tags: ['Бигтех', 'GenAI', 'AI4SDLC', 'System Design', 'Platform', 'Leadership'],
   },
   {
