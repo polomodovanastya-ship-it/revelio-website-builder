@@ -11,6 +11,8 @@ import alexanderAsset from '@/src/assets/alexander.png.asset.json'
 import anastasiaAsset from '@/src/assets/anastasia.png.asset.json'
 import ilyaAsset from '@/src/assets/ilya.png.asset.json'
 
+const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
+
 type Member = {
   name: string
   role: string
@@ -26,7 +28,7 @@ const TEAM: Member[] = [
     role: 'CEO',
     bio: 'Руководила ИТ-командами в Ameria Bank, «Джет». Запускала проекты с Ингосстрах, TuTu, Дикси.',
     photo: null,
-    photoSrc: anastasiaAsset.url,
+    photoSrc: `${ASSET_HOST}${anastasiaAsset.url}`,
     tags: ['Банки', 'Retail', 'AI for IT', 'RPA', 'ITIL', 'Group Dynamics'],
   },
   {
@@ -41,7 +43,7 @@ const TEAM: Member[] = [
     role: 'Консультант · Технологии',
     bio: 'Проектировал B2B, loyalty и cloud-native k8s-платформы, AI/Dify-пайплайны, интеграции и high-load.',
     photo: null,
-    photoSrc: ilyaAsset.url,
+    photoSrc: `${ASSET_HOST}${ilyaAsset.url}`,
     tags: ['AI', 'LLM Pipelines', 'Kubernetes', 'Cloud Platform', 'CI/CD', 'Integrations'],
   },
   {
@@ -49,7 +51,7 @@ const TEAM: Member[] = [
     role: 'Консультант · Технологии',
     bio: 'Развивал tech привлечения и маркетинга, управление ИТ и gen AI в банках РФ ТОП-10.',
     photo: null,
-    photoSrc: alexanderAsset.url,
+    photoSrc: `${ASSET_HOST}${alexanderAsset.url}`,
     tags: ['Бигтех', 'GenAI', 'AI4SDLC', 'System Design', 'Platform', 'Leadership'],
   },
   {
