@@ -9,7 +9,10 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import alexanderAsset from '@/src/assets/alexander.png.asset.json'
 import anastasiaAsset from '@/src/assets/anastasia.png.asset.json'
+import artemAsset from '@/src/assets/artem.png.asset.json'
+import eugeneAsset from '@/src/assets/eugene.png.asset.json'
 import ilyaAsset from '@/src/assets/ilya.png.asset.json'
+import maksimAsset from '@/src/assets/maksim.png.asset.json'
 import svetlanaAsset from '@/src/assets/svetlana.png.asset.json'
 
 const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
@@ -59,21 +62,24 @@ const TEAM: Member[] = [
     name: 'Артём',
     role: 'Консультант · Инфра',
     bio: 'Развивал IaaS-сервисы и private cloud для enterprise, внедрял SecOps в крупных ИТ-службах.',
-    photo: 'artem',
+    photo: null,
+    photoSrc: `${ASSET_HOST}${artemAsset.url}`,
     tags: ['Cloud', 'SecOps', 'ЦОД', 'IaaS', 'Private Cloud', 'Enterprise'],
   },
   {
     name: 'Евгений',
     role: 'Консультант · eLearning',
     bio: 'Разрабатывал ИОТ-платформу, внедрял микросервисы, оптимизировал highload-системы.',
-    photo: 'eugene',
+    photo: null,
+    photoSrc: `${ASSET_HOST}${eugeneAsset.url}`,
     tags: ['SaaS', 'LMS', 'ИОТ', 'Integrations', 'Микросервисы', 'Highload'],
   },
   {
     name: 'Максим',
     role: 'Консультант · AI',
     bio: 'Директор по продуктам, экс-МКБ и «Инфосистемы Джет».',
-    photo: 'maksim',
+    photo: null,
+    photoSrc: `${ASSET_HOST}${maksimAsset.url}`,
     tags: ['Финтех', 'Скоринг', 'LLM On-Prem', 'AI Ops', 'ITSM', 'Ассистенты'],
   },
   {
