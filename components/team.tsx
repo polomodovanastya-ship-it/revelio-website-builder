@@ -43,7 +43,7 @@ const TEAM: Member[] = [
     role: 'Консультант · Технологии',
     bio: 'Проектировал B2B, loyalty и cloud-native k8s-платформы, AI/Dify-пайплайны, интеграции и high-load.',
     photo: null,
-    photoSrc: ilyaAsset.url,
+    photoSrc: `${ASSET_HOST}${ilyaAsset.url}`,
     tags: ['AI', 'LLM Pipelines', 'Kubernetes', 'Cloud Platform', 'CI/CD', 'Integrations'],
   },
   {
