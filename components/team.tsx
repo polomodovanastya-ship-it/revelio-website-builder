@@ -80,7 +80,8 @@ const TEAM: Member[] = [
     name: 'Светлана',
     role: 'Консультант · Аналитика',
     bio: 'Вела проекты аналитики в HoReCa, оптимизации процессов цепи поставок, внедряла АСУ ТП для топ-10 НПЗ.',
-    photo: 'svetlana',
+    photo: null,
+    photoSrc: `${ASSET_HOST}${svetlanaAsset.url}`,
     tags: ['SA/BA', 'SCM', 'MDM', 'HoReCa', 'QA', 'Обучение пользователей', 'Автоматизация', 'Базы знаний'],
   },
 ]
