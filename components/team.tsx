@@ -7,6 +7,7 @@ import { useReveal } from '@/hooks/use-reveal'
 import { asset } from '@/lib/asset'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import alexanderAsset from '@/src/assets/alexander.png.asset.json'
 import anastasiaAsset from '@/src/assets/anastasia.png.asset.json'
 import ilyaAsset from '@/src/assets/ilya.png.asset.json'
 
