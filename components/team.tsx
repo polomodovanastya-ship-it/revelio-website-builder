@@ -7,6 +7,7 @@ import { useReveal } from '@/hooks/use-reveal'
 import { asset } from '@/lib/asset'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import alexanderAsset from '@/src/assets/alexander.png.asset.json'
 import anastasiaAsset from '@/src/assets/anastasia.png.asset.json'
 import ilyaAsset from '@/src/assets/ilya.png.asset.json'
 
@@ -47,7 +48,8 @@ const TEAM: Member[] = [
     name: 'Александр',
     role: 'Консультант · Технологии',
     bio: 'Развивал tech привлечения и маркетинга, управление ИТ и gen AI в банках РФ ТОП-10.',
-    photo: 'alexander-p',
+    photo: null,
+    photoSrc: alexanderAsset.url,
     tags: ['Бигтех', 'GenAI', 'AI4SDLC', 'System Design', 'Platform', 'Leadership'],
   },
   {
