@@ -79,6 +79,7 @@ const COLUMN_3 = [
     tag: 'Consulting',
     title: 'Консалтинг AI для застройщика',
     desc: 'Аудит и поиск процессов, подходящих под оптимизацию с помощью AI и ML',
+    cover: `${ASSET_ORIGIN}${pismoCover.url}`,
   },
 ]
 
