@@ -4,6 +4,7 @@ import { useReveal } from '@/hooks/use-reveal'
 import khdNsiBiCover from '@/src/assets/KHD_NSI_BI.png.asset.json'
 import komandirovkiCover from '@/src/assets/Komandirovki_illustration.png.asset.json'
 import narcelleCover from '@/src/assets/Narcelle_illustration.png.asset.json'
+import pismoCover from '@/src/assets/Pismo_cover.png.asset.json'
 
 const ASSET_ORIGIN = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
