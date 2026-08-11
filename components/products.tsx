@@ -22,7 +22,7 @@ const PRODUCTS = [
     savingValue: 'до 15 млн ₽ / год',
     savingNote: 'на каждые 100 чел. в штате',
     cta: 'Запросить демо',
-    href: 'https://fbs.revelio.tech/',
+    href: 'https://revelio.tech/#contacts',
     featured: false,
   },
   {
