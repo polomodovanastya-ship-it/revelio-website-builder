@@ -68,7 +68,7 @@ export function Products() {
                 <div className="flex items-center gap-3">
                   <div className="font-heading text-2xl font-extrabold tracking-tight text-primary">
                     {p.brandPlain}
-                    <span className="italic text-accent">{p.brandAccent}</span>
+                    <span className="font-organical text-[1.6em] leading-none text-accent">{p.brandAccent}</span>
                   </div>
                   {p.marketplaces && (
                     <div className="flex items-center gap-2 border-l border-border pl-3">
