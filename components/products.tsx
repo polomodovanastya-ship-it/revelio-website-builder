@@ -29,7 +29,10 @@ const PRODUCTS = [
     id: 'enter-fbs',
     brandPlain: 'enter',
     brandAccent: 'FBS',
-    marketplaces: ['WB', 'OZON'],
+    marketplaces: [
+      { name: 'Wildberries', src: `${ASSET_HOST}${wbLogo.url}` },
+      { name: 'OZON', src: `${ASSET_HOST}${ozonLogo.url}` },
+    ],
     title: 'Автоматизация отгрузок по FBS для селлеров',
     tags: [
       { label: 'Маршрутизация отгрузок' },
