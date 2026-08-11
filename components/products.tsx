@@ -2,8 +2,8 @@
 
 import { ArrowRight } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
-import wbLogo from '@/src/assets/wildberries-logo.png.asset.json'
-import ozonLogo from '@/src/assets/ozon-logo.png.asset.json'
+import wbLogo from '@/src/assets/wb-icon.png.asset.json'
+import ozonLogo from '@/src/assets/ozon-icon.png.asset.json'
 
 const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
@@ -84,7 +84,7 @@ export function Products() {
                           key={m.name}
                           src={m.src}
                           alt={`${m.name} logo`}
-                          className="h-4 w-auto object-contain sm:h-5"
+                          className="h-6 w-6 rounded-md object-contain sm:h-7 sm:w-7"
                           loading="lazy"
                         />
                       ))}
