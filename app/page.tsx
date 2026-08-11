@@ -21,6 +21,7 @@ export default function Page() {
       <Clients />
       <Team />
       <Services />
+      <Products />
       <Media />
       <Process />
       <Contact />
