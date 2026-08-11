@@ -117,6 +117,8 @@ export function Products() {
 
                 <a
                   href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 font-mono text-xs uppercase tracking-[0.16em] text-accent-foreground transition-colors hover:bg-primary"
                 >
                   {p.cta}
