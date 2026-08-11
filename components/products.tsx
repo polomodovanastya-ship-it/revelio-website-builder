@@ -2,6 +2,10 @@
 
 import { ArrowRight } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
+import wbLogo from '@/src/assets/wildberries-logo.png.asset.json'
+import ozonLogo from '@/src/assets/ozon-logo.png.asset.json'
+
+const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
 const PRODUCTS = [
   {
@@ -29,7 +33,10 @@ const PRODUCTS = [
     id: 'enter-fbs',
     brandPlain: 'enter',
     brandAccent: 'FBS',
-    marketplaces: ['WB', 'OZON'],
+    marketplaces: [
+      { name: 'Wildberries', src: `${ASSET_HOST}${wbLogo.url}` },
+      { name: 'OZON', src: `${ASSET_HOST}${ozonLogo.url}` },
+    ],
     title: 'Автоматизация отгрузок по FBS для селлеров',
     tags: [
       { label: 'Маршрутизация отгрузок' },
@@ -71,14 +78,15 @@ export function Products() {
                     <span className="font-organical text-[1.6em] leading-none text-accent">{p.brandAccent}</span>
                   </div>
                   {p.marketplaces && (
-                    <div className="flex items-center gap-2 border-l border-border pl-3">
+                    <div className="flex items-center gap-4 border-l border-border pl-3">
                       {p.marketplaces.map((m) => (
-                        <span
-                          key={m}
-                          className="rounded-full bg-secondary px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-muted-foreground"
-                        >
-                          {m}
-                        </span>
+                        <img
+                          key={m.name}
+                          src={m.src}
+                          alt={`${m.name} logo`}
+                          className="h-4 w-auto object-contain sm:h-5"
+                          loading="lazy"
+                        />
                       ))}
                     </div>
                   )}
