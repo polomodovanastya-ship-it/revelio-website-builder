@@ -84,7 +84,7 @@ export function Products() {
                           key={m.name}
                           src={m.src}
                           alt={`${m.name} logo`}
-                          className="h-4 w-auto object-contain sm:h-5"
+                          className="h-6 w-6 rounded-md object-contain sm:h-7 sm:w-7"
                           loading="lazy"
                         />
                       ))}
