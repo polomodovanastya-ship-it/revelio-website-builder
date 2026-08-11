@@ -2,8 +2,8 @@
 
 import { ArrowRight } from 'lucide-react'
 import { useReveal } from '@/hooks/use-reveal'
-import wbLogo from '@/src/assets/wildberries-logo.png.asset.json'
-import ozonLogo from '@/src/assets/ozon-logo.png.asset.json'
+import wbLogo from '@/src/assets/wb-icon.png.asset.json'
+import ozonLogo from '@/src/assets/ozon-icon.png.asset.json'
 
 const ASSET_HOST = 'https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app'
 
