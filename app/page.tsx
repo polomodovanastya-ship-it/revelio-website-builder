@@ -3,6 +3,7 @@ import { Hero } from '@/components/hero'
 import { Cases } from '@/components/cases'
 import { Clients } from '@/components/clients'
 import { Services } from '@/components/services'
+import { Products } from '@/components/products'
 import { Team } from '@/components/team'
 import { Media } from '@/components/media'
 import { Process } from '@/components/process'
@@ -20,6 +21,7 @@ export default function Page() {
       <Clients />
       <Team />
       <Services />
+      <Products />
       <Media />
       <Process />
       <Contact />
