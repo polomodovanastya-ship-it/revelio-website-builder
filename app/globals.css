@@ -238,3 +238,15 @@
     opacity: 1 !important;
   }
 }
+
+@font-face {
+  font-family: 'Organical';
+  src: url('https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app/__l5e/assets-v1/c34ba86b-c523-4e4d-9304-f82cb9fdc280/ORGANICAL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-organical {
+  font-family: 'Organical', 'Helvetica Neue', sans-serif;
+}
