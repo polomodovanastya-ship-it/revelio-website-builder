@@ -71,14 +71,15 @@ export function Products() {
                     <span className="font-organical text-[1.6em] leading-none text-accent">{p.brandAccent}</span>
                   </div>
                   {p.marketplaces && (
-                    <div className="flex items-center gap-2 border-l border-border pl-3">
+                    <div className="flex items-center gap-4 border-l border-border pl-3">
                       {p.marketplaces.map((m) => (
-                        <span
-                          key={m}
-                          className="rounded-full bg-secondary px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-muted-foreground"
-                        >
-                          {m}
-                        </span>
+                        <img
+                          key={m.name}
+                          src={m.src}
+                          alt={`${m.name} logo`}
+                          className="h-4 w-auto object-contain sm:h-5"
+                          loading="lazy"
+                        />
                       ))}
                     </div>
                   )}
