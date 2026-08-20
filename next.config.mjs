@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
-// Static export is gated behind env vars so a normal `next dev` / `next build`
-// is unaffected:
-//   STATIC_EXPORT=1           → static export at the site root (prod deploy)
+// The site ships as a static export, so `next build` always emits ./out.
+// Opt out with STATIC_EXPORT=0 (e.g. when a server runtime is needed).
 //   STATIC_BASE_PATH=/sub-dir → static export under a base path (preview variants)
 const staticBasePath = process.env.STATIC_BASE_PATH
-const staticExport = process.env.STATIC_EXPORT === '1' || !!staticBasePath
+const staticExport = process.env.STATIC_EXPORT !== '0'
 
 const nextConfig = {
   typescript: {
