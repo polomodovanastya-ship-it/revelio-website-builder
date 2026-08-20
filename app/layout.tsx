@@ -88,10 +88,10 @@ export default function RootLayout({
       className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable} bg-background`}
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{ __html: 'window._ab_id_=173315' }}
-        />
-        <script src="https://cdn.botfaqtor.ru/one.js" async />
+        <script type="text/javascript">window._ab_id_=173315</script>
+
+        <script src="https://cdn.botfaqtor.ru/one.js"></script>
+
         {enableMetrika && (
           // Runs before the Metrika script below (document order, both
           // blocking inline scripts). A visit carrying the secret query
