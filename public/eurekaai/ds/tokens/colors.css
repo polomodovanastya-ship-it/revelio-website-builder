@@ -1,0 +1,74 @@
+:root{
+  /* ---- base ramp: warm paper + navy ink ---- */
+  --paper-0: oklch(0.992 0.004 85);
+  --paper-1: oklch(0.971 0.008 85);
+  --paper-2: oklch(0.945 0.012 85);
+  --ink-0: oklch(0.205 0.04 265);
+  --ink-1: oklch(0.285 0.085 265);
+  --ink-2: oklch(0.46 0.035 265);
+  --cobalt: oklch(0.55 0.2 255);
+  --amber: oklch(0.82 0.13 75);
+  --red: oklch(0.58 0.21 27);
+
+  /* ---- semantic tokens (light theme) ---- */
+  --background: var(--paper-1);
+  --foreground: var(--ink-0);
+  --card: var(--paper-0);
+  --card-foreground: var(--ink-0);
+  --popover: var(--paper-0);
+  --popover-foreground: var(--ink-0);
+  --primary: var(--ink-1);
+  --primary-foreground: oklch(0.971 0.008 85);
+  --secondary: var(--paper-2);
+  --secondary-foreground: var(--ink-1);
+  --muted: var(--paper-2);
+  --muted-foreground: var(--ink-2);
+  --accent: var(--cobalt);
+  --accent-2: var(--cobalt);
+  --accent-foreground: oklch(0.99 0.005 85);
+  --destructive: var(--red);
+  --destructive-foreground: oklch(0.99 0.005 85);
+  --border: oklch(0.285 0.085 265 / 14%);
+  --border-strong: oklch(0.285 0.085 265 / 28%);
+  --input: oklch(0.285 0.085 265 / 14%);
+  --ring: var(--cobalt);
+  --blueprint-line: oklch(0.285 0.085 265 / 0.05);
+  --selection: oklch(0.55 0.2 255 / 0.9);
+  --selection-foreground: oklch(1 0 0);
+
+  /* ---- charts: derived from navy → cobalt ---- */
+  --chart-1: oklch(0.285 0.085 265);
+  --chart-2: oklch(0.4 0.13 260);
+  --chart-3: oklch(0.55 0.2 255);
+  --chart-4: oklch(0.68 0.14 250);
+  --chart-5: oklch(0.8 0.08 245);
+}
+.dark{
+  --background: oklch(0.17 0.025 265);
+  --foreground: oklch(0.95 0.01 85);
+  --card: oklch(0.215 0.028 265);
+  --card-foreground: oklch(0.95 0.01 85);
+  --popover: oklch(0.215 0.028 265);
+  --popover-foreground: oklch(0.95 0.01 85);
+  --primary: oklch(0.95 0.01 85);
+  --primary-foreground: oklch(0.17 0.025 265);
+  --secondary: oklch(0.25 0.03 265);
+  --secondary-foreground: oklch(0.95 0.01 85);
+  --muted: oklch(0.25 0.03 265);
+  --muted-foreground: oklch(0.72 0.022 85);
+  --accent: var(--amber);
+  --accent-2: var(--amber);
+  --accent-foreground: oklch(0.17 0.025 265);
+  --border: oklch(1 0 0 / 12%);
+  --border-strong: oklch(1 0 0 / 24%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: var(--amber);
+  --blueprint-line: oklch(1 0 0 / 0.05);
+  --selection: oklch(0.82 0.13 75 / 0.9);
+  --selection-foreground: oklch(0.17 0.025 265);
+  --chart-1: oklch(0.95 0.01 85);
+  --chart-2: oklch(0.82 0.13 75);
+  --chart-3: oklch(0.68 0.11 70);
+  --chart-4: oklch(0.5 0.07 265);
+  --chart-5: oklch(0.35 0.05 265);
+}

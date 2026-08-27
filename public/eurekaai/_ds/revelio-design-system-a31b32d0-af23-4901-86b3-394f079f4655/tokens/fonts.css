@@ -1,0 +1,6 @@
+/* Webfonts. No binaries were provided with the source spec, so the three
+   families named in globals.css are loaded from Google Fonts (they are all
+   Google-hosted originals — Inter, Inter Tight, JetBrains Mono — so this is
+   the real type, not a substitution). Swap for self-hosted @font-face if the
+   repo ships woff2 files. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap");
