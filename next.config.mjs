@@ -12,6 +12,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // next dev does not fall through to public/*/index.html for App Router paths,
+  // so map /eurekaai to the static design-canvas entry. Ignored by `output: 'export'`.
+  async rewrites() {
+    return [
+      { source: '/eurekaai', destination: '/eurekaai/index.html' },
+      { source: '/eurekaai/', destination: '/eurekaai/index.html' },
+    ]
+  },
   ...(staticExport
     ? {
         output: 'export',

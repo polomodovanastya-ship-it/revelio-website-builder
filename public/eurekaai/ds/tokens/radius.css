@@ -1,0 +1,15 @@
+:root{
+  --radius: 0.9rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-full: 9999px;
+  /* shadows are deliberately near-absent — hierarchy comes from hairlines */
+  --shadow-none: none;
+  --shadow-hairline: 0 0 0 1px var(--border);
+  --shadow-lift: 0 1px 2px oklch(0.285 0.085 265 / 0.06);
+}

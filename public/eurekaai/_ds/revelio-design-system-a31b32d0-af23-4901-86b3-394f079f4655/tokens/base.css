@@ -1,0 +1,16 @@
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body);letter-spacing:var(--tracking-body);-webkit-font-smoothing:antialiased}
+::selection{background:var(--selection);color:var(--selection-foreground)}
+button,a,[role="button"],label,summary,input[type="checkbox"],input[type="radio"]{cursor:pointer}
+a{color:var(--accent);text-decoration:none;transition:color var(--dur-hover)}
+a:hover{color:var(--primary)}
+h1,h2,h3,h4{font-family:var(--font-heading);font-weight:var(--weight-display);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0}
+h1,h2{text-transform:uppercase}
+p{margin:0;text-wrap:pretty}
+img{display:block;max-width:100%}
+/* blueprint texture — two 1px linear-gradient grids */
+.blueprint{background-image:linear-gradient(to right,var(--blueprint-line) 1px,transparent 1px),linear-gradient(to bottom,var(--blueprint-line) 1px,transparent 1px);background-size:48px 48px}
+.rv-container{margin-inline:auto;max-width:var(--container-max);padding-inline:var(--container-pad)}
+@media(min-width:640px){.rv-container{padding-inline:var(--container-pad-sm)}}
+.rv-mono{font-family:var(--font-mono);font-size:var(--text-mono);text-transform:uppercase;letter-spacing:var(--tracking-mono)}
+.rv-hairline{border:0;border-top:var(--hairline) solid var(--border);margin:0}

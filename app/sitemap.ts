@@ -26,5 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/it-procurement-as-a-service`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/1-click-estimate`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/mvp-in-2-weeks`, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${base}/eurekaai`, changeFrequency: 'monthly', priority: 0.9 },
   ]
 }

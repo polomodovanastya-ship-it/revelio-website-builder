@@ -1,0 +1,19 @@
+:root{
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --dur-hover: 300ms; /* @kind other */
+  --dur-scale-in: 400ms; /* @kind other */
+  --dur-reveal: 800ms; /* @kind other */
+  --dur-marquee: 38s; /* @kind other */
+}
+@keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes scale-in{from{opacity:0;transform:translateY(6px) scale(0.98)}to{opacity:1;transform:none}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.reveal{opacity:0}
+.reveal.in-view{animation:fade-up var(--dur-reveal) var(--ease-reveal) forwards}
+.animate-scale-in{animation:scale-in var(--dur-scale-in) var(--ease-reveal) both}
+.animate-marquee{animation:marquee var(--dur-marquee) linear infinite}
+.animate-marquee:hover,.marquee-paused .animate-marquee{animation-play-state:paused}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .reveal{opacity:1}
+}
