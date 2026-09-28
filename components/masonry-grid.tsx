@@ -1,7 +1,10 @@
 'use client'
 
-import { useEffect, useState, type ReactNode } from 'react'
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+import { useEffect, useState, type ComponentType, type ReactNode } from 'react'
+import MasonryBase, { ResponsiveMasonry, type MasonryProps } from 'react-responsive-masonry'
+
+// The library supports `sequential` at runtime but omits it from its TS types.
+const Masonry = MasonryBase as ComponentType<MasonryProps & { sequential?: boolean }>
 
 // Breakpoints mirror the old Tailwind classes (md:columns-2 → 768px, lg:columns-3 → 1024px).
 const COLUMNS_BREAKPOINTS = { 0: 1, 768: 2, 1024: 3 }
@@ -25,7 +28,15 @@ const GUTTER_BREAKPOINTS = { 0: '20px' } as unknown as Record<number, number>
  * mounted (identical markup on server and first client render), then swap to
  * masonry. These sections sit below the fold, so the swap is never seen on load.
  */
-export function MasonryGrid({ children }: { children: ReactNode }) {
+// `sequential` places item i into column i % columns instead of the shortest
+// column, so a hand-picked order maps to fixed columns.
+export function MasonryGrid({
+  children,
+  sequential = false,
+}: {
+  children: ReactNode
+  sequential?: boolean
+}) {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
@@ -42,7 +53,9 @@ export function MasonryGrid({ children }: { children: ReactNode }) {
       columnsCountBreakPoints={COLUMNS_BREAKPOINTS}
       gutterBreakPoints={GUTTER_BREAKPOINTS}
     >
-      <Masonry gutter="20px">{children}</Masonry>
+      <Masonry gutter="20px" sequential={sequential}>
+        {children}
+      </Masonry>
     </ResponsiveMasonry>
   )
 }

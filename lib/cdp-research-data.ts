@@ -70,7 +70,7 @@ export const MODULES = [
 ]
 
 export const RESEARCH_STATS = {
-  vendorsValue: '12',
+  vendorsValue: '13',
   vendorsLabel: 'вендоров',
   criteriaValue: '150+',
   criteriaLabel: 'критериев',
@@ -83,7 +83,7 @@ export const METHODOLOGY_XLSX_HREF = asset('/research/methodology-cdp-criteria.x
 
 export const ONPREM_VENDORS = ['Manzana', 'Rubbles', 'Loymax', 'RightWay']
 export const CLOUD_VENDORS = ['Mindbox', 'Retail Rocket', 'KonnectU', 'Altcraft']
-export const OTHER_VENDORS = ['REES46', 'HFLabs', 'CSI SetLoyalty', 'MAXMA']
+export const OTHER_VENDORS = ['REES46', 'HFLabs', 'CSI SetLoyalty', 'MAXMA', 'Wings']
 
 // PDF page 1/2 states these two numbers directly; they don't equal any single
 // vendor's own total (Loymax's own badge is 339 — see VENDOR_SCORES). Kept
@@ -475,6 +475,34 @@ export const HONORABLE_MENTIONS: VendorProfile[] = [
       'Низкий time-to-market по новым механикам',
       'Не реализованы алерты о пересечении акции',
       'Отсутствует фиксация источников для промокодов и кампаний (UTM-метки, партнёры, каналы привлечения)',
+    ],
+  },
+  {
+    name: 'Wings',
+    resources: {
+      docs: { note: 'по запросу' },
+      api: { note: 'по запросу' },
+      cases: { note: 'по запросу' },
+      sla: { note: 'по запросу' },
+    },
+    pros: [
+      'Большой опыт работы с банкингом',
+      'Friendly UX – удобная навигация',
+      'Сильная ИИ-поддержка, с возможностью создания кампаний, опросов, агентов по промптам',
+      'Есть адаптация сущностей и атрибутов под другие сферы',
+      'Стремление быть All-in-one решением удобно для внедрения в среднем бизнесе',
+      'Удобный Customer 360 с возможностью ручной дедупликации',
+      'Широкий спектр интеграционных возможностей',
+      'Настраиваемые NPS / CSAT / CES опросы с удобным редактором, превью и дашбордом аналитики результатов',
+      'Комфортный онбординг в систему с системой подсказок и быстрой ИИ-справкой',
+      'Удобное переключение между юр.лицами, быстрая подгрузка данных, платформа хорошо сбалансирована выдерживать большой объем клиентской базы',
+      'Хорошая компетенция команды по шлюзам коммуникаций, компенсирующая функциональные недостатки кампейн решений',
+    ],
+    cons: [
+      'Молодой продукт, в фазе активного тестирования и доработки',
+      'Не было PROD-проектов под высокой нагрузкой',
+      'Ряд фичей и сценариев не универсализированы под клиентов из разных индустрий',
+      'Стремление быть all-in-one продуктом не слишком ложится на внедрение CDP в энтерпрайз',
     ],
   },
 ]
