@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import cdpIllustrationAsset from '@/src/assets/CDP_illustration_1.png.asset.json'
+import { asset } from '@/lib/asset'
 import { Audience } from './cdp-comparison/audience'
 import { QuestionsGrid } from './cdp-comparison/questions-grid'
 import { StatsBlock } from './cdp-comparison/stats-block'
@@ -50,10 +50,10 @@ export function CdpComparison2026Body() {
           </div>
           <div className="relative hidden overflow-hidden rounded-2xl lg:block">
             <Image
-              src={`https://project--08ee55dc-06c7-4d4e-8eee-0ca50f80d337-dev.lovable.app${cdpIllustrationAsset.url}`}
+              src={asset('/research/cdp-illustration.jpg')}
               alt="Иллюстрация исследования CDP"
-              width={1200}
-              height={675}
+              width={1024}
+              height={571}
               className="block h-auto w-full"
               sizes="(max-width: 1024px) 100vw, 420px"
               priority

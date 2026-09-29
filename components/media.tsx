@@ -7,6 +7,15 @@ import { MEDIA_ITEMS } from '@/lib/media'
 import { MediaCard } from './media-card'
 import { MasonryGrid } from '@/components/masonry-grid'
 
+// Rendered column by column in a 3-column grid: item i goes to column i % 3.
+const HOME_MEDIA_IDS = [
+  'forbes-excel-to-ml',
+  'cdp-comparison-2026',
+  'podcast-bart',
+  'sostav-gamification',
+  'incrussia-dynamic-prices',
+]
+
 export function Media() {
   const ref = useReveal<HTMLDivElement>()
 
@@ -28,17 +37,12 @@ export function Media() {
         </div>
 
         <div ref={ref} className="reveal mt-12">
-          <MasonryGrid>
-            {MEDIA_ITEMS.filter((item) =>
-              [
-                'forbes-excel-to-ml',
-                'cdp-comparison-2026',
-                'podcast-bart',
-                'sostav-gamification',
-              ].includes(item.id)
-            ).map((item) => (
-              <MediaCard key={item.id} item={item} />
-            ))}
+          <MasonryGrid sequential>
+            {HOME_MEDIA_IDS.map((id) => MEDIA_ITEMS.find((item) => item.id === id))
+              .filter((item) => item !== undefined)
+              .map((item) => (
+                <MediaCard key={item.id} item={item} />
+              ))}
           </MasonryGrid>
         </div>
 
